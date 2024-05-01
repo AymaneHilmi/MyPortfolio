@@ -1,19 +1,24 @@
 import React from 'react'
-import { FaLinkedin, FaInstagram } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa6";
+import './components.css';
 
 
 export default function Navbar() {
     return (
-        <div className='flex flex-row justify-between w-full p-7 px-8'>
-            <div className='flex flex-row'>
-                <FaLinkedin color='gray' size={25} className='mr-5' />
-                <FaGithub color='gray' size={25} />
-                <FaInstagram color='gray' size={25} className='ml-5' />
+        <header class='test' className=' fixed flex w-screen justify-between'>
+            <div className='flex flex-row '>
+                <div className="logo">
+                    My portfolio
+                </div>
             </div>
             <div>
-
+                <button class="button">
+                    <span class="button_lg">
+                        <span class="button_sl"></span>
+                        <span class="button_text">My Resume</span>
+                    </span>
+                </button>
             </div>
-        </div>
+
+        </header>
     )
 }

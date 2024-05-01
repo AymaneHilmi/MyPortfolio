@@ -1,10 +1,11 @@
 import React from 'react'
+import LandingPage from '../components/LandingPage'
 
 
 export default function HomeScreen() {
     return (
-        <div>
-            ecris moi 6 lignes de lorem ipsum dolor sit amet consectetur adipisicing elit
+        <div className='h-full'>
+            <LandingPage />
         </div>
     )
 }

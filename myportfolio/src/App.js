@@ -5,17 +5,14 @@ import Sidebar from './components/Sidebar';
 
 function App() {
   return (
-    <body className='flex bg-background'>
+    <div className='flex bg-background'>
 
-      <Sidebar />
-      <div className='w-full'>
+      {/* <Sidebar /> */}
+      <div className='w-full h-full'>
         <Navbar />
         <HomeScreen />
       </div>
-
-
-
-    </body>
+    </div>
   );
 }
 
