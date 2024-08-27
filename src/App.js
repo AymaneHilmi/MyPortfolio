@@ -8,7 +8,7 @@ function App() {
     <div className='flex bg-background'>
 
       {/* <Sidebar /> */}
-      <div className='w-full h-full'>
+      <div className='w-full h-full justify-center'>
         <Navbar />
         <HomeScreen />
       </div>
