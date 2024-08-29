@@ -1,5 +1,5 @@
 .scrolldown {
-    --color: white;
+    --color: rgb(0, 0, 0);
     --sizeX: 30px;
     --sizeY: 50px;
     position: relative;

@@ -4,8 +4,9 @@ import './components.css';
 
 export default function LandingPage() {
     return (
-        <div>
-            <Spline scene="https://prod.spline.design/3OnoqTOGmJs7Vpxx/scene.splinecode">
+
+        <div className='h-5/6'>
+            <Spline scene="https://prod.spline.design/3OnoqTOGmJs7Vpxx/scene.splinecode" >
             </Spline>
             <div className='flex justify-center'>
                 <div class="scrolldown">
@@ -15,16 +16,6 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-row'>
-                <div className='w-6/12'>
-                    s
-                </div>
-
-
-            </div>
-            <Spline scene="https://prod.spline.design/60M9nK4lBWsh0lJG/scene.splinecode">
-
-            </Spline>
-        </div>
+        </div >
     )
 }
