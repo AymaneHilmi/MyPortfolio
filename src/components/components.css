@@ -1,5 +1,7 @@
+/* --------- Scroool Component ----------- */
+
 .scrolldown {
-    --color: rgb(0, 0, 0);
+    --color: RGB(160, 165, 172);
     --sizeX: 30px;
     --sizeY: 50px;
     position: relative;
@@ -88,4 +90,8 @@
     to {
         opacity: 0.5;
     }
+}
+
+.border-e2e5e9 {
+    border-color: #c2c5c9;
 }

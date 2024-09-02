@@ -37,3 +37,34 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* ------------ Fonts ---------- */
+
+@font-face {
+  font-family: 'SFREGULAR';
+  src: url('./fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFMEDIUM';
+  src: url('./fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFBOLD';
+  src: url('./fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFULTRALIGHT';
+  src: url('./fonts/SFPRODISPLAYULTRALIGHT.OTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
