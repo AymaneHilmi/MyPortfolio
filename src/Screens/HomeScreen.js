@@ -10,7 +10,7 @@ import 'aos/dist/aos.css'
 export default function HomeScreen() {
     AOS.init();
     return (
-        <div className='h-full'>
+        <div className='h-full '>
             <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
             <LandingPage />
             <div data-aos="fade-up"

@@ -7,7 +7,6 @@ export default function About() {
     return (
         <div className='w-full'>
             <div className="flex flex-col md:flex-row">
-
                 {/* Left part with the image */}
                 <div className="w-full md:w-1/2 p-12">
                     <img className='w-full' src={PersonalPhotos} />
