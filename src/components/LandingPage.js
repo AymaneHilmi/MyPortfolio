@@ -1,23 +1,33 @@
-import React from 'react'
 import Spline from '@splinetool/react-spline';
+import React, { useEffect } from 'react';
+import { motion } from "framer-motion";
 import './components.css';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
 export default function LandingPage() {
-    AOS.init()
+    useEffect(() => {
+        AOS.init();
+    }, []);
+
+    const handleLoad = () => {
+        AOS.refresh();
+        // Emettre un événement personnalisé à la fin du chargement de Spline
+        const event = new CustomEvent('splineLoad');
+        window.dispatchEvent(event);
+    };
+
     return (
-        <div className='h-4/6'>
-            <Spline scene="https://prod.spline.design/3OnoqTOGmJs7Vpxx/scene.splinecode" >
-            </Spline>
-            <div className='flex justify-center'>
-                <div class="scrolldown">
-                    <div class="chevrons">
-                        <div class="chevrondown"></div>
-                        <div class="chevrondown"></div>
+        <div>
+            <Spline scene="https://prod.spline.design/3OnoqTOGmJs7Vpxx/scene.splinecode" onLoad={handleLoad} />
+            <div className='flex justify-center mb-20'>
+                <div className="scrolldown">
+                    <div className="chevrons">
+                        <div className="chevrondown"></div>
+                        <div className="chevrondown"></div>
                     </div>
                 </div>
             </div>
-        </div >
-    )
+        </div>
+    );
 }
