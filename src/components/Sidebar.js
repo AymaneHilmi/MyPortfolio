@@ -19,7 +19,6 @@ export default function Sidebar() {
                 </Link>
                 <Link to="/About">About Me</Link>
                 <Link to="/Project" >Activities</Link>
-
                 <p>CV</p>
             </div>
             <div className="row-span-1 justify-around border-b border-e2e5e9 p-8">
