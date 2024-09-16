@@ -38,16 +38,12 @@
   }
 }
 
-
-
-
-/* Dans screens.css ou App.css */
 .sticky-sidebar {
   position: -webkit-sticky;
   position: sticky;
   top: 10px;
   /* Offset léger pour une transition plus naturelle */
-  transition: top 0.3s ease-in-out;
+  transition: bottom 0.3s ease-in-out;
 }
 
 
