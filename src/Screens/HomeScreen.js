@@ -21,7 +21,6 @@ import { motion } from "framer-motion";
 
 
 
-
 export default function AboutScreen() {
     const words = `Welcome to my portfolio, I'm Aymane HILMI [أيمن] .
     Passionate about computer Science and online business I aim to leave a personal mark in this world...✌ `
