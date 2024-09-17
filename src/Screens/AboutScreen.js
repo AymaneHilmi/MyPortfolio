@@ -20,6 +20,7 @@ import {
 import { motion } from "framer-motion";
 
 
+
 export default function AboutScreen() {
     return (
         <div className='w-full flex flex-col items-center' data-aos="fade-left">
