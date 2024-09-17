@@ -52,9 +52,9 @@ export default function AboutScreen() {
                     />
                 ))}
             </BentoGrid>
-            <div className="border-t border-gray-300 mt-12 w-11/12 flex flex-row justify-end ">
+            {/* <div className="border-t border-gray-300 mt-12 w-11/12 flex flex-row justify-end ">
                 <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}> by Aymane Hilmi</h1>
-            </div>
+            </div> */}
 
 
         </div>
