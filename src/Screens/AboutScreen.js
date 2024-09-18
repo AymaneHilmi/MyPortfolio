@@ -59,7 +59,7 @@ export default function AboutScreen() {
         },
     ];
     return (
-        <div className='w-full flex flex-col items-center justify-center'>
+        <div className='w-full h-full flex flex-col items-center justify-center'>
             <div className=" border-b border-gray-300 w-full flex flex-row justify-center items-end mb-4 bg-[#e6e6e6]">
                 <img
                     src={Maroc}
@@ -67,7 +67,7 @@ export default function AboutScreen() {
                     className='md:h-96 h-30'
                 />
             </div>
-            <div className="flex flex-col h-screen w-11/12 my-4 ">
+            <div className="flex flex-col w-11/12 mt-4 ">
 
                 <FlipWords words={words} className="text-4xl max-h-10" />
                 <a className="mt-3" style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>Software Engineer</a>
@@ -75,21 +75,18 @@ export default function AboutScreen() {
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between " />
 
                 <a style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }}>
-                    I am a software engineer living in Montpellier, France, with a deep enthusiasm for programming.
+                    I am a software engineer based in Montpellier, France, with a strong passion for programming.
+                    Born in Italy, raised in France, of Moroccan heritage and spent a significant part
+                    of my life in Spain. These diverse experiences have shaped me today into a polyglot, fluent in five
+                    languages (Italian, French, Maroccan, English & Spanish).
                     <br></br>
                     <br></br>
 
                     My journey in the world of programming began in childhood when I first encountered the website agar.io.
                     It may sound trivial, but that moment sparked a fascination within me for the world of technology.
                     I became captivated by the incredible things that can be created with computers and their potential for efficiency.
-                    <br></br>
-                    <br></br>
-
                     While many of my classmates were still exploring their career paths, I was already certain of mine:
-                    I wanted to immerse myself in computer science. I found myself particularly drawn to beautifully designed websites
-                    and modern interfaces—those that not only looked stunning but also provided seamless, enjoyable experiences for
-                    users. This passion inspired me to learn  how these digital solutions in general come to life and motivated me to
-                    develop websites like this portfolio.
+                    I wanted to immerse myself in computer science.
                     <br></br>
                     <br></br>
 
@@ -100,15 +97,16 @@ export default function AboutScreen() {
                     streamline processes, and foster innovation.
                 </a>
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between " />
-
-                <div className="h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+                {/* <div className="h-[40rem] rounded-md flex flex-col antialiased dark:bg-grid-white/[0.05] items-center relative overflow-hidden">
                     <InfiniteMovingCards
                         items={testimonials}
                         direction="right"
                         speed="slow"
                     />
-                </div>
+                </div> */}
+
             </div>
+
 
 
 
