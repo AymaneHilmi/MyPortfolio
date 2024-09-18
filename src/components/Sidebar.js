@@ -23,14 +23,14 @@ export default function Sidebar() {
             </div>
             <div className="row-span-1 justify-around border-b border-e2e5e9 p-8">
                 <div className='flex flex-col'>
-                    <a style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className='text-xs pb-2 hover:text-blue-500'>MOBILE APPLICATION</a>
-                    <a href="#" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm hover:text-blue-500'>Cesiveroo</a>
-                    <a href="#" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm hover:text-blue-500'>LimsMobility</a>
+                    <a style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className='text-xs pb-2'>MOBILE APPLICATION</a>
+                    <Link href="#" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm '>Cesiveroo</Link>
+                    <Link to="/SaintGobain" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm '>Saint-Gobain</Link>
                 </div>
                 <div className='flex flex-col mt-4'>
-                    <a style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className='text-xs pb-2 hover:text-blue-500'>WEB DEVELOPMENT</a>
-                    <a href="#" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm hover:text-blue-500'>My Portfolio</a>
-                    <a href="#" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm hover:text-blue-500'>Blog</a>
+                    <a style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className='text-xs pb-2'>WEB DEVELOPMENT</a>
+                    <a href="#" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>My Portfolio</a>
+                    <a href="#" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>Blog</a>
                 </div>
             </div>
             <div className="row-span-1 flex flex-col border-b border-e2e5e9 p-8">

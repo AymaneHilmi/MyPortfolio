@@ -11,6 +11,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import AboutScreen from './Screens/AboutScreen';
 import ProjectScreen from './Screens/ProjectScreen';
+import SaintGobainScreen from './Screens/SaintGobainScreen';
 
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
 
   return (
     <Router className=' flex bg-background'>
-      <div className='h-screen'>
+      <div className='h-screen mb-40'>
         <LandingPage />
       </div>
       <div className="flex border-t border-e2e5e9">
@@ -61,6 +62,7 @@ function App() {
           <Route path="" className="h-screen" element={<HomeScreen />} data-aos="fade-left" />
           <Route path="/About" className="h-screen" element={<AboutScreen />} data-aos="fade-left" />
           <Route path="/Project" className="h-screen" element={<ProjectScreen />} data-aos="fade-left" />
+          <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen />} data-aos="fade-left" />
         </Routes>
       </div>
     </Router>
