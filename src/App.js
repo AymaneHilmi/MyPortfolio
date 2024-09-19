@@ -44,7 +44,6 @@ function App() {
         </div>
       </div>
 
-
       {/* Sliding Navbar */}
       <div className={`fixed top-0 left-0 w-full h-1/3 bg-black bg-opacity-10 backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform duration-300 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}>
         <Link to={"/About"} className='text-xl text-white py-2' onClick={toggleNavbar}>About</Link>
