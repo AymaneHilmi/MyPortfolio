@@ -1,21 +1,65 @@
 /* --------- Scroool Component ----------- */
 
-.scrolldown {
-    --color: RGB(160, 165, 172);
-    --sizeX: 30px;
-    --sizeY: 50px;
-    position: relative;
-    width: var(--sizeX);
-    height: var(--sizeY);
-    margin-left: var(sizeX / 2);
-    border: calc(var(--sizeX) / 10) solid var(--color);
-    border-radius: 50px;
-    box-sizing: border-box;
-    margin-bottom: 16px;
-    cursor: pointer;
+@media (min-width: 768px) {
+    #scrolldown {
+        --color: RGB(160, 165, 172);
+        --sizeX: 30px;
+        --sizeY: 50px;
+        position: relative;
+        width: var(--sizeX);
+        height: var(--sizeY);
+        margin-left: var(--sizeX / 2);
+        border: calc(var(--sizeX) / 10) solid var(--color);
+        border-radius: 50px;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+
+    #chevrons {
+        padding: 6px 0 0 0;
+        margin-left: -3px;
+        margin-top: 48px;
+        width: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
 }
 
-.scrolldown::before {
+
+
+@media (max-width: 768px) {
+    #scrolldown {
+        --color: RGB(160, 165, 172);
+        --sizeX: 20px;
+        --sizeY: 35px;
+        position: relative;
+        width: var(--sizeX);
+        height: var(--sizeY);
+        margin-left: var(sizeX / 2);
+        border: calc(var(--sizeX) / 10) solid var(--color);
+        border-radius: 50px;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+
+    #chevrons {
+        padding: 6px 0 0 0;
+        margin-left: -70px;
+        margin-top: 48px;
+        width: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+#scrolldown::before {
     content: "";
     position: absolute;
     bottom: 30px;
@@ -53,17 +97,9 @@
     }
 }
 
-.chevrons {
-    padding: 6px 0 0 0;
-    margin-left: -3px;
-    margin-top: 48px;
-    width: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.chevrondown {
+
+#chevrondown {
     margin-top: -6px;
     position: relative;
     border: solid var(--color);
@@ -74,11 +110,11 @@
     transform: rotate(45deg);
 }
 
-.chevrondown:nth-child(odd) {
+#chevrondown:nth-child(odd) {
     animation: pulse54012 500ms ease infinite alternate;
 }
 
-.chevrondown:nth-child(even) {
+#chevrondown:nth-child(even) {
     animation: pulse54012 500ms ease infinite alternate 250ms;
 }
 

@@ -18,13 +18,13 @@ export default function LandingPage() {
     };
 
     return (
-        <div>
+        <div className='md:h-auto h-screen -mt-10 md:mt-auto'>
             <Spline scene="https://prod.spline.design/3OnoqTOGmJs7Vpxx/scene.splinecode" onLoad={handleLoad} />
-            <div className='flex justify-center mb-20'>
-                <div className="scrolldown">
-                    <div className="chevrons">
-                        <div className="chevrondown"></div>
-                        <div className="chevrondown"></div>
+            <div className='md:flex justify-center hidden'>
+                <div id="scrolldown">
+                    <div id="chevrons">
+                        <div id="chevrondown"></div>
+                        <div id="chevrondown"></div>
                     </div>
                 </div>
             </div>

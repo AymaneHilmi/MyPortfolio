@@ -27,33 +27,38 @@ export default function AboutScreen() {
 
 
     return (
-        <div className='w-full flex flex-col items-center p-6' data-aos="fade-left">
+        <div className='w-full flex flex-col items-center p-6'>
 
-            <div className="flex justify-center items-center text-center  space-x-4 mb-4">
-                <TextGenerateEffect duration={2} words={words} className="w-5/6 text-lg" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }} />
+            <div className="flex justify-center items-center text-center  space-x-4 mb-4" data-aos="fade-up">
+                <TextGenerateEffect duration={2} words={words} className="w-5/6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }} />
             </div>
             <div className=" w-11/12 flex flex-row justify-between "></div>
 
 
-            <div className="border-t border-gray-300 my-4 w-11/12 flex flex-row justify-between ">
-                <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>Previous Projects</h1>
-                <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>2024</h1>
+            <div className="border-t border-gray-300 my-4 w-11/12" data-aos="fade-up">
+                <div className='flex flex-row justify-between '>
+                    <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>Previous Projects</h1>
+                    <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>2024</h1>
+                </div>
+                <BentoGrid className="mx-auto md:auto-rows-[18rem] mt-4 " >
+                    {items.map((item, i) => (
+                        <BentoGridItem
+                            key={i}
+                            title={item.title}
+                            description={item.description}
+                            header={item.header}
+                            className={cn("[&>p:text-lg]", item.className)}
+                        />
+                    ))}
+                </BentoGrid>
             </div>
+            <div data-aos="fade-up">
 
-            <BentoGrid className="w-11/12 mx-auto md:auto-rows-[18rem]">
-                {items.map((item, i) => (
-                    <BentoGridItem
-                        key={i}
-                        title={item.title}
-                        description={item.description}
-                        header={item.header}
-                        className={cn("[&>p:text-lg]", item.className)}
-                    />
-                ))}
-            </BentoGrid>
-            {/* <div className="border-t border-gray-300 mt-12 w-11/12 flex flex-row justify-end ">
+
+            </div>
+            <div className="border-t border-gray-300 mt-12 w-11/12 flex flex-row justify-end ">
                 <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}> by Aymane Hilmi</h1>
-            </div> */}
+            </div>
 
 
         </div>
