@@ -12,7 +12,7 @@ import ProjectScreen from '../Screens/ProjectScreen';
 export default function Sidebar() {
     AOS.init();
     return (
-        <div className="grid grid-rows-3 h-full border-r border-e2e5e9 " data-aos="fade-right">
+        <div className="md:grid grid-rows-3 border-r border-e2e5e9 h-screen hidden  " data-aos="fade-right">
             <div className="row-span-1 p-8 border-b border-e2e5e9 flex flex-col justify-around text-xl" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
                 <Link to="" className='w-20'>
                     <img src={Logo} className="bg-[#DBDBDB] rounded-[10px] w-max" />

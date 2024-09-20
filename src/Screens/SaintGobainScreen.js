@@ -28,7 +28,7 @@ export default function SaintGobainScreen() {
     const words = ["Aymane HILMI", "حلمي أيمن"];
 
     return (
-        <div className='w-full h-screen flex flex-col items-center'>
+        <div className='h-screen w-full flex flex-col items-center'>
             <div className="border-b border-gray-300 w-full h-1/3 flex flex-row justify-center items-center mb-4 bg-[#e6e6e6]">
                 <img
                     src={SaintGobain}
