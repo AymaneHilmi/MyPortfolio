@@ -2,7 +2,7 @@ import { cn } from "../../lib/utils";
 
 export const BentoGrid = ({
     className,
-    children
+    children,
 }) => {
     return (
         (<div
@@ -20,14 +20,16 @@ export const BentoGridItem = ({
     title,
     description,
     header,
-    icon
+    icon,
+    onClick = { onClick }
 }) => {
     return (
         (<div
             className={cn(
                 "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4  bg-[#dbdbdb] border border-transparent justify-between flex flex-col space-y-4",
                 className
-            )}>
+            )}
+            onClick={onClick}>
             {header}
             <div className="group-hover/bento:translate-x-2 transition duration-200">
                 {icon}

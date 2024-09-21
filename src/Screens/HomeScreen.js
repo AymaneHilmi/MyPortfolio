@@ -1,31 +1,25 @@
 import { React, img } from 'react'
-import { PinContainer } from "../components/ui/3d-pin";
-import Spline from '@splinetool/react-spline';
-import HomeScreen from './HomeScreen';
-import JaponPicture from '../assets/Japon.jpg';
-import Aymane1 from '../assets/Aymane1.jpg';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Aymane from '../assets/Aymane.jpg';
+import Cesiveroo from '../assets/Cesiveroo.png';
+import SG from '../assets/Saint-Gobain.png';
 import Profil from '../assets/PDP.jpeg';
 import Maroc from '../assets/Maroc.jpg';
 import { cn } from "../lib/utils";
 import { CardStack } from "../components//ui/card-stack";
 import { TextGenerateEffect } from "../components/ui/text-generate-effect";
 import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
-import {
-    IconBoxAlignRightFilled,
-    IconClipboardCopy,
-    IconFileBroken,
-    IconSignature,
-    IconTableColumn,
-} from "@tabler/icons-react";
 import { motion } from "framer-motion";
-
-
 
 export default function AboutScreen() {
     const words = `Welcome to my portfolio, I'm Aymane HILMI [أيمن] .
     Passionate about computer Science and online business I aim to leave a personal mark in this world... [إن شاء الله] `
+    const navigate = useNavigate();
 
-
+    const handleClick = (link) => {
+        navigate(`/${link}`);
+    };
     return (
         <div className='w-full flex flex-col items-center p-6'>
 
@@ -36,11 +30,7 @@ export default function AboutScreen() {
 
 
             <div className="border-t border-gray-300 my-4 w-11/12" data-aos="fade-up">
-                <div className='flex flex-row justify-between '>
-                    <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>Previous Projects</h1>
-                    <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>2024</h1>
-                </div>
-                <BentoGrid className="mx-auto md:auto-rows-[18rem] mt-4 " >
+                <BentoGrid className="mx-auto md:auto-rows-[18rem] mt-8 " >
                     {items.map((item, i) => (
                         <BentoGridItem
                             key={i}
@@ -48,9 +38,11 @@ export default function AboutScreen() {
                             description={item.description}
                             header={item.header}
                             className={cn("[&>p:text-lg]", item.className)}
+                            onClick={() => handleClick(item.link)}
                         />
                     ))}
                 </BentoGrid>
+
             </div>
             <div data-aos="fade-up">
 
@@ -65,64 +57,55 @@ export default function AboutScreen() {
     )
 }
 
-
 const SkeletonOne = () => {
+    return (
+        <motion.div
+            initial="initial"
+            animate="animate"
+            className="flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+            style={{
+                backgroundImage: `url(${Aymane})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+            }}
+        >
+            <motion.div className="h-full w-full rounded-lg"></motion.div>
+        </motion.div>
+    );
+};
+
+const SkeletonThree = () => {
 
     return (
         <motion.div
             initial="initial"
-            whileHover="animate"
-            className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+            animate="animate"
+            className="flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+            style={{
+                backgroundImage: `url(${Cesiveroo})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+            }}
         >
-            <motion.div
-
-                className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-[#EEEEEE] "
-            >
-                <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-                <div className="w-full bg-white h-4 rounded-full " />
-            </motion.div>
-            <motion.div
-                className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-[#EEEEEE] "
-            >
-                <div className="w-full bg-white h-4 rounded-full " />
-                <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-            </motion.div>
-            <motion.div
-                className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 bg-[#EEEEEE] "
-            >
-                <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-                <div className="w-full bg-white h-4 rounded-full " />
-            </motion.div>
+            <motion.div className="h-full w-full rounded-lg"></motion.div>
         </motion.div>
     );
 };
+
 const SkeletonTwo = () => {
     return (
         <motion.div
             initial="initial"
             animate="animate"
-            whileHover="hover"
-            className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
-        >
-        </motion.div>
-    );
-};
-const SkeletonThree = () => {
-    return (
-        <motion.div
-            initial="initial"
-            animate="animate"
-            transition={{
-                duration: 5,
-                repeat: Infinity,
-                repeatType: "reverse",
-            }}
-            className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+            className="flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
             style={{
-                backgroundImage: `url(${Aymane1})`, // Use the imported image variable
-                backgroundSize: "cover",  // Ensures the image covers the div
-                backgroundPosition: "center",  // Centers the image
-                backgroundRepeat: "no-repeat", // Prevents the image from repeating
+                backgroundImage: `url(${SG})`,
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "#EEEEEE",
             }}
         >
             <motion.div className="h-full w-full rounded-lg"></motion.div>
@@ -135,55 +118,55 @@ const SkeletonFour = () => {
             initial="initial"
             animate="animate"
             whileHover="hover"
-            className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
+            className="flex flex-1 w-full h-full min-h-[8rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
         >
             <motion.div
                 className="h-full w-1/3 rounded-2xl bg-[#eeeeee] p-4 border border-neutral-400 flex flex-col items-center justify-center"
             >
                 <img
-                    src={Profil}
+                    src="https://june-changelog.s3.eu-central-1.amazonaws.com/spline_icon_twitter_removebg_preview_db2832210b.png"
                     alt="avatar"
                     height="100"
                     width="100"
-                    className="rounded-full h-10 w-10"
+                    className=" h-10 w-10"
                 />
                 <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-                    Just coding in Javascript
+                    Spline
                 </p>
                 <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
-                    Delusional
+                    3D
                 </p>
             </motion.div>
             <motion.div className="h-full relative z-20 w-1/3 rounded-2xl bg-[#eeeeee] p-4   border  border-neutral-400 flex flex-col items-center justify-center">
                 <img
-                    src={Profil}
+                    src="https://static.vecteezy.com/system/resources/previews/027/127/463/original/javascript-logo-javascript-icon-transparent-free-png.png"
                     alt="avatar"
                     height="100"
                     width="100"
-                    className="rounded-full h-10 w-10"
+                    className=" h-10 w-10"
                 />
                 <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-                    Tailwind CSS is cool, you know
+                    JavaScript
                 </p>
                 <p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
-                    Sensible
+                    Interactions
                 </p>
             </motion.div>
             <motion.div
                 className="h-full w-1/3 rounded-2xl bg-[#eeeeee] p-4  border border-neutral-400 flex flex-col items-center justify-center"
             >
                 <img
-                    src={Profil}
+                    src="https://www.svgrepo.com/show/327388/logo-react.svg"
                     alt="avatar"
                     height="100"
                     width="100"
-                    className="rounded-full h-10 w-10"
+                    className=" h-10 w-10"
                 />
                 <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-                    I love React, RSC, and Redux.
+                    React JS
                 </p>
                 <p className="border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
-                    Helpless
+                    Library
                 </p>
             </motion.div>
         </motion.div>
@@ -194,7 +177,7 @@ const SkeletonFive = () => {
         <motion.div
             initial="initial"
             whileHover="animate"
-            className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+            className="flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
         >
             <motion.div
                 className="flex flex-row rounded-2xl border border-neutral-400 p-2  items-start space-x-2 bg-[#eeeeee]"
@@ -222,48 +205,49 @@ const SkeletonFive = () => {
 };
 const items = [
     {
-        title: "AI Content Generation",
+        title: "About Me",
         description: (
             <span className="text-sm">
-                Experience the power of AI in generating unique content.
+                Discover Aymane's personality, and his journey in tech innovation.
             </span>
         ),
         header: <SkeletonOne />,
         className: "md:col-span-1",
-        icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+        link: "About",
     },
     {
-        title: "Automated Proofreading",
+        title: "Saint-Gobain Research Provence",
         description: (
             <span className="text-sm">
-                Let AI handle the proofreading of your documents.
+                Discover my Work-Study journey as a Software Engineer at Saint-Gobain.
             </span>
         ),
         header: <SkeletonTwo />,
         className: "md:col-span-1",
-        icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+        link: "Saintgobain",
     },
     {
-        title: "About Me Page",
+        title: "Cesiveroo Project",
         description: (
             <span className="text-sm">
-                Get AI-powered suggestions based on your writing context.
+                Development of a mobile Application for delivery food
             </span>
         ),
         header: <SkeletonThree />,
         className: "md:col-span-1",
-        icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+        link: "Comingsoon",
     },
+
     {
-        title: "Sentiment Analysis",
+        title: "Aymane's Portfolio",
         description: (
             <span className="text-sm">
-                Understand the sentiment of your text with AI analysis.
+                Discover how i coded from scratch my portfolio and wich tools do i used
             </span>
         ),
         header: <SkeletonFour />,
         className: "md:col-span-2",
-        icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+        link: "Comingsoon",
     },
 
     {
@@ -275,7 +259,7 @@ const items = [
         ),
         header: <SkeletonFive />,
         className: "md:col-span-1",
-        icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
+        link: "Comingsoon",
     },
 ];
 
