@@ -10,12 +10,13 @@ export default function Sidebar({ scrollToRoutes }) {
     AOS.init();
     return (
         <div className="md:grid sticky top-0 grid-rows-3 border-r border-e2e5e9 h-screen hidden min-w-52 " data-aos="fade-right">
-            <div className="row-span-1 p-8 border-b border-e2e5e9 flex flex-col gap-4 text-xl" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+            <div className="row-span-1 p-8 border-b border-e2e5e9 flex flex-col justify-around text-xl" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
                 <Link to="" className='w-24'>
                     <img src={Logo} className="bg-[#DBDBDB] rounded-[10px] w-max" />
                 </Link>
                 <Link to="/About" onClick={scrollToRoutes}>About Me</Link>
                 <Link to="/Resume" onClick={scrollToRoutes}>Resume</Link>
+                <Link to="/Comingsoon" onClick={scrollToRoutes}>CV</Link>
             </div>
             <div className="row-span-1 justify-around border-b border-e2e5e9 p-8">
                 <div className='flex flex-col'>
