@@ -1,6 +1,6 @@
 import { React } from 'react'
 import './screens.css';
-import Maroc from '../assets/Laptop.gif';
+import Laptop from '../assets/Laptop.gif';
 import { FlipWords } from "../components/ui/flip-words";
 
 
@@ -11,8 +11,8 @@ export default function AboutScreen() {
         <div className='w-full h-full flex flex-col items-center justify-center' data-aos="fade-up">
             <div className=" border-b border-gray-300 w-full flex flex-row justify-center items-end mb-4 bg-[#e6e6e6] pt-16 md:pt-0">
                 <img
-                    src={Maroc}
-                    alt="Maroc"
+                    src={Laptop}
+                    alt="Laptop"
                     className='md:h-96 h-30'
                 />
             </div>
