@@ -1,25 +1,5 @@
 import { React, img } from 'react'
-import { PinContainer } from "../components/ui/3d-pin";
-import Spline from '@splinetool/react-spline';
-import HomeScreen from './HomeScreen';
-import JaponPicture from '../assets/Japon.jpg';
-import Profil from '../assets/PDP.jpeg';
 import SaintGobain from '../assets/Saint-Gobain.png';
-import { cn } from "../lib/utils";
-import { CardStack } from "../components/ui/card-stack";
-import { TextGenerateEffect } from "../components/ui/text-generate-effect";
-import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
-import {
-    IconBoxAlignRightFilled,
-    IconClipboardCopy,
-    IconFileBroken,
-    IconSignature,
-    IconTableColumn,
-} from "@tabler/icons-react";
-import { motion } from "framer-motion";
-import { FlipWords } from "../components/ui/flip-words";
-import Aymane from '../assets/MarocBanner.jpg';
-import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 
 
 
@@ -39,7 +19,7 @@ export default function SaintGobainScreen() {
 
 
                 <a className="mt-3 text-2xl md:text-4xl" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>Saint-Gobain Research Provence</a>
-                <a className="mt-3" style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
+                <a style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
 
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between " />
 
@@ -47,13 +27,13 @@ export default function SaintGobainScreen() {
                     I’m currently working as a Software Engineer at Saint-Gobain Research Provence,
                     where I lead projects focused on enhancing laboratory workflows. One of my main
                     responsibilities is automating processes and adding key functionalities to the LIMS
-                    (Laboratory Information Management System) local software, Sample Manager, built on
+                    (Laboratory Information Management System) local software, Sample Manager, with
                     .NET (C#). This enables smoother operations and greater efficiency.
                     <br></br>
                     <br></br>
                     In addition to software improvements, I’m also developing mobile solutions to expand accessibility.
                     By integrating web applications and Power Platform solutions, we’re making it possible for lab personnel
-                    to access and manage the software directly from their personal devices. This mobile-first approach ensures
+                    to access and manage the software directly from their personal/professional devices. This mobile-first approach ensures
                     that critical functions are always within reach, improving the overall user experience.
                     <br></br>
                     <br></br>
@@ -62,7 +42,7 @@ export default function SaintGobainScreen() {
                     the go-to team for technical support, ensuring that laboratory operations continue without disruption.
                 </a>
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row" />
-                <div className='flex flex-row md:gap-28 gap-11' style={{ fontFamily: "SFREGULAR", color: '#3b3d41' }}>
+                <div className='flex flex-row md:gap-28 gap-11 mb-10' style={{ fontFamily: "SFREGULAR", color: '#3b3d41' }}>
 
                     <div className='flex flex-col'>
                         <a>TimeLine</a>
@@ -76,13 +56,11 @@ export default function SaintGobainScreen() {
 
                     <div className='flex flex-col'>
                         <a >Disciplines</a>
-                        <a>.NET,</a>
-                        <a>LIMS,</a>
+                        <a>.NET</a>
+                        <a>LIMS</a>
                         <a>Mobile Development</a>
                     </div>
-
                 </div>
-
             </div>
         </div >
     )

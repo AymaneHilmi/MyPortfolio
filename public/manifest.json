@@ -3,9 +3,9 @@
   "name": "Portfolio of Aymane HILMI",
   "icons": [
     {
-      "src": "./Aymane.svg",
+      "src": "Aymane.png",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/png"
     }
   ],
   "start_url": ".",

@@ -10,7 +10,7 @@ export default function CvScreen() {
             title: "2024",
             content: (
                 <div>
-                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-4xl font-normal">
+                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal">
                         International Mobility at Saint-Gobain Research Germany
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-sm md:text-base font-normal mb-4">
@@ -40,7 +40,7 @@ export default function CvScreen() {
             title: "2023",
             content: (
                 <div>
-                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-4xl font-normal ">
+                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal ">
                         Started Editing services
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-sm md:text-base font-normal mb-4">
@@ -60,7 +60,7 @@ export default function CvScreen() {
             title: "2022",
             content: (
                 <div>
-                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-4xl font-normal">
+                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal">
                         Started Engineering program in Work-Study at Saint-Gobain Research Provence
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-sm md:text-base font-normal mb-2">
@@ -81,7 +81,7 @@ export default function CvScreen() {
             title: "Early 2022",
             content: (
                 <div>
-                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-4xl font-normal">
+                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal">
                         Internship at Inetum as a Software Engineer (RPA Automations)
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-sm md:text-base font-normal mb-2">
@@ -101,8 +101,8 @@ export default function CvScreen() {
             title: "2021",
             content: (
                 <div>
-                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-4xl font-normal">
-                        Civic Service at "AVEC" association (to finance my studies)
+                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal">
+                        Civic Service at "AVEC" association
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-base md:text-lg font-normal mb-2">
                         Montpellier, France
@@ -127,7 +127,7 @@ export default function CvScreen() {
             title: "Early 2021",
             content: (
                 <div>
-                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-4xl font-normal">
+                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal">
                         Integrated Preparatory Program in Computer Science
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-base md:text-lg font-normal mb-6">
@@ -148,7 +148,7 @@ export default function CvScreen() {
             title: "2020",
             content: (
                 <div>
-                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-4xl font-normal">
+                    <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal">
                         Scientific Baccalaureate - Mathematics specialization
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-base md:text-lg font-normal mb-6">
@@ -178,7 +178,20 @@ export default function CvScreen() {
     return (
         <div className="w-full">
             <Timeline data={data} />
+            <div className="flex justify-center items-center">
+                <div className="border-t border-gray-300 my-6 w-11/12 flex flex-row  justify-between md:justify-end ">
+                    <div className='flex flex-row gap-4 md:hidden'>
+
+                        <a href="https://www.linkedin.com/in/aymanehilmi/" className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>Linkedin ↗</a>
+                        <a href="https://github.com/AymaneHilmi" className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>GitHub ↗</a>
+                    </div>
+
+                    <a className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>by Aymane HILMI</a>
+
+                </div>
+            </div>
         </div>
+
 
     )
 }

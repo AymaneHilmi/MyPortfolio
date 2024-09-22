@@ -1,6 +1,5 @@
 import Spline from '@splinetool/react-spline';
 import React, { useEffect } from 'react';
-import { motion } from "framer-motion";
 import './components.css';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
