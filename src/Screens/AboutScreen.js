@@ -40,13 +40,9 @@ export default function AboutScreen() {
                     people's lives and simplify their work. I am driven by the belief that technology can empower individuals,
                     streamline processes, and foster innovation.
                 </h1>
-
                 <div className="border-t border-gray-300 my-6 w-full flex flex-col ">
-                    <h1 className="text-base font-bold mt-6 w-full text-center" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>If I had to describe myself in three words, I would choose these three :</h1>
-
+                    <h1 className="text-base font-bold mt-6 w-full" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>If I had to describe myself in three words, I would choose these three :</h1>
                 </div>
-
-
                 <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 rounded-xl bg-[#e6e6e6] p-6">
                     <div className='w-full md:w-1/3 h-60 bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform md:hover:scale-105 md:hover:shadow-lg'>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent'>Always Smiling</h1>
@@ -56,7 +52,6 @@ export default function AboutScreen() {
                             whether at work or in social settings.
                         </h1>
                     </div>
-
                     <div className='w-full md:w-1/3 h-60 bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform md:hover:scale-105 md:hover:shadow-lg'>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent'>Spontaneous</h1>
                         <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm text-center'>
@@ -65,7 +60,6 @@ export default function AboutScreen() {
                             best approach, but I'm not a big fan on filtering myself with people.
                         </h1>
                     </div>
-
                     <div className='w-full md:w-1/3 h-60 bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform md:hover:scale-105 md:hover:shadow-lg'>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-green-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent'>Competitive</h1>
                         <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm text-center'>
@@ -74,20 +68,13 @@ export default function AboutScreen() {
                         </h1>
                     </div>
                 </div>
-
                 <div className="border-t border-gray-300 my-6 w-full flex flex-row  justify-between md:justify-end ">
                     <div className='flex flex-row gap-4 md:hidden'>
-
                         <a href="https://www.linkedin.com/in/aymanehilmi/" className="text-base font-bold mt-6 " style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>Linkedin ↗</a>
                         <a href="https://github.com/AymaneHilmi" className="text-base font-bold mt-6 " style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>GitHub ↗</a>
                     </div>
-
                     <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>by Aymane HILMI</h1>
-
                 </div>
-
-
-
             </div>
         </div >
     )

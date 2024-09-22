@@ -11,7 +11,7 @@ export default function SaintGobainScreen() {
             <div className="border-b border-gray-300 w-full h-1/3 flex flex-row justify-center items-center mb-4 bg-[#e6e6e6]">
                 <img
                     src={SaintGobain}
-                    alt="Image 1"
+                    alt="Saint-Gobain"
                     className='md:h-40 h-32 transition-transform transform hover:scale-105 duration-500 ease-in-out'
                 />
             </div>
