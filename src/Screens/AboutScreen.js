@@ -1,6 +1,6 @@
 import { React } from 'react'
 import './screens.css';
-import Laptop from '../assets/Laptop.gif';
+import Laptop from '../assets/Laptop.png';
 import { FlipWords } from "../components/ui/flip-words";
 
 
