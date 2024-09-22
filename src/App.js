@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import Sidebar from './components/Sidebar';
 import LogoMobile from './assets/LogoMobile.png'
-import React, { useEffect, useState, img, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import LandingPage from './components/LandingPage';
 import './App.css';
 import 'aos/dist/aos.css';

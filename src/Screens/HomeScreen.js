@@ -1,4 +1,4 @@
-import { React, img } from 'react'
+import { React } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Aymane from '../assets/Aymane.jpg';
 import Cesiveroo from '../assets/Cesiveroo.png';

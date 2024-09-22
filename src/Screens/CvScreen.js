@@ -1,5 +1,5 @@
 
-import { React, img } from "react";
+import { React } from "react";
 import { Timeline } from "../components/ui/timeline";
 import lab from "../assets/AymaneLab.jpeg"
 import philipp from "../assets/AymanePhilipp.jpeg"
@@ -186,7 +186,7 @@ export default function CvScreen() {
                         <a href="https://github.com/AymaneHilmi" className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>GitHub ↗</a>
                     </div>
 
-                    <a className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>by Aymane HILMI</a>
+                    <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>by Aymane HILMI</h1>
 
                 </div>
             </div>
