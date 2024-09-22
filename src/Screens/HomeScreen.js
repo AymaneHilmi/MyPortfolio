@@ -151,14 +151,13 @@ export default function AboutScreen() {
                         className="rounded-full h-10 w-10"
                     />
                     <p className="text-xs text-neutral-500">
-                        There are a lot of cool framerworks out there like React, Angular,
-                        Vue, Svelte that can make your life ....
+                        I’ve worked on some pretty cool projects! It’s been an awesome journey.
                     </p>
                 </motion.div>
                 <motion.div
-                    className="flex flex-row rounded-full border border-neutral-400 bg-[#eeeeee] p-2 items-center justify-end space-x-2 w-3/4 ml-auto "
+                    className="flex flex-row rounded-full border border-neutral-400 bg-[#eeeeee] p-2 pl-6 items-center justify-end space-x-2 w-3/4 ml-auto "
                 >
-                    <p className="text-xs text-neutral-500">Use PHP.</p>
+                    <p className="text-xs text-neutral-500">Like getting coffee? That’s impressive!</p>
                     <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
                 </motion.div>
             </motion.div>
@@ -215,7 +214,7 @@ export default function AboutScreen() {
             title: "Aymane's Resume",
             description: (
                 <span className="text-sm">
-                    All my journey staring
+                    Discover my journey since 2020.
                 </span>
             ),
             header: <SkeletonFive />,

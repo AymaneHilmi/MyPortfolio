@@ -45,7 +45,7 @@ export default function SaintGobainScreen() {
                 <div className='flex flex-row md:gap-28 gap-11 mb-10' style={{ fontFamily: "SFREGULAR", color: '#3b3d41' }}>
 
                     <div className='flex flex-col'>
-                        <a>TimeLine</a>
+                        <a>Timeline</a>
                         <a>August 2022 - September 2025</a>
                     </div>
 
