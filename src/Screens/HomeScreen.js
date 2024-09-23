@@ -226,7 +226,7 @@ export default function AboutScreen() {
         <div className='w-full flex flex-col items-center p-6'>
 
             <div className="flex justify-center items-center text-center  space-x-4 mb-4" data-aos="fade-up">
-                <TextGenerateEffect duration={2} words={words} className="w-5/6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }} />
+                <TextGenerateEffect duration={1} words={words} className="w-5/6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }} />
             </div>
             <div className=" w-11/12 flex flex-row justify-between "></div>
 
