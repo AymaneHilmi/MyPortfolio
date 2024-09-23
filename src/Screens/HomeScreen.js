@@ -219,7 +219,7 @@ export default function AboutScreen() {
             ),
             header: <SkeletonFive />,
             className: "md:col-span-1",
-            link: "Comingsoon",
+            link: "Resume",
         },
     ];
     return (
