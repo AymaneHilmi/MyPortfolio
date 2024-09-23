@@ -12,6 +12,7 @@ import SaintGobainScreen from './Screens/SaintGobainScreen';
 import CvScreen from './Screens/CvScreen';
 
 function App() {
+  console.log("Common you can do better, this easter-eag is easy ! But you find it, Let me know it in my Linkedin post")
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true); // État de chargement
   const navbarRef = useRef(null);
