@@ -9,13 +9,17 @@ import { TextGenerateEffect } from "../components/ui/text-generate-effect";
 import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
 import { motion } from "framer-motion";
 
-export default function AboutScreen() {
+export default function HomeScreen({ scrollToRoutes }) {
     const words = `Welcome to my portfolio, I'm Aymane HILMI [أيمن] .
     Passionate about computer Science and online business I aim to leave a personal mark in this world... [إن شاء الله] `
     const navigate = useNavigate();
 
     const handleClick = (link) => {
+        console.log(`Navigating to: /${link}`); // Add this line
         navigate(`/${link}`);
+        if (scrollToRoutes) {
+            scrollToRoutes();
+        }
     };
 
     const SkeletonOne = () => {
