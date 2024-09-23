@@ -11,8 +11,8 @@ export default function Sidebar({ scrollToRoutes }) {
     return (
         <div className="md:grid sticky top-0 grid-rows-[0.2fr_1fr_1fr] border-r border-gray-300 h-screen hidden min-w-52 " data-aos="fade-right">
             <div className="row-span-1 p-8 border-b border-gray-300 flex flex-col gap-2 text-xl" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
-                <Link to="" className='w-full'>
-                    <img src={Logo} alt='Aymane Logo' className="bg-[#DBDBDB] rounded-[10px] w-24" />
+                <Link to="" className='w-24'>
+                    <img src={Logo} alt='Aymane Logo' className="bg-[#DBDBDB] rounded-[10px]" />
                 </Link>
                 <Link to="/About" onClick={scrollToRoutes} className='mt-4'>About Me</Link>
                 <Link to="/Resume" onClick={scrollToRoutes}>Resume</Link>
