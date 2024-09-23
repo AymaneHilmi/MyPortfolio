@@ -2,28 +2,33 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import Sidebar from './components/Sidebar';
-import LogoMobile from './assets/LogoMobile.png'
+import Loader from './components/Loader'; // Importez le loader
+import LogoMobile from './assets/LogoMobile.png';
 import React, { useEffect, useState, useRef } from 'react';
 import LandingPage from './components/LandingPage';
-import './App.css';
-import 'aos/dist/aos.css';
 import AboutScreen from './Screens/AboutScreen';
 import ProjectScreen from './Screens/ProjectScreen';
 import SaintGobainScreen from './Screens/SaintGobainScreen';
 import CvScreen from './Screens/CvScreen';
 
-
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true); // État de chargement
   const navbarRef = useRef(null);
   const checkboxRef = useRef(null);
   const routesRef = useRef(null);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false); // Définir le chargement sur faux après un certain temps
+    }, 2000); // Ajustez le temps selon vos besoins
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
-
 
   const scrollToRoutes = () => {
     if (routesRef.current) {
@@ -31,14 +36,12 @@ function App() {
     }
   };
 
-
   const closeNavbar = () => {
     setIsOpen(false);
     if (checkboxRef.current) {
       checkboxRef.current.checked = false;
     }
   };
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -60,10 +63,11 @@ function App() {
 
   return (
     <Router className="flex bg-background">
+      {loading && <Loader />} {/* Afficher le loader pendant le chargement */}
+
       <div className="min-h-screen">
         <LandingPage />
       </div>
-
 
       <div ref={navbarRef} className="fixed top-0 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6">
         <a href="/" className="w-20 z-50">
@@ -112,6 +116,5 @@ function App() {
     </Router>
   );
 };
-
 
 export default App;
