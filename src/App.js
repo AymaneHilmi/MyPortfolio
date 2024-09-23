@@ -99,7 +99,7 @@ function App() {
           </svg>
         </label>
       </div>
-      <div ref={routesRef} className="flex-grow flex border-t border-e2e5e9">
+      <div ref={routesRef} className="flex-grow flex border-t border-gray-300">
         <Sidebar scrollToRoutes={scrollToRoutes} />
         <Routes>
           <Route path="/" className="h-screen" element={<HomeScreen />} data-aos="fade-left" />
