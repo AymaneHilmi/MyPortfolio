@@ -190,7 +190,7 @@ export default function AboutScreen() {
             title: "Cesiveroo Project",
             description: (
                 <span className="text-sm">
-                    Development of a mobile Application for delivery food
+                    Development of a mobile application in React Native for food delivery.
                 </span>
             ),
             header: <SkeletonThree />,
@@ -202,7 +202,7 @@ export default function AboutScreen() {
             title: "Aymane's Portfolio",
             description: (
                 <span className="text-sm">
-                    Discover how i coded from scratch my portfolio and wich tools do i used
+                    Discover how I coded my portfolio from scratch and the tools I used.
                 </span>
             ),
             header: <SkeletonFour />,
@@ -214,7 +214,7 @@ export default function AboutScreen() {
             title: "Aymane's Resume",
             description: (
                 <span className="text-sm">
-                    Discover my journey since 2020.
+                    Explore my journey since moving from Italy to France !.
                 </span>
             ),
             header: <SkeletonFive />,
