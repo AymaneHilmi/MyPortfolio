@@ -9,14 +9,13 @@ import 'aos/dist/aos.css'
 export default function Sidebar({ scrollToRoutes }) {
     AOS.init();
     return (
-        <div className="md:grid sticky top-0 grid-rows-3 border-r border-gray-300 h-screen hidden min-w-52 " data-aos="fade-right">
-            <div className="row-span-1 p-8 border-b border-gray-300 flex flex-col justify-around text-xl" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
-                <Link to="" className='w-24'>
-                    <img src={Logo} alt='Aymane Logo' className="bg-[#DBDBDB] rounded-[10px] w-max" />
+        <div className="md:grid sticky top-0 grid-rows-[0.2fr_1fr_1fr] border-r border-gray-300 h-screen hidden min-w-52 " data-aos="fade-right">
+            <div className="row-span-1 p-8 border-b border-gray-300 flex flex-col gap-2 text-lg" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+                <Link to="" className='w-full'>
+                    <img src={Logo} alt='Aymane Logo' className="bg-[#DBDBDB] rounded-[10px] w-24" />
                 </Link>
-                <Link to="/About" onClick={scrollToRoutes}>About Me</Link>
+                <Link to="/About" onClick={scrollToRoutes} className='mt-4'>About Me</Link>
                 <Link to="/Resume" onClick={scrollToRoutes}>Resume</Link>
-                <Link to="/Comingsoon" onClick={scrollToRoutes}>CV</Link>
             </div>
             <div className="row-span-1 justify-around border-b border-gray-300 p-8">
                 <div className='flex flex-col'>
@@ -35,6 +34,7 @@ export default function Sidebar({ scrollToRoutes }) {
                 <a href="mailto:aymanehilmi1@gmail.com" target="_blank" rel="noreferrer" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>Mail</a>
                 <a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" rel="noreferrer" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>Linkedin</a>
                 <a href="https://github.com/AymaneHilmi" target="_blank" rel="noreferrer" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>Github</a>
+                <Link to="/Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm' onClick={scrollToRoutes}>Download CV </Link>
             </div>
         </div>
 
