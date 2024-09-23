@@ -23,23 +23,19 @@ export default function SaintGobainScreen() {
 
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between " />
 
-                <a style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }}>
-                    I’m currently working as a Software Engineer at Saint-Gobain Research Provence,
-                    where I lead projects focused on enhancing laboratory workflows. One of my main
-                    responsibilities is automating processes and adding key functionalities to the LIMS
-                    (Laboratory Information Management System) local software, Sample Manager, with
-                    .NET (C#). This enables smoother operations and greater efficiency.
+                <a style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>
+                    As a Software Engineer at Saint-Gobain Research Provence, I lead projects aimed
+                    at enhancing laboratory workflows. My primary responsibility is automating processes
+                    and adding key functionalities to our local Laboratory Information Management System
+                    (LIMS), Sample Manager, using .NET (C#). This initiative has streamlined operations and
+                    improved efficiency within the lab.
                     <br></br>
                     <br></br>
-                    In addition to software improvements, I’m also developing mobile solutions to expand accessibility.
-                    By integrating web applications and Power Platform solutions, we’re making it possible for lab personnel
-                    to access and manage the software directly from their personal/professional devices. This mobile-first approach ensures
-                    that critical functions are always within reach, improving the overall user experience.
-                    <br></br>
-                    <br></br>
-                    My role at the center also involves providing support services, meaning I handle tickets and troubleshoot
-                    various issues. Whether it’s resolving software problems or ensuring the smooth functioning of tools, we are
-                    the go-to team for technical support, ensuring that laboratory operations continue without disruption.
+                    Additionally, I am developing mobile solutions to increase accessibility by integrating web
+                    applications and Power Platform tools. This mobile-first approach enables lab personnel to
+                    manage the software from their personal and professional devices, ensuring critical functions
+                    are always within reach. My role also includes providing technical support, troubleshooting
+                    software issues, and maintaining operational continuity within the laboratory.
                 </a>
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row" />
                 <div className='flex flex-row md:gap-28 gap-11 mb-10' style={{ fontFamily: "SFREGULAR", color: '#3b3d41' }}>
