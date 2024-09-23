@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import Sidebar from './components/Sidebar';
-import Loader from './components/Loader'; // Importez le loader
+import Loader from './components/Loader';
 import LogoMobile from './assets/LogoMobile.png';
 import React, { useEffect, useState, useRef } from 'react';
 import LandingPage from './components/LandingPage';
@@ -14,17 +14,17 @@ import Confetti from 'react-confetti';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(true); // État de chargement
-  const [confettiActive, setConfettiActive] = useState(false); // State for confetti
-  const [typedKeys, setTypedKeys] = useState(''); // Track typed keys
+  const [loading, setLoading] = useState(true);
+  const [confettiActive, setConfettiActive] = useState(false);
+  const [typedKeys, setTypedKeys] = useState('');
   const navbarRef = useRef(null);
   const checkboxRef = useRef(null);
   const routesRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false); // Définir le chargement sur faux après un certain temps
-    }, 2000); // Ajustez le temps selon vos besoins
+      setLoading(false);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -72,15 +72,15 @@ function App() {
       typedText += event.key.toLowerCase();
 
       if (typedText === correctText) {
-        setConfettiActive(true); // Activate confetti
+        setConfettiActive(true);
         setTimeout(() => {
-          setConfettiActive(false); // Stop confetti after 30 seconds
+          setConfettiActive(false);
         }, 30000);
       }
 
-      // Reset typed text if it gets too long or incorrect
+
       if (!correctText.startsWith(typedText)) {
-        typedText = event.key.toLowerCase(); // Start over with the current key
+        typedText = event.key.toLowerCase();
       }
     };
 
@@ -92,7 +92,7 @@ function App() {
 
   return (
     <Router className="flex bg-background">
-      {loading && <Loader />} {/* Afficher le loader pendant le chargement */}
+      {loading && <Loader />}
 
       <div className="min-h-screen">
         {confettiActive && (
