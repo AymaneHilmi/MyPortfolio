@@ -10,11 +10,13 @@ import AboutScreen from './Screens/AboutScreen';
 import ProjectScreen from './Screens/ProjectScreen';
 import SaintGobainScreen from './Screens/SaintGobainScreen';
 import CvScreen from './Screens/CvScreen';
+import Confetti from 'react-confetti';
 
 function App() {
-  console.log("Common you can do better, this easter-eag is easy ! But you find it, Let me know it in my Linkedin post")
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true); // État de chargement
+  const [confettiActive, setConfettiActive] = useState(false); // State for confetti
+  const [typedKeys, setTypedKeys] = useState(''); // Track typed keys
   const navbarRef = useRef(null);
   const checkboxRef = useRef(null);
   const routesRef = useRef(null);
@@ -62,11 +64,42 @@ function App() {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    let typedText = "";
+    const correctText = "aymane";
+
+    const handleKeydown = (event) => {
+      typedText += event.key.toLowerCase();
+
+      if (typedText === correctText) {
+        setConfettiActive(true); // Activate confetti
+        setTimeout(() => {
+          setConfettiActive(false); // Stop confetti after 30 seconds
+        }, 30000);
+      }
+
+      // Reset typed text if it gets too long or incorrect
+      if (!correctText.startsWith(typedText)) {
+        typedText = event.key.toLowerCase(); // Start over with the current key
+      }
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, []);
+
   return (
     <Router className="flex bg-background">
       {loading && <Loader />} {/* Afficher le loader pendant le chargement */}
 
       <div className="min-h-screen">
+        {confettiActive && (
+          <div className='fixed z-50'>
+            <Confetti />
+          </div>
+        )}
         <LandingPage />
       </div>
 
@@ -116,6 +149,6 @@ function App() {
       </div>
     </Router>
   );
-};
+}
 
 export default App;

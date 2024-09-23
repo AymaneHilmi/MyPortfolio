@@ -1,14 +1,95 @@
-import { React } from 'react'
+import { React, useState } from 'react';
 import './screens.css';
 import Laptop from '../assets/Laptop.png';
 import { FlipWords } from "../components/ui/flip-words";
 
-
-
 export default function AboutScreen() {
     const words = ["Aymane HILMI", "حلمي أيمن"];
+    const [italianClickCount, setItalianClickCount] = useState(0);
+    const [showItalyText, setShowItalyText] = useState(false);
+
+    const handleItalianClick = () => {
+        setItalianClickCount(prev => prev + 1);
+        if (italianClickCount + 1 === 5) {
+            setShowItalyText(true);
+        }
+    };
+
+    const originalText = (
+        <>
+            I'm 22 years old, and I am a software engineer based in Montpellier, France, with a strong passion for programming.
+            Born in <span onClick={handleItalianClick}>Italy</span>, raised in France, of Moroccan heritage and spent a significant part
+            of my life in Spain. These diverse experiences have shaped me today into a polyglot, fluent in five
+            languages (Italian, French, Moroccan, English & Spanish).
+            <br />
+            <br />
+            My journey in the world of programming began in childhood when I first encountered the website agar.io.
+            It may sound trivial, but that moment sparked a fascination within me for the world of technology.
+            I became captivated by the incredible things that can be created with computers and their potential for efficiency.
+            While many of my classmates were still exploring their career paths, I was already certain of mine:
+            I wanted to immerse myself in computer science.
+            <br />
+            <br />
+            After earning my scientific baccalaureate with a specialization in mathematics, I chose to pursue a degree in
+            computer science engineering. This allowed me to delve deeper into the inner workings of this captivating field.
+            I quickly realized that programming was not just a skill but a passion, especially when it serves to enhance
+            people's lives and simplify their work. I am driven by the belief that technology can empower individuals,
+            streamline processes, and foster innovation.
+        </>
+    );
+
+    const replacedText = (
+        <div>
+            <h1
+                style={{
+                    background: 'linear-gradient(270deg, #005B30, #EAEAE8, #A00024)',
+                    backgroundSize: '300% 300%',
+                    WebkitBackgroundClip: 'text',
+                    color: 'transparent',
+                    animation: 'gradientAnimation 5s ease infinite',
+                }}
+            >
+                I'm 22 years old, and I am a software engineer based in Montpellier, France, with a strong passion for programming.
+                Born in <span onClick={handleItalianClick}>Italy</span>, raised in France, of Moroccan heritage and spent a significant part
+                of my life in Spain. These diverse experiences have shaped me today into a polyglot, fluent in five
+                languages (Italian, French, Moroccan, English & Spanish).
+                <br />
+                <br />
+                My journey in the world of programming began in childhood when I first encountered the website agar.io.
+                It may sound trivial, but that moment sparked a fascination within me for the world of technology.
+                I became captivated by the incredible things that can be created with computers and their potential for efficiency.
+                While many of my classmates were still exploring their career paths, I was already certain of mine:
+                I wanted to immerse myself in computer science.
+                <br />
+                <br />
+                After earning my scientific baccalaureate with a specialization in mathematics, I chose to pursue a degree in
+                computer science engineering. This allowed me to delve deeper into the inner workings of this captivating field.
+                I quickly realized that programming was not just a skill but a passion, especially when it serves to enhance
+                people's lives and simplify their work. I am driven by the belief that technology can empower individuals,
+                streamline processes, and foster innovation.
+            </h1>
+
+            <style>
+                {`
+                    @keyframes gradientAnimation {
+                        0% {
+                            background-position: 0% 50%;
+                        }
+                        50% {
+                            background-position: 100% 50%;
+                        }
+                        100% {
+                            background-position: 0% 50%;
+                        }
+                    }   
+                `}
+            </style>
+        </div>
+    );
+
     return (
         <div className='w-full h-full flex flex-col items-center justify-center' data-aos="fade-up">
+
             <div className=" border-b border-gray-300 w-full flex flex-row justify-center items-end mb-4 bg-[#e6e6e6] pt-16 md:pt-0">
                 <img
                     src={Laptop}
@@ -21,24 +102,7 @@ export default function AboutScreen() {
                 <h1 className="mt-3" style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>Software Engineer</h1>
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between scroll-smooth focus:scroll-auto" />
                 <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }}>
-                    I'm 22 years old, and I am a software engineer based in Montpellier, France, with a strong passion for programming.
-                    Born in Italy, raised in France, of Moroccan heritage and spent a significant part
-                    of my life in Spain. These diverse experiences have shaped me today into a polyglot, fluent in five
-                    languages (Italian, French, Maroccan, English & Spanish).
-                    <br></br>
-                    <br></br>
-                    My journey in the world of programming began in childhood when I first encountered the website agar.io.
-                    It may sound trivial, but that moment sparked a fascination within me for the world of technology.
-                    I became captivated by the incredible things that can be created with computers and their potential for efficiency.
-                    While many of my classmates were still exploring their career paths, I was already certain of mine:
-                    I wanted to immerse myself in computer science.
-                    <br></br>
-                    <br></br>
-                    After earning my scientific baccalaureate with a specialization in mathematics, I chose to pursue a degree in
-                    computer science engineering. This allowed me to delve deeper into the inner workings of this captivating field.
-                    I quickly realized that programming was not just a skill but a passion, especially when it serves to enhance
-                    people's lives and simplify their work. I am driven by the belief that technology can empower individuals,
-                    streamline processes, and foster innovation.
+                    {showItalyText ? replacedText : originalText}
                 </h1>
                 <div className="border-t border-gray-300 my-6 w-full flex flex-col ">
                     <h1 className="text-base font-bold mt-6 w-full" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>If I had to describe myself in three words, I would choose these three :</h1>
