@@ -44,7 +44,7 @@ export default function AboutScreen() {
                     <h1 className="text-base font-bold mt-6 w-full" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>If I had to describe myself in three words, I would choose these three :</h1>
                 </div>
                 <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 rounded-xl bg-[#e6e6e6] p-6 h-auto">
-                    <div className='w-full lg:w-1/3 h-min-80 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
+                    <div className='w-full lg:w-1/3 min-h-48 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent'>Smiling</h1>
                         <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm text-center'>
                             People around me often tend to point out how I’m always bringing good vibes. I genuinely enjoy keeping a
@@ -52,7 +52,7 @@ export default function AboutScreen() {
                             whether at work or in social settings.
                         </h1>
                     </div>
-                    <div className='w-full lg:w-1/3 h-min-80 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
+                    <div className='w-full lg:w-1/3 min-h-48 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent'>Spontaneous</h1>
                         <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm text-center'>
                             I'm a naturally spontaneous person. Sure, it can lead to some unpredictable moments, but it
@@ -60,7 +60,7 @@ export default function AboutScreen() {
                             best approach, but I'm not a big fan on filtering myself with people.
                         </h1>
                     </div>
-                    <div className='w-full lg:w-1/3 bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
+                    <div className='w-full lg:w-1/3 min-h-48 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-green-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent'>Competitive</h1>
                         <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm text-center'>
                             I'm just naturally competitive. Whether it's video games, sports, or work, I love goods challenges.
