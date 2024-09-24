@@ -87,6 +87,29 @@ export default function AboutScreen() {
         </div>
     );
 
+    const triggerEmojis = (event) => {
+        const container = document.getElementById("emoji-container");
+
+        for (let i = 0; i < 20; i++) {
+            const emoji = document.createElement("div");
+            emoji.innerHTML = "😊";
+            emoji.classList.add("emoji");
+
+            emoji.style.left = `${Math.random() * 100}%`;
+            emoji.style.top = `${Math.random() * 100}%`;
+
+
+            const size = Math.random() * 20 + 20;
+            emoji.style.fontSize = `${size}px`;
+
+            container.appendChild(emoji);
+
+            setTimeout(() => {
+                emoji.remove();
+            }, 1500);
+        }
+    };
+
     return (
         <div className='w-full h-full flex flex-col items-center justify-center' data-aos="fade-up">
 
@@ -108,13 +131,14 @@ export default function AboutScreen() {
                     <h1 className="text-base font-bold mt-6 w-full" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>If I had to describe myself in three words, I would choose these three :</h1>
                 </div>
                 <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 rounded-xl bg-[#e6e6e6] p-6 h-auto">
-                    <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
+                    <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg' id="smiling-div" onClick={triggerEmojis}>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent'>Smiling</h1>
                         <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm text-center'>
                             People around me often tend to point out how I’m always bringing good vibes. I genuinely enjoy keeping a
                             positive attitude, and my sense of humor often helps me create a light-hearted and friendly atmosphere,
                             whether at work or in social settings.
                         </h1>
+                        <div id="emoji-container" className="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
                     </div>
                     <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent'>Spontaneous</h1>
