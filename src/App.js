@@ -13,6 +13,8 @@ import CvScreen from './Screens/CvScreen';
 import Confetti from 'react-confetti';
 
 function App() {
+  console.log(`Good start, but I think you can do better. You found the easiest one... Let me know in my LinkedIn post if you find it 🤣`); // Add this line
+
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [confettiActive, setConfettiActive] = useState(false);

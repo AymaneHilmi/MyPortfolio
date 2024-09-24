@@ -15,7 +15,6 @@ export default function HomeScreen({ scrollToRoutes }) {
     const navigate = useNavigate();
 
     const handleClick = (link) => {
-        console.log(`Navigating to: /${link}`); // Add this line
         navigate(`/${link}`);
         if (scrollToRoutes) {
             scrollToRoutes();
