@@ -121,6 +121,7 @@ export default function AboutScreen() {
                 />
             </div>
             <div className="flex flex-col w-11/12 mt-4 ">
+                <div id="emoji-container" className="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></div>
                 <FlipWords words={words} className="text-4xl max-h-10" />
                 <h1 className="mt-3" style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>Software Engineer</h1>
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between scroll-smooth focus:scroll-auto" />
@@ -138,7 +139,6 @@ export default function AboutScreen() {
                             positive attitude, and my sense of humor often helps me create a light-hearted and friendly atmosphere,
                             whether at work or in social settings.
                         </h1>
-                        <div id="emoji-container" className="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
                     </div>
                     <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent'>Spontaneous</h1>
