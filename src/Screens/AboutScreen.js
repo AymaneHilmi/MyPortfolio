@@ -88,11 +88,25 @@ export default function AboutScreen() {
     );
 
     const triggerEmojis = (event) => {
-        const container = document.getElementById("emoji-container");
+        let emojielement;
+        let container;
 
-        for (let i = 0; i < 20; i++) {
+        if (event == "smile") {
+            container = document.getElementById("smiling-emoji");
+            emojielement = "😊"
+        }
+        else if (event == "spontaneus") {
+            container = document.getElementById("spontaneus-emoji");
+            emojielement = "😜"
+        }
+        else if (event == "competitive") {
+            container = document.getElementById("competitive-emoji");
+            emojielement = "🚀"
+        }
+
+        for (let i = 0; i < 50; i++) {
             const emoji = document.createElement("div");
-            emoji.innerHTML = "😊";
+            emoji.innerHTML = emojielement;
             emoji.classList.add("emoji");
 
             emoji.style.left = `${Math.random() * 100}%`;
@@ -110,6 +124,7 @@ export default function AboutScreen() {
         }
     };
 
+
     return (
         <div className='w-full h-full flex flex-col items-center justify-center' data-aos="fade-up">
 
@@ -121,7 +136,9 @@ export default function AboutScreen() {
                 />
             </div>
             <div className="flex flex-col w-11/12 mt-4 ">
-                <div id="emoji-container" className="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></div>
+                <div id="smiling-emoji" className="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></div>
+                <div id="spontaneus-emoji" className="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></div>
+                <div id="competitive-emoji" className="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></div>
                 <FlipWords words={words} className="text-4xl max-h-10" />
                 <h1 className="mt-3" style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>Software Engineer</h1>
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between scroll-smooth focus:scroll-auto" />
@@ -132,7 +149,7 @@ export default function AboutScreen() {
                     <h1 className="text-base font-bold mt-6 w-full" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>If I had to describe myself in three words, I would choose these three :</h1>
                 </div>
                 <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 rounded-xl bg-[#e6e6e6] p-6 h-auto">
-                    <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg' id="smiling-div" onClick={triggerEmojis}>
+                    <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg' id="smiling-div" onClick={() => triggerEmojis("smile")}>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent'>Smiling</h1>
                         <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm text-center'>
                             People around me often tend to point out how I’m always bringing good vibes. I genuinely enjoy keeping a
@@ -140,7 +157,7 @@ export default function AboutScreen() {
                             whether at work or in social settings.
                         </h1>
                     </div>
-                    <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
+                    <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg' onClick={() => triggerEmojis("spontaneus")}>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent'>Spontaneous</h1>
                         <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm text-center'>
                             I'm a naturally spontaneous person. Sure, it can lead to some unpredictable moments, but it
@@ -148,7 +165,7 @@ export default function AboutScreen() {
                             best approach, but I'm not a big fan on filtering myself with people.
                         </h1>
                     </div>
-                    <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg'>
+                    <div className='w-full lg:w-1/3 min-h-60 h-auto bg-[#DBDBDB] flex flex-col items-center p-6 rounded-xl transition-transform transform lg:hover:scale-105 lg:hover:shadow-lg' onClick={() => triggerEmojis("competitive")}>
                         <h1 style={{ fontFamily: 'SFBOLD' }} className='text-4xl mb-6 bg-gradient-to-r from-green-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent'>Competitive</h1>
                         <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm text-center'>
                             I'm just naturally competitive. Whether it's video games, sports, or work, I love goods challenges.
