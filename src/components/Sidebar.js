@@ -28,6 +28,10 @@ export default function Sidebar({ scrollToRoutes }) {
                     <Link to="Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm' onClick={scrollToRoutes}>Aymane's Portfolio</Link>
                     <Link to="/Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm' onClick={scrollToRoutes}>Blog</Link>
                 </div>
+                <div className='flex flex-col mt-4'>
+                    <h1 style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className='text-xs pb-2'>SERVICES</h1>
+                    <Link to="Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm' onClick={scrollToRoutes}>Video editor</Link>
+                </div>
             </div>
             <div className="row-span-1 flex flex-col border-b border-gray-300 p-8">
                 <h1 style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className='text-sm pb-2'>Contact</h1>
