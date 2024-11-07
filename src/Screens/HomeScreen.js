@@ -234,7 +234,7 @@ export default function HomeScreen({ scrollToRoutes }) {
             <div className=" w-11/12 flex flex-row justify-between "></div>
 
 
-            <div className="border-t border-gray-300 my-4 w-11/12" data-aos="fade-up">
+            <div className="border-t border-gray-300 my-4" data-aos="fade-up">
                 <BentoGrid className="mx-auto md:auto-rows-[18rem] mt-8 " >
                     {items.map((item, i) => (
                         <BentoGridItem
