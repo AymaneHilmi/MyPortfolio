@@ -36,7 +36,7 @@ export default function LandingPage() {
     };
 
     return (
-        <div className='md:h-auto h-screen scroll pb-10 md:mt-auto'>
+        <div className='md:h-auto h-screen scroll pb-10 md:pt-10'>
             <Spline scene="https://prod.spline.design/3OnoqTOGmJs7Vpxx/scene.splinecode" onLoad={handleLoad} />
         </div>
     );

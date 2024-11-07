@@ -12,6 +12,7 @@ import SaintGobainScreen from './Screens/SaintGobainScreen';
 import CvScreen from './Screens/CvScreen';
 import Confetti from 'react-confetti';
 
+
 function App() {
   console.log(`Good start, but I think you can do better. You found the easiest one... Let me know in my LinkedIn post if you find it here 🤣 -> https://www.linkedin.com/posts/aymanehilmi_if-you-find-the-secret-functionalities-easter-activity-7244277440888348673-z1Pa?utm_source=share&utm_medium=member_desktop`); // Add this line
 
