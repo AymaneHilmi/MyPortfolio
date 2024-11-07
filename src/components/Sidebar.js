@@ -5,7 +5,6 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 
-
 export default function Sidebar({ scrollToRoutes }) {
     AOS.init();
     return (
