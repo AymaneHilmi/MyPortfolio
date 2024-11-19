@@ -102,7 +102,7 @@ export default function CvScreen() {
             content: (
                 <div>
                     <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal">
-                        Civic Service at "AVEC" association
+                        Civic Volonteer Program at "AVEC" association
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-base md:text-lg font-normal mb-2">
                         Montpellier, France
@@ -128,7 +128,7 @@ export default function CvScreen() {
             content: (
                 <div>
                     <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal">
-                        Integrated Preparatory Program in Computer Science
+                        Intensive Two-year Study Course in Computer Science
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-base md:text-lg font-normal mb-6">
                         Cesi école d'ingénieurs, Mauguio, France
@@ -149,7 +149,7 @@ export default function CvScreen() {
             content: (
                 <div>
                     <p style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} className="text-neutral-800  text-xl md:text-3xl font-normal">
-                        Scientific Baccalaureate - Mathematics specialization
+                        Scientific High School Diploma - Mathematics specialization
                     </p>
                     <p style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className="text-neutral-800  text-base md:text-lg font-normal mb-6">
                         Lycéé Jules Guesde, Montpellier, France
