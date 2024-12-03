@@ -11,6 +11,7 @@ import ProjectScreen from './Screens/ProjectScreen';
 import SaintGobainScreen from './Screens/SaintGobainScreen';
 import CvScreen from './Screens/CvScreen';
 import Confetti from 'react-confetti';
+// import CesiverooScreen from './Screens/CesiverooScreen';
 
 
 function App() {
@@ -78,7 +79,7 @@ function App() {
         setConfettiActive(true);
         setTimeout(() => {
           setConfettiActive(false);
-        }, 30000);
+        }, 10000);
       }
 
 
@@ -148,6 +149,7 @@ function App() {
           <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} data-aos="fade-left" />
           <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen />} data-aos="fade-left" />
           <Route path="/Resume" className="h-screen" element={<CvScreen />} data-aos="fade-left" />
+          {/* <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} data-aos="fade-left" /> */}
         </Routes>
       </div>
     </Router>
