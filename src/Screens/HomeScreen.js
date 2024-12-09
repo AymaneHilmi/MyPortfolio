@@ -175,7 +175,7 @@ export default function HomeScreen({ scrollToRoutes }) {
                 </span>
             ),
             header: <SkeletonOne />,
-            className: "md:col-span-1",
+            className: "lg:col-span-1",
             link: "About",
         },
         {
@@ -186,7 +186,7 @@ export default function HomeScreen({ scrollToRoutes }) {
                 </span>
             ),
             header: <SkeletonTwo />,
-            className: "md:col-span-1",
+            className: "lg:col-span-1",
             link: "Saintgobain",
         },
         {
@@ -197,8 +197,8 @@ export default function HomeScreen({ scrollToRoutes }) {
                 </span>
             ),
             header: <SkeletonThree />,
-            className: "md:col-span-1",
-            link: "Comingsoon",
+            className: "lg:col-span-1",
+            link: "Cesiveroo",
         },
 
         {
@@ -209,7 +209,7 @@ export default function HomeScreen({ scrollToRoutes }) {
                 </span>
             ),
             header: <SkeletonFour />,
-            className: "md:col-span-2",
+            className: "lg:col-span-2",
             link: "Comingsoon",
         },
 
@@ -221,7 +221,7 @@ export default function HomeScreen({ scrollToRoutes }) {
                 </span>
             ),
             header: <SkeletonFive />,
-            className: "md:col-span-1",
+            className: "lg:col-span-1",
             link: "Resume",
         },
     ];
@@ -235,7 +235,7 @@ export default function HomeScreen({ scrollToRoutes }) {
 
 
             <div className="border-t border-gray-300 my-4" data-aos="fade-up">
-                <BentoGrid className="mx-auto md:auto-rows-[18rem] mt-8 " >
+                <BentoGrid className="mx-auto lg:auto-rows-[22rem] mt-8 " >
                     {items.map((item, i) => (
                         <BentoGridItem
                             key={i}
