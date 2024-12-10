@@ -221,7 +221,7 @@ export default function HomeScreen({ scrollToRoutes }) {
                 </span>
             ),
             header: <SkeletonFive />,
-            className: "lg:col-span-1",
+            className: "md:col-span-2 lg:col-span-1",
             link: "Resume",
         },
     ];
