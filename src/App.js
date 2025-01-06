@@ -79,7 +79,7 @@ function App() {
         setConfettiActive(true);
         setTimeout(() => {
           setConfettiActive(false);
-        }, 10000);
+        }, 5000);
       }
 
 
@@ -107,13 +107,17 @@ function App() {
         <LandingPage />
       </div>
 
-      <div ref={navbarRef} className="fixed top-0 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6">
+      <div ref={navbarRef} className="fixed -top-1 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6">
+        <div
+          className={`absolute inset-0 transition-all duration-500 ease-in-out ${!isOpen ? 'bg-background/75 blur-sm backdrop-blur-sm opacity-100' : 'opacity-0 pointer-events-none'}`}
+          style={{ zIndex: 1 }}
+        ></div>
         <a href="/" className="w-20 z-50">
           <img src={LogoMobile} className="w-max" alt="Logo" />
         </a>
 
         <div
-          className={`fixed top-0 left-0 w-full h-2/5 bg-gray-600 bg-opacity-10 backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'
+          className={`fixed top-0 left-0 w-full h-2/5 bg-baground/75 bg-opacity-10 backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'
             }`}
         >
           <Link to={""} className="text-xl py-2" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} onClick={() => { closeNavbar(); scrollToRoutes(); }}>
