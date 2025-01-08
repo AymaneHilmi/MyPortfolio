@@ -1,10 +1,87 @@
 import { React, img } from 'react'
+import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 import SaintGobain from '../assets/Saint-Gobain.png';
 
 
 
 export default function SaintGobainScreen() {
-    const words = ["Aymane HILMI", "حلمي أيمن"];
+    // Nom de chaque personne de mon equipe (a faire)
+    // const people = [
+    //     {
+    //         id: 1,
+    //         name: "Clement Fornes",
+    //         designation: "Software Engineer",
+    //         image:
+    //             "https://media.licdn.com/dms/image/v2/D4D03AQHJVCZM9XWnyA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710451743776?e=1736380800&v=beta&t=GP310v6-njkBRbZChMx9399bMMvrPcSDO9t9-8iflLI",
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Teo Emirot",
+    //         designation: "IT Engineer",
+    //         image:
+    //             "https://media.licdn.com/dms/image/v2/C4D03AQHk1JDj31er8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1657905707102?e=1736380800&v=beta&t=S46jYBI-Gz2JcEH4DfljsyMbKNVTtrEtV6gKgGA_eFY",
+    //     }
+    // ];
+
+    const Disciplines = [
+        {
+            id: 1,
+            name: " C#",
+            designation: "Library",
+            image:
+                "https://blog.cellenza.com/wp-content/uploads/2017/02/CSharpLogo.png"
+        },
+        {
+            id: 2,
+            name: "ASP .NET & CORE",
+            designation: "Framework",
+            image:
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAb1BMVEVRK9T///9QKdRNJNNPJ9Q+ANF6Y9zq5/lGFtJYNdZ3X9thQtdIG9KpnedTLtVKH9O9s+z7+v7u6/qvo+mGct/y8PtpTdlxV9pCDNKll+bBuO2Aat1cO9aKd+BnSdnc1/WQf+G0qerHv++bi+TV0POcTBrBAAABJklEQVRIie2T0W6DMAxFY+N0oQ2k0FFCymjp+v/fOANpxiaYUPea8xBdyxwptoIQkUgk8l8QMaSpHAkhtH97lBj0iXAoR4h84LhoJjuANzkknXGgFCbcBQK7ZEWETL0oQksz8UOkaZrzkXOvy9N0cUQWiytc5Ux8NzRMS2T2AAeedk2EDuCmZ+LzZskgLmuTqHooDAZxJxnaIua2grsMYlWWZdXRFtHwsbc/tnreJKK8Qymf4ue5ruscN4loCsia53I0PxfcNCMKfQM4bd4qWUteFPIBhRcvVjN/iNRV1cF4kVoAL7oTk5l1UTcAjfKiUFyV31st7LqI4vHA5OzcKArVH08ac3cc6fVwJefapX8KreUnqZTvacUfo5rQ4zChF4lEIq/yBUTuEHYs2fJIAAAAAElFTkSuQmCC",
+        },
+        {
+            id: 3,
+            name: "Sample Manager",
+            designation: "Software",
+            image:
+                "https://careers.astrixinc.com/wp-content/uploads/2021/07/cq5dam.thumbnail.250.250.png"
+        },
+        {
+            id: 4,
+            name: "Oracle DB",
+            designation: "Data Base",
+            image:
+                "https://itpreneurpune.com/wp-content/uploads/2021/05/Database-Training-Course_00000.jpg"
+        },
+        {
+            id: 5,
+            name: "SQL Server",
+            designation: "Data Base",
+            image:
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROcY7avil2U_k5wxxhQGXOHK5CH79g0h4R7xY4fgUhqZNuZSNlvkGcw6RYsT29ailWpV8&usqp=CAU",
+        },
+        {
+            id: 6,
+            name: "Power Apps",
+            designation: "MS Application",
+            image:
+                "https://amsgcorp.net/wp-content/uploads/2022/08/power-apps-logo.png",
+        },
+        {
+            id: 7,
+            name: "Power Automate",
+            designation: "MS Application",
+            image:
+                "https://play-lh.googleusercontent.com/aeXs0qriXwmHVWtq9u4zVUO6SifULKtJOQdtBg6wDQqaNEaaJKl6b2oiABMmHn6yLH8=w240-h480-rw"
+        },
+        {
+            id: 8,
+            name: "Azure",
+            designation: "Cloud Computing Platform",
+            image:
+                "https://www.bizstream.com/wp-content/uploads/2022/06/azure-logo-white-circle-1-600x600.png"
+        },
+    ];
+
 
     return (
         <div className='h-screen w-full flex flex-col items-center' data-aos="fade-up">
@@ -19,11 +96,11 @@ export default function SaintGobainScreen() {
 
 
                 <a className="mt-3 text-2xl md:text-4xl" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>Saint-Gobain Research Provence</a>
-                <a style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
+                <a className="text-base" style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
 
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between " />
 
-                <a style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>
+                <a style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='md:text-lg text-base"'>
                     As a Software Engineer at Saint-Gobain Research Provence, I lead projects aimed
                     at enhancing laboratory workflows. My primary responsibility is automating processes
                     and adding key functionalities to our local Laboratory Information Management System
@@ -51,10 +128,10 @@ export default function SaintGobainScreen() {
                     </div>
 
                     <div className='flex flex-col'>
-                        <a >Disciplines</a>
-                        <a>.NET</a>
-                        <a>LIMS</a>
-                        <a>Mobile Development</a>
+                        <a className='mb-2'>Disciplines</a>
+                        <div className="flex flex-row items-center justify-center mb-10 w-full">
+                            <AnimatedTooltip items={Disciplines} />
+                        </div>
                     </div>
                 </div>
             </div>
