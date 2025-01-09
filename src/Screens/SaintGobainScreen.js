@@ -23,7 +23,7 @@ export default function SaintGobainScreen() {
     //     }
     // ];
 
-    const Disciplines = [
+    const SGDisciplines = [
         {
             id: 1,
             name: " C#",
@@ -130,7 +130,7 @@ export default function SaintGobainScreen() {
                     <div className='flex flex-col'>
                         <a className='mb-2'>Disciplines</a>
                         <div className="flex flex-row items-center justify-center mb-10 w-full">
-                            <AnimatedTooltip items={Disciplines} />
+                            <AnimatedTooltip items={SGDisciplines} />
                         </div>
                     </div>
                 </div>
