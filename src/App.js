@@ -1,4 +1,5 @@
 import './App.css';
+import AOS from 'aos'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import Sidebar from './components/Sidebar';
@@ -11,7 +12,7 @@ import ProjectScreen from './Screens/ProjectScreen';
 import SaintGobainScreen from './Screens/SaintGobainScreen';
 import CvScreen from './Screens/CvScreen';
 import Confetti from 'react-confetti';
-// import CesiverooScreen from './Screens/CesiverooScreen';
+import CesiverooScreen from './Screens/CesiverooScreen';
 
 
 function App() {
@@ -24,6 +25,18 @@ function App() {
   const navbarRef = useRef(null);
   const checkboxRef = useRef(null);
   const routesRef = useRef(null);
+
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 400,
+      easing: 'ease-out',
+      once: true,
+      mirror: false,
+    });
+
+    AOS.refresh(); // Rafraîchir AOS pour gérer les problèmes de rechargement
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -93,7 +106,6 @@ function App() {
       window.removeEventListener("keydown", handleKeydown);
     };
   }, []);
-
   return (
     <Router className="flex bg-background">
       {loading && <Loader />}
@@ -148,12 +160,12 @@ function App() {
       <div ref={routesRef} className="flex-grow flex border-t border-gray-300">
         <Sidebar scrollToRoutes={scrollToRoutes} />
         <Routes>
-          <Route path="/" className="h-screen" element={<HomeScreen scrollToRoutes={scrollToRoutes} />} data-aos="fade-left" />
-          <Route path="/About" className="h-screen" element={<AboutScreen />} data-aos="fade-left" />
-          <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} data-aos="fade-left" />
-          <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen />} data-aos="fade-left" />
-          <Route path="/Resume" className="h-screen" element={<CvScreen />} data-aos="fade-left" />
-          {/* <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} data-aos="fade-left" /> */}
+          <Route path="/" className="h-screen" element={<HomeScreen scrollToRoutes={scrollToRoutes} />} />
+          <Route path="/About" className="h-screen" element={<AboutScreen />} />
+          <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} />
+          <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen />} />
+          <Route path="/Resume" className="h-screen" element={<CvScreen />} />
+          <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} />
         </Routes>
       </div>
     </Router>

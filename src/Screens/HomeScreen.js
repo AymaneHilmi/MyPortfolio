@@ -256,8 +256,8 @@ export default function HomeScreen({ scrollToRoutes }) {
             <div className="border-t border-gray-300 mt-6 w-full flex flex-row  justify-between md:justify-end ">
                 <div className='flex flex-row gap-4 md:hidden'>
 
-                    <a href="https://www.linkedin.com/in/aymanehilmi/" className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>Linkedin ↗</a>
-                    <a href="https://github.com/AymaneHilmi" className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>Linkedin ↗</a>
+                    <a href="https://github.com/AymaneHilmi" target="_blank" className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>GitHub ↗</a>
                 </div>
 
                 <a className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>by Aymane HILMI</a>

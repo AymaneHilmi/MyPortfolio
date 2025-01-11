@@ -8,8 +8,6 @@ export default function LandingPage() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        AOS.init();
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {

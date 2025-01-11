@@ -1,5 +1,6 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import AOS from 'aos'
 
 export const Timeline = ({
     data
@@ -29,7 +30,7 @@ export const Timeline = ({
             ref={containerRef}>
             <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
                 {data.map((item, index) => (
-                    <div key={index} className="flex justify-start pt-32 md:pt-20 md:gap-10">
+                    <div key={index} className="flex justify-start pt-32 md:pt-20 md:gap-10" data-aos="fade-up">
                         <div
                             className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
                             <div
