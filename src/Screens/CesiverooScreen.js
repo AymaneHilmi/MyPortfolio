@@ -268,9 +268,9 @@ export default function CesiverooScreen() {
                         <a style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}
                             className="md:text-lg text-base">
                             <span style={{ fontFamily: 'SFREGULAR', color: '#3b3d41', textAlign: 'justify', }} >
-                                Let's talk design now, so for the graphic it wasn't very diffucult we just ctrl+C & Ctrl+V the Deeliveroo graphic chart.
-                                After having copied deliveroo we started to make our logo and starting designing our interfaces. For the interfaces we
-                                choosed to  have a fully customized application having only the visual identity similar to Deliveroo.
+                                For the design part, firtsly we go to make a graphic chart, it wasn't very diffucult haha we just ctrl+C & Ctrl+V the Deeliveroo one.
+                                After that we started making our logos and starting designing our interfaces. For the interfaces and the logo we
+                                fully customized them, having only the visual identity similar to Deliveroo.
                             </span>
                         </a>
 
