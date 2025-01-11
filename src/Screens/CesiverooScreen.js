@@ -242,7 +242,7 @@ export default function CesiverooScreen() {
                                 These steps helped us plan and project how we would proceed over the course of the 4 weeks.
                             </span>
                         </a>
-                        <img src={NeedSchema} className="" />
+                        <img src={NeedSchema} className="md:max-w-[80%] mt-8" />
 
                     </div>
                 </div>
