@@ -38,4 +38,5 @@ export default function LandingPage() {
             <Spline scene="https://prod.spline.design/3OnoqTOGmJs7Vpxx/scene.splinecode" onLoad={handleLoad} />
         </div>
     );
+
 }
