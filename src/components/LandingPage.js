@@ -29,6 +29,7 @@ export default function LandingPage() {
         };
     }, []);
 
+
     const handleLoad = () => {
         AOS.refresh();
     };
