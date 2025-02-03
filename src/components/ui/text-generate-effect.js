@@ -27,7 +27,7 @@ export const TextGenerateEffect = ({
                     return (
                         (<motion.span
                             key={word + idx}
-                            className="text-[#a3a8af] opacity-0"
+                            className="text-neutral-500 opacity-0"
                             style={{
                                 fontFamily: 'SFULTRALIGHT',
                                 filter: filter ? "blur(10px)" : "none",
