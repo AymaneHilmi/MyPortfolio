@@ -1,7 +1,7 @@
 import { React, img } from 'react'
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 import SaintGobain from '../assets/Saint-Gobain.png';
-import CSharp from '../assets/C#.png';
+// import CSharp from '../assets/C#.png';
 // import SaintGobain from '../assets/Saint-Gobain.png';
 // import SaintGobain from '../assets/Saint-Gobain.png';
 // import SaintGobain from '../assets/Saint-Gobain.png';
