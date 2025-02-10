@@ -1,35 +1,22 @@
 import { React, img } from 'react'
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 import SaintGobain from '../assets/Saint-Gobain.png';
+import CSharp from '../assets/C#.png';
+// import SaintGobain from '../assets/Saint-Gobain.png';
+// import SaintGobain from '../assets/Saint-Gobain.png';
+// import SaintGobain from '../assets/Saint-Gobain.png';
+// import SaintGobain from '../assets/Saint-Gobain.png';
+// import SaintGobain from '../assets/Saint-Gobain.png';
 
 
 
 export default function SaintGobainScreen() {
-    // Nom de chaque personne de mon equipe (a faire)
-    // const people = [
-    //     {
-    //         id: 1,
-    //         name: "Clement Fornes",
-    //         designation: "Software Engineer",
-    //         image:
-    //             "https://media.licdn.com/dms/image/v2/D4D03AQHJVCZM9XWnyA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710451743776?e=1736380800&v=beta&t=GP310v6-njkBRbZChMx9399bMMvrPcSDO9t9-8iflLI",
-    //     },
-    //     {
-    //         id: 2,
-    //         name: "Teo Emirot",
-    //         designation: "IT Engineer",
-    //         image:
-    //             "https://media.licdn.com/dms/image/v2/C4D03AQHk1JDj31er8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1657905707102?e=1736380800&v=beta&t=S46jYBI-Gz2JcEH4DfljsyMbKNVTtrEtV6gKgGA_eFY",
-    //     }
-    // ];
-
     const SGDisciplines = [
         {
             id: 1,
             name: " C#",
             designation: "Library",
-            image:
-                "https://blog.cellenza.com/wp-content/uploads/2017/02/CSharpLogo.png"
+            image: "https://blog.cellenza.com/wp-content/uploads/2017/02/CSharpLogo.png",
         },
         {
             id: 2,
@@ -50,7 +37,7 @@ export default function SaintGobainScreen() {
             name: "Oracle DB",
             designation: "Data Base",
             image:
-                "https://itpreneurpune.com/wp-content/uploads/2021/05/Database-Training-Course_00000.jpg"
+                "https://www.gravityer.com/_next/image?url=https%3A%2F%2Fvivid-cow-9924242169.media.strapiapp.com%2Foracle_database_18edd9bd15.jpg&w=2048&q=75"
         },
         {
             id: 5,
