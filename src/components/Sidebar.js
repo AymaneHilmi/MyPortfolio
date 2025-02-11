@@ -12,28 +12,28 @@ export default function Sidebar({ scrollToRoutes }) {
                 <Link to="" className='w-24'>
                     <img src={Logo} alt='Aymane Logo' className=" rounded-[10px]" />
                 </Link>
-                <Link to="/About" onClick={scrollToRoutes} className='mt-4'>About Me</Link>
-                <Link to="/Resume" onClick={scrollToRoutes}>Resume</Link>
+                <div className='mt-4'><Link to="/About" onClick={scrollToRoutes} className=' z-10 transition-opacity duration-300 hover:opacity-30'>About Me</Link></div>
+                <div><Link to="/Resume" className="transition-opacity duration-300 hover:opacity-30" onClick={scrollToRoutes}>Resume</Link></div>
             </div>
             <div className="row-span-1 justify-around border-b border-gray-300 p-8">
                 <div className='flex flex-col'>
                     <h1 style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className='text-xs pb-2'>MOBILE APPLICATION</h1>
-                    <Link to="/SaintGobain" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm' onClick={scrollToRoutes}>Saint-Gobain</Link>
-                    <Link to="/Cesiveroo" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm' onClick={scrollToRoutes}>Cesiveroo</Link>
+                    <div><Link to="/SaintGobain" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm transition-opacity duration-300 hover:opacity-30' onClick={scrollToRoutes}>Saint-Gobain</Link></div>
+                    <div><Link to="/Cesiveroo" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm transition-opacity duration-300 hover:opacity-30' onClick={scrollToRoutes}>Cesiveroo</Link></div>
                 </div>
                 <div className='flex flex-col mt-4'>
                     <h1 style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className='text-xs pb-2'>WEB DEVELOPMENT</h1>
-                    <Link to="Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm' onClick={scrollToRoutes}>Aymane's Portfolio</Link>
-                    <Link to="/Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm' onClick={scrollToRoutes}>Blog</Link>
+                    <div><Link to="Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm transition-opacity duration-300 hover:opacity-30' onClick={scrollToRoutes}>Aymane's Portfolio</Link></div>
+                    <div><Link to="/Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm transition-opacity duration-300 hover:opacity-30' onClick={scrollToRoutes}>Blog</Link></div>
                 </div>
 
             </div>
             <div className="row-span-1 flex flex-col border-b border-gray-300 p-8">
                 <h1 style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }} className='text-sm pb-2'>Contact</h1>
-                <a href="mailto:aymanehilmi1@gmail.com" target="_blank" rel="noreferrer" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>Mail</a>
-                <a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" rel="noreferrer" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>Linkedin</a>
-                <a href="https://github.com/AymaneHilmi" target="_blank" rel="noreferrer" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm'>Github</a>
-                <Link to="/Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm' onClick={scrollToRoutes}>Download CV </Link>
+                <div><a href="mailto:aymanehilmi1@gmail.com" target="_blank" rel="noreferrer" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm transition-opacity duration-300 hover:opacity-30'>Mail</a></div>
+                <div><a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" rel="noreferrer" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm transition-opacity duration-300 hover:opacity-30'>Linkedin</a></div>
+                <div><a href="https://github.com/AymaneHilmi" target="_blank" rel="noreferrer" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm transition-opacity duration-300 hover:opacity-30'>Github</a></div>
+                <div><Link to="/Comingsoon" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='text-sm transition-opacity duration-300 hover:opacity-30' onClick={scrollToRoutes}>Download CV </Link></div>
             </div>
         </div>
     );
