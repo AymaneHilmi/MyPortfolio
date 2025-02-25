@@ -140,9 +140,9 @@ export default function AboutScreen() {
                 <div id="spontaneus-emoji" className="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></div>
                 <div id="competitive-emoji" className="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></div>
                 <FlipWords words={words} className="text-4xl max-h-10" />
-                <h1 className="mt-3" style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>Software Engineer</h1>
+                <h1 className="mt-3 font-sfregular text-lightGray">Software Engineer</h1>
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between scroll-smooth focus:scroll-auto" />
-                <h1 style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }}>
+                <h1 className='font-sfregular text-darkGray'>
                     {showItalyText ? replacedText : originalText}
                 </h1>
                 {/* <div className="border-t border-gray-300 my-6 w-full flex flex-col ">
@@ -177,12 +177,12 @@ export default function AboutScreen() {
                 {/* <div className='flex justify-center text-3xl py-16' style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>
                     Things i love to do
                 </div> */}
-                <div className="border-t border-gray-300 my-6 w-full flex flex-row  justify-between md:justify-end ">
+                <div className="border-t border-gray-300 my-6 w-full flex flex-row  justify-between md:justify-end font-sfultralight">
                     <div className='flex flex-row gap-4 md:hidden'>
-                        <a href="https://www.linkedin.com/in/aymanehilmi/" className="text-base font-bold mt-6 " style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>Linkedin ↗</a>
-                        <a href="https://github.com/AymaneHilmi" className="text-base font-bold mt-6 " style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>GitHub ↗</a>
+                        <a href="https://www.linkedin.com/in/aymanehilmi/" className="text-base font-bold mt-6 " style={{ color: '#a3a8af' }}>Linkedin ↗</a>
+                        <a href="https://github.com/AymaneHilmi" className="text-base font-bold mt-6 " style={{ color: '#a3a8af' }}>GitHub ↗</a>
                     </div>
-                    <h1 className="text-base font-bold mt-6" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>by Aymane HILMI</h1>
+                    <h1 className="text-base font-bold mt-6" style={{ color: '#a3a8af' }}>by Aymane HILMI</h1>
                 </div>
             </div>
         </div >

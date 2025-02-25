@@ -111,8 +111,8 @@ export default function CesiverooScreen() {
 
                 <div className='flex flex-col' data-aos="fade-up">
 
-                    <a className='mt-3' style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}> Process Highlights</a>
-                    <a className="text-2xl md:text-4xl mt-1" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+                    <a className='mt-3 font-sfregular text-lightGray' > Process Highlights</a>
+                    <a className="font-sfbold text-2xl md:text-4xl mt-1 text-darkGray">
                         Cesi<span style={{ color: '#20CFBD' }}>veroo</span> Project
                     </a>
 
@@ -120,12 +120,11 @@ export default function CesiverooScreen() {
 
 
                     <div>
-                        <a style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}
-                            className="md:text-lg text-base">
+                        <a className="font-sfbold md:text-lg text-base text-darkGray">
                             Challenge
                             <br />
                             <br />
-                            <span style={{ fontFamily: 'SFREGULAR', color: '#3b3d41', textAlign: 'right' }}>
+                            <span className="font-sfregular text-darkGray" style={{ textAlign: 'right' }}>
                                 This project was part of an academic assignment during my time in engineering school.
                                 The challenge was to create an Uber-like application with different types of users:
                                 customers, restaurants, delivery personnel, third-party developers, and service teams,
@@ -139,7 +138,7 @@ export default function CesiverooScreen() {
                     </div>
 
                     <div className="border-t border-gray-300 my-4 w-full flex flex-row" />
-                    <div className='flex flex-row md:gap-28 gap-12 ' style={{ fontFamily: "SFREGULAR", color: '#3b3d41' }}>
+                    <div className='flex flex-row md:gap-28 gap-12 font-sfregular text-darkGray'>
 
                         <div className='flex flex-col'>
                             <a>Timeline</a>
@@ -161,8 +160,8 @@ export default function CesiverooScreen() {
                     </div>
                 </div>
                 <div className='flex flex-col' data-aos="fade-up">
-                    <a className='mt-6' style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>  Background</a>
-                    <a className="text-2xl md:text-xl mt-1" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+                    <a className='mt-6 font-sfregular text-lightGray' >  Background</a>
+                    <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
                         Executive Summary
                     </a>
 
@@ -170,9 +169,8 @@ export default function CesiverooScreen() {
 
 
                     <div className=" items-start">
-                        <a style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}
-                            className="md:text-lg text-base">
-                            <span style={{ fontFamily: 'SFREGULAR', color: '#3b3d41', textAlign: 'justify', }} >
+                        <a className="font-sfbold md:text-lg text-base font-sfregular text-darkGray">
+                            <span className='' style={{ textAlign: 'justify', }} >
                                 <>
                                     On our class we were 3 groups, each of the three groups had to design a separate application,
                                     to make it more funny and competitive we choosed to inspire our application from existing
@@ -187,7 +185,7 @@ export default function CesiverooScreen() {
                 </div>
                 <div className='flex flex-col' data-aos="fade-up">
 
-                    <a className="text-2xl md:text-xl mt-14" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+                    <a className="font-sfbold text-2xl md:text-xl mt-14 text-darkGray">
                         The Process
                     </a>
 
@@ -208,10 +206,10 @@ export default function CesiverooScreen() {
                                     alt={step.title}
                                     className="w-24 h-24 transition-transform transform hover:scale-105 duration-500 ease-in-out"
                                 />
-                                <p className="font-bold mt-2 text-xs md:text-sm" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }}>
+                                <p className="font-bold mt-2 text-xs md:text-sm font-sfregular text-darkGray" >
                                     {step.title}
                                 </p>
-                                <p className="mt-2 text-xs md:text-sm" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }}>
+                                <p className="mt-2 text-xs md:text-sm font-sfregular text-darkGray" >
                                     {step.description}
                                 </p>
                             </div>
@@ -220,22 +218,22 @@ export default function CesiverooScreen() {
                 </div>
 
                 <div className='flex flex-col' data-aos="fade-up">
-                    <a className='mt-16 flex flex-row' style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>
+                    <a className='mt-16 flex flex-row font-sfregular text-lightGray' >
                         <a>
                             Research
                         </a>
                     </a>
                     <div className='flex flex-row justify-between align-middle'>
-                        <a className="text-2xl md:text-xl mt-1" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
                             Needs Assessment
                         </a>
                         <img src={Step1} className='w-10 h-10' />
                     </div>
                     <div className="border-t border-gray-300 my-2 w-full flex flex-row justify-between " />
                     <div className=" flex flex-col justify-center items-center">
-                        <a style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}
-                            className="md:text-lg text-base">
-                            <span style={{ fontFamily: 'SFREGULAR', color: '#3b3d41', textAlign: 'justify', }} >
+                        <a 
+                            className="font-sfbold md:text-lg text-base text-darkGray">
+                            <span className="font-sfregular" style={{ textAlign: 'justify', }} >
                                 The first step was to clearly analyze what needed to be done and gather all the functional
                                 requirements of the application. This phase included studying the various “risks” we might
                                 encounter and starting to think about which solutions to choose to address all the needs.
@@ -249,13 +247,13 @@ export default function CesiverooScreen() {
 
                 <div className='flex flex-col' data-aos="fade-up">
 
-                    <a className='mt-20 flex flex-row' style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>
+                    <a className='mt-20 flex flex-row font-sfregular text-lightGray'>
                         <a>
                             Design
                         </a>
                     </a>
                     <div className='flex flex-row justify-between align-middle'>
-                        <a className="text-2xl md:text-xl mt-1" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
                             Graphic Chart
                         </a>
                         <img src={Step2} className='w-10 h-10' />
@@ -265,9 +263,8 @@ export default function CesiverooScreen() {
 
 
                     <div className=" flex flex-col justify-center items-center">
-                        <a style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}
-                            className="md:text-lg text-base">
-                            <span style={{ fontFamily: 'SFREGULAR', color: '#3b3d41', textAlign: 'justify', }} >
+                        <a className="font-sfbold md:text-lg text-base text-darkGray">
+                            <span className='font-sfregular' style={{ textAlign: 'justify', }} >
                                 For the design part, firtsly we go to make a graphic chart, it wasn't very diffucult haha we just ctrl+C & Ctrl+V the Deeliveroo one.
                                 After that we started making our logos and starting designing our interfaces. For the interfaces and the logo we
                                 fully customized them, having only the visual identity similar to Deliveroo.
@@ -278,13 +275,13 @@ export default function CesiverooScreen() {
                     </div>
                 </div>
                 <div className='flex flex-col' data-aos="fade-up">
-                    <a className='mt-20 flex flex-row' style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>
+                    <a className='mt-20 flex flex-row font-sfregular text-lightGray'>
                         <a>
                             Design
                         </a>
                     </a>
                     <div className='flex flex-row justify-between align-middle'>
-                        <a className="text-2xl md:text-xl mt-1" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
                             Mockups Interfaces
                         </a>
                         <img src={Step2} className='w-10 h-10' />
@@ -294,9 +291,9 @@ export default function CesiverooScreen() {
 
 
                     <div className=" flex flex-col justify-center">
-                        <a style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}
-                            className="md:text-lg text-base  items-start text-start">
-                            <span style={{ fontFamily: 'SFREGULAR', color: '#3b3d41', textAlign: 'justify', }} >
+                        <a 
+                            className="font-sfbold md:text-lg text-base items-start text-start text-darkGray">
+                            <span className='font-sfregular' style={{ textAlign: 'justify', }} >
                                 As you can see below, we went throught an intensive design phases (as a developer it was a long,
                                 long, long, long, long... process). In this phase we had to design all the interfaces of our application, for each
                                 type of user. We had to make sure that the interfaces were user-friendly and that they were in line with the functionalities
@@ -310,23 +307,22 @@ export default function CesiverooScreen() {
                 </div>
 
                 <div className='flex flex-col' data-aos="fade-up">
-                    <a className='mt-20 flex flex-row' style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>
+                    <a className='mt-20 flex flex-row font-sfregular text-lightGray' >
                         <a>
                             Development
                         </a>
                     </a>
                     <div className='flex flex-row justify-between align-middle'>
-                        <a className="text-2xl md:text-xl mt-1" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
                             Architecture
                         </a>
                         <img src={Step3} className='w-10 h-10' />
                     </div>
 
                     <div className="border-t border-gray-300 my-2 w-full flex flex-row justify-between " />
-                    <div className=" flex flex-col justify-center items-center">
-                        <a style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}
-                            className="md:text-lg text-base">
-                            <span style={{ fontFamily: 'SFREGULAR', color: '#3b3d41', textAlign: 'justify', }} >
+                    <div className=" flex flex-col justify-center items-center text-darkGray">
+                        <a className="font-sfbold md:text-lg text-base">
+                            <span className='font-sfregular' style={{ textAlign: 'justify', }} >
                                 As the specifications required implementing a microservice architecture, we had to design a scalable and robust system.
                                 Ensuring that the application could handle a large number of users was a key priority. The most challenging part was
                                 implementing the developer service functionalities. These functionalities were designed to allow interaction with the
@@ -339,13 +335,13 @@ export default function CesiverooScreen() {
                 </div>
 
                 <div className='flex flex-col' data-aos="fade-up">
-                    <a className=' flex flex-row' style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}>
+                    <a className='flex flex-row font-sfregular text-lightGray'>
                         <a>
                             Technical Informations
                         </a>
                     </a>
                     <div className='flex flex-row justify-between align-middle'>
-                        <a className="text-2xl md:text-xl mt-1" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>
+                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
                             Conclusion
                         </a>
                         <div className='flex flex-row gap-2'>
@@ -357,7 +353,7 @@ export default function CesiverooScreen() {
                     <div className="border-t border-gray-300 my-2 w-full flex flex-row justify-between " />
 
 
-                    <div className=" flex flex-col justify-center md:textlg text-base" style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }}>
+                    <div className="flex flex-col justify-center md:textlg text-base font-sfregular text-darkGray" >
                         To conclude, this project was actually one of the first I worked on that resulted in something real and concrete. After this project, I started having interest in developing technical projects during my personal time (like this portfolio, leetcode problems etc.....).
                         <span >
                             To see the technicals informations of the entire project i'll invite you to click <a className="underline" href='https://github.com/AymaneHilmi/Cesiveroo' target="_blank">here</a> to visit our repos project on Github.

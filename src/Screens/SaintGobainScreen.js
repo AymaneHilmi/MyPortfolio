@@ -82,12 +82,12 @@ export default function SaintGobainScreen() {
             <div className="flex flex-col w-11/12 mt-4 md:text-sm text-xs">
 
 
-                <a className="mt-3 text-2xl md:text-4xl" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }}>Saint-Gobain Research Provence</a>
-                <a className="text-base" style={{ fontFamily: 'SFREGULAR', color: '#a9a5ac' }}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
+                <a className="font-sfbold mt-3 text-2xl md:text-4xl text-darkGray" >Saint-Gobain Research Provence</a>
+                <a className="text-base font-sfregular text-lightGray" > Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
 
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between " />
 
-                <a style={{ fontFamily: 'SFREGULAR', color: '#3b3d41' }} className='md:text-lg text-base"'>
+                <a className='md:text-lg text-base font-sfregular text-darkGray'>
                     As a Software Engineer at Saint-Gobain Research Provence, I lead projects aimed
                     at enhancing laboratory workflows. My primary responsibility is automating processes
                     and adding key functionalities to our local Laboratory Information Management System
@@ -102,7 +102,7 @@ export default function SaintGobainScreen() {
                     software issues, and maintaining operational continuity within the laboratory.
                 </a>
                 <div className="border-t border-gray-300 my-4 w-full flex flex-row" />
-                <div className='flex flex-row md:gap-28 gap-11 mb-10' style={{ fontFamily: "SFREGULAR", color: '#3b3d41' }}>
+                <div className='flex flex-row md:gap-28 gap-11 mb-10 font-sfregular text-darkGray'>
 
                     <div className='flex flex-col'>
                         <a>Timeline</a>

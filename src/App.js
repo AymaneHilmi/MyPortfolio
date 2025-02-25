@@ -128,23 +128,23 @@ function App() {
           <img src={LogoMobile} className="w-max" alt="Logo" />
         </a>
 
-        <div
-          className={`fixed top-0 left-0 w-full h-2/5 bg-baground/75 bg-opacity-10 backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'
-            }`}
-        >
-          <Link to={""} className="text-xl py-2" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} onClick={() => { closeNavbar(); scrollToRoutes(); }}>
+        <div className={`font-sfbold text-darkGray fixed top-0 left-0 w-full h-2/5 bg-baground/75 bg-opacity-10 
+            backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform 
+            duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+
+          <Link to={""} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             Home
           </Link>
-          <Link to={"/About"} className="text-xl py-2" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} onClick={() => { closeNavbar(); scrollToRoutes(); }}>
+          <Link to={"/About"} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             About
           </Link>
-          <Link to={"/Resume"} className="text-xl py-2" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} onClick={() => { closeNavbar(); scrollToRoutes(); }}>
+          <Link to={"/Resume"} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             Resume
           </Link>
-          <Link to={"/SaintGobain"} className="text-xl py-2" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} onClick={() => { closeNavbar(); scrollToRoutes(); }}>
+          <Link to={"/SaintGobain"} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             Saint-Gobain
           </Link>
-          <a href="mailto:aymanehilmi1@gmail.com" className="text-xl py-2" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} onClick={() => { closeNavbar(); scrollToRoutes(); }}>
+          <a href="mailto:aymanehilmi1@gmail.com" className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             Email
           </a>
         </div>

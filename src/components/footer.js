@@ -7,7 +7,7 @@ import 'aos/dist/aos.css'
 
 export default function Footer() {
     return (
-        <div className="border-t border-gray-300 mt-6 py-6 w-full flex flex-col text-base" style={{ fontFamily: 'SFULTRALIGHT', color: '#a3a8af' }}>
+        <div className="border-t border-gray-300 mt-6 py-6 w-full flex flex-col text-base font-sfultralight" style={{ color: '#a3a8af' }}>
             <div className='flex flex-row gap-4 justify-center md:hidden font-bold'>
 
                 <a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" >Linkedin ↗</a>
