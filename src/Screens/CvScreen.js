@@ -13,7 +13,7 @@ export default function CvScreen() {
                     <p className=" font-sfbold text-darkGray  text-xl md:text-3xl font-normal">
                         International Mobility at Saint-Gobain Research Germany
                     </p>
-                    <p  className="font-sfregular text-lightGray text-neutral-800  text-sm md:text-base font-normal mb-4">
+                    <p  className="font-sfregular text-lightGray  text-sm md:text-base font-normal mb-4">
                         Herzogenrath – Germany
                     </p>
                     <div className="grid grid-cols-2 gap-4">
@@ -43,7 +43,7 @@ export default function CvScreen() {
                     <p className=" font-sfbold text-darkGray  text-xl md:text-3xl font-normal ">
                         Started Editing services
                     </p>
-                    <p className="font-sfregular text-lightGray text-neutral-800  text-sm md:text-base font-normal mb-4">
+                    <p className="font-sfregular text-neutral-800  text-sm md:text-base font-normal mb-4">
                         Montpellier, France
                     </p>
                     <img
