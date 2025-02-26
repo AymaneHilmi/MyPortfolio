@@ -72,23 +72,23 @@ export default function SaintGobainScreen() {
 
 
     return (
-        <div className={cn('h-screen w-full flex flex-col items-center', className)} data-aos="fade-up">
-            <div className={cn("border-b border-gray-300 w-full h-1/3 flex flex-row justify-center items-center mb-4 bg-[#e6e6e6]", className)}>
+        <div className={cn('h-screen w-full flex flex-col items-center')} data-aos="fade-up">
+            <div className={cn("border-b border-gray-300 w-full h-1/3 flex flex-row justify-center items-center mb-4 bg-[#e6e6e6]")}>
                 <img
                     src={SaintGobain}
                     alt="Saint-Gobain"
-                    className={cn('md:h-40 h-32 transition-transform transform hover:scale-105 duration-500 ease-in-out', className)}
+                    className={cn('md:h-40 h-32 transition-transform transform hover:scale-105 duration-500 ease-in-out')}
                 />
             </div>
-            <div className={cn("flex flex-col w-11/12 mt-4 md:text-sm text-xs", className)}>
+            <div className={cn("flex flex-col w-11/12 mt-4 md:text-sm text-xs")}>
 
 
-                <a className={cn("font-sfbold mt-3 text-2xl md:text-4xl text-darkGray", className)} >Saint-Gobain Research Provence</a>
-                <a className={cn("text-base font-sfregular text-lightGray" , className)}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
+                <a className={cn("font-sfbold mt-3 text-2xl md:text-4xl text-darkGray")} >Saint-Gobain Research Provence</a>
+                <a className={cn("text-base font-sfregular text-lightGray" )}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
 
-                <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between ", className)} />
+                <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between ")} />
 
-                <a className={cn('md:text-lg text-base font-sfregular text-darkGray', className)}>
+                <a className={cn('md:text-lg text-base font-sfregular text-darkGray')}>
                     As a Software Engineer at Saint-Gobain Research Provence, I lead projects aimed
                     at enhancing laboratory workflows. My primary responsibility is automating processes
                     and adding key functionalities to our local Laboratory Information Management System
@@ -102,8 +102,8 @@ export default function SaintGobainScreen() {
                     are always within reach. My role also includes providing technical support, troubleshooting
                     software issues, and maintaining operational continuity within the laboratory.
                 </a>
-                <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row", className)} />
-                <div className={cn('flex flex-row md:gap-28 gap-11 mb-10 font-sfregular text-darkGray', className)}>
+                <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row")} />
+                <div className={cn('flex flex-row md:gap-28 gap-11 mb-10 font-sfregular text-darkGray')}>
 
                     <div className='flex flex-col'>
                         <a>Timeline</a>
@@ -117,7 +117,7 @@ export default function SaintGobainScreen() {
 
                     <div className='flex flex-col'>
                         <a className='mb-2'>Disciplines</a>
-                        <div className={cn("flex flex-row items-center justify-center mb-10 w-full", className)}>
+                        <div className={cn("flex flex-row items-center justify-center mb-10 w-full")}>
                             <AnimatedTooltip items={SGDisciplines} />
                         </div>
                     </div>

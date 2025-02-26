@@ -13,7 +13,7 @@ import SaintGobainScreen from './Screens/SaintGobainScreen';
 import CvScreen from './Screens/CvScreen';
 import Confetti from 'react-confetti';
 import CesiverooScreen from './Screens/CesiverooScreen';
-import { cn } from "../../lib/utils";
+import { cn } from "./lib/utils";
 
 
 function App() {
@@ -120,7 +120,7 @@ function App() {
         <LandingPage />
       </div>
 
-      <div ref={navbarRef} className={cn("fixed -top-1 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6", className)}>
+      <div ref={navbarRef} className={cn("fixed -top-1 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6")}>
         <div
           className={cn(`absolute inset-0 transition-all duration-500 ease-in-out ${!isOpen ? 'bg-background/75 blur-sm backdrop-blur-sm opacity-100' : 'opacity-0 pointer-events-none'}`)}
           style={{ zIndex: 1 }}

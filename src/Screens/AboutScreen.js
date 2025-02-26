@@ -127,9 +127,9 @@ export default function AboutScreen() {
 
 
     return (
-        <div className={cn('w-full h-full flex flex-col items-center justify-center', className)} data-aos="fade-up">
+        <div className={cn('w-full h-full flex flex-col items-center justify-center')} data-aos="fade-up">
 
-            <div className={cn("border-b border-gray-300 w-full flex flex-row justify-center items-end mb-4 bg-[#e6e6e6] pt-16 md:pt-0", className)}>
+            <div className={cn("border-b border-gray-300 w-full flex flex-row justify-center items-end mb-4 bg-[#e6e6e6] pt-16 md:pt-0")}>
                 <img
                     src={Laptop}
                     alt="Laptop"
@@ -137,21 +137,21 @@ export default function AboutScreen() {
                 />
             </div>
             <div className="flex flex-col w-11/12 mt-4 ">
-                <div id="smiling-emoji" className={cn("fixed top-0 left-0 w-full h-full pointer-events-none z-50", className)}></div>
-                <div id="spontaneus-emoji" className={cn("fixed top-0 left-0 w-full h-full pointer-events-none z-50", className)}></div>
-                <div id="competitive-emoji" className={cn("fixed top-0 left-0 w-full h-full pointer-events-none z-50", className)}></div>
-                <FlipWords words={words} className={cn("text-4xl max-h-10", className)} />
-                <h1 className={cn("mt-3 font-sfregular text-lightGray", className)}>Software Engineer</h1>
-                <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between scroll-smooth focus:scroll-auto", className)} />
-                <h1 className={cn('font-sfregular text-darkGray', className)}>
+                <div id="smiling-emoji" className={cn("fixed top-0 left-0 w-full h-full pointer-events-none z-50")}></div>
+                <div id="spontaneus-emoji" className={cn("fixed top-0 left-0 w-full h-full pointer-events-none z-50")}></div>
+                <div id="competitive-emoji" className={cn("fixed top-0 left-0 w-full h-full pointer-events-none z-50")}></div>
+                <FlipWords words={words} className={cn("text-4xl max-h-10")} />
+                <h1 className={cn("mt-3 font-sfregular text-lightGray")}>Software Engineer</h1>
+                <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between scroll-smooth focus:scroll-auto")} />
+                <h1 className={cn('font-sfregular text-darkGray')}>
                     {showItalyText ? replacedText : originalText}
                 </h1>
-                <div className={cn("border-t border-gray-300 my-6 w-full flex flex-row  justify-between md:justify-end font-sfultralight", className)}>
-                    <div className={cn('flex flex-row gap-4 md:hidden', className)}>
-                        <a href="https://www.linkedin.com/in/aymanehilmi/" className={cn("text-base font-bold mt-6 ", className)} style={{ color: '#a3a8af' }}>Linkedin ↗</a>
-                        <a href="https://github.com/AymaneHilmi" className={cn("text-base font-bold mt-6", className)} style={{ color: '#a3a8af' }}>GitHub ↗</a>
+                <div className={cn("border-t border-gray-300 my-6 w-full flex flex-row  justify-between md:justify-end font-sfultralight")}>
+                    <div className={cn('flex flex-row gap-4 md:hidden')}>
+                        <a href="https://www.linkedin.com/in/aymanehilmi/" className={cn("text-base font-bold mt-6 ")} style={{ color: '#a3a8af' }}>Linkedin ↗</a>
+                        <a href="https://github.com/AymaneHilmi" className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>GitHub ↗</a>
                     </div>
-                    <h1 className={cn("text-base font-bold mt-6", className)} style={{ color: '#a3a8af' }}>by Aymane HILMI</h1>
+                    <h1 className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>by Aymane HILMI</h1>
                 </div>
             </div>
         </div >

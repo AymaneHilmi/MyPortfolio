@@ -29,7 +29,7 @@ export default function ProjectScreen() {
     }, []);
 
     return (
-        <div id="project-screen" className={cn('h-screen w-screen flex flex-col justify-center items-center', className)}>
+        <div id="project-screen" className={cn('h-screen w-screen flex flex-col justify-center items-center')}>
             {isVisible && (
                 <Spline
                     scene="https://prod.spline.design/EweNnmWlIkA9t21J/scene.splinecode"
