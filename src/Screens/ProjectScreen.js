@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import './screens.css';
-import { cn } from "../../lib/utils";
+import { cn } from "../lib/utils";
 
 export default function ProjectScreen() {
     const [isVisible, setIsVisible] = useState(false);

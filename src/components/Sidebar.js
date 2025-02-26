@@ -3,7 +3,7 @@ import './components.css';
 import Logo from '../assets/Logo.png'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { cn } from "../../lib/utils";
+import { cn } from "../lib/utils";
 
 
 export default function Sidebar({ scrollToRoutes }) {

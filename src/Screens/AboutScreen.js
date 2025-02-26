@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import './screens.css';
 import Laptop from '../assets/Laptop.png';
 import { FlipWords } from "../components/ui/flip-words";
+import { cn } from "../lib/utils";
 
 export default function AboutScreen() {
     const words = ["Aymane HILMI", "حلمي أيمن"];

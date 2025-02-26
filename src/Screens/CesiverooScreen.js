@@ -14,7 +14,7 @@ import Architecture from '../assets/CesiverooArchitecture.png';
 import NeedSchema from '../assets/NeedsAssesment.png';
 import Footer from '../components/footer';
 import AOS from 'aos'
-
+import { cn } from "../lib/utils";
 
 
 
