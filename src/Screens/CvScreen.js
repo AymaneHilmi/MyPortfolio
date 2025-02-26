@@ -43,7 +43,7 @@ export default function CvScreen() {
                     <p className=" font-sfbold text-darkGray  text-xl md:text-3xl font-normal ">
                         Started Editing services
                     </p>
-                    <p className="font-sfregular text-neutral-800  text-sm md:text-base font-normal mb-4">
+                    <p className="font-sfregular text-lightGray  text-sm md:text-base font-normal mb-4">
                         Montpellier, France
                     </p>
                     <img
@@ -63,7 +63,7 @@ export default function CvScreen() {
                     <p className="font-sfbold text-darkGray  text-xl md:text-3xl font-normal">
                         Started Engineering program in Work-Study at Saint-Gobain Research Provence
                     </p>
-                    <p className="font-sfregular text-lightGray text-neutral-800 text-sm md:text-base font-normal mb-2">
+                    <p className="font-sfregular text-lightGray text-sm md:text-base font-normal mb-2">
                         Cavaillon, Provence-Alpes-Côte d'Azur, France
                     </p>
                     <img
@@ -84,7 +84,7 @@ export default function CvScreen() {
                     <p className="font-sfbold text-darkGray  text-xl md:text-3xl font-normal">
                         Internship at Inetum as a Software Engineer (RPA Automations)
                     </p>
-                    <p className="font-sfregular text-lightGray text-neutral-800  text-sm md:text-base font-normal mb-2">
+                    <p className="font-sfregular text-lightGray  text-sm md:text-base font-normal mb-2">
                         Montpellier, France
                     </p>
                     <img
@@ -104,7 +104,7 @@ export default function CvScreen() {
                     <p  className="font-sfbold text-darkGray  text-xl md:text-3xl font-normal">
                         Civic Volonteer Program at "AVEC" association
                     </p>
-                    <p className="font-sfregular text-lightGray text-neutral-800  text-base md:text-lg font-normal mb-2">
+                    <p className="font-sfregular text-lightGray  text-base md:text-lg font-normal mb-2">
                         Montpellier, France
                     </p>
                     <p  className="font-sfregular text-darkGray  text-base md:text-lg font-normal mb-4">
@@ -130,7 +130,7 @@ export default function CvScreen() {
                     <p  className="font-sfbold text-darkGray  text-xl md:text-3xl font-normal">
                         Intensive Two-year Study Course in Computer Science
                     </p>
-                    <p className="font-sfregular text-lightGray text-neutral-800  text-base md:text-lg font-normal mb-6">
+                    <p className="font-sfregular text-lightGray text-base md:text-lg font-normal mb-6">
                         Cesi école d'ingénieurs, Mauguio, France
                     </p>
                     <img
@@ -151,7 +151,7 @@ export default function CvScreen() {
                     <p  className="font-sfbold text-darkGray  text-xl md:text-3xl font-normal">
                         Scientific High School Diploma - Mathematics specialization
                     </p>
-                    <p className="font-sfregular text-lightGray text-neutral-800  text-base md:text-lg font-normal mb-6">
+                    <p className="font-sfregular text-lightGray text-base md:text-lg font-normal mb-6">
                         Lycéé Jules Guesde, Montpellier, France
                     </p>
                     <div className="grid grid-cols-2 gap-4">
