@@ -26,7 +26,7 @@ export default function HomeScreen({ scrollToRoutes }) {
             <motion.div
                 initial="initial"
                 animate="animate"
-                className="flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                className={cn("flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2", className)}
                 style={{
                     backgroundImage: `url(${Aymane})`,
                     backgroundSize: "cover",
@@ -34,7 +34,7 @@ export default function HomeScreen({ scrollToRoutes }) {
                     backgroundRepeat: "no-repeat",
                 }}
             >
-                <motion.div className="h-full w-full rounded-lg"></motion.div>
+                <motion.div className={cn("h-full w-full rounded-lg", className)}></motion.div>
             </motion.div>
         );
     };
@@ -45,7 +45,7 @@ export default function HomeScreen({ scrollToRoutes }) {
             <motion.div
                 initial="initial"
                 animate="animate"
-                className="flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                className={cn("flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2", className)}
                 style={{
                     backgroundImage: `url(${Cesiveroo})`,
                     backgroundSize: "cover",
@@ -53,7 +53,7 @@ export default function HomeScreen({ scrollToRoutes }) {
                     backgroundRepeat: "no-repeat",
                 }}
             >
-                <motion.div className="h-full w-full rounded-lg"></motion.div>
+                <motion.div className={cn("h-full w-full rounded-lg", className)}></motion.div>
             </motion.div>
         );
     };
@@ -63,7 +63,7 @@ export default function HomeScreen({ scrollToRoutes }) {
             <motion.div
                 initial="initial"
                 animate="animate"
-                className="flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                className={cn("flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2", className)}
                 style={{
                     backgroundImage: `url(${SG})`,
                     backgroundSize: "contain",
@@ -72,7 +72,7 @@ export default function HomeScreen({ scrollToRoutes }) {
                     backgroundColor: "#EEEEEE",
                 }}
             >
-                <motion.div className="h-full w-full rounded-lg"></motion.div>
+                <motion.div className={cn("h-full w-full rounded-lg", className)}></motion.div>
             </motion.div>
         );
     };
@@ -82,26 +82,26 @@ export default function HomeScreen({ scrollToRoutes }) {
                 initial="initial"
                 animate="animate"
                 whileHover="hover"
-                className="flex flex-1 w-full h-full min-h-[8rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
+                className={cn("flex flex-1 w-full h-full min-h-[8rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2", className)}
             >
                 <motion.div
-                    className="h-full w-1/3 rounded-2xl bg-[#eeeeee] p-4 border border-neutral-400 flex flex-col items-center justify-center"
+                    className={cn("h-full w-1/3 rounded-2xl bg-[#eeeeee] p-4 border border-neutral-400 flex flex-col items-center justify-center", className)}
                 >
                     <img
                         src="https://june-changelog.s3.eu-central-1.amazonaws.com/spline_icon_twitter_removebg_preview_db2832210b.png"
                         alt="avatar"
                         height="100"
                         width="100"
-                        className=" h-10 w-10"
+                        className={cn("h-10 w-10", className)}
                     />
-                    <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
+                    <p className={cn("sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4", className)}>
                         Spline
                     </p>
-                    <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
+                    <p className={cn("border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4", className)}>
                         3D
                     </p>
                 </motion.div>
-                <motion.div className="h-full relative z-20 w-1/3 rounded-2xl bg-[#eeeeee] p-4   border  border-neutral-400 flex flex-col items-center justify-center">
+                <motion.div className={cn("h-full relative z-20 w-1/3 rounded-2xl bg-[#eeeeee] p-4   border  border-neutral-400 flex flex-col items-center justify-center", className)}>
                     <img
                         src="https://static.vecteezy.com/system/resources/previews/027/127/463/original/javascript-logo-javascript-icon-transparent-free-png.png"
                         alt="avatar"
@@ -109,15 +109,15 @@ export default function HomeScreen({ scrollToRoutes }) {
                         width="100"
                         className=" h-10 w-10"
                     />
-                    <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
+                    <p className={cn("sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4", className)}>
                         JavaScript
                     </p>
-                    <p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
+                    <p className={cn("border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4", className)}>
                         Interactions
                     </p>
                 </motion.div>
                 <motion.div
-                    className="h-full w-1/3 rounded-2xl bg-[#eeeeee] p-4  border border-neutral-400 flex flex-col items-center justify-center"
+                    className={cn("h-full w-1/3 rounded-2xl bg-[#eeeeee] p-4  border border-neutral-400 flex flex-col items-center justify-center", className)}
                 >
                     <img
                         src="https://www.svgrepo.com/show/327388/logo-react.svg"
@@ -126,10 +126,10 @@ export default function HomeScreen({ scrollToRoutes }) {
                         width="100"
                         className=" h-10 w-10"
                     />
-                    <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
+                    <p className={cn("sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4", className)}>
                         React JS
                     </p>
-                    <p className="border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
+                    <p className={cn("border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4", className)}>
                         Library
                     </p>
                 </motion.div>
@@ -141,27 +141,27 @@ export default function HomeScreen({ scrollToRoutes }) {
             <motion.div
                 initial="initial"
                 whileHover="animate"
-                className="flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
+                className={cn("flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2", className)}
             >
                 <motion.div
-                    className="flex flex-row rounded-2xl border border-neutral-400 p-2  items-start space-x-2 bg-[#eeeeee]"
+                    className={cn("flex flex-row rounded-2xl border border-neutral-400 p-2  items-start space-x-2 bg-[#eeeeee]", className)}
                 >
                     <img
                         src={Profil}
                         alt="avatar"
                         height="100"
                         width="100"
-                        className="rounded-full h-10 w-10"
+                        className={cn("rounded-full h-10 w-10", className)}
                     />
-                    <p className="text-xs text-neutral-500">
+                    <p className={cn("text-xs text-neutral-500", className)}>
                         I’ve worked on some pretty cool projects! It’s been an awesome journey.
                     </p>
                 </motion.div>
                 <motion.div
-                    className="flex flex-row rounded-full border border-neutral-400 bg-[#eeeeee] p-2 pl-6 items-center justify-end space-x-2 w-3/4 ml-auto "
+                    className={cn("flex flex-row rounded-full border border-neutral-400 bg-[#eeeeee] p-2 pl-6 items-center justify-end space-x-2 w-3/4 ml-auto ", className)}
                 >
-                    <p className="text-xs text-neutral-500">Like getting coffee? That’s impressive!</p>
-                    <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
+                    <p className={cn("text-xs text-neutral-500", className)}>Like getting coffee? That’s impressive!</p>
+                    <div className={cn("h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0", className)} />
                 </motion.div>
             </motion.div>
         );
@@ -226,15 +226,15 @@ export default function HomeScreen({ scrollToRoutes }) {
         },
     ];
     return (
-        <div className='w-full flex flex-col items-center p-6'>
+        <div className={cn('w-full flex flex-col items-center p-6', className)}>
 
-            <div className="flex justify-center items-center text-center  space-x-4 mb-4" data-aos="fade-up">
+            <div className={cn("flex justify-center items-center text-center  space-x-4 mb-4", className)} data-aos="fade-up">
                 <TextGenerateEffect duration={1} words={words} className="w-5/6 font-sfultralight" />
             </div>
-            <div className=" w-11/12 flex flex-row justify-between "></div>
+            <div className={cn(" w-11/12 flex flex-row justify-between ", className)}></div>
 
 
-            <div className="border-t border-gray-300 my-4" data-aos="fade-up">
+            <div className={cn("border-t border-gray-300 my-4", className)} data-aos="fade-up">
                 <BentoGrid className="mx-auto lg:auto-rows-[22rem] mt-8 " >
                     {items.map((item, i) => (
                         <BentoGridItem
@@ -253,14 +253,14 @@ export default function HomeScreen({ scrollToRoutes }) {
 
 
             </div>
-            <div className="border-t border-gray-300 mt-6 w-full flex flex-row  justify-between md:justify-end font-sfultralight ">
-                <div className='flex flex-row gap-4 md:hidden'>
+            <div className={cn("border-t border-gray-300 mt-6 w-full flex flex-row justify-between md:justify-end font-sfultralight ", className)}>
+                <div className={cn('flex flex-row gap-4 md:hidden', className)}>
 
-                    <a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" className="text-base font-bold mt-6" style={{ color: '#a3a8af' }}>Linkedin ↗</a>
-                    <a href="https://github.com/AymaneHilmi" target="_blank" className="text-base font-bold mt-6" style={{ color: '#a3a8af' }}>GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" className={cn("text-base font-bold mt-6", className)} style={{ color: '#a3a8af' }}>Linkedin ↗</a>
+                    <a href="https://github.com/AymaneHilmi" target="_blank" className={cn("text-base font-bold mt-6", className)} style={{ color: '#a3a8af' }}>GitHub ↗</a>
                 </div>
 
-                <a className="text-base font-bold mt-6" style={{ color: '#a3a8af' }}>by Aymane HILMI</a>
+                <a className={cn("text-base font-bold mt-6", className)} style={{ color: '#a3a8af' }}>by Aymane HILMI</a>
 
             </div>
 

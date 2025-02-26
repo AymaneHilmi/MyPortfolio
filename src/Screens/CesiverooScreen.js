@@ -103,28 +103,26 @@ export default function CesiverooScreen() {
     ];
 
     return (
-        <div className='w-full flex flex-col items-center text-justify' data-aos="fade-up">
-            <div className="border-b border-gray-300 w-full h-screen flex flex-col justify-center items-center mb-4 bg-[#e6e6e6]">
+        <div className={cn('w-full flex flex-col items-center text-justify', className)} data-aos="fade-up">
+            <div className={cn("border-b border-gray-300 w-full h-screen flex flex-col justify-center items-center mb-4 bg-[#e6e6e6]", className)}>
                 <Spline scene="https://prod.spline.design/DGj8qhSyZN4FmvR1/scene.splinecode" onLoad={handleLoad} />
             </div>
-            <div className="flex flex-col w-11/12 mt-4 md:text-lg text-xs">
+            <div className={cn("flex flex-col w-11/12 mt-4 md:text-lg text-xs", className)}>
 
                 <div className='flex flex-col' data-aos="fade-up">
 
-                    <a className='mt-3 font-sfregular text-lightGray' > Process Highlights</a>
-                    <a className="font-sfbold text-2xl md:text-4xl mt-1 text-darkGray">
-                        Cesi<span style={{ color: '#20CFBD' }}>veroo</span> Project
-                    </a>
-
-                    <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between" />
+                    <a className={cn('mt-3 font-sfregular text-lightGray', className)} > Process Highlights</a>
+                    <a className={cn("font-sfbold text-2xl md:text-4xl mt-1 text-darkGray", className)}>
+                        Cesi<span style={{ color: '#20CFBD' }}>veroo</span> Project</a>
+                    <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between", className)} />
 
 
                     <div>
-                        <a className="font-sfbold md:text-lg text-base text-darkGray">
+                        <a className={cn("font-sfbold md:text-lg text-base text-darkGray", className)}>
                             Challenge
                             <br />
                             <br />
-                            <span className="font-sfregular text-darkGray" style={{ textAlign: 'right' }}>
+                            <span className={cn("font-sfregular text-darkGray", className)} style={{ textAlign: 'right' }}>
                                 This project was part of an academic assignment during my time in engineering school.
                                 The challenge was to create an Uber-like application with different types of users:
                                 customers, restaurants, delivery personnel, third-party developers, and service teams,
@@ -137,39 +135,39 @@ export default function CesiverooScreen() {
                         </a>
                     </div>
 
-                    <div className="border-t border-gray-300 my-4 w-full flex flex-row" />
-                    <div className='flex flex-row md:gap-28 gap-12 font-sfregular text-darkGray'>
+                    <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row", className)} />
+                    <div className={cn('flex flex-row md:gap-28 gap-12 font-sfregular text-darkGray', className)}>
 
                         <div className='flex flex-col'>
                             <a>Timeline</a>
                             <a>March 2024 -<br /> April 2024</a>
                         </div>
 
-                        <div className='flex flex-col'>
+                        <div className={cn('flex flex-col', className)}>
                             <a className='mb-2'>Team</a>
-                            <div className="flex flex-row items-center justify-center mb-10 w-full">
+                            <div className={cn("flex flex-row items-center justify-center mb-10 w-full", className)}>
                                 <AnimatedTooltip items={people} />
                             </div>
                         </div>
                         <div className='flex flex-col'>
                             <a className='mb-2'>Disciplines</a>
-                            <div className="flex flex-row items-center justify-center mb-10 w-full">
+                            <div className={cn("flex flex-row items-center justify-center mb-10 w-full", className)}>
                                 <AnimatedTooltip items={Disciplines} />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className='flex flex-col' data-aos="fade-up">
-                    <a className='mt-6 font-sfregular text-lightGray' >  Background</a>
-                    <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
+                    <a className={cn('mt-6 font-sfregular text-lightGray', className)} >  Background</a>
+                    <a className={cn("font-sfbold text-2xl md:text-xl mt-1 text-darkGray", className)}>
                         Executive Summary
                     </a>
 
-                    <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-between " />
+                    <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between ", className)} />
 
 
                     <div className=" items-start">
-                        <a className="font-sfbold md:text-lg text-base font-sfregular text-darkGray">
+                        <a className={cn("font-sfbold md:text-lg text-base font-sfregular text-darkGray", className)}>
                             <span className='' style={{ textAlign: 'justify', }} >
                                 <>
                                     On our class we were 3 groups, each of the three groups had to design a separate application,
@@ -185,14 +183,14 @@ export default function CesiverooScreen() {
                 </div>
                 <div className='flex flex-col' data-aos="fade-up">
 
-                    <a className="font-sfbold text-2xl md:text-xl mt-14 text-darkGray">
+                    <a className={cn("font-sfbold text-2xl md:text-xl mt-14 text-darkGray", className)}>
                         The Process
                     </a>
 
-                    <div className="border-t border-gray-300 my-4 w-full flex flex-row justify-around" />
+                    <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-around", className)} />
 
 
-                    <div className="flex flex-wrap justify-around gap-6 w-full mt-6">
+                    <div className={cn("flex flex-wrap justify-around gap-6 w-full mt-6", className)}>
                         {[
                             { src: Step1, title: "Research", description: <><strong>Needs</strong> Assessment <br />Study of <strong>Solutions</strong></> },
                             { src: Step2, title: "Design", description: <>Mockups <br /><strong>UX/UI</strong> design</> },
@@ -200,16 +198,16 @@ export default function CesiverooScreen() {
                             { src: Step4, title: "Tests", description: <>Integration <br /><strong>Testing</strong></> },
                             { src: Step5, title: "Documentation", description: <><strong>Git</strong> README.md <br /><strong>Technical</strong> Doc</> },
                         ].map((step, index) => (
-                            <div key={index} className="flex flex-col items-center text-center flex-none w-[calc(33.333%)] md:w-[calc(15%)]">
+                            <div key={index} className={cn("flex flex-col items-center text-center flex-none w-[calc(33.333%)] md:w-[calc(15%)]", className)}>
                                 <img
                                     src={step.src}
                                     alt={step.title}
-                                    className="w-24 h-24 transition-transform transform hover:scale-105 duration-500 ease-in-out"
+                                    className={cn("w-24 h-24 transition-transform transform hover:scale-105 duration-500 ease-in-out", className)}
                                 />
-                                <p className="font-bold mt-2 text-xs md:text-sm font-sfregular text-darkGray" >
+                                <p className={cn("font-bold mt-2 text-xs md:text-sm font-sfregular text-darkGray", className)} >
                                     {step.title}
                                 </p>
-                                <p className="mt-2 text-xs md:text-sm font-sfregular text-darkGray" >
+                                <p className={cn("mt-2 text-xs md:text-sm font-sfregular text-darkGray", className)} >
                                     {step.description}
                                 </p>
                             </div>

@@ -13,10 +13,11 @@ import SaintGobainScreen from './Screens/SaintGobainScreen';
 import CvScreen from './Screens/CvScreen';
 import Confetti from 'react-confetti';
 import CesiverooScreen from './Screens/CesiverooScreen';
+import { cn } from "../../lib/utils";
 
 
 function App() {
-  console.log(`Good start, but I think you can do better. You found the easiest one... Let me know in my LinkedIn post if you find it here 🤣 -> https://www.linkedin.com/posts/aymanehilmi_if-you-find-the-secret-functionalities-easter-activity-7244277440888348673-z1Pa?utm_source=share&utm_medium=member_desktop`); // Add this line
+  console.log(`Good start, You found the easiest easter eag but I think you can do better. Let me know in my LinkedIn how much you found by clicking here -> https://www.linkedin.com/in/aymanehilmi/ 🤣`)
 
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -119,18 +120,18 @@ function App() {
         <LandingPage />
       </div>
 
-      <div ref={navbarRef} className="fixed -top-1 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6">
+      <div ref={navbarRef} className={cn("fixed -top-1 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6", className)}>
         <div
-          className={`absolute inset-0 transition-all duration-500 ease-in-out ${!isOpen ? 'bg-background/75 blur-sm backdrop-blur-sm opacity-100' : 'opacity-0 pointer-events-none'}`}
+          className={cn(`absolute inset-0 transition-all duration-500 ease-in-out ${!isOpen ? 'bg-background/75 blur-sm backdrop-blur-sm opacity-100' : 'opacity-0 pointer-events-none'}`)}
           style={{ zIndex: 1 }}
         ></div>
         <a href="/" className="w-20 z-50">
           <img src={LogoMobile} className="w-max" alt="Logo" />
         </a>
 
-        <div className={`font-sfbold text-darkGray fixed top-0 left-0 w-full h-2/5 bg-baground/75 bg-opacity-10 
+        <div className={cn(`font-sfbold text-darkGray fixed top-0 left-0 w-full h-2/5 bg-baground/75 bg-opacity-10 
             backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform 
-            duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+            duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`)}>
 
           <Link to={""} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             Home
