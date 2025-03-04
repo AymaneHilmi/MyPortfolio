@@ -31,7 +31,7 @@ export default function Sidebar({ scrollToRoutes }) {
             </div>
             <div className="font-sfregular row-span-1 flex flex-col border-b border-gray-300 p-8">
                 <h1 className='text-sm pb-2 text-lightGray'>Contact</h1>
-                <div><a href="mailto:aymanehilmi1@gmail.com" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a></div>
+                <div><a href="mailto:contact@aymanehilmi.com" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a></div>
                 <div><a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Linkedin</a></div>
                 <div><a href="https://github.com/AymaneHilmi" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Github</a></div>
                 <div><Link to="/Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Download CV </Link></div>

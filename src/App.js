@@ -36,7 +36,7 @@ function App() {
       mirror: false,
     });
 
-    AOS.refresh(); // Rafraîchir AOS pour gérer les problèmes de rechargement
+    AOS.refresh(); // Rafraîchissement d'AOS pour gérer les problèmes de rechargement du composant spline
   }, []);
 
   useEffect(() => {
@@ -145,7 +145,7 @@ function App() {
           <Link to={"/SaintGobain"} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             Saint-Gobain
           </Link>
-          <a href="mailto:aymanehilmi1@gmail.com" className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
+          <a href="mailto:contact@aymanehilmi.com" className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             Email
           </a>
         </div>
