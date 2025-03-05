@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import './screens.css';
+import { cn } from "../lib/utils";
 
 export default function ProjectScreen() {
     const [isVisible, setIsVisible] = useState(false);
@@ -28,7 +29,7 @@ export default function ProjectScreen() {
     }, []);
 
     return (
-        <div id="project-screen" className='h-screen w-screen flex flex-col justify-center items-center'>
+        <div id="project-screen" className={cn('h-screen w-screen flex flex-col justify-center items-center')}>
             {isVisible && (
                 <Spline
                     scene="https://prod.spline.design/EweNnmWlIkA9t21J/scene.splinecode"

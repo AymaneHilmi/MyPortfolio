@@ -11,8 +11,14 @@ module.exports = {
     extend: {
       colors: {
         'background': '#EEEEEE',
+        darkGray: '#3b3d41',
+        lightGray : '#a9a5ac',
       },
-
+      fontFamily: {
+        sfbold: ['SFBOLD', 'sans-serif'],
+        sfregular: ['SFREGULAR', 'sans-serif'],
+        sfultralight: ['SFULTRALIGHT', 'sans-serif'],
+      },
     },
     animation: {
       scroll:
