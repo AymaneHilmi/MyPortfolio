@@ -4,7 +4,7 @@ import { Timeline } from "../components/ui/timeline";
 import lab from "../assets/AymaneLab.jpeg"
 import philipp from "../assets/AymanePhilipp.jpeg"
 
-export default function CvScreen() {
+export default function JourneyScreen() {
     const data = [
         {
             title: "2024",

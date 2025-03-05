@@ -10,9 +10,12 @@ import LandingPage from './components/LandingPage';
 import AboutScreen from './Screens/AboutScreen';
 import ProjectScreen from './Screens/ProjectScreen';
 import SaintGobainScreen from './Screens/SaintGobainScreen';
-import CvScreen from './Screens/CvScreen';
+import CvScreen from './Screens/JourneyScreen';
 import Confetti from 'react-confetti';
 import CesiverooScreen from './Screens/CesiverooScreen';
+import JourneyScreen from './Screens/JourneyScreen';
+import ResumeScreen from './Screens/ResumeScreen';
+import SplashCursor from './components/ui/SplashCursor';
 
 
 function App() {
@@ -142,7 +145,6 @@ function App() {
             Resume
           </Link>
           <Link to={"/SaintGobain"} className="text-xl py-2" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} onClick={() => { closeNavbar(); scrollToRoutes(); }}>
-            Saint-Gobain
           </Link>
           <a href="mailto:aymanehilmi1@gmail.com" className="text-xl py-2" style={{ fontFamily: 'SFBOLD', color: '#3b3d41' }} onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             Email
@@ -162,9 +164,11 @@ function App() {
         <Routes>
           <Route path="/" className="h-screen" element={<HomeScreen scrollToRoutes={scrollToRoutes} />} />
           <Route path="/About" className="h-screen" element={<AboutScreen />} />
+          <Route path="/Resume" className="h-screen" element={<ResumeScreen />} />
           <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} />
           <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen />} />
-          <Route path="/Resume" className="h-screen" element={<CvScreen />} />
+          <Route path="/Journey" className="h-screen" element={<JourneyScreen />} />
+          {/* <Route path="/Blog" className="h-screen" element={<BlogScreen />} /> */}
           <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} />
         </Routes>
       </div>
