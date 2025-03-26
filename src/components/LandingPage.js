@@ -13,11 +13,6 @@ import { cn } from "../lib/utils";
 import AOS from 'aos'
 
 
-{/* <div className={cn("flex flex-row justify-center items-center fixed top-0 h-screen w-screen bg-transparent backdrop-blur-xl overflow-hidden z-50")} >
-                <img src={zorro} className="w-44" />
-        </div> */}
-
-
 
 
 export default function LandingPage() {

@@ -31,32 +31,7 @@ const fadeInUp = {
     }),
 };
 
-export default function HomeScreen({ scrollToRoutes }) {
-    const [visitsTotal, setVisitsTotal] = useState(null);
-    const [chartData, setChartData] = useState([]);
-
-    useEffect(() => {
-        // ✅ Pour afficher le total dans le compteur
-        fetch("https://visit-counter.aymanehilmi1.workers.dev/api/visits")
-            .then(res => res.json())
-            .then(data => setVisitsTotal(data.total))
-            .catch(() => setVisitsTotal(null));
-    }, []);
-
-    useEffect(() => {
-        // ✅ Pour les données du graphe
-        fetch("https://visit-counter.aymanehilmi1.workers.dev/api/stats")
-            .then(res => res.json())
-            .then(data => {
-                const formatted = Object.entries(data).map(([date, visits]) => ({
-                    date,
-                    visits,
-                }));
-                setChartData(formatted);
-            })
-            .catch(() => setChartData([]));
-    }, []);
-
+export default function HomeScreen({ scrollToRoutes, visitsTotal, chartData }) {
     const navigate = useNavigate();
 
     const handleClick = (link) => {
@@ -101,13 +76,12 @@ export default function HomeScreen({ scrollToRoutes }) {
     ];
     return (
         <div className="w-full px-6 py-12">
-            <div className='h-1/3'>
+            <div className='h-2/3'>
 
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-
+            <div className="flex flex-row gap-4 max-h-64">
                 <motion.div
-                    className="relative bg-white rounded-3xl pl-2 shadow-md w-full max-w-64 max-h-64 border border-gray-200 py-4 px-2 overflow-hidden"
+                    className="relative bg-white rounded-3xl pl-2 shadow-md min-w-64  border border-gray-200 py-4 px-2 overflow-hidden"
                     variants={fadeInUp}
                     initial="hidden"
                     whileInView="visible"
@@ -133,28 +107,7 @@ export default function HomeScreen({ scrollToRoutes }) {
                     <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white to-transparent pointer-events-none z-40 " />
                 </motion.div>
                 <motion.div
-                    className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300"
-                    variants={fadeInUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={2}
-                >
-                    <p className="text-sm text-gray-500">Book</p>
-                </motion.div>
-
-                <motion.div
-                    className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300"
-                    variants={fadeInUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={4}
-                >
-                    <p className="text-sm text-gray-500">How I work</p>
-                </motion.div>
-                <motion.div
-                    className="relative bg-white rounded-3xl shadow-md w-full max-w-64 min-h-64 border border-gray-200 overflow-hidden"
+                    className="relative bg-white rounded-3xl shadow-md w-64 h-64 border border-gray-200 overflow-hidden"
                     variants={fadeInUp}
                     initial="hidden"
                     whileInView="visible"
@@ -168,77 +121,61 @@ export default function HomeScreen({ scrollToRoutes }) {
                     <div className='absolute bottom-6 w-full text-center z-50 text-sm font-sfultralight font-bold text-lightGray tracking-widest' > France</div>
                     <div className='absolute bottom-2 w-full text-center z-50 text-xs font-sfultralight font-bold text-lightGray' > 43.5297° N, 5.4474° E</div>
                 </motion.div>
-                <motion.div
-                    className="rounded-2xl bg-white col-span-2 border border-gray-100 p-6 shadow-lg"
-                    variants={fadeInUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={5}
-                >
-                    <h2 className="text-base font-medium text-gray-800 mb-4">By the Numbers</h2>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                        {stats.map((stat, index) => (
-                            <motion.div
-                                key={index}
-                                className="flex flex-col items-center text-sm text-gray-700"
-                                variants={fadeInUp}
-                                custom={index}
-                            >
-                                <div className="mb-1 text-gray-500">{stat.icon}</div>
-                                <div className="font-semibold text-lg">{stat.value}</div>
-                                <div className="text-xs text-gray-500">{stat.label}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-                <motion.div
-                    className="relative overflow-hidden rounded-2xl border-gray-200 shadow-md p-6 w-full max-w-sm hover:shadow-lg transition-all duration-300 "
-                    variants={fadeInUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={3}
-                >
-
-
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <p className="text-sm text-gray-500">Visitors </p>
-                            <h3 className="text-4xl font-semibold text-gray-900 mt-1">
-                                {visitsTotal}
-                            </h3>
-                            <p className="text-xs text-gray-400 mt-1">since the deployment</p>
+                <div className='h-max-64'>
+                    <motion.div
+                        className=" overflow-hidden rounded-2xl border border-gray-200 shadow-md p-6 hover:shadow-lg transition-all duration-300"
+                        variants={fadeInUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        custom={2}
+                    >
+                        <div className="flex flex-col gap-6 sm:flex-row sm:justify-between">
+                            <div>
+                                <p className="text-sm text-gray-500">Visitors</p>
+                                <h3 className="text-4xl font-semibold text-gray-900 mt-1">
+                                    {visitsTotal}
+                                </h3>
+                                <p className="text-xs text-gray-400 mt-1">since the deployment</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="absolute bottom-0 left-0 h-32 w-full mt-4">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <AreaChart data={chartData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-                                <defs>
-                                    <linearGradient id="visitsGradient" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#22c55e" stopOpacity={0.4} />
-                                        <stop offset="95%" stopColor="#0e0e10" stopOpacity={0} />
-                                    </linearGradient>
-                                </defs>
-                                <XAxis className='hidden' dataKey="date" tick={{ fill: "#a1a1aa", fontSize: 12 }} />
-                                <Tooltip
-                                    contentStyle={{ border: "none", borderRadius: "0.5rem" }}
-                                    labelStyle={{ color: "#000000" }}
-                                    itemStyle={{ color: "#22c55e" }}
-                                />
-                                <Area
-                                    type="monotone"
-                                    dataKey="visits"
-                                    stroke="#22c55e"
-                                    fillOpacity={1}
-                                    fill="url(#visitsGradient)"
-                                    strokeWidth={2}
-                                />
-                            </AreaChart>
-                        </ResponsiveContainer>
-                    </div>
-                </motion.div>
-
+                    </motion.div>
+                    <motion.div
+                        className="relative overflow-hidden rounded-2xl border-gray-200 shadow-md p-6 w-full hover:shadow-lg transition-all duration-300 col-span-1"
+                        variants={fadeInUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        custom={6}
+                    >
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <p className="text-sm text-gray-500">Easter Eggs</p>
+                                <h3 className="text-4xl font-semibold text-gray-900 mt-1">
+                                    🥚 0/3
+                                </h3>
+                                <p className="text-xs text-gray-400 mt-1">
+                                    You found none yet...
+                                </p>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+                {/* <motion.div
+                    className="relative bg-white rounded-3xl shadow-md w-full border border-gray-200 overflow-hidden"
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={1}
+                >
+                    <h2 className="absolute text-sm font-semibold ml-2 mt-2 px-2 py-1 rounded-full bg-white text-center z-50 shadow-lg">Map</h2>
+                    <img src={Cesiveroo} className='w-full h-full' />
+                    <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-white to-white  pointer-events-none z-40 " />
+                    <div className='absolute bottom-10 w-full text-center z-50 text-3xl font-sfregular text-darkGray tracking-wide' > Aix-en-Provence</div>
+                    <div className='absolute bottom-6 w-full text-center z-50 text-sm font-sfultralight font-bold text-lightGray tracking-widest' > France</div>
+                    <div className='absolute bottom-2 w-full text-center z-50 text-xs font-sfultralight font-bold text-lightGray' > 43.5297° N, 5.4474° E</div>
+                </motion.div> */}
 
             </div>
 
