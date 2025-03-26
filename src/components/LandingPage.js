@@ -9,7 +9,6 @@ import Amsterdam from '../assets/Amsterdam.JPG'
 import Paris from '../assets/Paris.webp'
 import zorro from '../assets/zorro.jpg'
 import Rome from '../assets/Rome.jpg'
-import Mecque from '../assets/mosquée.webp'
 import { cn } from "../lib/utils";
 import AOS from 'aos'
 
