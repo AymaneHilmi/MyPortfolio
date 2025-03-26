@@ -8,7 +8,7 @@ import oslo from '../assets/Oslo.jpeg'
 import Amsterdam from '../assets/Amsterdam.JPG'
 import Paris from '../assets/Paris.webp'
 import zorro from '../assets/zorro.jpg'
-import Colisée from '../assets/Colisée.jpg'
+import Rome from '../assets/Rome.jpg'
 import Mecque from '../assets/mosquée.webp'
 import { cn } from "../lib/utils";
 import AOS from 'aos'
@@ -96,7 +96,7 @@ export default function LandingPage() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-28 md:w-44 lg:w-64 top-1/4 left-5 md:-left-20 lg:-left-1/4 transform lg:-translate-x-1/2 -translate-y-1/2 -rotate-12  md:block">
-                                <img alt="Colisée" src={Colisée} className="w-full rounded-xl filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105 " />
+                                <img alt="Colisée" src={Rome} className="w-full rounded-xl filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105 " />
                             </motion.div>
                             <motion.div
                                 initial={{ opacity: 0 }}
