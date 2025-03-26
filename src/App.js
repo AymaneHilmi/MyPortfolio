@@ -3,10 +3,8 @@ import AOS from 'aos'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import Sidebar from './components/Sidebar';
-import Loader from './components/Loader';
 import LogoMobile from './assets/LogoMobile.png';
 import React, { useEffect, useState, useRef } from 'react';
-import LandingPage from './components/LandingPage';
 import AboutScreen from './Screens/AboutScreen';
 import ProjectScreen from './Screens/ProjectScreen';
 import SaintGobainScreen from './Screens/SaintGobainScreen';
@@ -15,20 +13,22 @@ import Confetti from 'react-confetti';
 import CesiverooScreen from './Screens/CesiverooScreen';
 import { cn } from "./lib/utils";
 import JourneyScreen from './Screens/JourneyScreen';
-import ResumeScreen from './Screens/ResumeScreen';
 import SplashCursor from './components/ui/SplashCursor';
+import LandingPage from './components/LandingPage';
+
+
 
 
 function App() {
   console.log(`Good start, You found the easiest easter eag but I think you can do better. Let me know in my LinkedIn how much you found by clicking here -> https://www.linkedin.com/in/aymanehilmi/ 🤣`)
 
   const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [confettiActive, setConfettiActive] = useState(false);
   const [typedKeys, setTypedKeys] = useState('');
   const navbarRef = useRef(null);
   const checkboxRef = useRef(null);
   const routesRef = useRef(null);
+
 
   useEffect(() => {
     AOS.init({
@@ -38,35 +38,25 @@ function App() {
       once: true,
       mirror: false,
     });
-
-    AOS.refresh(); // Rafraîchissement d'AOS pour gérer les problèmes de rechargement du composant spline
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
   }, []);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
 
+
+  // Scrool into view
   const scrollToRoutes = () => {
     if (routesRef.current) {
       routesRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const closeNavbar = () => {
-    setIsOpen(false);
-    if (checkboxRef.current) {
-      checkboxRef.current.checked = false;
-    }
-  };
+  // --------------------------------
+  //             Navbar               
+  // --------------------------------
 
+  // if the user clicks outside call the closeNavbar function 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (navbarRef.current && !navbarRef.current.contains(event.target)) {
@@ -74,16 +64,33 @@ function App() {
       }
     };
 
+    // Add event listener when the navbar is open
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
     }
 
+    // Remove event listener when the navbar is closed
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
+
+  // CloseNavbar function
+  const closeNavbar = () => {
+    setIsOpen(false);
+    if (checkboxRef.current) {
+      checkboxRef.current.checked = false;
+    }
+  };
+
+
+  // --------------------------------
+  //    Easter Egg #1 : Confettis              
+  // --------------------------------
+
+  // if the user types the correct word, the confetti will be activated
 
   useEffect(() => {
     let typedText = "";
@@ -97,8 +104,8 @@ function App() {
         setTimeout(() => {
           setConfettiActive(false);
         }, 5000);
+        typedText = ""; // Réinitialisation après activation des confettis
       }
-
 
       if (!correctText.startsWith(typedText)) {
         typedText = event.key.toLowerCase();
@@ -112,16 +119,13 @@ function App() {
   }, []);
   return (
     <Router className="flex bg-background">
-      {loading && <Loader />}
-
-      <div className="min-h-screen">
-        {confettiActive && (
-          <div className='fixed z-50'>
-            <Confetti />
-          </div>
-        )}
+      <div className='h-screen w-screen'>
         <LandingPage />
       </div>
+
+      {/* Confetti Easter Egg */}
+      <Confetti className='fixed z-50' numberOfPieces={confettiActive ? 200 : 0} />
+
 
       <div ref={navbarRef} className={cn("fixed -top-1 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6")}>
         <div
@@ -135,7 +139,6 @@ function App() {
         <div className={cn(`font-sfbold text-darkGray fixed top-0 left-0 w-full h-2/5 bg-baground/75 bg-opacity-10 
             backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform 
             duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`)}>
-
           <Link to={""} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
             Home
           </Link>
@@ -161,12 +164,11 @@ function App() {
           </svg>
         </label>
       </div>
-      <div ref={routesRef} className="flex-grow flex border-t border-gray-300">
+      <div ref={routesRef} className="flex-grow flex border-t border-gray-300 w-full">
         <Sidebar scrollToRoutes={scrollToRoutes} />
         <Routes>
-          <Route path="/" className="h-screen" element={<HomeScreen scrollToRoutes={scrollToRoutes} />} />
+          <Route path="/" className="h-screen" element={<HomeScreen />} />
           <Route path="/About" className="h-screen" element={<AboutScreen />} />
-          <Route path="/Resume" className="h-screen" element={<ResumeScreen />} />
           <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} />
           <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen />} />
           <Route path="/Journey" className="h-screen" element={<JourneyScreen />} />

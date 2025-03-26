@@ -1,0 +1,8 @@
+name = "visit-counter"
+main = "src/index.js"
+compatibility_date = "2024-03-26"
+
+[[kv_namespaces]]
+binding = "VISITOR_COUNTER"
+id = "ad8db7637150412284ff1687e0b7fdfe"        # remplace avec ton vrai ID Cloudflare
+preview_id = "ad8db7637150412284ff1687e0b7fdfe"

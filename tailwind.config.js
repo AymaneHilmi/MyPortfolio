@@ -10,14 +10,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'background': '#EEEEEE',
+        'background': '#ffffff',
         darkGray: '#3b3d41',
-        lightGray : '#a9a5ac',
+        lightGray: '#a9a5ac',
       },
       fontFamily: {
         sfbold: ['SFBOLD', 'sans-serif'],
         sfregular: ['SFREGULAR', 'sans-serif'],
         sfultralight: ['SFULTRALIGHT', 'sans-serif'],
+        InkBrushArabic: ['InkBrushArabic', 'sans-serif'],
       },
     },
     animation: {

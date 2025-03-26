@@ -76,8 +76,7 @@ export const FlipWords = ({
                                     delay: wordIndex * 0.3,
                                     duration: 0.3,
                                 }}
-                                className="inline-block whitespace-nowrap"
-                                style={{ fontFamily: 'UTHMANIC' }}>
+                                className="inline-block whitespace-nowrap font-InkBrushArabic">
 
                                 {word}
                                 <span className="inline-block">&nbsp;</span>
@@ -104,8 +103,7 @@ export const FlipWords = ({
                                             delay: wordIndex * 0.3 + letterIndex * 0.05,
                                             duration: 0.2,
                                         }}
-                                        className="inline-block"
-                                        style={{ fontFamily: 'SFBOLD' }}>
+                                        className="inline-block font-sfbold">
                                         {letter}
                                     </motion.span>
                                 ))}

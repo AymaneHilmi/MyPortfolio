@@ -122,3 +122,10 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'InkBrushArabic';
+  src: url('./fonts/InkBrushArabic.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}

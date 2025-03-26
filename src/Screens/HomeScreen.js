@@ -1,6 +1,7 @@
-import { React } from 'react'
+import { React, } from 'react'
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Aymane from '../assets/Aymane.jpg';
+import Aix from '../assets/Aix.jpg';
 import Cesiveroo from '../assets/Cesiveroo.png';
 import SG from '../assets/Saint-Gobain.png';
 import Profil from '../assets/PDP.jpeg';
@@ -8,10 +9,54 @@ import { cn } from "../lib/utils";
 import { TextGenerateEffect } from "../components/ui/text-generate-effect";
 import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
 import { motion } from "framer-motion";
+import { Eye } from 'lucide-react';
+import { FaGlobe, FaLanguage, FaLaptopCode, FaMugHot, FaCodeBranch, FaMapMarkedAlt } from "react-icons/fa";
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+
+const stats = [
+    { icon: <FaLanguage size={28} />, label: "Languages Spoken", value: "5" },
+    { icon: <FaMapMarkedAlt size={28} />, label: "Countries Visited / Worked In", value: "7+" },
+    { icon: <FaLaptopCode size={28} />, label: "Projects Completed", value: "12+" },
+    { icon: <FaMugHot size={28} />, label: "Hours Coded", value: "1000+" },
+    { icon: <FaCodeBranch size={28} />, label: "VS Code Loyalty", value: "98%" },
+    { icon: <FaGlobe size={28} />, label: "Continents Worked From", value: "3" },
+];
+
+const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+        opacity: 1,
+        y: 0,
+        transition: { delay: i * 0.1, duration: 0.6 },
+    }),
+};
 
 export default function HomeScreen({ scrollToRoutes }) {
-    const words = `Welcome to my portfolio, I'm Aymane HILMI [أيمن] .
-    Passionate about computer Science and online business I aim to leave a personal mark in this world... [إن شاء الله] `
+    const [visitsTotal, setVisitsTotal] = useState(null);
+    const [chartData, setChartData] = useState([]);
+
+    useEffect(() => {
+        // ✅ Pour afficher le total dans le compteur
+        fetch("https://visit-counter.aymanehilmi1.workers.dev/api/visits")
+            .then(res => res.json())
+            .then(data => setVisitsTotal(data.total))
+            .catch(() => setVisitsTotal(null));
+    }, []);
+
+    useEffect(() => {
+        // ✅ Pour les données du graphe
+        fetch("https://visit-counter.aymanehilmi1.workers.dev/api/stats")
+            .then(res => res.json())
+            .then(data => {
+                const formatted = Object.entries(data).map(([date, visits]) => ({
+                    date,
+                    visits,
+                }));
+                setChartData(formatted);
+            })
+            .catch(() => setChartData([]));
+    }, []);
+
     const navigate = useNavigate();
 
     const handleClick = (link) => {
@@ -20,254 +65,183 @@ export default function HomeScreen({ scrollToRoutes }) {
             scrollToRoutes();
         }
     };
-
-    const SkeletonOne = () => {
-        return (
-            <motion.div
-                initial="initial"
-                animate="animate"
-                className={cn("flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2")}
-                style={{
-                    backgroundImage: `url(${Aymane})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                }}
-            >
-                <motion.div className={cn("h-full w-full rounded-lg")}></motion.div>
-            </motion.div>
-        );
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 20 },
+        visible: (i) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: i * 0.1,
+                duration: 0.6,
+                ease: "easeOut",
+            },
+        }),
     };
-
-    const SkeletonThree = () => {
-
-        return (
-            <motion.div
-                initial="initial"
-                animate="animate"
-                className={cn("flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2")}
-                style={{
-                    backgroundImage: `url(${Cesiveroo})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                }}
-            >
-                <motion.div className={cn("h-full w-full rounded-lg")}></motion.div>
-            </motion.div>
-        );
-    };
-
-    const SkeletonTwo = () => {
-        return (
-            <motion.div
-                initial="initial"
-                animate="animate"
-                className={cn("flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2")}
-                style={{
-                    backgroundImage: `url(${SG})`,
-                    backgroundSize: "contain",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    backgroundColor: "#EEEEEE",
-                }}
-            >
-                <motion.div className={cn("h-full w-full rounded-lg")}></motion.div>
-            </motion.div>
-        );
-    };
-    const SkeletonFour = () => {
-        return (
-            <motion.div
-                initial="initial"
-                animate="animate"
-                whileHover="hover"
-                className={cn("flex flex-1 w-full h-full min-h-[8rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2")}
-            >
-                <motion.div
-                    className={cn("h-full w-1/3 rounded-2xl bg-[#eeeeee] p-4 border border-neutral-400 flex flex-col items-center justify-center")}
-                >
-                    <img
-                        src="https://june-changelog.s3.eu-central-1.amazonaws.com/spline_icon_twitter_removebg_preview_db2832210b.png"
-                        alt="avatar"
-                        height="100"
-                        width="100"
-                        className={cn("h-10 w-10")}
-                    />
-                    <p className={cn("sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4")}>
-                        Spline
-                    </p>
-                    <p className={cn("border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4")}>
-                        3D
-                    </p>
-                </motion.div>
-                <motion.div className={cn("h-full relative z-20 w-1/3 rounded-2xl bg-[#eeeeee] p-4   border  border-neutral-400 flex flex-col items-center justify-center")}>
-                    <img
-                        src="https://static.vecteezy.com/system/resources/previews/027/127/463/original/javascript-logo-javascript-icon-transparent-free-png.png"
-                        alt="avatar"
-                        height="100"
-                        width="100"
-                        className=" h-10 w-10"
-                    />
-                    <p className={cn("sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4")}>
-                        JavaScript
-                    </p>
-                    <p className={cn("border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4")}>
-                        Interactions
-                    </p>
-                </motion.div>
-                <motion.div
-                    className={cn("h-full w-1/3 rounded-2xl bg-[#eeeeee] p-4  border border-neutral-400 flex flex-col items-center justify-center")}
-                >
-                    <img
-                        src="https://www.svgrepo.com/show/327388/logo-react.svg"
-                        alt="avatar"
-                        height="100"
-                        width="100"
-                        className=" h-10 w-10"
-                    />
-                    <p className={cn("sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4")}>
-                        React JS
-                    </p>
-                    <p className={cn("border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4")}>
-                        Library
-                    </p>
-                </motion.div>
-            </motion.div>
-        );
-    };
-    const SkeletonFive = () => {
-        return (
-            <motion.div
-                initial="initial"
-                whileHover="animate"
-                className={cn("flex flex-1 w-full h-full min-h-[10rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2")}
-            >
-                <motion.div
-                    className={cn("flex flex-row rounded-2xl border border-neutral-400 p-2  items-start space-x-2 bg-[#eeeeee]")}
-                >
-                    <img
-                        src={Profil}
-                        alt="avatar"
-                        height="100"
-                        width="100"
-                        className={cn("rounded-full h-10 w-10")}
-                    />
-                    <p className={cn("text-xs text-neutral-500")}>
-                        I’ve worked on some pretty cool projects! It’s been an awesome journey.
-                    </p>
-                </motion.div>
-                <motion.div
-                    className={cn("flex flex-row rounded-full border border-neutral-400 bg-[#eeeeee] p-2 pl-6 items-center justify-end space-x-2 w-3/4 ml-auto ")}
-                >
-                    <p className={cn("text-xs text-neutral-500")}>Like getting coffee? That’s impressive!</p>
-                    <div className={cn("h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0")} />
-                </motion.div>
-            </motion.div>
-        );
-    };
-    const items = [
+    const experiences = [
         {
-            title: "About Me",
-            description: (
-                <span className="text-sm">
-                    Discover Aymane's personality, and his journey in tech innovation.
-                </span>
-            ),
-            header: <SkeletonOne />,
-            className: "lg:col-span-1",
-            link: "About",
+            title: "Getting my Baccalaureate",
+            year: "2020",
+            type: "Student",
         },
         {
-            title: "Saint-Gobain Research Provence",
-            description: (
-                <span className="text-sm">
-                    Discover my Work-Study journey as a Software Engineer at Saint-Gobain.
-                </span>
-            ),
-            header: <SkeletonTwo />,
-            className: "lg:col-span-1",
-            link: "Saintgobain",
+            title: "Developer at Inetum",
+            year: "2021",
+            type: "Internship",
         },
         {
-            title: "Cesiveroo Project",
-            description: (
-                <span className="text-sm">
-                    Development of a mobile application in React Native for food delivery.
-                </span>
-            ),
-            header: <SkeletonThree />,
-            className: "lg:col-span-1",
-            link: "Cesiveroo",
+            title: "Freelance",
+            year: "2022",
+            type: "Remote - Part time",
         },
-
         {
-            title: "Aymane's Portfolio",
-            description: (
-                <span className="text-sm">
-                    Discover how I coded my portfolio from scratch and the tools I used.
-                </span>
-            ),
-            header: <SkeletonFour />,
-            className: "lg:col-span-2",
-            link: "Comingsoon",
-        },
-
-        {
-            title: "Aymane's Resume",
-            description: (
-                <span className="text-sm">
-                    Explore my journey since moving from Italy to France !.
-                </span>
-            ),
-            header: <SkeletonFive />,
-            className: "md:col-span-2 lg:col-span-1",
-            link: "Resume",
+            title: <>SWE at <a href='https://www.saint-gobain.com' className='underline'>Saint-Gobain</a></>,
+            year: "2022",
+            type: "Apprenticeship",
         },
     ];
     return (
-        <div className={cn('w-full flex flex-col items-center p-6')}>
-
-            <div className={cn("flex justify-center items-center text-center  space-x-4 mb-4")} data-aos="fade-up">
-                <TextGenerateEffect duration={1} words={words} className="w-5/6 font-sfultralight" />
-            </div>
-            <div className={cn(" w-11/12 flex flex-row justify-between ")}></div>
-
-
-            <div className={cn("border-t border-gray-300 my-4")} data-aos="fade-up">
-                <BentoGrid className="mx-auto lg:auto-rows-[22rem] mt-8 " >
-                    {items.map((item, i) => (
-                        <BentoGridItem
-                            key={i}
-                            title={item.title}
-                            description={item.description}
-                            header={item.header}
-                            className={cn("[&>p:text-lg]", item.className)}
-                            onClick={() => handleClick(item.link)}
-                        />
-                    ))}
-                </BentoGrid>
+        <div className="w-full px-6 py-12">
+            <div className='h-1/3'>
 
             </div>
-            <div data-aos="fade-up">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+
+                <motion.div
+                    className="relative bg-white rounded-3xl pl-2 shadow-md w-full max-w-64 max-h-64 border border-gray-200 py-4 px-2 overflow-hidden"
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={0}
+                >
+                    <h2 className="absolute text-sm font-semibold ml-2 px-2 py-1 rounded-full bg-white shadow-lg text-center z-50">My Experience</h2>
+                    {/* Your timeline content here */}
+                    <div className="relative ml-6 mt-4">
+                        {/* Timeline vertical line */}
+                        <div className="absolute -left-[3.1px] top-1 bottom-5 w-0.5 bg-gray-300" />
+                        {experiences.map((exp, index) => (
+                            <div key={index} className="mb-4 relative">
+                                {/* Timeline dot */}
+                                <div className="absolute -left-2 top-1 w-3 h-3 bg-black rounded-full" />
+                                <div className="pl-4">
+                                    <h3 className="text-sm font-semibold">{exp.title}</h3>
+                                    <p className="text-xs text-gray-500">{exp.year} – {exp.type}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white to-transparent pointer-events-none z-40 " />
+                </motion.div>
+                <motion.div
+                    className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300"
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={2}
+                >
+                    <p className="text-sm text-gray-500">Book</p>
+                </motion.div>
+
+                <motion.div
+                    className="rounded-2xl bg-white border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300"
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={4}
+                >
+                    <p className="text-sm text-gray-500">How I work</p>
+                </motion.div>
+                <motion.div
+                    className="relative bg-white rounded-3xl shadow-md w-full max-w-64 min-h-64 border border-gray-200 overflow-hidden"
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={1}
+                >
+                    <h2 className="absolute text-sm font-semibold ml-2 mt-2 px-2 py-1 rounded-full bg-white text-center z-50 shadow-lg">Map</h2>
+                    <img src={Aix} className='w-full h-full' />
+                    <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-white to-white  pointer-events-none z-40 " />
+                    <div className='absolute bottom-10 w-full text-center z-50 text-3xl font-sfregular text-darkGray tracking-wide' > Aix-en-Provence</div>
+                    <div className='absolute bottom-6 w-full text-center z-50 text-sm font-sfultralight font-bold text-lightGray tracking-widest' > France</div>
+                    <div className='absolute bottom-2 w-full text-center z-50 text-xs font-sfultralight font-bold text-lightGray' > 43.5297° N, 5.4474° E</div>
+                </motion.div>
+                <motion.div
+                    className="rounded-2xl bg-white col-span-2 border border-gray-100 p-6 shadow-lg"
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={5}
+                >
+                    <h2 className="text-base font-medium text-gray-800 mb-4">By the Numbers</h2>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        {stats.map((stat, index) => (
+                            <motion.div
+                                key={index}
+                                className="flex flex-col items-center text-sm text-gray-700"
+                                variants={fadeInUp}
+                                custom={index}
+                            >
+                                <div className="mb-1 text-gray-500">{stat.icon}</div>
+                                <div className="font-semibold text-lg">{stat.value}</div>
+                                <div className="text-xs text-gray-500">{stat.label}</div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+                <motion.div
+                    className="relative overflow-hidden rounded-2xl border-gray-200 shadow-md p-6 w-full max-w-sm hover:shadow-lg transition-all duration-300 "
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={3}
+                >
+
+
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <p className="text-sm text-gray-500">Visitors </p>
+                            <h3 className="text-4xl font-semibold text-gray-900 mt-1">
+                                {visitsTotal}
+                            </h3>
+                            <p className="text-xs text-gray-400 mt-1">since the deployment</p>
+                        </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 h-32 w-full mt-4">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <AreaChart data={chartData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                                <defs>
+                                    <linearGradient id="visitsGradient" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#22c55e" stopOpacity={0.4} />
+                                        <stop offset="95%" stopColor="#0e0e10" stopOpacity={0} />
+                                    </linearGradient>
+                                </defs>
+                                <XAxis className='hidden' dataKey="date" tick={{ fill: "#a1a1aa", fontSize: 12 }} />
+                                <Tooltip
+                                    contentStyle={{ border: "none", borderRadius: "0.5rem" }}
+                                    labelStyle={{ color: "#000000" }}
+                                    itemStyle={{ color: "#22c55e" }}
+                                />
+                                <Area
+                                    type="monotone"
+                                    dataKey="visits"
+                                    stroke="#22c55e"
+                                    fillOpacity={1}
+                                    fill="url(#visitsGradient)"
+                                    strokeWidth={2}
+                                />
+                            </AreaChart>
+                        </ResponsiveContainer>
+                    </div>
+                </motion.div>
 
 
             </div>
-            <div className={cn("border-t border-gray-300 mt-6 w-full flex flex-row justify-between md:justify-end font-sfultralight ")}>
-                <div className={cn('flex flex-row gap-4 md:hidden')}>
-
-                    <a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>Linkedin ↗</a>
-                    <a href="https://github.com/AymaneHilmi" target="_blank" className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>GitHub ↗</a>
-                </div>
-
-                <a className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>by Aymane HILMI</a>
-
-            </div>
-
 
         </div>
     )
 }
-
-
-
