@@ -84,7 +84,7 @@ export default function SaintGobainScreen() {
 
 
                 <a className={cn("font-sfbold mt-3 text-2xl md:text-4xl text-darkGray")} >Saint-Gobain Research Provence</a>
-                <a className={cn("text-base font-sfregular text-lightGray" )}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
+                <a className={cn("text-base font-sfregular text-lightGray")}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
 
                 <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between ")} />
 

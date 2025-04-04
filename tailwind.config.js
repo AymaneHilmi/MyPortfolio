@@ -19,11 +19,12 @@ module.exports = {
         sfregular: ['SFREGULAR', 'sans-serif'],
         sfultralight: ['SFULTRALIGHT', 'sans-serif'],
         InkBrushArabic: ['InkBrushArabic', 'sans-serif'],
+        AutomnBrush: ['AutomnBrush', 'sans-serif'],
       },
     },
     animation: {
       scroll:
-        "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+        "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite"
     },
     keyframes: {
       scroll: {

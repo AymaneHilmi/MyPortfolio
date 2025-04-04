@@ -76,7 +76,7 @@ export default function Sidebar({ scrollToRoutes }) {
 
                 </div>
                 <div className="font-sfregular row-span-1 flex flex-col border-b border-gray-300 p-8">
-                    <h1 className='text-sm pb-2'>Personal</h1>
+                    <h1 className='text-sm pb-2 text-lightGray'>Personal</h1>
                     <div><Link to="/Journey" className='text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray'>Journey</Link ></div>
                     <div><Link to="/Blog" className='text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray'>Blog</Link ></div>
                     <h1 className='text-sm pb-2 mt-4 text-lightGray'>Contact</h1>

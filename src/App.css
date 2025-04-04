@@ -129,3 +129,10 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'AutomnBrush';
+  src: url('./fonts/Automn Brush.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}

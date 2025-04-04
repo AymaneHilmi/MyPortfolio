@@ -48,20 +48,20 @@ export default function CesiverooScreen() {
         AOS.refresh();
     };
 
-    const people = [
-        {
-            id: 1,
-            name: "Clement Fornes",
-            designation: "Software Engineer",
-            image: "https://media.licdn.com/dms/image/v2/D4D03AQHJVCZM9XWnyA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710451743776?e=1741824000&v=beta&t=f5LejpCDWFVriiozl44PDamTStnrmrb4AcgIrRj2NFg",
-        },
-        {
-            id: 2,
-            name: "Teo Emirot",
-            designation: "IT Engineer",
-            image: "https://media.licdn.com/dms/image/v2/C4D03AQHk1JDj31er8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1657905707102?e=1741824000&v=beta&t=bwgN7AnDXWT9NrCR8OuUU1pU2v6KOlPtMq4yUGq5wx0",
-        }
-    ];
+    // const people = [
+    //     {
+    //         id: 1,
+    //         name: "Clement Fornes",
+    //         designation: "Software Engineer",
+    //         image: "https://media.licdn.com/dms/image/v2/D4D03AQHJVCZM9XWnyA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710451743776?e=1741824000&v=beta&t=f5LejpCDWFVriiozl44PDamTStnrmrb4AcgIrRj2NFg",
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Teo Emirot",
+    //         designation: "IT Engineer",
+    //         image: "https://media.licdn.com/dms/image/v2/C4D03AQHk1JDj31er8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1657905707102?e=1741824000&v=beta&t=bwgN7AnDXWT9NrCR8OuUU1pU2v6KOlPtMq4yUGq5wx0",
+    //     }
+    // ];
 
     const Disciplines = [
         {
@@ -143,11 +143,10 @@ export default function CesiverooScreen() {
                             <a>March 2024 -<br /> April 2024</a>
                         </div>
 
-                        <div className={cn('flex flex-col')}>
-                            <a className='mb-2'>Team</a>
-                            <div className={cn("flex flex-row items-center justify-center mb-10 w-full")}>
-                                <AnimatedTooltip items={people} />
-                            </div>
+                        <div className='flex flex-col'>
+                            <a >Team</a>
+                            <a>Clement Fornes</a>
+                            <a>Teo Emirot</a>
                         </div>
                         <div className='flex flex-col'>
                             <a className='mb-2'>Disciplines</a>
@@ -167,7 +166,7 @@ export default function CesiverooScreen() {
 
 
                     <div className=" items-start">
-                        <a className={cn("font-sfbold md:text-lg text-base font-sfregular text-darkGray")}>
+                        <a className={cn(" md:text-lg text-base font-sfregular text-darkGray")}>
                             <span className='' style={{ textAlign: 'justify', }} >
                                 <>
                                     On our class we were 3 groups, each of the three groups had to design a separate application,
@@ -229,7 +228,7 @@ export default function CesiverooScreen() {
                     </div>
                     <div className="border-t border-gray-300 my-2 w-full flex flex-row justify-between " />
                     <div className=" flex flex-col justify-center items-center">
-                        <a 
+                        <a
                             className="font-sfbold md:text-lg text-base text-darkGray">
                             <span className="font-sfregular" style={{ textAlign: 'justify', }} >
                                 The first step was to clearly analyze what needed to be done and gather all the functional
@@ -289,7 +288,7 @@ export default function CesiverooScreen() {
 
 
                     <div className=" flex flex-col justify-center">
-                        <a 
+                        <a
                             className="font-sfbold md:text-lg text-base items-start text-start text-darkGray">
                             <span className='font-sfregular' style={{ textAlign: 'justify', }} >
                                 As you can see below, we went throught an intensive design phases (as a developer it was a long,

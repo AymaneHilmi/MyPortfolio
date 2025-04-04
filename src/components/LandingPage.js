@@ -65,7 +65,7 @@ export default function LandingPage() {
                             whileInView="visible"
                             viewport={{ once: true }}
                             custom={0}
-                            className="text-3xl md:text-5xl font-sfbold tracking-tight text-darkGray lg:text-6xl"
+                            className="text-3xl md:text-5xl font-sfbold tracking-tight lg:text-6xl bg-gradient-to-r from-lightGray to-darkGray bg-clip-text text-transparent"
                         >
                             Hi, I'm Aymane <span className='font-InkBrushArabic'> [ أيمن ]</span>
                         </motion.h1>
@@ -75,7 +75,7 @@ export default function LandingPage() {
                             whileInView="visible"
                             viewport={{ once: true }}
                             custom={0}
-                            className="mt-4 text-xs md:text-base font-medium text-lightGray lg:text-xl"
+                            className="mt-4 text-xs md:text-base font-bold text-lightGray lg:text-xl font-sfultralight"
                         >
                             Welcome to my portfolio! I’m a polyglot Software Engineer who loves developing, finding solutions, and magically enhancing
                             people’s daily work life. Passionate about this AMAZING world of computer science and online business, I aim to leave
@@ -85,55 +85,53 @@ export default function LandingPage() {
 
                     {/* Images autour du texte */}
                     <div className="absolute w-full h-full">
-                        <div className="absolute w-full h-full">
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-28 md:w-44 lg:w-64 top-1/4 left-5 md:-left-20 lg:-left-1/4 transform lg:-translate-x-1/2 -translate-y-1/2 -rotate-12  md:block">
-                                <img alt="Colisée" src={Rome} className="w-full rounded-xl filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105 " />
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-14 md:w-20 lg:w-24 top-[20%] right-[43%] md:top-1/2 md:-left-28 lg:-left-1/2 transform -translate-y-1/2 md:rotate-12 md:block ">
-                                <img alt="Oslo" src={oslo} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105 " />
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-24 left-16 md:w-44 lg:w-52 bottom-1/4 md:-left-4 lg:-left-1/4 transform -translate-x-1/2 translate-y-1/2 rotate-12">
-                                <img alt="Paris" src={Paris} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105 md:block" />
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-20 md:w-24 lg:w-44 top-1/4 right-16 md:-right-10 lg:-right-1/4 transform translate-x-1/2 -translate-y-1/2 rotate-12 md:block">
-                                <img alt="Amsterdam" src={Amsterdam} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105 " />
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-20  md:w-20 lg:w-24 top-1/2 md:-right-28 lg:-right-1/2 transform translate-x-1 -translate-y-1/2 -rotate-12 hidden md:block">
-                                <img alt="Maroc" src={Maroc} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105 " />
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-24 md:w-48 lg:w-52 bottom-1/4 right-16 md:-right-4 lg:-right-1/4 transform translate-x-1/2 translate-y-1/2 -rotate-12 md:block">
-                                <img alt="Aymane Hilmi" src={Aymane} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105 " />
-                            </motion.div>
-                        </div>
-
-
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5, duration: 0.5 }}
-                            className="absolute w-22 md:w-44 top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-80"
-                        >
-                            <img src={zorro} className="w-24 md:w-44 " />
+                            transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-28 md:w-44 lg:w-64 top-1/4 left-5 md:-left-20 lg:-left-1/4 transform lg:-translate-x-1/2 -translate-y-1/2 -rotate-12  md:block ">
+                            <img alt="Colisée" src={Rome} className="w-full rounded-xl filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105" />
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-14 md:w-20 lg:w-24 top-[20%] right-[43%] md:top-1/2 md:-left-28 lg:-left-1/2 transform -translate-y-1/2 md:rotate-12 md:block ">
+                            <img alt="Oslo" src={oslo} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105" />
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-24 left-16 md:w-44 lg:w-52 bottom-1/4 md:-left-4 lg:-left-1/4 transform -translate-x-1/2 translate-y-1/2 rotate-12">
+                            <img alt="Paris" src={Paris} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105 md:block" />
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-20 md:w-24 lg:w-44 top-1/4 right-16 md:-right-10 lg:-right-1/4 transform translate-x-1/2 -translate-y-1/2 rotate-12 md:block">
+                            <img alt="Amsterdam" src={Amsterdam} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105" />
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-20  md:w-20 lg:w-24 top-1/2 md:-right-28 lg:-right-1/2 transform translate-x-1 -translate-y-1/2 -rotate-12 hidden md:block">
+                            <img alt="Maroc" src={Maroc} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105" />
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.5 }} className="absolute w-24 md:w-48 lg:w-52 bottom-1/4 right-16 md:-right-4 lg:-right-1/4 transform translate-x-1/2 translate-y-1/2 -rotate-12 md:block">
+                            <img alt="Aymane Hilmi" src={Aymane} className="w-full rounded-xl object-cover shadow-lg filter grayscale transition-all duration-300 hover:grayscale-0 hover:scale-105" />
                         </motion.div>
                     </div>
+
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.5 }}
+                        className="absolute w-22 md:w-44 top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-80"
+                    >
+                        <img src={zorro} className="w-24 md:w-44 " />
+                    </motion.div>
                 </div>
             </main >
         </div >

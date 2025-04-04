@@ -1,38 +1,67 @@
 import { React, } from 'react'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
 import Aix from '../assets/Aix.jpg';
 import Cesiveroo from '../assets/Cesiveroo.png';
 import SG from '../assets/Saint-Gobain.png';
+import tourSG from '../assets/tourSG.jpg';
 import Profil from '../assets/PDP.jpeg';
 import { cn } from "../lib/utils";
 import { TextGenerateEffect } from "../components/ui/text-generate-effect";
 import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
-import { motion } from "framer-motion";
-import { Eye } from 'lucide-react';
-import { FaGlobe, FaLanguage, FaLaptopCode, FaMugHot, FaCodeBranch, FaMapMarkedAlt } from "react-icons/fa";
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { AnimatedList } from "../components/ui/Animated-list";
+import { useEasterEgg } from '../context/EasterEggContext';
 
-const stats = [
-    { icon: <FaLanguage size={28} />, label: "Languages Spoken", value: "5" },
-    { icon: <FaMapMarkedAlt size={28} />, label: "Countries Visited / Worked In", value: "7+" },
-    { icon: <FaLaptopCode size={28} />, label: "Projects Completed", value: "12+" },
-    { icon: <FaMugHot size={28} />, label: "Hours Coded", value: "1000+" },
-    { icon: <FaCodeBranch size={28} />, label: "VS Code Loyalty", value: "98%" },
-    { icon: <FaGlobe size={28} />, label: "Continents Worked From", value: "3" },
+const cards = [
+    {
+        title: "Saint-Gobain",
+        desc: "SWE at SG Research Labs ",
+        src: tourSG,
+        route: "saintgobain",
+    },
+    {
+        title: "Cesiveroo",
+        desc: "My favorite student project",
+        src: Cesiveroo,
+        route: "cesiveroo",
+    },
+
+    {
+        title: "Blog",
+        desc: "Blogging like it’s 2005",
+        src: Aix,
+        route: "aix",
+    },
+    {
+        title: "Coming Soon",
+        desc: "A space to show who I am 🌍",
+        src: "",
+        route: "portfolio",
+    },
 ];
+
+const otherCards = cards.slice(0, cards.length - 1);
+const lastCard = cards[cards.length - 1];
+
+
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
         opacity: 1,
         y: 0,
-        transition: { delay: i * 0.1, duration: 0.6 },
+        transition: {
+            delay: i * 0.1,
+            duration: 0.6,
+            ease: "easeOut",
+        },
     }),
 };
 
-export default function HomeScreen({ scrollToRoutes, visitsTotal, chartData }) {
+export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
     const navigate = useNavigate();
+    const { eggCount } = useEasterEgg();
 
     const handleClick = (link) => {
         navigate(`/${link}`);
@@ -40,145 +69,98 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal, chartData }) {
             scrollToRoutes();
         }
     };
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 20 },
-        visible: (i) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: i * 0.1,
-                duration: 0.6,
-                ease: "easeOut",
-            },
-        }),
-    };
-    const experiences = [
-        {
-            title: "Getting my Baccalaureate",
-            year: "2020",
-            type: "Student",
-        },
-        {
-            title: "Developer at Inetum",
-            year: "2021",
-            type: "Internship",
-        },
-        {
-            title: "Freelance",
-            year: "2022",
-            type: "Remote - Part time",
-        },
-        {
-            title: <>SWE at <a href='https://www.saint-gobain.com' className='underline'>Saint-Gobain</a></>,
-            year: "2022",
-            type: "Apprenticeship",
-        },
-    ];
-    return (
-        <div className="w-full px-6 py-12">
-            <div className='h-2/3'>
 
-            </div>
-            <div className="flex flex-row gap-4 max-h-64">
-                <motion.div
-                    className="relative bg-white rounded-3xl pl-2 shadow-md min-w-64  border border-gray-200 py-4 px-2 overflow-hidden"
-                    variants={fadeInUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={0}
-                >
-                    <h2 className="absolute text-sm font-semibold ml-2 px-2 py-1 rounded-full bg-white shadow-lg text-center z-50">My Experience</h2>
-                    {/* Your timeline content here */}
-                    <div className="relative ml-6 mt-4">
-                        {/* Timeline vertical line */}
-                        <div className="absolute -left-[3.1px] top-1 bottom-5 w-0.5 bg-gray-300" />
-                        {experiences.map((exp, index) => (
-                            <div key={index} className="mb-4 relative">
-                                {/* Timeline dot */}
-                                <div className="absolute -left-2 top-1 w-3 h-3 bg-black rounded-full" />
-                                <div className="pl-4">
-                                    <h3 className="text-sm font-semibold">{exp.title}</h3>
-                                    <p className="text-xs text-gray-500">{exp.year} – {exp.type}</p>
+    const stats = [
+        { label: 'Founded Easter eggs ', value: `${eggCount}/5` },
+        { label: 'Languages spoken', value: '5' },
+        { label: 'Coffees this year', value: '+999' },
+        { label: 'Number of Visitors', value: visitsTotal },
+    ];
+
+    return (
+        <div className="overflow-hidden bg-white py-10">
+            <div className="mx-auto px-6 lg:px-8">
+                <div className="">
+                    <h1 className="mt-2 text-4xl font-sfbold tracking-tight text-pretty sm:text-5xl bg-gradient-to-r from-lightGray to-darkGray bg-clip-text text-transparent pb-1">
+                        Aymane is a developer who loves to create things.
+                    </h1>
+                    <p className="mt-6 text-xl/8 font-sfultralight text-gray-700 max-w-4xl font-bold">
+                        A budding software engineer who enjoy writing code with clean design with a minimalist touch..
+                        My journey started with online games, now I focus on building
+                        intuitive digital experiences and solving real-world problems through tech. I’m
+                        also that guy who hides easter eggs in his portfolio for fun...
+                    </p>
+                </div>
+                <section className="mt-20 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-20 lg:gap-y-4">
+                    <div className="lg:pr-8">
+                        <h2 className="text-2xl font-semibold tracking-tight text-pretty text-gray-900">Our mission</h2>
+                        <p className="mt-6 text-base/7 text-gray-600">
+                            Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet
+                            vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque
+                            erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper
+                            sed amet vitae sed turpis id.
+                        </p>
+                    </div>
+                    <div className="pt-16 lg:row-span-2 lg:-mr-16 xl:mr-auto -mt-14">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 xl:gap-6">
+                            {otherCards.map((project, i) => (
+                                <div
+                                    key={i}
+                                    onClick={() => handleClick(project.route)}
+                                    className="relative group h-52 w-64 rounded-2xl overflow-hidden shadow-xl border border-gray-200 cursor-pointer hover:shadow-2xl transition-all duration-300"
+                                >
+                                    <img
+                                        src={project.src}
+                                        alt={project.title}
+                                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent z-10" />
+                                    <div className="absolute bottom-0 z-20 p-4 text-white">
+                                        <h3 className="text-lg font-sfbold">{project.title}</h3>
+                                        <p className="text-sm text-gray-200">{project.desc}</p>
+                                        <div className="mt-1 flex items-center font-semibold text-sm text-primary">
+                                            <span>Learn more</span>
+                                            <svg
+                                                className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                            <div
+                                className="relative group h-52 w-64 overflow-hidden transition-all duration-300 bg-gradient-to-b rounded-2xl from-lightGray via-white to-white"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-lightGray via-white/40 to-white/90 z-0 animate-pulse" />
+                                <div className="absolute inset-0 flex flex-col justify-center items-center z-10 text-center px-4">
+                                    <h3 className="text-2xl font-sfbold text-gray-800 animate-pulse">Coming Soon</h3>
+                                    <p className="text-sm text-gray-500 italic mt-1">
+                                        A new project is coming...
+                                    </p>
                                 </div>
                             </div>
-                        ))}
+                        </div>
                     </div>
-                    <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-white to-transparent pointer-events-none z-40 " />
-                </motion.div>
-                <motion.div
-                    className="relative bg-white rounded-3xl shadow-md w-64 h-64 border border-gray-200 overflow-hidden"
-                    variants={fadeInUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={1}
-                >
-                    <h2 className="absolute text-sm font-semibold ml-2 mt-2 px-2 py-1 rounded-full bg-white text-center z-50 shadow-lg">Map</h2>
-                    <img src={Aix} className='w-full h-full' />
-                    <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-white to-white  pointer-events-none z-40 " />
-                    <div className='absolute bottom-10 w-full text-center z-50 text-3xl font-sfregular text-darkGray tracking-wide' > Aix-en-Provence</div>
-                    <div className='absolute bottom-6 w-full text-center z-50 text-sm font-sfultralight font-bold text-lightGray tracking-widest' > France</div>
-                    <div className='absolute bottom-2 w-full text-center z-50 text-xs font-sfultralight font-bold text-lightGray' > 43.5297° N, 5.4474° E</div>
-                </motion.div>
-                <div className='h-max-64'>
-                    <motion.div
-                        className=" overflow-hidden rounded-2xl border border-gray-200 shadow-md p-6 hover:shadow-lg transition-all duration-300"
-                        variants={fadeInUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        custom={2}
-                    >
-                        <div className="flex flex-col gap-6 sm:flex-row sm:justify-between">
-                            <div>
-                                <p className="text-sm text-gray-500">Visitors</p>
-                                <h3 className="text-4xl font-semibold text-gray-900 mt-1">
-                                    {visitsTotal}
-                                </h3>
-                                <p className="text-xs text-gray-400 mt-1">since the deployment</p>
-                            </div>
-                        </div>
-                    </motion.div>
-                    <motion.div
-                        className="relative overflow-hidden rounded-2xl border-gray-200 shadow-md p-6 w-full hover:shadow-lg transition-all duration-300 col-span-1"
-                        variants={fadeInUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        custom={6}
-                    >
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <p className="text-sm text-gray-500">Easter Eggs</p>
-                                <h3 className="text-4xl font-semibold text-gray-900 mt-1">
-                                    🥚 0/3
-                                </h3>
-                                <p className="text-xs text-gray-400 mt-1">
-                                    You found none yet...
-                                </p>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-                {/* <motion.div
-                    className="relative bg-white rounded-3xl shadow-md w-full border border-gray-200 overflow-hidden"
-                    variants={fadeInUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={1}
-                >
-                    <h2 className="absolute text-sm font-semibold ml-2 mt-2 px-2 py-1 rounded-full bg-white text-center z-50 shadow-lg">Map</h2>
-                    <img src={Cesiveroo} className='w-full h-full' />
-                    <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-white to-white  pointer-events-none z-40 " />
-                    <div className='absolute bottom-10 w-full text-center z-50 text-3xl font-sfregular text-darkGray tracking-wide' > Aix-en-Provence</div>
-                    <div className='absolute bottom-6 w-full text-center z-50 text-sm font-sfultralight font-bold text-lightGray tracking-widest' > France</div>
-                    <div className='absolute bottom-2 w-full text-center z-50 text-xs font-sfultralight font-bold text-lightGray' > 43.5297° N, 5.4474° E</div>
-                </motion.div> */}
+                    <div className="max-lg:mt-16 lg:col-span-1">
+                        <p className="text-base/7 font-semibold text-gray-500 mb-2">Some Stats </p>
+                        <dl className="mt-4 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+                            {stats.map((stat) => (
+                                <div key={stat.id} className="flex flex-col bg-gray-400/20 p-8">
+                                    <div className="order-first text-3xl font-semibold tracking-tight text-gray-900 font-mono">{stat.value}</div>
+                                    <dt className="text-xs font-semibold text-gray-600 mt-2">{stat.label}</dt>
+                                </div>
+                            ))}
+                        </dl>
+                    </div>
+                </section >
+            </div >
 
-            </div>
+        </div >
 
-        </div>
-    )
+    );
 }
