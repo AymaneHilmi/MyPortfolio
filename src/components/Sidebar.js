@@ -6,6 +6,12 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { cn } from "../lib/utils";
 import React, { useEffect, useState, useRef } from 'react';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "./ui/ToolTip"
 
 
 
@@ -13,6 +19,15 @@ export default function Sidebar({ scrollToRoutes }) {
     const [isOpen, setIsOpen] = useState(false);
     const navbarRef = useRef(null);
     const checkboxRef = useRef(null);
+
+    const [copied, setCopied] = useState(false);
+    const email = "contact@aymanehilmi.com";
+
+    const handleCopy = () => {
+        navigator.clipboard.writeText(email);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
 
     // --------------------------------
     //             Navbar               
@@ -80,7 +95,25 @@ export default function Sidebar({ scrollToRoutes }) {
                     <div><Link to="/Journey" className='text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray'>Journey</Link ></div>
                     <div><Link to="/Blog" className='text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray'>Blog</Link ></div>
                     <h1 className='text-sm pb-2 mt-4 text-lightGray'>Contact</h1>
-                    <div><a href="mailto:contact@aymanehilmi.com" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a></div>
+                    <TooltipProvider delayDuration={0}>
+                        <Tooltip>
+                            <TooltipTrigger asChild className='w-1'>
+                                <a href="mailto:contact@aymanehilmi.com" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <div className="flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm w-fit space-x-2">
+                                    <span className="text-gray-600 font-medium">{email}</span>
+                                    <button
+                                        onClick={handleCopy}
+                                        className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
+                                    >
+                                        {copied ? "COPIED" : "COPY"}
+                                    </button>
+                                </div>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                    {/* <div><a href="mailto:contact@aymanehilmi.com" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a></div> */}
                     <div><a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Linkedin</a></div>
                     <div><a href="https://github.com/AymaneHilmi" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Github</a></div>
                     {/* <div><Link to="/Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Download CV </Link></div> */}
@@ -114,6 +147,8 @@ export default function Sidebar({ scrollToRoutes }) {
                     <a href="mailto:contact@aymanehilmi.com" className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
                         Email
                     </a>
+
+
                 </div>
 
                 <label id="hamburger" className="z-50">

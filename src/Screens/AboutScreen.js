@@ -197,13 +197,7 @@ export default function AboutScreen() {
                 <h1 className={cn('font-sfregular text-darkGray')}>
                     {showItalyText ? replacedText : originalText}
                 </h1>
-                <div className={cn("border-t border-gray-300 my-6 w-full flex flex-row  justify-between md:justify-end font-sfultralight")}>
-                    <div className={cn('flex flex-row gap-4 md:hidden')}>
-                        <a href="https://www.linkedin.com/in/aymanehilmi/" className={cn("text-base font-bold mt-6 ")} style={{ color: '#a3a8af' }}>Linkedin ↗</a>
-                        <a href="https://github.com/AymaneHilmi" className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>GitHub ↗</a>
-                    </div>
-                    <h1 className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>by Aymane HILMI</h1>
-                </div>
+
             </div>
             <div className="flex flex-row gap-4 max-h-64">
                 <motion.div

@@ -20,11 +20,41 @@ export const EasterEggProvider = ({ children }) => {
     const incrementEggs = (eggId) => {
         setFoundEggs((prev) => {
             if (prev.includes(eggId)) {
-                toast('Already found this one! 🧐');
+                toast(`Easter Egg ${eggId} already found!`, {
+                    icon: 'ℹ️',
+                    duration: 5000,
+                    style: {
+                        borderRadius: '12px',
+                        background: '#f5f5f5',
+                        color: '#1E1E1E',
+                        border: '1px solid #d1d5db',
+                        padding: '14px 16px',
+                        fontWeight: 500,
+                    },
+                    iconTheme: {
+                        primary: '#10B981',
+                        secondary: '#E0F2F1',
+                    },
+                });
+                localStorage.removeItem('foundEggs');
                 return prev;
             }
 
-            toast.success('🥚 New Easter Egg found!');
+            toast.success(`Easter Egg ${eggId} found!`, {
+                duration: 5000,
+                style: {
+                    borderRadius: '12px',
+                    background: '#f5f5f5',
+                    color: '#1E1E1E',
+                    border: '1px solid #d1d5db',
+                    padding: '14px 16px',
+                    fontWeight: 500,
+                },
+                iconTheme: {
+                    primary: '#10B981',
+                    secondary: '#E0F2F1',
+                },
+            });
             return [...prev, eggId];
         });
     };
@@ -45,7 +75,7 @@ export const EasterEggProvider = ({ children }) => {
             typedText += event.key.toLowerCase();
 
             if (typedText === correctText) {
-                incrementEggs('egg_001');
+                incrementEggs('#1');
                 setConfettiActive(true);
                 setTimeout(() => {
                     setConfettiActive(false);

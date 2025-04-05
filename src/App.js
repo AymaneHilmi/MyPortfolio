@@ -15,6 +15,7 @@ import JourneyScreen from './Screens/JourneyScreen';
 import SplashCursor from './components/ui/SplashCursor';
 import LandingPage from './components/LandingPage';
 import { useEasterEgg } from './context/EasterEggContext';
+import Footer from './components/footer';
 
 
 
