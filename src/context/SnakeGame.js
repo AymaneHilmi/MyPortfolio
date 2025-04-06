@@ -35,7 +35,7 @@ const SnakeGame = ({ fullscreen = true }) => {
     }, [selectedSkin]);
 
     const intervalRef = useRef(null);
-    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
+
 
     const BOARD_WIDTH = fullscreen ? Math.floor(window.innerWidth / GRID_SIZE) : 20;
     const BOARD_HEIGHT = fullscreen ? Math.floor(window.innerHeight / GRID_SIZE) : 20;
@@ -48,7 +48,7 @@ const SnakeGame = ({ fullscreen = true }) => {
     };
 
     useEffect(() => {
-        if (!isDesktop || gameOver || showIntro) return;
+        if (gameOver || showIntro) return;
 
         intervalRef.current = setInterval(() => {
             moveSnake();
@@ -233,163 +233,157 @@ const SnakeGame = ({ fullscreen = true }) => {
 
     return (
         <div className={fullscreen ? "fixed inset-0 z-50" : "w-full h-full flex justify-center items-center"}>
-            {!isDesktop ? (
-                <p className="text-center text-gray-500 italic text-sm px-6">
-                    This game requires a keyboard. Try it on a computer 🧑‍💻
-                </p>
-            ) : (
-                <div
-                    className="relative bg-transparent"
-                    style={{
-                        width: fullscreen ? '100vw' : GRID_SIZE * BOARD_WIDTH,
-                        height: fullscreen ? '100vh' : GRID_SIZE * BOARD_HEIGHT,
-                    }}
-                >
-                    {/* INTRO SCREEN */}
-                    {showIntro && (
-                        <div className="absolute inset-0 z-50 bg-black/80 flex flex-col justify-center items-center text-white p-6">
-                            <h2 className="text-2xl font-bold mb-4">🎮 Welcome to Snake Mode</h2>
-                            <p className="text-sm text-gray-300 mb-6 text-center max-w-md">
-                                Reach <strong>10 points</strong> to unlock the <span className="text-green-400 font-semibold">#2 Gamer</span> easter egg !<br />
-                                Choose your snake skin and start playing
-                            </p>
+            <div
+                className="relative bg-transparent"
+                style={{
+                    width: fullscreen ? '100vw' : GRID_SIZE * BOARD_WIDTH,
+                    height: fullscreen ? '100vh' : GRID_SIZE * BOARD_HEIGHT,
+                }}
+            >
+                {/* INTRO SCREEN */}
+                {showIntro && (
+                    <div className="absolute inset-0 z-50 bg-black/80 flex flex-col justify-center items-center text-white p-6">
+                        <h2 className="text-2xl font-bold mb-4">🎮 Welcome to Snake Mode</h2>
+                        <p className="text-sm text-gray-300 mb-6 text-center max-w-md">
+                            Reach <strong>10 points</strong> to unlock the <span className="text-green-400 font-semibold">#2 Gamer</span> easter egg !<br />
+                            Choose your snake skin and start playing
+                        </p>
 
-                            {/* SKIN SELECTION */}
-                            <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mb-6">
-                                {['zoro', 'luffy'].map((skin) => (
-                                    <button
-                                        key={skin}
-                                        onClick={() => setSelectedSkin(skin)}
-                                        className={`p-3 border rounded-lg w-20 h-24 transition-all flex flex-col items-center justify-center ${getSkinStyle(skin)}`}
-                                    >
-                                        <img src={skinsMap[skin]} alt={skin} className="w-8 h-8 mb-2" />
-                                        <span className="text-xs capitalize">{skin}</span>
-                                    </button>
-                                ))}
-                            </div>
-
-                            <button
-                                onClick={() => setShowIntro(false)}
-                                disabled={!selectedSkin}
-                                className="px-5 py-2 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 disabled:opacity-50 transition"
-                            >
-                                Start Playing
-                            </button>
-
+                        {/* SKIN SELECTION */}
+                        <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mb-6">
+                            {['zoro', 'luffy'].map((skin) => (
+                                <button
+                                    key={skin}
+                                    onClick={() => setSelectedSkin(skin)}
+                                    className={`p-3 border rounded-lg w-20 h-24 transition-all flex flex-col items-center justify-center ${getSkinStyle(skin)}`}
+                                >
+                                    <img src={skinsMap[skin]} alt={skin} className="w-8 h-8 mb-2" />
+                                    <span className="text-xs capitalize">{skin}</span>
+                                </button>
+                            ))}
                         </div>
 
-                    )}
+                        <button
+                            onClick={() => setShowIntro(false)}
+                            disabled={!selectedSkin}
+                            className="px-5 py-2 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 disabled:opacity-50 transition"
+                        >
+                            Start Playing
+                        </button>
 
-                    {/* Obstacles */}
-                    {obstacles.map((block, i) => (
-                        <img
-                            key={`ob-${i}`}
-                            src={getObstacleImage()}
-                            alt="obstacle"
-                            className="absolute"
-                            style={{
-                                width: GRID_SIZE,
-                                height: GRID_SIZE,
-                                left: block.x * GRID_SIZE,
-                                top: block.y * GRID_SIZE,
-                            }}
-                        />
-                    ))}
+                    </div>
 
-                    {/* Snake */}
-                    {snake.map((segment, i) => {
-                        const isHead = i === 0;
+                )}
 
-                        const positionStyle = {
-                            width: GRID_SIZE,
-                            height: GRID_SIZE,
-                            left: segment.x * GRID_SIZE,
-                            top: segment.y * GRID_SIZE,
-                        };
-
-                        return (
-                            <div key={i} className="absolute" style={positionStyle}>
-                                {isHead ? (
-                                    <img src={getSkinImage()} alt="snake-head" className="w-full h-full" />
-                                ) : (
-                                    <motion.img
-                                        src={getBodyImage()}
-                                        alt="snake-body"
-                                        className={`w-full h-full ${i === snake.length - 1 ? 'rounded-br-2xl opacity-90' : ''}`}
-                                        initial={{ scale: 1, opacity: 0.9 }}
-                                        animate={{ scale: [1, 1.1, 1], opacity: [0.85, 1, 0.85] }}
-                                        transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                                    />
-                                )}
-                            </div>
-                        );
-                    })}
-
-                    {/* Food */}
-                    <motion.img
-                        src={getFoodImage()} xx
-                        alt="food"
+                {/* Obstacles */}
+                {obstacles.map((block, i) => (
+                    <img
+                        key={`ob-${i}`}
+                        src={getObstacleImage()}
+                        alt="obstacle"
                         className="absolute"
                         style={{
                             width: GRID_SIZE,
                             height: GRID_SIZE,
-                            left: food.x * GRID_SIZE,
-                            top: food.y * GRID_SIZE,
-                        }}
-                        animate={{
-                            y: [0, -1, 0],
-                        }}
-                        transition={{
-                            duration: 1.2,
-                            repeat: Infinity,
-                            ease: 'easeInOut',
+                            left: block.x * GRID_SIZE,
+                            top: block.y * GRID_SIZE,
                         }}
                     />
+                ))}
 
-                    {/* Score / Game Over */}
-                    <div className="absolute top-4 left-4 z-20 flex flex-col items-start gap-2 font-mono text-sm sm:text-base text-white">
-                        <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-1 shadow-md flex items-center gap-2">
-                            <span className="text-gray-300">Score</span>
-                            <span className="text-green-400 font-semibold tabular-nums">{score}</span>
+                {/* Snake */}
+                {snake.map((segment, i) => {
+                    const isHead = i === 0;
+
+                    const positionStyle = {
+                        width: GRID_SIZE,
+                        height: GRID_SIZE,
+                        left: segment.x * GRID_SIZE,
+                        top: segment.y * GRID_SIZE,
+                    };
+
+                    return (
+                        <div key={i} className="absolute" style={positionStyle}>
+                            {isHead ? (
+                                <img src={getSkinImage()} alt="snake-head" className="w-full h-full" />
+                            ) : (
+                                <motion.img
+                                    src={getBodyImage()}
+                                    alt="snake-body"
+                                    className={`w-full h-full ${i === snake.length - 1 ? 'rounded-br-2xl opacity-90' : ''}`}
+                                    initial={{ scale: 1, opacity: 0.9 }}
+                                    animate={{ scale: [1, 1.1, 1], opacity: [0.85, 1, 0.85] }}
+                                    transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                                />
+                            )}
                         </div>
-                        <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-1 shadow-md flex items-center gap-2">
-                            <span className="text-gray-300">Attempts</span>
-                            <span className="text-yellow-300 font-semibold tabular-nums">{attempts}</span>
-                        </div>
+                    );
+                })}
+
+                {/* Food */}
+                <motion.img
+                    src={getFoodImage()} xx
+                    alt="food"
+                    className="absolute"
+                    style={{
+                        width: GRID_SIZE,
+                        height: GRID_SIZE,
+                        left: food.x * GRID_SIZE,
+                        top: food.y * GRID_SIZE,
+                    }}
+                    animate={{
+                        y: [0, -1, 0],
+                    }}
+                    transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                    }}
+                />
+
+                {/* Score / Game Over */}
+                <div className="absolute top-4 left-4 z-20 flex flex-col items-start gap-2 font-mono text-sm sm:text-base text-white">
+                    <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-1 shadow-md flex items-center gap-2">
+                        <span className="text-gray-300">Score</span>
+                        <span className="text-green-400 font-semibold tabular-nums">{score}</span>
                     </div>
+                    <div className="bg-black/50 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-1 shadow-md flex items-center gap-2">
+                        <span className="text-gray-300">Attempts</span>
+                        <span className="text-yellow-300 font-semibold tabular-nums">{attempts}</span>
+                    </div>
+                </div>
 
-                    {gameOver && (
-                        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm text-center px-6">
-                            <h2 className="text-4xl sm:text-5xl font-extrabold text-white drop-shadow-lg mb-4">
-                                GAME OVER
-                            </h2>
-                            <p className="text-gray-300 text-sm sm:text-base mb-8 max-w-md">
-                                Oups, You’ve crashed your snake...
-                            </p>
+                {gameOver && (
+                    <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm text-center px-6">
+                        <h2 className="text-4xl sm:text-5xl font-extrabold text-white drop-shadow-lg mb-4">
+                            GAME OVER
+                        </h2>
+                        <p className="text-gray-300 text-sm sm:text-base mb-8 max-w-md">
+                            Oups, You’ve crashed your snake...
+                        </p>
 
-                            <div className='gap-4 flex flex-row'>
-                                <div className="flex gap-4">
+                        <div className='gap-4 flex flex-row'>
+                            <div className="flex gap-4">
 
 
+                                <button
+                                    onClick={resetGame}
+                                    className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-2 rounded-lg font-semibold transition duration-200 shadow-sm backdrop-blur-md"
+                                >
+                                    Retry
+                                </button>
+                                <Dialog.Close asChild>
                                     <button
-                                        onClick={resetGame}
-                                        className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-2 rounded-lg font-semibold transition duration-200 shadow-sm backdrop-blur-md"
+                                        className="bg-red-500/40 hover:bg-red-500/60 border border-red-500/50 text-white px-6 py-2 rounded-lg font-semibold transition duration-200 shadow-sm backdrop-blur-md"
                                     >
-                                        Retry
+                                        Leave
                                     </button>
-                                    <Dialog.Close asChild>
-                                        <button
-                                            className="bg-red-500/40 hover:bg-red-500/60 border border-red-500/50 text-white px-6 py-2 rounded-lg font-semibold transition duration-200 shadow-sm backdrop-blur-md"
-                                        >
-                                            Leave
-                                        </button>
-                                    </Dialog.Close>
-                                </div>
+                                </Dialog.Close>
                             </div>
                         </div>
-                    )}
-                </div>
-            )}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
