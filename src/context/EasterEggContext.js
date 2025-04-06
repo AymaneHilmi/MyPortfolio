@@ -38,7 +38,7 @@ export const EasterEggProvider = ({ children }) => {
                         secondary: '#E0F2F1',
                     },
                 });
-                resetEggs();
+                // resetEggs();   For testing
                 return prev;
             }
 
@@ -67,7 +67,7 @@ export const EasterEggProvider = ({ children }) => {
                     secondary: '#E0F2F1',
                 },
             });
-            resetEggs();
+            // resetEggs();   For testing
             return [...prev, eggId];
         });
     };

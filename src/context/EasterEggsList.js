@@ -11,9 +11,9 @@ import SnakeGame from './SnakeGame';
 
 const masterEggList = [
     { id: '#1', name: '#1 Confetti Egg ', tip: 'Try typing your favorite dev’s name...', level: 'Easy' },
-    { id: '#3', name: '#2 The Console Egg', tip: 'Try to click on a specific area.....', level: 'Easy' },
     { id: '#2', name: '#2 Snake Egg ', tip: 'Try to achieve the goal of 10 on the snake game', level: 'Medium' },
-    { id: '#4', name: 'The Clicky Logo', tip: 'Some logos just *want* to be clicked.', level: 'Hard' },
+    { id: '#3', name: '#3 ////////', tip: '/////////////', level: 'Medium' },
+    { id: '#4', name: '#4 ////////', tip: '/////////////', level: 'Hard' },
 ];
 
 const getBadgeStyle = (level) => {
