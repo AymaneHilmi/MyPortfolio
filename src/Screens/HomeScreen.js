@@ -16,6 +16,9 @@ import Footer from '../components/footer';
 import VisitedMap from "../components/VisitedMap";
 import { NumberTicker } from "../components/ui/NumberTicker"
 import * as Popover from "@radix-ui/react-popover";
+import * as Dialog from '@radix-ui/react-dialog';
+import { X } from 'lucide-react';
+import EasterEggsList from '../context/EasterEggsList';
 
 const cards = [
     {
@@ -81,7 +84,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
                     <h1 className="mt-2 text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-sfbold tracking-tight text-pretty  bg-gradient-to-r from-lightGray to-darkGray bg-clip-text text-transparent pb-1">
                         Aymane is a developer who loves to create things.
                     </h1>
-                    <p className="mt-6 text-xl/8 2xl:text-3xl font-sfregular text-darkGray max-w-4xl 2xl:max-w-6xl text-justify">
+                    <p className="mt-6 text-xl/8 2xl:text-3xl font-sfultralight text-gray-500 max-w-4xl 2xl:max-w-6xl text-justify">
                         A budding software engineer who enjoy writing code with clean design with a minimalist touch.
                         My journey started with online games, now I focus on building
                         intuitive digital experiences and solving real-world problems through tech. I’m
@@ -173,7 +176,30 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
                                     {eggCount}/5
                                 </span>
                                 <dt className="text-xs 2xl:text-sm font-semibold text-gray-600 mt-2">
-                                    Founded  Easter eggs
+                                    Founded &nbsp;
+                                    <Dialog.Root>
+                                        <Dialog.Trigger asChild>
+                                            <button className="order-first hover:opacity-70 transition underline">Easter eggs</button>
+                                        </Dialog.Trigger>
+
+                                        <Dialog.Portal>
+                                            <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40" />
+                                            <Dialog.Content
+                                                className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                                                            bg-white border border-gray-200 rounded-2xl shadow-xl 
+                                                            w-[95%] max-w-2xl h-[75vh] overflow-auto p-6"
+                                            >
+                                                <div className="relative">
+                                                    <Dialog.Close asChild>
+                                                        <button className="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
+                                                            <X className="w-5 h-5" />
+                                                        </button>
+                                                    </Dialog.Close>
+                                                    <EasterEggsList />
+                                                </div>
+                                            </Dialog.Content>
+                                        </Dialog.Portal>
+                                    </Dialog.Root>
                                 </dt>
                             </motion.div>
 
@@ -200,23 +226,28 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
                                 whileInView="visible"
                                 className="flex flex-col bg-gray-400/20 p-8 2xl:p-10"
                             >
-                                <Popover.Root>
-                                    <Popover.Trigger asChild>
-                                        <button className="order-first text-3xl 2xl:text-4xl font-semibold tracking-tight text-gray-900 font-mono underline hover:opacity-70 transition">
+                                <Dialog.Root>
+                                    <Dialog.Trigger asChild>
+                                        <button className="order-first text-3xl 2xl:text-4xl font-semibold tracking-tight text-gray-900 font-mono hover:opacity-70 transition">
                                             8
                                         </button>
-                                    </Popover.Trigger>
-                                    <Popover.Portal>
-                                        <Popover.Content
-                                            side="top"
-                                            align="center"
-                                            sideOffset={8}
-                                            className="rounded-xl bg-white border border-gray-200 shadow-xl max-w-xl w-96 h-[40vh] overflow-hidden z-50"
+                                    </Dialog.Trigger>
+                                    <Dialog.Portal>
+                                        <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40" />
+                                        <Dialog.Content
+                                            className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                                                 bg-white border border-gray-200 rounded-2xl shadow-xl 
+                                                 w-[95%] max-w-3xl h-[70vh] overflow-auto p-6"
                                         >
+                                            <Dialog.Close asChild>
+                                                <button className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                                                    <X className="w-5 h-5" />
+                                                </button>
+                                            </Dialog.Close>
                                             <VisitedMap />
-                                        </Popover.Content>
-                                    </Popover.Portal>
-                                </Popover.Root>
+                                        </Dialog.Content>
+                                    </Dialog.Portal>
+                                </Dialog.Root>
                                 <dt className="text-xs 2xl:text-sm font-semibold text-gray-600 mt-2">
                                     Visited Countries
                                 </dt>

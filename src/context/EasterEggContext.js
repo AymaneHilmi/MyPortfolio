@@ -17,6 +17,8 @@ export const EasterEggProvider = ({ children }) => {
         localStorage.setItem('foundEggs', JSON.stringify(foundEggs));
     }, [foundEggs]);
 
+
+
     const incrementEggs = (eggId) => {
         setFoundEggs((prev) => {
             if (prev.includes(eggId)) {
@@ -36,11 +38,21 @@ export const EasterEggProvider = ({ children }) => {
                         secondary: '#E0F2F1',
                     },
                 });
-                localStorage.removeItem('foundEggs');
+                resetEggs();
                 return prev;
             }
 
-            toast.success(`Easter Egg ${eggId} found!`, {
+            // 🎉 Messages personnalisés selon l'ID
+            const messages = {
+                '#1': "Confetti mode activated!",
+                '#2': "You're a real gamer 🕹️",
+                '#3': "You found the dev's secret console 👀",
+                '#4': "Clicking instincts on point!",
+            };
+
+            const message = messages[eggId] || `Easter Egg ${eggId} found!`;
+
+            toast.success(message, {
                 duration: 5000,
                 style: {
                     borderRadius: '12px',
@@ -55,14 +67,18 @@ export const EasterEggProvider = ({ children }) => {
                     secondary: '#E0F2F1',
                 },
             });
+            resetEggs();
             return [...prev, eggId];
         });
     };
 
+
+
     const resetEggs = () => {
-        setFoundEggs([]);
+        localStorage.removeItem('foundEggs');
         toast('🔄 Easter Eggs reset');
-    };
+    }
+
 
     // --------------------------------
     //    Easter Egg #1 : Confettis              

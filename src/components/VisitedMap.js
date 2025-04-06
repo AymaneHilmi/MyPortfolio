@@ -14,7 +14,7 @@ export default function VisitedMap() {
         { country: "NO", value: "" }, // Norway
     ];
     return (
-        <div className="flex justify-center items-center ">
+        <div className="flex justify-center items-center w-full h-full ">
             <WorldMap
                 size="xl"
                 color="#34D399"
