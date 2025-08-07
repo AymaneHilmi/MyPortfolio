@@ -83,12 +83,12 @@ export default function SaintGobainScreen() {
             <div className={cn("flex flex-col w-11/12 mt-4 md:text-sm text-xs")}>
 
 
-                <a className={cn("font-sfbold mt-3 text-2xl md:text-4xl text-darkGray")} >Saint-Gobain Research Provence</a>
-                <a className={cn("text-base font-sfregular text-lightGray")}> Cavaillon, Provence-Alpes-Côte d'Azur, France</a>
+                <p className={cn("font-sfbold mt-3 text-2xl md:text-4xl text-darkGray")} >Saint-Gobain Research Provence</p>
+                <p className={cn("text-base font-sfregular text-lightGray")}> Cavaillon, Provence-Alpes-Côte d'Azur, France</p>
 
                 <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between ")} />
 
-                <a className={cn('md:text-lg text-base font-sfregular text-darkGray')}>
+                <p className={cn('md:text-lg text-base font-sfregular text-darkGray')}>
                     As a Software Engineer at Saint-Gobain Research Provence, I lead projects aimed
                     at enhancing laboratory workflows. My primary responsibility is automating processes
                     and adding key functionalities to our local Laboratory Information Management System
@@ -101,22 +101,22 @@ export default function SaintGobainScreen() {
                     manage the software from their personal and professional devices, ensuring critical functions
                     are always within reach. My role also includes providing technical support, troubleshooting
                     software issues, and maintaining operational continuity within the laboratory.
-                </a>
+                </p>
                 <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row")} />
                 <div className={cn('flex flex-row md:gap-28 gap-11 mb-10 font-sfregular text-darkGray')}>
 
                     <div className='flex flex-col'>
-                        <a>Timeline</a>
-                        <a>August 2022 - September 2025</a>
+                        <p>Timeline</p>
+                        <p>August 2022 - September 2025</p>
                     </div>
 
                     <div className='flex flex-col'>
-                        <a >Team</a>
-                        <a>LIMS Competency Center</a>
+                        <p >Team</p>
+                        <p>LIMS Competency Center</p>
                     </div>
 
                     <div className='flex flex-col'>
-                        <a className='mb-2'>Disciplines</a>
+                        <p className='mb-2'>Disciplines</p>
                         <div className={cn("flex flex-row items-center justify-center mb-10 w-full")}>
                             <AnimatedTooltip items={SGDisciplines} />
                         </div>

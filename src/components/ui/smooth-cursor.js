@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 /** Styles “glass” — blur de l’arrière-plan + léger contour */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";     // couche grise translucide
 const GLASS_BORDER = "1px solid rgba(255,255,255,0.28)";
-const DOT_GRAY = "rgba(225, 225, 225, 0.85)";     // point central (clair)
+const DOT_GRAY = "rgba(225, 225, 225, 0.95)";     // point central (clair)
 
 export function SmoothCursor({
     springConfig = {
@@ -18,12 +18,20 @@ export function SmoothCursor({
 }) {
     const [isInteractive, setIsInteractive] = useState(false);
     const [cursorIcon, setCursorIcon] = useState("arrow");
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
 
     const x = useSpring(0, springConfig);
     const y = useSpring(0, springConfig);
     const diameter = useSpring(22, { ...springConfig, stiffness: 500 });
 
     useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+            setIsTouchDevice(true);
+            return;
+        }
+
         const interactiveSelector = [
             "a", "button", "[role='button']", "[role='link']",
             "input[type='button']", "input[type='submit']",
@@ -105,9 +113,9 @@ export function SmoothCursor({
             return (
                 <motion.div
                     key="dot"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.15 }}
                     style={{
                         width: 6,
@@ -131,9 +139,10 @@ export function SmoothCursor({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     vectorEffect="non-scaling-stroke"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    preserveAspectRatio="xMidYMid meet"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.15 }}
                 >
                     <rect x="3" y="5" width="18" height="14" rx="2" ry="2" />
@@ -156,9 +165,10 @@ export function SmoothCursor({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 vectorEffect="non-scaling-stroke"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                preserveAspectRatio="xMidYMid meet"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
             >
                 <path d="M6 18 L18 6" />
@@ -166,6 +176,10 @@ export function SmoothCursor({
             </motion.svg>
         );
     };
+
+    if (isTouchDevice) {
+        return null;
+    }
 
     return (
         <motion.div
@@ -196,7 +210,7 @@ export function SmoothCursor({
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 480, damping: 30 }}
         >
-            <AnimatePresence initial={false} mode="popLayout">
+            <AnimatePresence initial={false} mode="wait">
                 {isInteractive ? (
                     renderIcon(cursorIcon)
                 ) : (

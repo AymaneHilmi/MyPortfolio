@@ -17,7 +17,7 @@ import { LinkPreview } from "./ui/link-preview";
 
 
 
-export default function LandingPage() {
+export default function LandingPage({ scrollToRoutes }) {
     const fadeInUp = {
         hidden: { opacity: 0, y: 20 },
         visible: (i) => ({
@@ -56,10 +56,11 @@ export default function LandingPage() {
                 >
                     Recently, I’ve completed my apprenticeship at{" "}
                     <LinkPreview
-                        // url="/saintgobain" scrollToRoutes();
                         imageSrc="https://www.verreetprotections.com/wp-content/uploads/2016/06/logoSGG2016.jpg"
+                        url="/saintgobain"
                         isStatic
-                        className="font-bold underline-offset-8 text-black hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 hover:bg-clip-text hover:text-transparent transition-colors duration-300"
+                        onClick={scrollToRoutes}
+                        className="font-bold underline underline-offset-4 text-black hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 hover:bg-clip-text hover:text-transparent transition-colors duration-300"
                     >
                         Saint-Gobain Research Provence
                     </LinkPreview>

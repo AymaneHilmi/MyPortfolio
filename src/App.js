@@ -75,13 +75,13 @@ function App() {
       <div ref={routesRef} className="flex-grow flex border-t border-gray-300 w-full">
         <Sidebar scrollToRoutes={scrollToRoutes} />
         <Routes>
-          <Route path="/" element={<HomeScreen visitsTotal={visitsTotal} />} />
-          <Route path="/About" className="h-screen" element={<AboutScreen />} />
-          <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} />
-          <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen />} />
-          <Route path="/Journey" className="h-screen" element={<JourneyScreen />} />
+          <Route path="/" element={<HomeScreen visitsTotal={visitsTotal} scrollToRoutes={scrollToRoutes} />} />
+          <Route path="/About" className="h-screen" element={<AboutScreen scrollToRoutes={scrollToRoutes} />} />
+          <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} scrollToRoutes={scrollToRoutes} />
+          <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen scrollToRoutes={scrollToRoutes} />} />
+          <Route path="/Journey" className="h-screen" element={<JourneyScreen />} scrollToRoutes={scrollToRoutes} />
           {/* <Route path="/Blog" className="h-screen" element={<BlogScreen />} /> */}
-          <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} />
+          <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} scrollToRoutes={scrollToRoutes} />
         </Routes>
       </div>
       {/* Confetti Easter Egg */}
