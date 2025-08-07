@@ -96,7 +96,7 @@ export default function Sidebar({ scrollToRoutes }) {
                     <TooltipProvider delayDuration={0}>
                         <Tooltip>
                             <TooltipTrigger asChild className='w-1'>
-                                <a href="mailto:contact@aymanehilmi.com" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a>
+                                <a href="mailto:contact@aymanehilmi.com" data-cursor-icon="mail" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a>
                             </TooltipTrigger>
                             <TooltipContent>
                                 <div className="flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm w-fit space-x-2">
@@ -104,6 +104,7 @@ export default function Sidebar({ scrollToRoutes }) {
                                     <button
                                         onClick={handleCopy}
                                         className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
+                                        data-cursor-icon="mail"
                                     >
                                         {copied ? "COPIED" : "COPY"}
                                     </button>
@@ -129,7 +130,7 @@ export default function Sidebar({ scrollToRoutes }) {
 
                 <div className={cn(`font-sfbold text-darkGray fixed top-0 left-0 w-full h-2/5 bg-baground/75 bg-opacity-10 
             backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform 
-            duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`)}>
+            duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`)} >
                     <Link to={""} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
                         Home
                     </Link>

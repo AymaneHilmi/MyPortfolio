@@ -16,6 +16,7 @@ import SplashCursor from './components/ui/SplashCursor';
 import LandingPage from './components/LandingPage';
 import { useEasterEgg } from './context/EasterEggContext';
 import Footer from './components/footer';
+import { SmoothCursor } from './components/ui/smooth-cursor';
 
 
 
@@ -66,7 +67,9 @@ function App() {
       .catch(() => setVisitsTotal(null));
   }, []);
   return (
-    <Router className="flex bg-background">
+
+    <Router className="flex bg-background cursor-none">
+      <SmoothCursor />
       <LandingPage />
 
       <div ref={routesRef} className="flex-grow flex border-t border-gray-300 w-full">

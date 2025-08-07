@@ -21,6 +21,9 @@ module.exports = {
         InkBrushArabic: ['InkBrushArabic', 'sans-serif'],
         AutomnBrush: ['AutomnBrush', 'sans-serif'],
       },
+      cursor: {
+        none: 'none',
+      },
     },
     animation: {
       scroll:
@@ -34,7 +37,10 @@ module.exports = {
       },
     },
   },
-  plugins: [addVariablesForColors],
+  plugins: [
+    addVariablesForColors,
+    addBaseCursorNone,
+  ],
 }
 
 function addVariablesForColors({
@@ -46,5 +52,13 @@ function addVariablesForColors({
 
   addBase({
     ":root": newVars,
+  });
+}
+
+function addBaseCursorNone({ addBase }) {
+  addBase({
+    '*': { cursor: 'none' },
+    'a, button': { cursor: 'none' }, // liens et boutons aussi
+    'input, textarea': { cursor: 'text' },
   });
 }

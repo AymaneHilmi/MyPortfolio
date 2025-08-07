@@ -11,6 +11,8 @@ import zorro from '../assets/zorro.jpg'
 import Rome from '../assets/Rome.jpg'
 import { cn } from "../lib/utils";
 import AOS from 'aos'
+import { LinkPreview } from "./ui/link-preview";
+
 
 
 
@@ -29,50 +31,43 @@ export default function LandingPage() {
         }),
     };
     return (
-        <div className="bg-white w-screen h-screen flex items-center justify-center">
-            
-            <main className="flex items-center justify-center min-h-screen px-6 bg-white text-black">
-      <div className="max-w-5xl text-left">
-        {/* Titre principal */}
-        <motion.h1
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-3xl md:text-5xl lg:text-6xl font-sfregular text-darkGray tracking-tight leading-tight"
-        >
-          Hello !<br />
-          This is Aymane <span className='font-InkBrushArabic'> [ أيمن ]</span>, <br />
-          I am a budding <span className="font-bold">Software Engineer</span>.
-        </motion.h1>
+        <div className="bg-white w-screen h-screen flex items-center justify-center px-6 min-h-screen ">
+            <div className="max-w-5xl text-left">
+                {/* Titre principal */}
+                <motion.h1
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="text-3xl md:text-5xl lg:text-6xl font-sfregular text-darkGray tracking-tight leading-tight"
+                >
+                    Hello !<br />
+                    This is Aymane <span className='font-InkBrushArabic bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent'> [ أيمن ]</span>, <br />
+                    I am a budding <span className="font-sfbold ">Software Engineer</span>.
+                </motion.h1>
 
-        {/* Paragraphe descriptif */}
-        <motion.p
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mt-8 text-sm md:text-base lg:text-lg font-sfregular leading-relaxed text-lightGray"
-        >
-          Recently, I’ve completed my apprenticeship at{" "}
-        <span className="font-bold underline ">Saint-Gobain Research Provence</span>, where I contributed to digital innovation in a research and development context.
-        After that, I decided to pursue{" "}
-        <span className="font-bold underline text-darkGray">entrepreneurship</span> while traveling around the world, driven by the desire to build meaningful projects, explore diverse cultures, and challenge myself beyond borders.
-
-
-        </motion.p>
-      </div>
-    </main>
-
-
-
-
-
-
-
-
-
-{/* 
+                {/* Paragraphe descriptif */}
+                <motion.p
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="mt-8 text-sm md:text-base lg:text-lg font-sfregular leading-relaxed text-darkGray"
+                >
+                    Recently, I’ve completed my apprenticeship at{" "}
+                    <LinkPreview
+                        // url="/saintgobain" scrollToRoutes();
+                        imageSrc="https://www.verreetprotections.com/wp-content/uploads/2016/06/logoSGG2016.jpg"
+                        isStatic
+                        className="font-bold underline-offset-8 text-black hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 hover:bg-clip-text hover:text-transparent transition-colors duration-300"
+                    >
+                        Saint-Gobain Research Provence
+                    </LinkPreview>
+                    , where I contributed to digital innovation in a research and development context. After that, I decided to pursue entrepreneurship
+                    while traveling around the world, driven by the desire to build meaningful projects, explore diverse cultures, and challenge myself beyond borders.
+                </motion.p>
+            </div>
+            {/* 
             <main className="isolate flex flex-col items-center justify-center h-full">
  
                 <svg
@@ -140,22 +135,3 @@ export default function LandingPage() {
         </div >
     )
 }
-
-    // <div className="flex items-center justify-center min-h-screen bg-white px-6">
-    //   <div className="max-w-4xl text-lefttext-3xl md:text-5xl font-sfbold tracking-tight lg:text-6xl bg-gradient-to-r from-lightGray to-darkGray bg-clip-text text-transparent">
-    //     {/* Header */}
-    //     <h1 className="text-5xl font-light text-gray-800 leading-tight">
-    //       <span className="block">Hello!</span>
-    //       <span className="block">This is <span className="font-semibold">Yiko</span>,</span>
-    //       <span className="block">
-    //         I am an <span className="font-bold text-gray-900">AI-Human Interaction</span> designer.
-    //       </span>
-    //     </h1>
-
-    //     {/* Paragraph */}
-    //     <p className="mt-8 text-lg text-gray-700 font-serif leading-relaxed">
-    //       Recently, I’ve been incubating agentic product, and defining AI-human behavior paradigm with <span className="font-bold underline">MIT-IBM Watson AI Lab & MIT Media Lab</span>.
-    //       Prior to this, I streamlined the genetic engineering workflow with <span className="font-bold">IBM Ventures</span>; and helped millions of businesses stay engaged with their customers through <span className="font-bold underline">Meta Business</span>.
-    //     </p>
-    //   </div>
-    // </div>
