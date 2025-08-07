@@ -1,51 +1,54 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Spline from '@splinetool/react-spline';
 import './components.css';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 
-
-
 export default function LandingPage() {
-    const [isVisible, setIsVisible] = useState(false);
-    const [isTabActive, setIsTabActive] = useState(true);
-    const splineRef = useRef(null);
+  const [shouldRenderSpline, setShouldRenderSpline] = useState(false);
+  const containerRef = useRef(null);
+  const splineRef = useRef(null); 
+  
 
-    // Détecte si la section est visible
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsVisible(entry.isIntersecting);
-            },
-            { threshold: 0.1 }
-        );
+  const checkVisibility = useCallback(() => {
+    if (document.hidden || !containerRef.current) {
+      setShouldRenderSpline(false);
+      return;
+    }
 
-        if (splineRef.current) {
-            observer.observe(splineRef.current);
-        }
+    const rect = containerRef.current.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    setShouldRenderSpline(isVisible);
+  }, []);
 
-        return () => {
-            if (splineRef.current) {
-                observer.unobserve(splineRef.current);
-            }
-        };
-    }, []);
+  useEffect(() => {
+    checkVisibility(); 
 
-    // Détecte si l'onglet est actif
-    useEffect(() => {
-        const handleVisibilityChange = () => {
-            setIsTabActive(document.visibilityState === "visible");
-        };
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    window.addEventListener('resize', checkVisibility);
+    document.addEventListener('visibilitychange', checkVisibility);
 
-        document.addEventListener("visibilitychange", handleVisibilityChange);
-        return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
-    }, []);
+    return () => {
+      window.removeEventListener('scroll', checkVisibility);
+      window.removeEventListener('resize', checkVisibility);
+      document.removeEventListener('visibilitychange', checkVisibility);
+    };
+  }, [checkVisibility]);
 
-    return (
-        <div ref={splineRef} className="h-screen w-full">
-            {isVisible && isTabActive && (
-                <Spline scene="https://prod.spline.design/3OnoqTOGmJs7Vpxx/scene.splinecode" />
-            )}
-        </div>
-    );
+  return (
+    <div ref={containerRef} className="h-screen w-full overflow-hidden">
+      {shouldRenderSpline && (
+        <Spline
+          scene="https://prod.spline.design/3OnoqTOGmJs7Vpxx/scene.splinecode"
+          onLoad={(splineApp) => {
+            splineRef.current = splineApp;
+
+            // Optionnel : ajuster la scène ici
+            // splineApp.setZoom(1); // si tu veux forcer un zoom
+            // splineApp.requestRender(); // si tu veux forcer un render à l’arrivée
+          }}
+        />
+      )}
+    </div>
+  );
 }

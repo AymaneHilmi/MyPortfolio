@@ -15,7 +15,6 @@ import Confetti from 'react-confetti';
 import CesiverooScreen from './Screens/CesiverooScreen';
 import { cn } from "./lib/utils";
 import JourneyScreen from './Screens/JourneyScreen';
-import ResumeScreen from './Screens/ResumeScreen';
 import SplashCursor from './components/ui/SplashCursor';
 
 
@@ -166,7 +165,6 @@ function App() {
         <Routes>
           <Route path="/" className="h-screen" element={<HomeScreen scrollToRoutes={scrollToRoutes} />} />
           <Route path="/About" className="h-screen" element={<AboutScreen />} />
-          <Route path="/Resume" className="h-screen" element={<ResumeScreen />} />
           <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} />
           <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen />} />
           <Route path="/Journey" className="h-screen" element={<JourneyScreen />} />

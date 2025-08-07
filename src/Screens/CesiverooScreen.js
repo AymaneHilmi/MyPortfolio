@@ -1,4 +1,4 @@
-import { React, img, useEffect, useState } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Spline from '@splinetool/react-spline';
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 import { CodeBlock } from "../components/ui/code-block";
@@ -20,33 +20,39 @@ import { cn } from "../lib/utils";
 
 export default function CesiverooScreen() {
 
-    const [isVisible, setIsVisible] = useState(false);
+    const [shouldRenderSpline, setShouldRenderSpline] = useState(false);
+  const containerRef = useRef(null);
+  const splineRef = useRef(null); 
 
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect();
-                }
-            });
-        });
+  const handleLoad = (splineApp) => {
+    splineRef.current = splineApp;
+    AOS.refresh();
+  };
 
-        const target = document.querySelector('#landing-page');
-        if (target) {
-            observer.observe(target);
-        }
+  const checkVisibility = useCallback(() => {
+    if (document.hidden || !containerRef.current) {
+      setShouldRenderSpline(false);
+      return;
+    }
 
-        return () => {
-            if (target) {
-                observer.unobserve(target);
-            }
-        };
-    }, []);
+    const rect = containerRef.current.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    setShouldRenderSpline(isVisible);
+  }, []);
 
-    const handleLoad = () => {
-        AOS.refresh();
+  useEffect(() => {
+    checkVisibility();
+
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    window.addEventListener('resize', checkVisibility);
+    document.addEventListener('visibilitychange', checkVisibility);
+
+    return () => {
+      window.removeEventListener('scroll', checkVisibility);
+      window.removeEventListener('resize', checkVisibility);
+      document.removeEventListener('visibilitychange', checkVisibility);
     };
+  }, [checkVisibility]);
 
     const people = [
         {
@@ -104,9 +110,19 @@ export default function CesiverooScreen() {
 
     return (
         <div className={cn('w-full flex flex-col items-center text-justify')} data-aos="fade-up">
-            <div className={cn("border-b border-gray-300 w-full h-screen flex flex-col justify-center items-center mb-4 bg-[#e6e6e6]")}>
-                <Spline scene="https://prod.spline.design/DGj8qhSyZN4FmvR1/scene.splinecode" onLoad={handleLoad} />
-            </div>
+            <div
+      ref={containerRef}
+      className={cn(
+        "border-b border-gray-300 w-full h-screen flex flex-col justify-center items-center mb-4 bg-[#e6e6e6]"
+      )}
+    >
+      {shouldRenderSpline && (
+        <Spline
+          scene="https://prod.spline.design/DGj8qhSyZN4FmvR1/scene.splinecode"
+          onLoad={handleLoad}
+        />
+      )}
+    </div>
             <div className={cn("flex flex-col w-11/12 mt-4 md:text-lg text-xs")}>
 
                 <div className='flex flex-col' data-aos="fade-up">
