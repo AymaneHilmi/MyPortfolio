@@ -97,3 +97,22 @@ export default function LandingPage() {
         </div >
     )
 }
+
+    // <div className="flex items-center justify-center min-h-screen bg-white px-6">
+    //   <div className="max-w-4xl text-lefttext-3xl md:text-5xl font-sfbold tracking-tight lg:text-6xl bg-gradient-to-r from-lightGray to-darkGray bg-clip-text text-transparent">
+    //     {/* Header */}
+    //     <h1 className="text-5xl font-light text-gray-800 leading-tight">
+    //       <span className="block">Hello!</span>
+    //       <span className="block">This is <span className="font-semibold">Yiko</span>,</span>
+    //       <span className="block">
+    //         I am an <span className="font-bold text-gray-900">AI-Human Interaction</span> designer.
+    //       </span>
+    //     </h1>
+
+    //     {/* Paragraph */}
+    //     <p className="mt-8 text-lg text-gray-700 font-serif leading-relaxed">
+    //       Recently, I’ve been incubating agentic product, and defining AI-human behavior paradigm with <span className="font-bold underline">MIT-IBM Watson AI Lab & MIT Media Lab</span>.
+    //       Prior to this, I streamlined the genetic engineering workflow with <span className="font-bold">IBM Ventures</span>; and helped millions of businesses stay engaged with their customers through <span className="font-bold underline">Meta Business</span>.
+    //     </p>
+    //   </div>
+    // </div>
