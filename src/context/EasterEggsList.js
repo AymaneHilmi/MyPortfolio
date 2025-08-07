@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import MobileTypingInput from '../components/MobileTypingInput';
 import trophyImg from '../assets/SnakeSkins/trophy.png';
-import SnakeGame from './SnakeGame';
 
 
 const masterEggList = [
@@ -103,33 +102,6 @@ const EasterEggsDialog = () => {
                                     )}
                                 </div>
                             </div>
-
-                            {/* 🎮 Snake game trigger for egg #2 */}
-                            {egg.id === '#2' && !isFound && (
-                                <>
-                                    {/* Only show button on desktop */}
-                                    <div className="hidden md:block">
-                                        <Dialog.Root>
-                                            <Dialog.Trigger asChild>
-                                                <button className="mt-2 px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition">
-                                                    🎮 Play Snake
-                                                </button>
-                                            </Dialog.Trigger>
-                                            <Dialog.Portal>
-                                                <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50" />
-                                                <Dialog.Content className="fixed inset-0 z-50 bg-transparent p-0 m-0">
-                                                    <SnakeGame fullscreen />
-                                                </Dialog.Content>
-                                            </Dialog.Portal>
-                                        </Dialog.Root>
-                                    </div>
-
-                                    {/* Mobile message */}
-                                    <p className="block md:hidden text-sm text-red-500 italic mt-2">
-                                        This game is only available on desktop. Try opening the site on a computer 💻
-                                    </p>
-                                </>
-                            )}
 
                             {/* 👇 Mobile typing input only for egg #1 */}
                             {egg.id === '#1' && !isFound && (

@@ -78,16 +78,14 @@ export default function Sidebar({ scrollToRoutes }) {
                     <div><Link to="/Resume" className={cn("transition-opacity duration-300 hover:opacity-30")} onClick={scrollToRoutes}>Resume</Link></div>
                 </div>
                 <div className={cn("font-sfregular row-span-1 justify-around border-b border-gray-300 p-8")}>
+
                     <div className='flex flex-col'>
-                        <h1 className='text-xs pb-2 text-lightGray'>MOBILE APPLICATION</h1>
-                        <div><Link to="/SaintGobain" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Saint-Gobain</Link></div>
+                        <h1 className='text-xs pb-2 text-lightGray'>PROJECTS</h1>
                         <div><Link to="/Cesiveroo" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Cesiveroo</Link></div>
-                    </div>
-                    <div className='flex flex-col mt-4'>
-                        <h1 className='text-xs pb-2 text-lightGray'>WEB DEVELOPMENT</h1>
                         <div><Link to="Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Aymane's Portfolio</Link></div>
-                        <div><Link to="/Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Blog</Link></div>
                     </div>
+
+
 
                 </div>
                 <div className="font-sfregular row-span-1 flex flex-col border-b border-gray-300 p-8">
@@ -162,3 +160,14 @@ export default function Sidebar({ scrollToRoutes }) {
         </div>
     );
 }
+
+{/* <div className='flex flex-col'>
+                        <h1 className='text-xs pb-2 text-lightGray'>MOBILE APPLICATION</h1>
+                        <div><Link to="/SaintGobain" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Saint-Gobain</Link></div>
+                        <div><Link to="/Cesiveroo" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Cesiveroo</Link></div>
+                    </div>
+                    <div className='flex flex-col mt-4'>
+                        <h1 className='text-xs pb-2 text-lightGray'>WEB DEVELOPMENT</h1>
+                        <div><Link to="Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Aymane's Portfolio</Link></div>
+                        <div><Link to="/Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Blog</Link></div>
+                    </div> */}
