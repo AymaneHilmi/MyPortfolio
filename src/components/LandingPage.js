@@ -30,8 +30,51 @@ export default function LandingPage() {
     };
     return (
         <div className="bg-white w-screen h-screen flex items-center justify-center">
+            
+            <main className="flex items-center justify-center min-h-screen px-6 bg-white text-black">
+      <div className="max-w-5xl text-left">
+        {/* Titre principal */}
+        <motion.h1
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-3xl md:text-5xl lg:text-6xl font-sfregular text-darkGray tracking-tight leading-tight"
+        >
+          Hello !<br />
+          This is Aymane <span className='font-InkBrushArabic'> [ أيمن ]</span>, <br />
+          I am a budding <span className="font-bold">Software Engineer</span>.
+        </motion.h1>
+
+        {/* Paragraphe descriptif */}
+        <motion.p
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mt-8 text-sm md:text-base lg:text-lg font-sfregular leading-relaxed text-lightGray"
+        >
+          Recently, I’ve completed my apprenticeship at{" "}
+        <span className="font-bold underline ">Saint-Gobain Research Provence</span>, where I contributed to digital innovation in a research and development context.
+        After that, I decided to pursue{" "}
+        <span className="font-bold underline text-darkGray">entrepreneurship</span> while traveling around the world, driven by the desire to build meaningful projects, explore diverse cultures, and challenge myself beyond borders.
+
+
+        </motion.p>
+      </div>
+    </main>
+
+
+
+
+
+
+
+
+
+{/* 
             <main className="isolate flex flex-col items-center justify-center h-full">
-                {/* Landing Section */}
+ 
                 <svg
                     aria-hidden="true"
                     className="absolute inset-x-0 top-0 -z-10 h-screen w-full stroke-gray-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]"
@@ -57,7 +100,7 @@ export default function LandingPage() {
                     <rect fill="url(#1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84)" width="100%" height="100%" strokeWidth={0} />
                 </svg>
                 <div className="relative flex items-center justify-center w-full h-full">
-                    {/* Texte centré */}
+
                     <div className="text-center px-4 max-w-2xl flex flex-col items-center justify-center relative z-10">
                         <motion.h1
                             variants={fadeInUp}
@@ -93,7 +136,7 @@ export default function LandingPage() {
                         <img src={zorro} className="w-24 md:w-44 " />
                     </motion.div>
                 </div>
-            </main >
+            </main > */}
         </div >
     )
 }
