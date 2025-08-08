@@ -104,7 +104,7 @@ export default function Sidebar({ scrollToRoutes }) {
                                     <button
                                         onClick={handleCopy}
                                         className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
-                                        data-cursor-icon="mail"
+                                        data-cursor-icon="copy"
                                     >
                                         {copied ? "COPIED" : "COPY"}
                                     </button>
@@ -113,8 +113,8 @@ export default function Sidebar({ scrollToRoutes }) {
                         </Tooltip>
                     </TooltipProvider>
                     {/* <div><a href="mailto:contact@aymanehilmi.com" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a></div> */}
-                    <div><a href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Linkedin</a></div>
-                    <div><a href="https://github.com/AymaneHilmi" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Github</a></div>
+                    <div><a href="https://www.linkedin.com/in/aymanehilmi/" data-cursor-icon="arrow" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Linkedin</a></div>
+                    <div><a href="https://github.com/AymaneHilmi" data-cursor-icon="arrow" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Github</a></div>
                     {/* <div><Link to="/Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Download CV </Link></div> */}
                 </div>
             </div>
