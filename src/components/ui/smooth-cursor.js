@@ -2,6 +2,7 @@
 
 import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { SiDeliveroo } from "react-icons/si";
 
 /** Styles “glass” — blur de l’arrière-plan + léger contour */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";
@@ -200,33 +201,43 @@ export function SmoothCursor({
       );
     }
 
-   if (name === "copy") {
-  return (
-    <motion.svg
-      key="copy"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="white"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      preserveAspectRatio="xMidYMid meet"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.15 }}
-    >
-      {/* Document derrière */}
-      <path d="M9 2H15C16.1046 2 17 2.89543 17 4V20C17 21.1046 16.1046 22 15 22H9C7.89543 22 7 21.1046 7 20V4C7 2.89543 7.89543 2 9 2Z" />
-      {/* Coin plié */}
-      <path d="M15 2V6H19" />
-      {/* Document devant */}
-      <rect x="5" y="6" width="14" height="16" rx="2" ry="2" />
-    </motion.svg>
-  );
-}
+    if (name === "copy") {
+      return (
+        <motion.svg
+          key="copy"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
+        >
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </motion.svg>
+      );
+    }
+
+    if (name === "cesiveroo") {
+      return (
+        <motion.div
+          key="cesiveroo"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.15 }}
+          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+          <SiDeliveroo size={22} color="white" />
+        </motion.div>
+      );
+    }
 
 
 
