@@ -241,46 +241,7 @@ export default function AboutScreen() {
                     <div className='absolute bottom-6 w-full text-center z-50 text-sm font-sfultralight font-bold text-lightGray tracking-widest' > France</div>
                     <div className='absolute bottom-2 w-full text-center z-50 text-xs font-sfultralight font-bold text-lightGray' > 43.5297° N, 5.4474° E</div>
                 </motion.div>
-                <div className=''>
-                    <motion.div
-                        className=" overflow-hidden rounded-2xl border border-gray-200 shadow-md p-5 hover:shadow-lg transition-all duration-300"
-                        variants={fadeInUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        custom={1}
-                    >
-                        <div className="flex flex-col gap-6 sm:flex-row sm:justify-between">
-                            <div>
-                                <p className="text-sm text-gray-500">Visitors</p>
-                                <h3 className="text-4xl font-AutomnBrush text-gray-900 mt-1">
-                                    14
-                                </h3>
-                                <p className="text-xs text-gray-400 mt-1">since the deployment</p>
-                            </div>
-                        </div>
-                    </motion.div>
-                    <motion.div
-                        className="relative overflow-hidden rounded-2xl border-gray-200 shadow-md p-5 w-full hover:shadow-lg transition-all duration-300 col-span-1"
-                        variants={fadeInUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        custom={1}
-                    >
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <p className="text-sm text-gray-500">Easter Eggs</p>
-                                <h3 className="text-4xl font-AutomnBrush text-gray-900 mt-1">
-                                    🥚 0/3
-                                </h3>
-                                <p className="text-xs text-gray-400 mt-1">
-                                    You found none yet...
-                                </p>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
+
                 {/* <motion.div
                     className="relative bg-white rounded-3xl shadow-md w-full border border-gray-200 overflow-hidden"
                     variants={fadeInUp}

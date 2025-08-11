@@ -1,4 +1,4 @@
-import { Link,useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './components.css';
 import Logo from '../assets/GeneralLogo.png'
 import LogoMobile from '../assets/LogoMobile.png';
@@ -67,52 +67,48 @@ export default function Navbar({ scrollToRoutes }) {
     };
 
     const location = useLocation();
-  const links = [
-    { name: "Home", path: "/" },
-    { name: "Work", path: "/Work" },
-    { name: "About", path: "/reads" },
-    { name: "Email", path: "mailto:youremail@example.com", external: true },
-    { name: "LinkedIn", path: "https://linkedin.com", external: true },
-    { name: "Github", path: "https://github.com/aymanehilmi", external: true },
-  ];
+    const links = [
+        { name: "Home", path: "/" },
+        { name: "Work", path: "/Work" },
+        { name: "About", path: "/reads" },
+        { name: "Email", path: "mailto:youremail@example.com", external: true },
+        { name: "LinkedIn", path: "https://linkedin.com", external: true },
+        { name: "Github", path: "https://github.com/aymanehilmi", external: true },
+    ];
     return (
-        <div className='absolute top-0 left-0 w-full z-50'>
-            <nav className="md:flex items-center justify-around px-6 py-10 hidden">
+        <div className='fixed top-0 left-0 w-full z-50'>
+            <nav className="md:flex items-center justify-around px-6 py-10 hidden bg-white/60 backdrop-blur-md">
                 <div className="flex items-center gap-6 text-darkGray font-sfregular">
                     {links.map((link) =>
-                    link.external ? (
-                        <a
-                        key={link.name}
-                        href={link.path}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`relative transition-colors duration-300 ease-out hover:text-black ${
-                            location.pathname === link.path ? "text-black" : ""
-                        }`}
-                        >
-                        {link.name}
-                        <span
-                            className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left ${
-                            location.pathname === link.path ? "w-full scale-x-100" : "w-0 scale-x-0"
-                            }`}
-                        ></span>
-                        </a>
-                    ) : (
-                        <Link
-                        key={link.name}
-                        to={link.path}
-                        className={`relative transition-colors duration-300 ease-out hover:text-black ${
-                            location.pathname === link.path ? "text-black" : ""
-                        }`}
-                        >
-                        {link.name}
-                        <span
-                            className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left ${
-                            location.pathname === link.path ? "w-full scale-x-100" : "w-0 scale-x-0"
-                            }`}
-                        ></span>
-                        </Link>
-                    )
+                        link.external ? (
+                            <a
+                                key={link.name}
+                                href={link.path}
+                                target="_blank"
+                                rel="noreferrer"
+                                className={`relative transition-colors duration-300 ease-out hover:text-black ${location.pathname === link.path ? "text-black" : ""
+                                    }`}
+                            >
+                                {link.name}
+                                <span
+                                    className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left ${location.pathname === link.path ? "w-full scale-x-100" : "w-0 scale-x-0"
+                                        }`}
+                                ></span>
+                            </a>
+                        ) : (
+                            <Link
+                                key={link.name}
+                                to={link.path}
+                                className={`relative transition-colors duration-300 ease-out hover:text-black ${location.pathname === link.path ? "text-black" : ""
+                                    }`}
+                            >
+                                {link.name}
+                                <span
+                                    className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left ${location.pathname === link.path ? "w-full scale-x-100" : "w-0 scale-x-0"
+                                        }`}
+                                ></span>
+                            </Link>
+                        )
                     )}
                 </div>
             </nav>

@@ -13,7 +13,6 @@ import CesiverooScreen from './Screens/CesiverooScreen';
 import { cn } from "./lib/utils";
 import JourneyScreen from './Screens/JourneyScreen';
 import SplashCursor from './components/ui/SplashCursor';
-import LandingPage from './components/LandingPage';
 import { useEasterEgg } from './context/EasterEggContext';
 import Footer from './components/footer';
 import { SmoothCursor } from './components/ui/smooth-cursor';
@@ -70,16 +69,16 @@ function App() {
 
     <Router className="flex bg-background cursor-none w-full">
       <SmoothCursor />
-        <Navbar scrollToRoutes={scrollToRoutes} />
-        <Routes>
-          <Route path="/" element={<HomeScreen visitsTotal={visitsTotal} scrollToRoutes={scrollToRoutes} />} />
-          <Route path="/About" className="h-screen" element={<AboutScreen scrollToRoutes={scrollToRoutes} />} />
-          <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} scrollToRoutes={scrollToRoutes} />
-          <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen scrollToRoutes={scrollToRoutes} />} />
-          <Route path="/Journey" className="h-screen" element={<JourneyScreen />} scrollToRoutes={scrollToRoutes} />
-          {/* <Route path="/Blog" className="h-screen" element={<BlogScreen />} /> */}
-          <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} scrollToRoutes={scrollToRoutes} />
-        </Routes>
+      <Navbar scrollToRoutes={scrollToRoutes} />
+      <Routes>
+        <Route path="/" element={<HomeScreen visitsTotal={visitsTotal} scrollToRoutes={scrollToRoutes} />} />
+        <Route path="/About" className="h-screen" element={<AboutScreen scrollToRoutes={scrollToRoutes} />} />
+        <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} scrollToRoutes={scrollToRoutes} />
+        <Route path="/SaintGobain" className="h-screen" element={<SaintGobainScreen scrollToRoutes={scrollToRoutes} />} />
+        <Route path="/Journey" className="h-screen" element={<JourneyScreen />} scrollToRoutes={scrollToRoutes} />
+        {/* <Route path="/Blog" className="h-screen" element={<BlogScreen />} /> */}
+        <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} scrollToRoutes={scrollToRoutes} />
+      </Routes>
 
       {/* Confetti Easter Egg */}
       <Confetti

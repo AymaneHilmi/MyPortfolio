@@ -9,6 +9,7 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
+
       colors: {
         'background': '#ffffff',
         darkGray: '#3b3d41',
@@ -27,7 +28,7 @@ module.exports = {
     },
     animation: {
       scroll:
-        "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite"
+        "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
     },
     keyframes: {
       scroll: {
