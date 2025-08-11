@@ -31,7 +31,7 @@ export default function LandingPage({ scrollToRoutes }) {
         }),
     };
     return (
-        <div className="bg-white w-screen h-screen flex items-center justify-center px-6 min-h-screen ">
+        <div className="bg-white w-screen flex items-center justify-center px-6 min-h-screen ">
             <div className="max-w-5xl text-left">
                 {/* Titre principal */}
                 <motion.h1
