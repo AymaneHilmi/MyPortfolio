@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import './components.css';
-import Logo from '../assets/Logo.png'
+import Logo from '../assets/GeneralLogo.png'
 import LogoMobile from '../assets/LogoMobile.png';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -15,7 +15,7 @@ import {
 
 
 
-export default function Sidebar({ scrollToRoutes }) {
+export default function Navbar({ scrollToRoutes }) {
     const [isOpen, setIsOpen] = useState(false);
     const navbarRef = useRef(null);
     const checkboxRef = useRef(null);
@@ -65,60 +65,60 @@ export default function Sidebar({ scrollToRoutes }) {
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
+
+    const location = useLocation();
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Work", path: "/Work" },
+    { name: "About", path: "/reads" },
+    { name: "Email", path: "mailto:youremail@example.com", external: true },
+    { name: "LinkedIn", path: "https://linkedin.com", external: true },
+    { name: "Github", path: "https://github.com/aymanehilmi", external: true },
+  ];
     return (
-        <div>
-
-
-            <div className={cn("md:grid sticky top-0 grid-rows-[0.2fr_1fr_1fr] border-r border-gray-300 h-screen hidden min-w-52 ")} data-aos="fade-right">
-                <div className={cn("font-sfbold row-span-1 p-8 border-b border-gray-300 flex flex-col gap-1 text-xl")} style={{ color: '#"3b3d41"' }}>
-                    <Link to="" className='w-24'>
-                        <img src={Logo} alt='Aymane Logo' className=" rounded-[10px]" />
-                    </Link>
-                    <div className='mt-4'><Link to="/About" onClick={scrollToRoutes} className={cn(' z-10 transition-opacity duration-300 hover:opacity-30')}>About Me</Link></div>
-                    <div><Link to="/Resume" className={cn("transition-opacity duration-300 hover:opacity-30")} onClick={scrollToRoutes}>Resume</Link></div>
+        <div className='absolute top-0 left-0 w-full z-50'>
+            <nav className="md:flex items-center justify-around px-6 py-10 hidden">
+                <div className="flex items-center gap-6 text-darkGray font-sfregular">
+                    {links.map((link) =>
+                    link.external ? (
+                        <a
+                        key={link.name}
+                        href={link.path}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`relative transition-colors duration-300 ease-out hover:text-black ${
+                            location.pathname === link.path ? "text-black" : ""
+                        }`}
+                        >
+                        {link.name}
+                        <span
+                            className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left ${
+                            location.pathname === link.path ? "w-full scale-x-100" : "w-0 scale-x-0"
+                            }`}
+                        ></span>
+                        </a>
+                    ) : (
+                        <Link
+                        key={link.name}
+                        to={link.path}
+                        className={`relative transition-colors duration-300 ease-out hover:text-black ${
+                            location.pathname === link.path ? "text-black" : ""
+                        }`}
+                        >
+                        {link.name}
+                        <span
+                            className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left ${
+                            location.pathname === link.path ? "w-full scale-x-100" : "w-0 scale-x-0"
+                            }`}
+                        ></span>
+                        </Link>
+                    )
+                    )}
                 </div>
-                <div className={cn("font-sfregular row-span-1 justify-around border-b border-gray-300 p-8")}>
-
-                    <div className='flex flex-col'>
-                        <h1 className='text-xs pb-2 text-lightGray'>PROJECTS</h1>
-                        <div><Link to="/Cesiveroo" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Cesiveroo</Link></div>
-                        <div><Link to="Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Aymane's Portfolio</Link></div>
-                    </div>
+            </nav>
 
 
-
-                </div>
-                <div className="font-sfregular row-span-1 flex flex-col border-b border-gray-300 p-8">
-                    <h1 className='text-sm pb-2 text-lightGray'>Personal</h1>
-                    <div><Link to="/Journey" className='text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray'>Journey</Link ></div>
-                    <div><Link to="/Blog" className='text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray'>Blog</Link ></div>
-                    <h1 className='text-sm pb-2 mt-4 text-lightGray'>Contact</h1>
-                    <TooltipProvider delayDuration={0}>
-                        <Tooltip>
-                            <TooltipTrigger asChild className='w-1'>
-                                <a href="mailto:contact@aymanehilmi.com" data-cursor-icon="mail" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                                <div className="flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm w-fit space-x-2">
-                                    <span className="text-gray-600 font-medium">{email}</span>
-                                    <button
-                                        onClick={handleCopy}
-                                        className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
-                                        data-cursor-icon="copy"
-                                    >
-                                        {copied ? "COPIED" : "COPY"}
-                                    </button>
-                                </div>
-                            </TooltipContent>
-                        </Tooltip>
-                    </TooltipProvider>
-                    {/* <div><a href="mailto:contact@aymanehilmi.com" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Mail</a></div> */}
-                    <div><a href="https://www.linkedin.com/in/aymanehilmi/" data-cursor-icon="arrow" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Linkedin</a></div>
-                    <div><a href="https://github.com/AymaneHilmi" data-cursor-icon="arrow" target="_blank" rel="noreferrer" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')}>Github</a></div>
-                    {/* <div><Link to="/Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Download CV </Link></div> */}
-                </div>
-            </div>
-
+            {/* Mobile Navbar */}
             <div ref={navbarRef} className={cn("fixed -top-1 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6")}>
                 <div
                     className={cn(`absolute inset-0 transition-all duration-500 ease-in-out ${!isOpen ? 'bg-background/75 blur-sm backdrop-blur-sm opacity-100' : 'opacity-0 pointer-events-none'}`)}

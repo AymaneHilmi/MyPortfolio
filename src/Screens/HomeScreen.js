@@ -20,6 +20,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
 import EasterEggsList from '../context/EasterEggsList';
 import { Link } from "react-router-dom";
+import LandingPage from '../components/LandingPage';
 
 
 const fadeInUp = {
@@ -49,8 +50,8 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
     };
 
     return (
-        <div className="relative bg-white py-10">
-           
+        <div className=" h-screen">
+      <LandingPage />
         </div >
     );
 }

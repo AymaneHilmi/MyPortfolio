@@ -2,7 +2,7 @@ import './App.css';
 import AOS from 'aos'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
-import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 import React, { useEffect, useState, useRef } from 'react';
 import AboutScreen from './Screens/AboutScreen';
 import ProjectScreen from './Screens/ProjectScreen';
@@ -68,12 +68,9 @@ function App() {
   }, []);
   return (
 
-    <Router className="flex bg-background cursor-none">
+    <Router className="flex bg-background cursor-none w-full">
       <SmoothCursor />
-      <LandingPage />
-
-      <div ref={routesRef} className="flex-grow flex border-t border-gray-300 w-full">
-        <Sidebar scrollToRoutes={scrollToRoutes} />
+        <Navbar scrollToRoutes={scrollToRoutes} />
         <Routes>
           <Route path="/" element={<HomeScreen visitsTotal={visitsTotal} scrollToRoutes={scrollToRoutes} />} />
           <Route path="/About" className="h-screen" element={<AboutScreen scrollToRoutes={scrollToRoutes} />} />
@@ -83,7 +80,7 @@ function App() {
           {/* <Route path="/Blog" className="h-screen" element={<BlogScreen />} /> */}
           <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} scrollToRoutes={scrollToRoutes} />
         </Routes>
-      </div>
+
       {/* Confetti Easter Egg */}
       <Confetti
         numberOfPieces={confettiActive ? 200 : 0}
