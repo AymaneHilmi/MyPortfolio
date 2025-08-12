@@ -69,10 +69,10 @@ export default function Navbar({ scrollToRoutes }) {
     const location = useLocation();
     const links = [
         { name: "Home", path: "/" },
-        { name: "Work", path: "/Work" },
-        { name: "About", path: "/reads" },
+        { name: "Projects", path: "/Projects" },
+        { name: "About", path: "/About" },
         { name: "Email", path: "mailto:youremail@example.com", external: true },
-        { name: "LinkedIn", path: "https://linkedin.com", external: true },
+        { name: "LinkedIn", path: "https://www.linkedin.com/in/aymanehilmi/", external: true },
         { name: "Github", path: "https://github.com/aymanehilmi", external: true },
     ];
     return (

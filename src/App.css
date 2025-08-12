@@ -136,3 +136,10 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'ramidots';
+  src: url('./fonts/Ramidots.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}

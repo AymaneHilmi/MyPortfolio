@@ -79,6 +79,7 @@ function App() {
         {/* <Route path="/Blog" className="h-screen" element={<BlogScreen />} /> */}
         <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} scrollToRoutes={scrollToRoutes} />
       </Routes>
+      <Footer />
 
       {/* Confetti Easter Egg */}
       <Confetti

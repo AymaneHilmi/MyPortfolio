@@ -21,6 +21,9 @@ module.exports = {
         sfultralight: ['SFULTRALIGHT', 'sans-serif'],
         InkBrushArabic: ['InkBrushArabic', 'sans-serif'],
         AutomnBrush: ['AutomnBrush', 'sans-serif'],
+        ramidots: ['ramidots', 'sans-serif'],
+
+        
       },
       cursor: {
         none: 'none',
