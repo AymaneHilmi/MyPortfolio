@@ -56,62 +56,32 @@ export const FlipWords = ({
                     position: "absolute",
                 }}
                 className={cn(
-                    "z-10 inline-block relative text-left",
+                    "z-10 inline-block relative text-left ",
                     className
                 )}
-                style={{ color: '#3b3d41' }}
                 key={currentWord}>
-                {currentWord.split(" ").map((word, wordIndex) => {
-                    // Check if the word contains Arabic characters
-                    const isWordArabic = isArabic(word);
-
-                    if (isWordArabic) {
-                        // For Arabic, animate the entire word without splitting it into letters
-                        return (
-                            <motion.span
-                                key={word + wordIndex}
-                                initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-                                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                transition={{
-                                    delay: wordIndex * 0.3,
-                                    duration: 0.3,
-                                }}
-                                className="inline-block whitespace-nowrap font-InkBrushArabic">
-
-                                {word}
-                                <span className="inline-block">&nbsp;</span>
-                            </motion.span>
-                        );
-                    } else {
-                        // For non-Arabic, animate each letter separately
-                        return (
-                            <motion.span
-                                key={word + wordIndex}
-                                initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-                                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                transition={{
-                                    delay: wordIndex * 0.3,
-                                    duration: 0.3,
-                                }}
-                                className="inline-block whitespace-nowrap">
-                                {word.split("").map((letter, letterIndex) => (
-                                    <motion.span
-                                        key={word + letterIndex}
-                                        initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-                                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                        transition={{
-                                            delay: wordIndex * 0.3 + letterIndex * 0.05,
-                                            duration: 0.2,
-                                        }}
-                                        className="inline-block font-sfbold">
-                                        {letter}
-                                    </motion.span>
-                                ))}
-                                <span className="inline-block">&nbsp;</span>
-                            </motion.span>
-                        );
-                    }
-                })}
+                {(() => {
+                    const isPhraseArabic = isArabic(currentWord);
+                    return (
+                        <motion.span
+                            key={"phrase"}
+                            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
+                            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                            transition={{ duration: 0.35 }}
+                            className={cn(
+                                "inline-block whitespace-nowrap",
+                                isPhraseArabic ? "font-InkBrushArabic text-5xl" : "font-ramidots text-6xl"
+                            )}
+                            style={{
+                                background: "linear-gradient(to right, #3b82f6, #fb923c, #ef4444)",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                            }}
+                        >
+                            {currentWord}
+                        </motion.span>
+                    );
+                })()}
             </motion.div>
         </AnimatePresence>
     );

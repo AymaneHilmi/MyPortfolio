@@ -75,7 +75,7 @@ export default function Navbar({ scrollToRoutes }) {
         { name: "Github", path: "https://github.com/aymanehilmi", external: true }
     ];
     return (
-        <div className='fixed top-0 left-0 w-full z-50'>
+        <div className='fixed top-0 left-0 w-full z-40'>
             <nav className="md:flex items-center justify-around px-6 py-10 hidden bg-white/60 backdrop-blur-md">
                 <div className="flex items-center gap-6 text-darkGray font-sfregular">
                     {links.map((link) =>

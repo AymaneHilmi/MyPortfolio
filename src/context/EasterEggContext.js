@@ -3,6 +3,16 @@ import { toast } from 'react-hot-toast';
 
 const EasterEggContext = createContext();
 
+const EggList = [
+    { id: '#1', name: '#1 Confetti Egg ', tip: 'Try typing your favorite dev’s name...', level: 'Easy', cursor: 'egg#1' },
+    { id: '#2', name: '#2 Snake Egg ', tip: 'Try to achieve the goal of 10 on the snake game', level: 'Medium', cursor: 'egg#2' },
+    { id: '#3', name: '#3 ////////', tip: '/////////////', level: 'Medium', cursor: 'egg#3' },
+    { id: '#4', name: '#4 ////////', tip: '/////////////', level: 'Hard', cursor: 'egg#4' },
+    { id: '#5', name: '#5 ////////', tip: '/////////////', level: 'Hard', cursor: 'egg#5' },
+    { id: '#6', name: '#6 ////////', tip: '/////////////', level: 'Hard', cursor: 'egg#6' },
+    { id: '#7', name: '#7 ////////', tip: '/////////////', level: 'Hard', cursor: 'egg#7' },
+];
+
 export const useEasterEgg = () => useContext(EasterEggContext);
 
 export const EasterEggProvider = ({ children }) => {
@@ -114,11 +124,13 @@ export const EasterEggProvider = ({ children }) => {
         <EasterEggContext.Provider
             value={{
                 foundEggs,
+                eggsFounded: foundEggs.length,
                 incrementEggs,
                 resetEggs,
-                eggCount: foundEggs.length,
                 confettiActive,
                 setConfettiActive,
+                eggsTotal: EggList.length,
+                EggList
             }}
         >
             {children}

@@ -239,6 +239,74 @@ export function SmoothCursor({
       );
     }
 
+    if (name === "egg") {
+      return (
+        <motion.div
+          key="egg"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.15 }}
+          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+          <span style={{ color: "white", fontSize: "20px", fontWeight: "bold" }}>?</span>
+        </motion.div>
+      );
+    }
+
+    if (name === "egg#1") {
+      const confettiColors = ["#3b82f6", "#fb923c", "#ef4444", "#22c55e", "#a855f7", "#f59e0b"];
+      const pieces = [
+        { dx: -9, dy: -7, d: 0.0 },
+        { dx: 10, dy: -6, d: 0.15 },
+        { dx: -8, dy: 8, d: 0.30 },
+        { dx: 8, dy: 9, d: 0.45 },
+        { dx: 0, dy: -10, d: 0.60 },
+      ];
+
+      return (
+        <motion.div
+          key="egg#1"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.15 }}
+          style={{
+            position: "relative",
+            display: "grid",
+            placeItems: "center",
+          }}
+        >
+          {pieces.map((p, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, x: 0, y: 0, rotate: 0, scale: 0.9 }}
+              animate={{
+                opacity: [0, 1, 0],
+                x: [0, p.dx, 0],
+                y: [0, p.dy, 0],
+                rotate: [0, 180, 360],
+                scale: [0.9, 1.1, 0.9],
+              }}
+              transition={{
+                duration: 1.6,
+                delay: p.d,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{
+                position: "absolute",
+                width: 3.5,
+                height: 3.5,
+                borderRadius: 1,
+                backgroundColor: confettiColors[i % confettiColors.length],
+              }}
+            />
+          ))}
+        </motion.div>
+      );
+    }
+
 
 
     return null;

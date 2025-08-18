@@ -5,15 +5,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import MobileTypingInput from '../components/MobileTypingInput';
-import trophyImg from '../assets/SnakeSkins/trophy.png';
 
+// Tailwind gradient helper
 
-const masterEggList = [
-    { id: '#1', name: '#1 Confetti Egg ', tip: 'Try typing your favorite dev’s name...', level: 'Easy' },
-    { id: '#2', name: '#2 Snake Egg ', tip: 'Try to achieve the goal of 10 on the snake game', level: 'Medium' },
-    { id: '#3', name: '#3 ////////', tip: '/////////////', level: 'Medium' },
-    { id: '#4', name: '#4 ////////', tip: '/////////////', level: 'Hard' },
-];
 
 const getBadgeStyle = (level) => {
     switch (level) {
@@ -29,9 +23,9 @@ const getBadgeStyle = (level) => {
 };
 
 const EasterEggsDialog = () => {
-    const { foundEggs, triggerTrophyFly } = useEasterEgg();
+    const { foundEggs, triggerTrophyFly, EggList } = useEasterEgg();
 
-    const total = masterEggList.length;
+    const total = EggList.length;
     const progress = Math.round((foundEggs.length / total) * 100);
 
 
@@ -46,7 +40,9 @@ const EasterEggsDialog = () => {
     return (
         <div>
             {/* Funny intro */}
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">🥚 Egg Chamber</h2>
+            <h2 className="text-5xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block w-fit mb-2 ">
+                Egg Chamber
+            </h2>
             <p className="text-sm text-gray-500 mb-6 italic">
                 Welcome to the Egg Chamber! Here you'll find some tips and tricks to help you on your quest.
                 (Make sure you’re not using private browsing or you’ll lose progress!)
@@ -69,7 +65,7 @@ const EasterEggsDialog = () => {
             {/* Easter Egg List */}
 
             <div className="space-y-4 mb-6">
-                {masterEggList.map((egg) => {
+                {EggList.map((egg) => {
                     const isFound = foundEggs.includes(egg.id);
                     const animateOnMount = animatedEggs.includes(egg.id);
                     const cardClass = isFound
@@ -83,6 +79,7 @@ const EasterEggsDialog = () => {
                             animate={animateOnMount ? { opacity: 1, y: 0 } : false}
                             transition={{ duration: 0.4, ease: 'easeOut' }}
                             className={`flex flex-col gap-3 border p-4 rounded-xl transition-all duration-300 ${cardClass}`}
+                            data-cursor-icon={egg.cursor}
                         >
                             <div className="flex items-start justify-between">
                                 <div>
