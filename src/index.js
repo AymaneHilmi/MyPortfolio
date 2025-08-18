@@ -5,15 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { EasterEggProvider } from './context/EasterEggContext';
 import { Toaster } from 'react-hot-toast';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
     <React.StrictMode>
-      <EasterEggProvider>
-        <App />
-        <Toaster position="bottom-right" />
-      </EasterEggProvider>
+      <BrowserRouter>
+        <EasterEggProvider>
+          <App />
+          <Toaster position="bottom-right" />
+        </EasterEggProvider>
+      </BrowserRouter>
     </React.StrictMode>
   </div>
 );

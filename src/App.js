@@ -1,6 +1,6 @@
 import './App.css';
 import AOS from 'aos'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate, useLocation } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import Navbar from './components/Navbar';
 import React, { useEffect, useState, useRef } from 'react';
@@ -16,6 +16,7 @@ import SplashCursor from './components/ui/SplashCursor';
 import { useEasterEgg } from './context/EasterEggContext';
 import Footer from './components/footer';
 import { SmoothCursor } from './components/ui/smooth-cursor';
+
 
 
 
@@ -65,12 +66,18 @@ function App() {
       .then(data => setVisitsTotal(data.total))
       .catch(() => setVisitsTotal(null));
   }, []);
+
+
+  // pop up pour les projets
+  const location = useLocation();
+  const state = location.state && location.state.backgroundLocation ? location.state : null;
+
   return (
 
-    <Router className="flex bg-background cursor-none w-full">
+    <div className="flex flex-col bg-background cursor-none w-full">
       <SmoothCursor />
       <Navbar scrollToRoutes={scrollToRoutes} />
-      <Routes>
+      <Routes >
         <Route path="/" element={<HomeScreen visitsTotal={visitsTotal} scrollToRoutes={scrollToRoutes} />} />
         <Route path="/About" className="h-screen" element={<AboutScreen scrollToRoutes={scrollToRoutes} />} />
         <Route path="/ComingSoon" className="h-screen" element={<ProjectScreen />} scrollToRoutes={scrollToRoutes} />
@@ -88,7 +95,7 @@ function App() {
         height={window.innerHeight}
         style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999, pointerEvents: 'none' }}
       />
-    </Router>
+    </div>
   );
 }
 

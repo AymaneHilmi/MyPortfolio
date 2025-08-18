@@ -12,7 +12,7 @@ export default function Footer() {
 
       {/* Signature */}
       <span className="font-bold text-center text_darkGray">
-        Designed & Developed by <a  href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" className='underline underline-offset-4 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent'> Aymane HILMI </a> 
+        Designed & Developed by <a  href="https://www.linkedin.com/in/aymanehilmi/" target="_blank" data-cursor-icon="arrow" className='underline underline-offset-4 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent'> Aymane HILMI </a> 
       </span>
     </footer>
   );

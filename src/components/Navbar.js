@@ -69,11 +69,10 @@ export default function Navbar({ scrollToRoutes }) {
     const location = useLocation();
     const links = [
         { name: "Home", path: "/" },
-        { name: "Projects", path: "/Projects" },
         { name: "About", path: "/About" },
-        { name: "Email", path: "mailto:youremail@example.com", external: true },
+        { name: "Email", path: `mailto:${email}`, external: true },
         { name: "LinkedIn", path: "https://www.linkedin.com/in/aymanehilmi/", external: true },
-        { name: "Github", path: "https://github.com/aymanehilmi", external: true },
+        { name: "Github", path: "https://github.com/aymanehilmi", external: true }
     ];
     return (
         <div className='fixed top-0 left-0 w-full z-50'>
