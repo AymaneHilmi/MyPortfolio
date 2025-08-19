@@ -3,6 +3,7 @@
 import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SiDeliveroo } from "react-icons/si";
+import { FaGlobe, FaMoon } from "react-icons/fa";
 
 /** Styles “glass” — blur de l’arrière-plan + léger contour */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";
@@ -232,7 +233,11 @@ export function SmoothCursor({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.15 }}
-          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           <SiDeliveroo size={22} color="white" />
         </motion.div>
@@ -247,21 +252,36 @@ export function SmoothCursor({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.15 }}
-          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          <span style={{ color: "white", fontSize: "20px", fontWeight: "bold" }}>?</span>
+          <span
+            style={{ color: "white", fontSize: "20px", fontWeight: "bold" }}
+          >
+            ?
+          </span>
         </motion.div>
       );
     }
 
     if (name === "egg#1") {
-      const confettiColors = ["#3b82f6", "#fb923c", "#ef4444", "#22c55e", "#a855f7", "#f59e0b"];
+      const confettiColors = [
+        "#3b82f6",
+        "#fb923c",
+        "#ef4444",
+        "#22c55e",
+        "#a855f7",
+        "#f59e0b",
+      ];
       const pieces = [
         { dx: -9, dy: -7, d: 0.0 },
         { dx: 10, dy: -6, d: 0.15 },
-        { dx: -8, dy: 8, d: 0.30 },
+        { dx: -8, dy: 8, d: 0.3 },
         { dx: 8, dy: 9, d: 0.45 },
-        { dx: 0, dy: -10, d: 0.60 },
+        { dx: 0, dy: -10, d: 0.6 },
       ];
 
       return (
@@ -307,7 +327,42 @@ export function SmoothCursor({
       );
     }
 
-
+    if (name === "egg#2") {
+      return (
+        <motion.div
+          key="egg#2"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.15 }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <FaGlobe size={22} color="white" />
+        </motion.div>
+      );
+    }
+    if (name === "egg#3") {
+      return (
+        <motion.div
+          key="egg#3"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.15 }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <FaMoon size={22} color="white" />
+        </motion.div>
+      );
+    }
 
     return null;
   };

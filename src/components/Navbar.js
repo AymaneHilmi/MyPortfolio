@@ -68,92 +68,121 @@ export default function Navbar({ scrollToRoutes }) {
 
     const location = useLocation();
     const links = [
-        { name: "Home", path: "/" },
-        { name: "About", path: "/About" },
-        { name: "Email", path: `mailto:${email}`, external: true },
-        { name: "LinkedIn", path: "https://www.linkedin.com/in/aymanehilmi/", external: true },
-        { name: "Github", path: "https://github.com/aymanehilmi", external: true }
+      { name: "Home", path: "/" },
+      { name: "About", path: "/About" },
+      { name: "Email", path: `mailto:${email}` },
+      {
+        name: "LinkedIn",
+        path: "https://www.linkedin.com/in/aymanehilmi/",
+        external: true,
+      },
+      {
+        name: "Github",
+        path: "https://github.com/aymanehilmi",
+        external: true,
+      },
     ];
     return (
-        <div className='fixed top-0 left-0 w-full z-40'>
-            <nav className="md:flex items-center justify-around px-6 py-10 hidden bg-white/60 backdrop-blur-md">
-                <div className="flex items-center gap-6 text-darkGray font-sfregular">
-                    {links.map((link) =>
-                        link.external ? (
-                            <a
-                                key={link.name}
-                                href={link.path}
-                                target="_blank"
-                                rel="noreferrer"
-                                className={`relative transition-colors duration-300 ease-out hover:text-black ${location.pathname === link.path ? "text-black" : ""
-                                    }`}
-                            >
-                                {link.name}
-                                <span
-                                    className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left ${location.pathname === link.path ? "w-full scale-x-100" : "w-0 scale-x-0"
-                                        }`}
-                                ></span>
-                            </a>
-                        ) : (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                className={`relative transition-colors duration-300 ease-out hover:text-black ${location.pathname === link.path ? "text-black" : ""
-                                    }`}
-                            >
-                                {link.name}
-                                <span
-                                    className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left ${location.pathname === link.path ? "w-full scale-x-100" : "w-0 scale-x-0"
-                                        }`}
-                                ></span>
-                            </Link>
-                        )
+      <div className="fixed top-0 left-0 w-full z-40">
+        <nav className="md:flex items-center justify-around px-6 py-10 hidden bg-white/60 backdrop-blur-md">
+          <div className="flex items-center gap-6 text-darkGray font-sfregular">
+            {links.map((link) => {
+              // Cas spécial : Email -> Tooltip
+              if (link.name === "Email") {
+                return (
+                  <TooltipProvider key={link.name} delayDuration={0}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <a
+                          href={link.path}
+                          target="_blank"
+                          rel="noreferrer"
+                          data-cursor-icon="mail"
+                          className={cn(
+                            "relative transition-colors duration-300 ease-out hover:text-black"
+                          )}
+                        >
+                          {link.name}
+                          {/* soulignement animé (facultatif pour mailto) */}
+                          <span
+                            className={cn(
+                              "absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left",
+                              "w-0 scale-x-0 group-hover:w-full group-hover:scale-x-100"
+                            )}
+                          />
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <div className="flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm w-fit space-x-2">
+                          <span className="text-gray-600 font-medium">
+                            {email}
+                          </span>
+                          <button
+                            onClick={handleCopy}
+                            className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
+                            data-cursor-icon="copy"
+                          >
+                            {copied ? "COPIED" : "COPY"}
+                          </button>
+                        </div>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                );
+              }
+
+              // Liens externes standards
+              if (link.external) {
+                return (
+                  <a
+                    key={link.name}
+                    href={link.path}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={cn(
+                      "relative transition-colors duration-300 ease-out hover:text-black",
+                      location.pathname === link.path && "text-black"
                     )}
-                </div>
-            </nav>
+                    data-cursor-icon="arrow"
+                  >
+                    {link.name}
+                    <span
+                      className={cn(
+                        "absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left",
+                        location.pathname === link.path
+                          ? "w-full scale-x-100"
+                          : "w-0 scale-x-0"
+                      )}
+                    />
+                  </a>
+                );
+              }
 
-
-            {/* Mobile Navbar */}
-            <div ref={navbarRef} className={cn("fixed -top-1 h-20 bg-transparent w-full z-50 flex md:hidden flex-row justify-between items-center px-6")}>
-                <div
-                    className={cn(`absolute inset-0 transition-all duration-500 ease-in-out ${!isOpen ? 'bg-background/75 blur-sm backdrop-blur-sm opacity-100' : 'opacity-0 pointer-events-none'}`)}
-                    style={{ zIndex: 1 }}
-                ></div>
-                <a href="/" className="w-20 z-50">
-                    <img src={LogoMobile} className="w-max" alt="Logo" />
-                </a>
-
-                <div className={cn(`font-sfbold text-darkGray fixed top-0 left-0 w-full h-2/5 bg-baground/75 bg-opacity-10 
-            backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform 
-            duration-500 ${isOpen ? 'translate-y-0' : '-translate-y-full'}`)} >
-                    <Link to={""} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
-                        Home
-                    </Link>
-                    <Link to={"/About"} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
-                        About
-                    </Link>
-                    <Link to={"/Resume"} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
-                        Resume
-                    </Link>
-                    <Link to={"/SaintGobain"} className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
-                        Saint-Gobain
-                    </Link>
-                    <a href="mailto:contact@aymanehilmi.com" className="text-xl py-2" onClick={() => { closeNavbar(); scrollToRoutes(); }}>
-                        Email
-                    </a>
-
-
-                </div>
-
-                <label id="hamburger" className="z-50">
-                    <input ref={checkboxRef} type="checkbox" onChange={toggleNavbar} />
-                    <svg viewBox="0 0 32 32">
-                        <path className="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
-                        <path className="line" d="M7 16 27 16"></path>
-                    </svg>
-                </label>
-            </div>
-        </div>
+              // Liens internes
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={cn(
+                    "relative transition-colors duration-300 ease-out hover:text-black",
+                    location.pathname === link.path && "text-black"
+                  )}
+                >
+                  {link.name}
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full transition-all duration-300 ease-out origin-left",
+                      location.pathname === link.path
+                        ? "w-full scale-x-100"
+                        : "w-0 scale-x-0"
+                    )}
+                  />
+                </Link>
+              );
+            })}
+          </div>
+        </nav>
+      </div>
     );
 }
 
