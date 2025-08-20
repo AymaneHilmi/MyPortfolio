@@ -65,14 +65,14 @@ const EasterEggsDialog = () => {
 
             {/* Easter Egg List */}
 
-            <div className="space-y-4 mb-6">
+            {/* Vertical list of eggs */}
+            <div className="flex flex-col space-y-4 mb-6">
                 {EggList.map((egg) => {
                     const isFound = foundEggs.includes(egg.id);
                     const animateOnMount = animatedEggs.includes(egg.id);
                     const cardClass = isFound
                         ? "bg-green-50 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
                         : "bg-gray-50 border-gray-200";
-
                     return (
                         <motion.div
                             key={egg.id}
@@ -82,11 +82,10 @@ const EasterEggsDialog = () => {
                             className={`relative flex flex-col gap-3 border p-4 rounded-xl overflow-hidden transition-all duration-300 ${cardClass}`}
                             data-cursor-icon={egg.cursor}
                         >
-                            {/* Numéro géant en background */}
+                            {/* Big number background */}
                             <span className="absolute left-2 top-2 text-6xl sm:text-7xl md:text-8xl font-extrabold text-gray-300 select-none pointer-events-none opacity-30">
                                 {egg.id}
                             </span>
-
                             <div className="flex items-start justify-between relative z-10">
                                 <div>
                                     <div className="flex items-center gap-2">
@@ -109,7 +108,6 @@ const EasterEggsDialog = () => {
                                     )}
                                 </div>
                             </div>
-
                             {/* 👇 Mobile typing input only for egg #1 */}
                             {egg.id === "#1" && !isFound && <MobileTypingInput />}
                         </motion.div>
@@ -139,7 +137,7 @@ const EasterEggsDialog = () => {
 
             {/* Bonus Quote */}
             <p className="text-xs text-gray-400 mt-6 text-center">
-                “The egg chooses the seeker.” – Ancient Portfolio Wisdom
+                “Don’t chase the egg, let the egg chase you.” – Portfolio Chronicles
             </p>
         </div>
     );

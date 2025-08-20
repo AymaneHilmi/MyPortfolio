@@ -380,7 +380,7 @@ export function SmoothCursor({
         width: diameter,
         height: diameter,
         borderRadius: 9999,
-        zIndex: 100,
+        zIndex: 999999999,
         pointerEvents: "none",
         background: GLASS_BG,
         backdropFilter: "blur(6px) saturate(120%)",
