@@ -149,25 +149,24 @@ export default function EasterEggsCard({}) {
                       </Dialog.Close>
 
                       {/* Bouton Annuler — glisse gauche ↔ juste à gauche du bouton droit */}
-                      
-                        <button
-                          // onMouseEnter={() => setCancelOnRight((v) => !v)}
-                          onClick={() => setCancelOnRight((v) => !v)}
-                          className="absolute top-0 h-10 px-4 flex items-center justify-center rounded-lg border text-sm font-medium text-darkGray bg-white hover:bg-gray-100 transition-[left,right] duration-300"
-                          style={
-                            cancelOnRight
-                              ? // se place juste à gauche du bouton droit avec un gap
-                                {
-                                  right: `${CONFIRM_W_PX + GAP_PX}px`,
-                                  left: "auto",
-                                }
-                              : // collé à gauche
-                                { left: 0, right: "auto" }
-                          }
-                        >
-                          Cancel
-                        </button>
-                      
+
+                      <button
+                        onMouseEnter={() => setCancelOnRight((v) => !v)}
+                        onClick={() => setCancelOnRight((v) => !v)}
+                        className="absolute top-0 h-10 px-4 flex items-center justify-center rounded-lg border text-sm font-medium text-darkGray bg-white hover:bg-gray-100 transition-[left,right] duration-300"
+                        style={
+                          cancelOnRight
+                            ? // se place juste à gauche du bouton droit avec un gap
+                              {
+                                right: `${CONFIRM_W_PX + GAP_PX}px`,
+                                left: "auto",
+                              }
+                            : // collé à gauche
+                              { left: 0, right: "auto" }
+                        }
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </Dialog.Content>
                 </Dialog.Portal>
