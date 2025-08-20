@@ -11,7 +11,7 @@ const eggMission = [
     label: "Find the Easter Egg chamber",
     icon: <Search />,
     message:
-      "Congratulations! You found the Egg Chamber. A new 'Easter Eggs' button has appeared in the navbar — you can now access it directly from there.",
+      "Congratulations! You found the Egg Chamber.\n\n A new 'Easter Eggs' button has appeared in the navbar. You can now access to the Easter Egg chamber directly from there.",
   },
   {
     id: "eggSteps",
@@ -163,32 +163,7 @@ export const EasterEggProvider = ({ children }) => {
       if (prev.includes(missionId)) return prev;
       const label =
         eggMission.find((m) => m.id === missionId)?.message ?? missionId;
-      toast.custom(
-        (t) => (
-          <div
-            className={`flex items-start gap-2 rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm transition-all ${
-              t.visible
-                ? "animate-in fade-in slide-in-from-top-2"
-                : "animate-out fade-out slide-out-to-top-2"
-            }`}
-          >
-            <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5" />
-            <div className="flex flex-col">
-              <p className="text-sm font-semibold text-gray-800">
-                Congratulations! You found the Egg Chamber.
-              </p>
-              <p className="text-sm text-gray-600">
-                A new <span className="font-medium">Easter Eggs</span> button
-                has appeared in the navbar.
-              </p>
-              <p className="text-sm text-gray-600">
-                You can now access it directly from there.
-              </p>
-            </div>
-          </div>
-        ),
-        { duration: 10000 }
-      );
+      toast(label, { duration: 10000 });
       return [...prev, missionId];
     });
     uncompleteMission(missionId);
