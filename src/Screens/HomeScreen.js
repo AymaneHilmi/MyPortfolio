@@ -126,7 +126,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
         <section className="w-full mx-auto  px-6 md:px-10 py-16 md:py-24">
           {/* Titre + sous-titre */}
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-4xl md:text-8xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
+            <h2 className="text-4xl md:text-8xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block px-1">
               Welcome to my portfolio
             </h2>
             <p className="mt-3 md:mt-4 text-sm md:text-base font-sfregular text-lightGray">
@@ -257,7 +257,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
           whileInView="visible"
           viewport={{ once: true }}
           custom={0}
-          className="text-5xl md:text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent"
+          className="text-5xl md:text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent px-1"
         >
           Projects
         </motion.h2>
@@ -436,15 +436,15 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
 }
 
 function PillMeter({ total, filled, className = "" }) {
-    return (
-        <div className={`flex gap-1.5 ${className}`}>
-            {Array.from({ length: total }).map((_, i) => (
-                <span
-                    key={i}
-                    className={`h-2.5 w-6 rounded-full transition-colors ${i < filled ? "bg-gray-800" : "bg-gray-200"
-                        }`}
-                />
-            ))}
-        </div>
-    );
+  return (
+    <div className={`flex gap-1.5 ${className}`}>
+      {Array.from({ length: total }).map((_, i) => (
+        <span
+          key={i}
+          className={`h-2.5 w-6 rounded-full transition-colors ${i < filled ? "bg-gray-800" : "bg-gray-200"
+            }`}
+        />
+      ))}
+    </div>
+  );
 }

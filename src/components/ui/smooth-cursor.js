@@ -3,7 +3,7 @@
 import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SiDeliveroo } from "react-icons/si";
-import { FaGlobe, FaMoon } from "react-icons/fa";
+import { FaGlobe, FaMoon, FaHandPaper, FaHandRock } from "react-icons/fa";
 
 /** Styles “glass” — blur de l’arrière-plan + léger contour */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";
@@ -360,6 +360,118 @@ export function SmoothCursor({
           }}
         >
           <FaMoon size={22} color="white" />
+        </motion.div>
+      );
+    }
+
+    if (name === "wife") {
+      const heartColor = "#ff4d7d";
+      const smallHearts = [
+        { dx: -10, dy: -12, d: 0.0, s: 0.7 },
+        { dx: 12, dy: -10, d: 0.15, s: 0.6 },
+        { dx: -14, dy: 8, d: 0.3, s: 0.55 },
+        { dx: 16, dy: 10, d: 0.45, s: 0.65 },
+        { dx: 0, dy: -16, d: 0.6, s: 0.6 },
+      ];
+
+      const HeartSVG = ({ size = 22, fill = heartColor }) => (
+        <motion.svg
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill={fill}
+          xmlns="http://www.w3.org/2000/svg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
+          style={{ display: "block" }}
+        >
+          {/* Classic heart shape */}
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.42 3.92 4.5 6 4.5c1.54 0 3.04.99 4 2.09 0.96-1.1 2.46-2.09 4-2.09 2.08 0 4 1.92 4 4 0 3.78-3.4 6.86-8.05 11.54L12 21.35z" />
+        </motion.svg>
+      );
+
+      return (
+        <motion.div
+          key="wife"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.15 }}
+          style={{ position: "relative", display: "grid", placeItems: "center" }}
+        >
+
+          {/* Floating small hearts */}
+          {smallHearts.map((h, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: 0, y: 0, scale: h.s }}
+              animate={{
+                opacity: [0, 1, 0],
+                x: [0, h.dx, 0],
+                y: [0, h.dy, 0],
+                scale: [h.s, h.s * 1.15, h.s],
+              }}
+              transition={{ duration: 1.8, delay: h.d, repeat: Infinity, ease: "easeInOut" }}
+              style={{ position: "absolute" }}
+            >
+              <HeartSVG size={10} />
+            </motion.div>
+          ))}
+        </motion.div>
+      );
+    }
+
+    if (name === "grab") {
+      return (
+        <motion.div
+          key="grab"
+          initial={{ opacity: 0, scale: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1 }}
+          transition={{ duration: 0.15 }}
+          style={{ position: "relative", display: "grid", placeItems: "center" }}
+        >
+          {/* Main fist icon (grabbing) */}
+          <FaHandRock size={12} color="white" />
+
+          {/* Subtle left/right chevrons to hint draggable */}
+          <motion.svg
+            key="chev-left"
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ position: "absolute", left: -6, opacity: 0.7 }}
+            initial={{ x: 2, opacity: 0 }}
+            animate={{ x: [2, -2, 2], opacity: [0, 0.7, 0] }}
+            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <path d="M15 18 L9 12 L15 6" />
+          </motion.svg>
+
+          <motion.svg
+            key="chev-right"
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ position: "absolute", right: -6, opacity: 0.7 }}
+            initial={{ x: -2, opacity: 0 }}
+            animate={{ x: [-2, 2, -2], opacity: [0, 0.7, 0] }}
+            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <path d="M9 6 L15 12 L9 18" />
+          </motion.svg>
         </motion.div>
       );
     }

@@ -24,6 +24,7 @@ export const DraggableCardBody = ({ className, children, image }) => {
       className={cn(
         "relative min-h-80 w-72 overflow-visible rounded-xl bg-gray-50 border border-gray-200 p-5 shadow-md hover:shadow-lg transition-shadow flex flex-col items-center justify-center text-center",
         className
+
       )}
     >
       {image && (
