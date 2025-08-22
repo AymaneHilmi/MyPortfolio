@@ -4,7 +4,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEasterEgg } from "../context/EasterEggContext";
 import { motion, useAnimation } from "framer-motion";
 import Cesiveroo from "../assets/CesiverooLogo.png";
-import HomeCesiveroo from "../assets/test.png";
+import HomeCesiveroo from "../assets/CesiverooHome.png";
+import HomePortfolio from "../assets/PortfolioHome.png";
+import logo from "../assets/Logo.png";
 import { ArrowRight, ScreenShare } from "lucide-react";
 import { LinkPreview } from "../components/ui/link-preview";
 import { Briefcase, PenTool, LayoutDashboard, BadgeCheck } from "lucide-react";
@@ -37,16 +39,28 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
     isMissionCompleted,
   } = useEasterEgg();
 
-  const lastProject = {
-    logo: Cesiveroo,
-    title: "Cesi",
-    highlight: "veroo",
-    subtitle: "Aix-en-Provence • 2024",
-    description:
-      "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
-    image: HomeCesiveroo,
-    link: "/work",
-  };
+  const Projects = [
+    {
+      logo: logo,
+      title: "My Portfolio",
+      subtitle: "Montpellier • 2022",
+      description:
+        "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
+      image: HomePortfolio,
+      link: "/work",
+    },
+    {
+      logo: Cesiveroo,
+      title: "Cesi",
+      highlight: "veroo",
+      color: "#20CFBD",
+      subtitle: "Aix-en-Provence • 2023",
+      description:
+        "Description du deuxième projet qui met en avant ses objectifs et réalisations.",
+      image: HomeCesiveroo,
+      link: "/project-two",
+    },
+  ];
 
   const handleClick = (link) => {
     navigate(`/${link}`);
@@ -123,7 +137,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
 
       {/* Content Section */}
       <section className="flex flex-col items-center px-4 sm:px-6 pb-6 gap-6">
-        <section className="w-full mx-auto  px-6 md:px-10 py-16 md:py-24">
+        <section className="w-full mx-auto  px-6 md:px-10 py-16 md:py-24 h-screen">
           {/* Titre + sous-titre */}
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-4xl md:text-8xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block px-1">
@@ -262,189 +276,65 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
           Projects
         </motion.h2>
 
-        <motion.a
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={1}
-          onClick={() => handleClick("Cesiveroo")}
-          className="w-full rounded-3xl bg-gray-50 pt-6 px-6 md:px-0 md:pt-0 hover:shadow-lg"
-          role="button"
-          tabIndex={0}
-        >
-          <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 ">
-            {/* Partie gauche : logo + titre + sous-titre + description + bouton */}
-            <div className="flex-1 md:max-w-md md:p-8 lg:p-12 flex flex-col gap-4">
-              {/* Logo arrondi */}
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden">
-                <img
-                  src={lastProject.logo}
-                  alt="Project Logo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+        {Projects.map((project) => (
+          <motion.a
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={1}
+            onClick={() => handleClick("Cesiveroo")}
+            className="w-full rounded-3xl bg-gray-50 pt-6 px-6 md:px-0 md:pt-0 hover:shadow-lg"
+            role="button"
+            tabIndex={0}
+          >
+            <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 ">
+              {/* Partie gauche : logo + titre + sous-titre + description + bouton */}
+              <div className="flex-1 md:max-w-md md:p-8 lg:p-12 flex flex-col gap-4">
+                {/* Logo arrondi */}
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden">
+                  <img
+                    src={project.logo}
+                    alt="Project Logo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-              {/* Titre et sous-titre */}
-              <div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-sfbold text-darkGray">
-                  {lastProject.title}
-                  <span style={{ color: "#20CFBD" }}>
-                    {lastProject.highlight}
-                  </span>{" "}
-                  Project
-                </h3>
-                <p className="text-xs sm:text-sm font-sfregular text-lightGray mt-1">
-                  {lastProject.subtitle}
+                {/* Titre et sous-titre */}
+                <div>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-sfbold text-darkGray">
+                    {project.title}
+                    <span style={{ color: project.color }}>
+                      {project.highlight}
+                    </span>{" "}
+                    Project
+                  </h3>
+                  <p className="text-xs sm:text-sm font-sfregular text-lightGray mt-1">
+                    {project.subtitle}
+                  </p>
+                </div>
+
+                {/* Description rapide */}
+                <p className="text-sm sm:text-base font-sfregular text-darkGray">
+                  {project.description}
                 </p>
               </div>
 
-              {/* Description rapide */}
-              <p className="text-sm sm:text-base font-sfregular text-darkGray">
-                {lastProject.description}
-              </p>
-            </div>
-
-            {/* Partie droite : illustration ou aperçu visuel */}
-            <div className="flex-1 rounded-2xl overflow-hidden">
-              {/* Ratio 16/9 sur mobile, hauteur auto sur desktop */}
-              <div className="relative w-full aspect-[11/9] lg:aspect-auto md:h-full">
-                <img
-                  src={lastProject.image}
-                  alt="Project Preview"
-                  className="absolute inset-0 w-full h-full object-contain"
-                />
+              {/* Partie droite : illustration ou aperçu visuel */}
+              <div className="flex-1 rounded-2xl overflow-hidden">
+                {/* Ratio 16/9 sur mobile, hauteur auto sur desktop */}
+                <div className="relative w-full aspect-[11/9] lg:aspect-auto md:h-full">
+                  <img
+                    src={project.image}
+                    alt="Project Preview"
+                    className="absolute inset-0 w-full h-full object-contain"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </motion.a>
-        <motion.a
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={1}
-          onClick={() => handleClick("Cesiveroo")}
-          className="w-full rounded-3xl bg-gray-50 pt-6 px-6 md:px-0 md:pt-0 hover:shadow-lg"
-          role="button"
-          tabIndex={0}
-        >
-          <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 ">
-            {/* Partie gauche : logo + titre + sous-titre + description + bouton */}
-            <div className="flex-1 md:max-w-md md:p-8 lg:p-12 flex flex-col gap-4">
-              {/* Logo arrondi */}
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden">
-                <img
-                  src={lastProject.logo}
-                  alt="Project Logo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Titre et sous-titre */}
-              <div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-sfbold text-darkGray">
-                  {lastProject.title}
-                  <span style={{ color: "#20CFBD" }}>
-                    {lastProject.highlight}
-                  </span>{" "}
-                  Project
-                </h3>
-                <p className="text-xs sm:text-sm font-sfregular text-lightGray mt-1">
-                  {lastProject.subtitle}
-                </p>
-              </div>
-
-              {/* Description rapide */}
-              <p className="text-sm sm:text-base font-sfregular text-darkGray">
-                {lastProject.description}
-              </p>
-            </div>
-
-            {/* Partie droite : illustration ou aperçu visuel */}
-            <div className="flex-1 rounded-2xl overflow-hidden">
-              {/* Ratio 16/9 sur mobile, hauteur auto sur desktop */}
-              <div className="relative w-full aspect-[11/9] lg:aspect-auto md:h-full">
-                <img
-                  src={lastProject.image}
-                  alt="Project Preview"
-                  className="absolute inset-0 w-full h-full object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </motion.a>
-        <motion.a
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={1}
-          onClick={() => handleClick("Cesiveroo")}
-          className="w-full rounded-3xl bg-gray-50 pt-6 px-6 md:px-0 md:pt-0 hover:shadow-lg"
-          role="button"
-          tabIndex={0}
-        >
-          <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 ">
-            {/* Partie gauche : logo + titre + sous-titre + description + bouton */}
-            <div className="flex-1 md:max-w-md md:p-8 lg:p-12 flex flex-col gap-4">
-              {/* Logo arrondi */}
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden">
-                <img
-                  src={lastProject.logo}
-                  alt="Project Logo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Titre et sous-titre */}
-              <div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-sfbold text-darkGray">
-                  {lastProject.title}
-                  <span style={{ color: "#20CFBD" }}>
-                    {lastProject.highlight}
-                  </span>{" "}
-                  Project
-                </h3>
-                <p className="text-xs sm:text-sm font-sfregular text-lightGray mt-1">
-                  {lastProject.subtitle}
-                </p>
-              </div>
-
-              {/* Description rapide */}
-              <p className="text-sm sm:text-base font-sfregular text-darkGray">
-                {lastProject.description}
-              </p>
-            </div>
-
-            {/* Partie droite : illustration ou aperçu visuel */}
-            <div className="flex-1 rounded-2xl overflow-hidden">
-              {/* Ratio 16/9 sur mobile, hauteur auto sur desktop */}
-              <div className="relative w-full aspect-[11/9] lg:aspect-auto md:h-full">
-                <img
-                  src={lastProject.image}
-                  alt="Project Preview"
-                  className="absolute inset-0 w-full h-full object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </motion.a>
+          </motion.a>
+        ))}
       </section>
-    </div>
-  );
-}
-
-function PillMeter({ total, filled, className = "" }) {
-  return (
-    <div className={`flex gap-1.5 ${className}`}>
-      {Array.from({ length: total }).map((_, i) => (
-        <span
-          key={i}
-          className={`h-2.5 w-6 rounded-full transition-colors ${i < filled ? "bg-gray-800" : "bg-gray-200"
-            }`}
-        />
-      ))}
     </div>
   );
 }

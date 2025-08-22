@@ -1,6 +1,6 @@
 
 import { React } from "react";
-import { Timeline } from "../components/ui/timeline";
+// import { Timeline } from "../components/ui/timeline";
 import lab from "../assets/AymaneLab.jpeg"
 import philipp from "../assets/AymanePhilipp.jpeg"
 import { cn } from "../lib/utils";
@@ -178,7 +178,7 @@ export default function JourneyScreen() {
     ];
     return (
         <div className="w-full">
-            <Timeline data={data} />
+            {/* <Timeline data={data} /> */}
             <div className={cn("flex justify-center items-center")}>
                 <div className={cn("font-sfultralight border-t border-gray-300 my-6 w-11/12 flex flex-row  justify-between md:justify-end ")}>
                     <div className={cn('flex flex-row gap-4 md:hidden')}>

@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import './components.css';
-import Logo from '../assets/GeneralLogo.png'
+import "./components.css";
 import LogoMobile from '../assets/LogoMobile.png';
 import AOS from 'aos'
 import 'aos/dist/aos.css'

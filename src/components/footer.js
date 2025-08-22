@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import './components.css';
-import Logo from '../assets/Logo.png'
+import "./components.css";
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { cn } from "../lib/utils";

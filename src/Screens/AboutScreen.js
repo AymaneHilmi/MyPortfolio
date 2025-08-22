@@ -4,16 +4,30 @@ import aymane from "../assets/PDP.jpeg";
 import travel from "../assets/Aymane.jpg";
 import maroc from "../assets/Maroc.jpg";
 import snow from "../assets/AymaneSnow.JPG";
-import chat from "../assets/AymaneChat.PNG";
 import mangas from "../assets/mangas.jpg";
-import gaming from "../assets/gaming.webp";
 import bike from "../assets/bike.JPG";
 import { cn } from "../lib/utils";
 import { useNavigate } from "react-router-dom";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import { useEasterEgg } from "../context/EasterEggContext";
-import { Briefcase, GraduationCap, Rocket, Target, Heart, Camera, Music, Globe2, Quote, MapPin, Flag, X, Calendar } from "lucide-react";
+import { CoolMode } from "../components/ui/cool-particle";
+import {
+  Briefcase,
+  GraduationCap,
+  Rocket,
+  Target,
+  Heart,
+  Camera,
+  Music,
+  Globe2,
+  Quote,
+  MapPin,
+  Flag,
+  X,
+  Calendar,
+  Sparkles,
+} from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   DraggableCardBody,
@@ -21,7 +35,6 @@ import {
 } from "../components/ui/draggable-card";
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 import SaintGobain from "../assets/Saint-Gobain.png";
-
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -41,14 +54,62 @@ export default function AboutScreen() {
   const { eggsFounded, incrementEggs, resetEggs, eggsTotal } = useEasterEgg();
 
   const SGDisciplines = [
-    { id: 1, name: " C#", designation: "Library", image: "https://blog.cellenza.com/wp-content/uploads/2017/02/CSharpLogo.png" },
-    { id: 2, name: "ASP .NET & CORE", designation: "Framework", image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAb1BMVEVRK9T///9QKdRNJNNPJ9Q+ANF6Y9zq5/lGFtJYNdZ3X9thQtdIG9KpnedTLtVKH9O9s+z7+v7u6/qvo+mGct/y8PtpTdlxV9pCDNKll+bBuO2Aat1cO9aKd+BnSdnc1/WQf+G0qerHv++bi+TV0POcTBrBAAABJklEQVRIie2T0W6DMAxFY+N0oQ2k0FFCymjp+v/fOANpxiaYUPea8xBdyxwptoIQkUgk8l8QMaSpHAkhtH97lBj0iXAoR4h84LhoJjuANzkknXGgFCbcBQK7ZEWETL0oQksz8UOkaZrzkXOvy9N0cUQWiytc5Ux8NzRMS2T2AAeedk2EDuCmZ+LzZskgLmuTqHooDAZxJxnaIua2grsMYlWWZdXRFtHwsbc/tnreJKK8Qymf4ue5ruscN4loCsia53I0PxfcNCMKfQM4bd4qWUteFPIBhRcvVjN/iNRV1cF4kVoAL7oTk5l1UTcAjfKiUFyV31st7LqI4vHA5OzcKArVH08ac3cc6fVwJefapX8KreUnqZTvacUfo5rQ4zChF4lEIq/yBUTuEHYs2fJIAAAAAElFTkSuQmCC" },
-    { id: 3, name: "Sample Manager", designation: "Software", image: "https://careers.astrixinc.com/wp-content/uploads/2021/07/cq5dam.thumbnail.250.250.png" },
-    { id: 4, name: "Oracle DB", designation: "Data Base", image: "https://www.gravityer.com/_next/image?url=https%3A%2F%2Fvivid-cow-9924242169.media.strapiapp.com%2Foracle_database_18edd9bd15.jpg&w=2048&q=75" },
-    { id: 5, name: "SQL Server", designation: "Data Base", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROcY7avil2U_k5wxxhQGXOHK5CH79g0h4R7xY4fgUhqZNuZSNlvkGcw6RYsT29ailWpV8&usqp=CAU" },
-    { id: 6, name: "Power Apps", designation: "MS Application", image: "https://amsgcorp.net/wp-content/uploads/2022/08/power-apps-logo.png" },
-    { id: 7, name: "Power Automate", designation: "MS Application", image: "https://play-lh.googleusercontent.com/aeXs0qriXwmHVWtq9u4zVUO6SifULKtJOQdtBg6wDQqaNEaaJKl6b2oiABMmHn6yLH8=w240-h480-rw" },
-    { id: 8, name: "Azure", designation: "Cloud Computing Platform", image: "https://www.bizstream.com/wp-content/uploads/2022/06/azure-logo-white-circle-1-600x600.png" },
+    {
+      id: 1,
+      name: " C#",
+      designation: "Library",
+      image:
+        "https://blog.cellenza.com/wp-content/uploads/2017/02/CSharpLogo.png",
+    },
+    {
+      id: 2,
+      name: "ASP .NET & CORE",
+      designation: "Framework",
+      image:
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAb1BMVEVRK9T///9QKdRNJNNPJ9Q+ANF6Y9zq5/lGFtJYNdZ3X9thQtdIG9KpnedTLtVKH9O9s+z7+v7u6/qvo+mGct/y8PtpTdlxV9pCDNKll+bBuO2Aat1cO9aKd+BnSdnc1/WQf+G0qerHv++bi+TV0POcTBrBAAABJklEQVRIie2T0W6DMAxFY+N0oQ2k0FFCymjp+v/fOANpxiaYUPea8xBdyxwptoIQkUgk8l8QMaSpHAkhtH97lBj0iXAoR4h84LhoJjuANzkknXGgFCbcBQK7ZEWETL0oQksz8UOkaZrzkXOvy9N0cUQWiytc5Ux8NzRMS2T2AAeedk2EDuCmZ+LzZskgLmuTqHooDAZxJxnaIua2grsMYlWWZdXRFtHwsbc/tnreJKK8Qymf4ue5ruscN4loCsia53I0PxfcNCMKfQM4bd4qWUteFPIBhRcvVjN/iNRV1cF4kVoAL7oTk5l1UTcAjfKiUFyV31st7LqI4vHA5OzcKArVH08ac3cc6fVwJefapX8KreUnqZTvacUfo5rQ4zChF4lEIq/yBUTuEHYs2fJIAAAAAElFTkSuQmCC",
+    },
+    {
+      id: 3,
+      name: "Sample Manager",
+      designation: "Software",
+      image:
+        "https://careers.astrixinc.com/wp-content/uploads/2021/07/cq5dam.thumbnail.250.250.png",
+    },
+    {
+      id: 4,
+      name: "Oracle DB",
+      designation: "Data Base",
+      image:
+        "https://www.gravityer.com/_next/image?url=https%3A%2F%2Fvivid-cow-9924242169.media.strapiapp.com%2Foracle_database_18edd9bd15.jpg&w=2048&q=75",
+    },
+    {
+      id: 5,
+      name: "SQL Server",
+      designation: "Data Base",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROcY7avil2U_k5wxxhQGXOHK5CH79g0h4R7xY4fgUhqZNuZSNlvkGcw6RYsT29ailWpV8&usqp=CAU",
+    },
+    {
+      id: 6,
+      name: "Power Apps",
+      designation: "MS Application",
+      image:
+        "https://amsgcorp.net/wp-content/uploads/2022/08/power-apps-logo.png",
+    },
+    {
+      id: 7,
+      name: "Power Automate",
+      designation: "MS Application",
+      image:
+        "https://play-lh.googleusercontent.com/aeXs0qriXwmHVWtq9u4zVUO6SifULKtJOQdtBg6wDQqaNEaaJKl6b2oiABMmHn6yLH8=w240-h480-rw",
+    },
+    {
+      id: 8,
+      name: "Azure",
+      designation: "Cloud Computing Platform",
+      image:
+        "https://www.bizstream.com/wp-content/uploads/2022/06/azure-logo-white-circle-1-600x600.png",
+    },
   ];
 
   const items = [
@@ -126,7 +187,7 @@ export default function AboutScreen() {
         </div>
       </section>
 
-      <section id="journey" className="w-full flex px-6">
+      <section id="journey" className="w-full flex px-6 h-screen">
         <div className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
           {/* Title & intro */}
           <header className="md:col-span-2">
@@ -157,8 +218,10 @@ export default function AboutScreen() {
                 Building my own company
               </h3>
               <p className="mt-2 text-gray-600">
-                I decided to leave Saint-Gobain to focus on building my own projects,
-                collaborating with my <span data-cursor-icon="wife">wife</span> to create meaningful and innovative solutions.
+                I decided to leave Saint-Gobain to focus on building my own
+                projects, collaborating with my{" "}
+                <span data-cursor-icon="wife">wife</span> to create meaningful
+                and innovative solutions.
               </p>
             </div>
           </header>
@@ -192,8 +255,8 @@ export default function AboutScreen() {
                       </div>
                       <p className="mt-2 text-gray-600">
                         Software and mobile application development to automate
-                        the daily workflows of Saint-Gobain laboratories,
-                        making processes faster, more reliable, and user-friendly.
+                        the daily workflows of Saint-Gobain laboratories, making
+                        processes faster, more reliable, and user-friendly.
                       </p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <Badge>C#</Badge>
@@ -210,10 +273,7 @@ export default function AboutScreen() {
                   <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm" />
 
-                    <Dialog.Content
-                      className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white shadow-xl focus:outline-none"
-                    >
-
+                    <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white shadow-xl focus:outline-none">
                       {/* Bouton de fermeture */}
                       <Dialog.Close
                         className="absolute right-5 top-5 inline-flex items-center justify-center text-gray-600"
@@ -250,7 +310,10 @@ export default function AboutScreen() {
 
                             <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
                               <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 px-3 py-1 text-gray-700">
-                                <Calendar className="size-4" aria-hidden="true" />
+                                <Calendar
+                                  className="size-4"
+                                  aria-hidden="true"
+                                />
                                 2023 — 2025
                               </span>
                               <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 px-3 py-1 text-gray-700">
@@ -267,16 +330,20 @@ export default function AboutScreen() {
                         {/* Texte */}
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                           <p>
-                            During my apprenticeship at Saint-Gobain Research, I worked within the R&D
-                            teams to design and develop internal applications. My focus was on building
-                            intuitive user interfaces that allowed engineers and researchers to better
-                            manage laboratory data and daily workflows.
+                            During my apprenticeship at Saint-Gobain Research, I
+                            worked within the R&D teams to design and develop
+                            internal applications. My focus was on building
+                            intuitive user interfaces that allowed engineers and
+                            researchers to better manage laboratory data and
+                            daily workflows.
                           </p>
                           <p>
-                            This experience taught me how to balance technical precision with user-centric
-                            design. I collaborated with multidisciplinary teams, improved the
-                            performance of critical screens, and contributed to maintaining a consistent
-                            design system across multiple applications.
+                            This experience taught me how to balance technical
+                            precision with user-centric design. I collaborated
+                            with multidisciplinary teams, improved the
+                            performance of critical screens, and contributed to
+                            maintaining a consistent design system across
+                            multiple applications.
                           </p>
                         </div>
                         {/* Missions & Results */}
@@ -288,8 +355,9 @@ export default function AboutScreen() {
                                 Workflow Automations
                               </h5>
                               <p className="mt-2 text-sm text-gray-600">
-                                Developed internal solutions to streamline laboratory data
-                                entry and daily reporting processes
+                                Developed internal solutions to streamline
+                                laboratory data entry and daily reporting
+                                processes
                               </p>
                               <p className="mt-3 text-sm font-medium text-green-600">
                                 → Reduced manual workload considerably
@@ -302,11 +370,13 @@ export default function AboutScreen() {
                                 Mobile Application
                               </h5>
                               <p className="mt-2 text-sm text-gray-600">
-                                Built a LIMS mobile app for technicians to access and update
-                                experiment results directly from the labs.
+                                Built a LIMS mobile app for technicians to
+                                access and update experiment results directly
+                                from the labs.
                               </p>
                               <p className="mt-3 text-sm font-medium text-green-600">
-                                → Increased real-time data availability & traceability
+                                → Increased real-time data availability &
+                                traceability
                               </p>
                             </div>
 
@@ -316,7 +386,8 @@ export default function AboutScreen() {
                                 Support & Supervision
                               </h5>
                               <p className="mt-2 text-sm text-gray-600">
-                                Provided support and supervision of the Sample Manager software for end users.
+                                Provided support and supervision of the Sample
+                                Manager software for end users.
                               </p>
                               <p className="mt-3 text-sm font-medium text-green-600">
                                 → Improved user adoption and daily efficiency
@@ -329,9 +400,6 @@ export default function AboutScreen() {
                   </Dialog.Portal>
                 </Dialog.Root>
               </li>
-
-
-
 
               {/* item 2 */}
 
@@ -359,8 +427,10 @@ export default function AboutScreen() {
                         </span>
                       </div>
                       <p className="mt-2 text-gray-600">
-                        My first real IT experience was as an Automation Engineer,
-                        where I used UiPath to automate business processes and streamline workflows for various INETUM clients.
+                        My first real IT experience was as an Automation
+                        Engineer, where I used UiPath to automate business
+                        processes and streamline workflows for various INETUM
+                        clients.
                       </p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <Badge>Mentorship</Badge>
@@ -375,10 +445,7 @@ export default function AboutScreen() {
                   <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm" />
 
-                    <Dialog.Content
-                      className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white shadow-xl focus:outline-none"
-                    >
-
+                    <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white shadow-xl focus:outline-none">
                       {/* Bouton de fermeture */}
                       <Dialog.Close
                         className="absolute right-5 top-5 inline-flex items-center justify-center text-gray-600"
@@ -408,14 +475,15 @@ export default function AboutScreen() {
                               Automation Engineer
                             </Dialog.Title>
                             <Dialog.Description asChild>
-                              <div className="mt-1 text-gray-700">
-                                INETUM
-                              </div>
+                              <div className="mt-1 text-gray-700">INETUM</div>
                             </Dialog.Description>
 
                             <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
                               <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 px-3 py-1 text-gray-700">
-                                <Calendar className="size-4" aria-hidden="true" />
+                                <Calendar
+                                  className="size-4"
+                                  aria-hidden="true"
+                                />
                                 2021 — 2022
                               </span>
                               <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 px-3 py-1 text-gray-700">
@@ -432,14 +500,16 @@ export default function AboutScreen() {
                         {/* Texte */}
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                           <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                            At Inetum, I focused on business process automation using UiPath, transforming
-                            manual, repetitive workflows into reliable, maintainable robots and orchestrations
-                            across multiple teams.
+                            At Inetum, I focused on business process automation
+                            using UiPath, transforming manual, repetitive
+                            workflows into reliable, maintainable robots and
+                            orchestrations across multiple teams.
                             <br />
-                            <br />
-                            I also served as Incident Manager for the supervision/monitoring platform used by
-                            Pôle emploi, coordinating triage and resolution, tracking KPI's, communicating with
-                            stakeholders, and driving root-cause analysis to prevent recurrence.
+                            <br />I also served as Incident Manager for the
+                            supervision/monitoring platform used by Pôle emploi,
+                            coordinating triage and resolution, tracking KPI's,
+                            communicating with stakeholders, and driving
+                            root-cause analysis to prevent recurrence.
                           </p>
                         </div>
                         {/* Missions & Results */}
@@ -451,7 +521,9 @@ export default function AboutScreen() {
                                 Process Automation
                               </h5>
                               <p className="mt-2 text-sm text-gray-600">
-                                Automated business processes with UiPath, replacing repetitive manual tasks with reliable robots and workflows.
+                                Automated business processes with UiPath,
+                                replacing repetitive manual tasks with reliable
+                                robots and workflows.
                               </p>
                               <p className="mt-3 text-sm font-medium text-green-600">
                                 → Increased efficiency and reduced human errors
@@ -464,14 +536,14 @@ export default function AboutScreen() {
                                 Incident Management
                               </h5>
                               <p className="mt-2 text-sm text-gray-600">
-                                Managed incidents for the monitoring platform at Pôle emploi, ensuring quick resolution.
+                                Managed incidents for the monitoring platform at
+                                Pôle emploi, ensuring quick resolution.
                               </p>
                               <p className="mt-3 text-sm font-medium text-green-600">
-                                → Improved service reliability and client satisfaction
+                                → Improved service reliability and client
+                                satisfaction
                               </p>
                             </div>
-
-
                           </div>
                         </div>
                       </div>
@@ -479,9 +551,6 @@ export default function AboutScreen() {
                   </Dialog.Portal>
                 </Dialog.Root>
               </li>
-
-
-
 
               {/* item 3 */}
 
@@ -509,9 +578,10 @@ export default function AboutScreen() {
                         </span>
                       </div>
                       <p className="mt-2 text-gray-600">
-                        I completed a Voluntary Civic Service as a science mentor,
-                        supporting high school and middle school students in scientific subjects.
-                        This experience also helped me finance my engineering studies.
+                        I completed a Voluntary Civic Service as a science
+                        mentor, supporting high school and middle school
+                        students in scientific subjects. This experience also
+                        helped me finance my engineering studies.
                       </p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <Badge>Mentorship</Badge>
@@ -526,10 +596,7 @@ export default function AboutScreen() {
                   <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm" />
 
-                    <Dialog.Content
-                      className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white shadow-xl focus:outline-none"
-                    >
-
+                    <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white shadow-xl focus:outline-none">
                       {/* Bouton de fermeture */}
                       <Dialog.Close
                         className="absolute right-5 top-5 inline-flex items-center justify-center text-gray-600"
@@ -566,7 +633,10 @@ export default function AboutScreen() {
 
                             <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
                               <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 px-3 py-1 text-gray-700">
-                                <Calendar className="size-4" aria-hidden="true" />
+                                <Calendar
+                                  className="size-4"
+                                  aria-hidden="true"
+                                />
                                 2021 — 2022
                               </span>
                               <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 px-3 py-1 text-gray-700">
@@ -583,16 +653,21 @@ export default function AboutScreen() {
                         {/* Texte */}
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                           <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                            I completed a Voluntary Civic Service, a French national program that allows young people
-                            to engage in meaningful social missions while gaining experience. My role combined academic
-                            support and community engagement: I helped high school and middle school students prepare
-                            for their Scientific Baccalaureate and Brevet exams by mentoring them in core scientific
-                            subjects.
+                            I completed a Voluntary Civic Service, a French
+                            national program that allows young people to engage
+                            in meaningful social missions while gaining
+                            experience. My role combined academic support and
+                            community engagement: I helped high school and
+                            middle school students prepare for their Scientific
+                            Baccalaureate and Brevet exams by mentoring them in
+                            core scientific subjects.
                             <br />
-                            <br />
-                            I also took part in organizing animations and educational activities during school holidays,
-                            fostering social interaction and collective learning. This experience allowed me to grow both
-                            as a mentor and an animator, while financing my engineering studies.
+                            <br />I also took part in organizing animations and
+                            educational activities during school holidays,
+                            fostering social interaction and collective
+                            learning. This experience allowed me to grow both as
+                            a mentor and an animator, while financing my
+                            engineering studies.
                           </p>
                         </div>
                         {/* Missions & Results */}
@@ -604,7 +679,9 @@ export default function AboutScreen() {
                                 Exam Preparation
                               </h5>
                               <p className="mt-2 text-sm text-gray-600">
-                                Organized official mock sessions and practice tests, preparing tailored subjects in advance to train students for exams.
+                                Organized official mock sessions and practice
+                                tests, preparing tailored subjects in advance to
+                                train students for exams.
                               </p>
                               <p className="mt-3 text-sm font-medium text-green-600">
                                 → Helped students gain confidence for exams
@@ -617,10 +694,13 @@ export default function AboutScreen() {
                                 Mentorship
                               </h5>
                               <p className="mt-2 text-sm text-gray-600">
-                                Supported students individually, monitored progress, and developed communication adapted to their needs.
+                                Supported students individually, monitored
+                                progress, and developed communication adapted to
+                                their needs.
                               </p>
                               <p className="mt-3 text-sm font-medium text-green-600">
-                                → Strengthened motivation and academic performance
+                                → Strengthened motivation and academic
+                                performance
                               </p>
                             </div>
 
@@ -630,7 +710,9 @@ export default function AboutScreen() {
                                 Activities & Planning
                               </h5>
                               <p className="mt-2 text-sm text-gray-600">
-                                Planned and led activities, including vacation programs, to build social bonds and foster collective learning.
+                                Planned and led activities, including vacation
+                                programs, to build social bonds and foster
+                                collective learning.
                               </p>
                               <p className="mt-3 text-sm font-medium text-green-600">
                                 → Improved student engagement
@@ -643,14 +725,12 @@ export default function AboutScreen() {
                   </Dialog.Portal>
                 </Dialog.Root>
               </li>
-
-
             </ol>
           </div>
         </div>
       </section>
 
-      <section id="philosophy" className=" w-full px-6 py-16 md:pt-36">
+      <section id="philosophy" className=" w-full px-6 pb-44">
         <div className="w-full max-w-6xl mx-auto">
           {/* Header */}
           <header className="max-w-3xl">
@@ -720,7 +800,7 @@ export default function AboutScreen() {
       </section>
       <section
         id="passions"
-        className=" w-full flex items-center px-6 py-16 md:pt-36"
+        className=" w-full flex flex-col items-center px-6 py-16 min-h-screen "
       >
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
           {/* Titre */}
@@ -736,37 +816,46 @@ export default function AboutScreen() {
             fresh powder in the mountains.
           </p>
         </div>
-      </section>
-      <section className="relative overflow-visible">
-        <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-visible">
-          {/* Texte en surcouche mais non interactif */}
-          <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center text-center">
-            <h2 className="text-darkGray text-2xl font-sfbold py-2 md:py-10 tracking-tight">
-              Hidden Layers Easter Egg, <br />
-            </h2>
-            <p className="max-w-xl mx-auto text-sm md:text-lg text-neutral-700">
-              it's important to keep things simple, intentional, and user-first.
-            </p>
-          </div>
-          {items.map((item) => (
-            <DraggableCardBody
-              key={item.title}
-              className={cn(item.className, "z-20")} // cartes au-dessus du texte au repos
-              whileDrag={{ zIndex: 50 }} // et encore au-dessus pendant le drag
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="pointer-events-none relative z-10 h-80 w-80 object-cover"
-              />
-              <h3 className="mt-4 text-center text-4xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">
-                {item.title}
-              </h3>
-            </DraggableCardBody>
-          ))}
-        </DraggableCardContainer>
-      </section>
+        <div className="relative overflow-visible">
+          <DraggableCardContainer className="relative flex w-full items-center justify-center overflow-visible">
+            {/* Bouton déclencheur */}
+            <div className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center text-center font-sfregular">
+              <h2 className="text-darkGray text-2xl font-sfbold tracking-tight">
+                Looks like you found something?
+              </h2>
+              <CoolMode>
+                <button
+                  type="button"
+                  onClick={() => incrementEggs("#3")}
+                  className="pointer-events-auto mt-4 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-white hover:shadow-md transition-all"
+                  data-cursor-icon="egg"
+                >
+                  <Sparkles className="size-4" />
+                  Reveal Hidden Layers
+                </button>
+              </CoolMode>
+            </div>
 
+            {/* Cartes draggable */}
+            {items.map((item) => (
+              <DraggableCardBody
+                key={item.title}
+                className={cn(item.className, "z-20 mt-10")}
+                whileDrag={{ zIndex: 50 }}
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="pointer-events-none relative z-10 h-80 w-80 object-cover"
+                />
+                <h3 className="mt-4 text-center text-4xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">
+                  {item.title}
+                </h3>
+              </DraggableCardBody>
+            ))}
+          </DraggableCardContainer>
+        </div>
+      </section>
     </div>
   );
 }
