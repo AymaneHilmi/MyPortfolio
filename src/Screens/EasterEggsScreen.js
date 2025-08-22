@@ -2,6 +2,26 @@ import React, { useMemo } from "react";
 import { useEasterEgg } from "../context/EasterEggContext";
 import { CheckCircle2, Lock, Star, Flame, Skull, Crown, HelpCircle, Keyboard, MousePointer2, Globe2, RotateCcw, Scan, ShieldAlert, Bug, Bot, AlertTriangle } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
+import { PlaceholdersAndVanishInput } from "../components/ui/placeholders-and-vanish-input";
+
+
+
+
+const placeholders = [
+    "Are we truly lost if the search is the way?",
+    "404 error",
+    "What if we’re not lost, but just early to a path not mapped?",
+    "error 404"
+];
+
+const handleChange = (e) => {
+    console.log(e.target.value);
+};
+
+const onSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitted");
+};
 
 
 // ---------- Small helpers ----------
@@ -91,130 +111,6 @@ function DifficultyCard({ level, total = 0, found = 0 }) {
         </div>
     );
 }
-
-// ---------- Egg card (grid item) ----------
-function EggCard({ egg, isFound }) {
-    const DiffIcon = diffMeta[egg.level]?.icon || HelpCircle;
-    return (
-        <div className={`group rounded-2xl border p-4 transition-all ${isFound ? "bg-green-50 border-green-300" : "bg-gray-50 border-gray-200"}`}>
-            <div className="flex items-start gap-3">
-                <div className="h-10 w-10 shrink-0 grid place-items-center rounded-full border border-gray-300 bg-white">
-                    {isFound ? <CheckCircle2 className="h-5 w-5 text-emerald-600" /> : <Lock className="h-5 w-5 text-gray-400" />}
-                </div>
-                <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-3">
-                        <div className="min-w-0">
-                            <p className="truncate text-sm font-sfbold text-gray-900">{egg.name || egg.id}</p>
-                            <p className="mt-0.5 flex items-center gap-1 text-xs text-gray-600">
-                                <DiffIcon className="h-3.5 w-3.5" /> {egg.level || "Easy"}
-                            </p>
-                        </div>
-                        <span className="shrink-0 rounded-full border border-gray-200 bg-white px-2 py-0.5 text-[10px] font-medium text-gray-600">
-                            {egg.id}
-                        </span>
-                    </div>
-
-                    {egg.tip ? (
-                        <p className="mt-2 text-sm text-gray-700">{egg.tip}</p>
-                    ) : null}
-
-                    {/* Details dialog */}
-                    <Dialog.Root>
-                        <div className="mt-3 flex items-center gap-2">
-                            <Dialog.Trigger asChild>
-                                <button className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 transition-colors">Inspect</button>
-                            </Dialog.Trigger>
-                            {!isFound ? (
-                                <span className="text-[11px] text-gray-500">Hidden… keep hunting 👀</span>
-                            ) : (
-                                <span className="text-[11px] text-emerald-700">Found!</span>
-                            )}
-                        </div>
-                        <Dialog.Portal>
-                            <Dialog.Overlay className="fixed inset-0 z-50 bg-black/40" />
-                            <Dialog.Content className="fixed z-50 left-1/2 top-1/2 w-[92%] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white p-5 shadow-lg focus:outline-none">
-                                <Dialog.Title className="text-base font-sfbold text-gray-900">{egg.name || egg.id}</Dialog.Title>
-                                <Dialog.Description className="mt-1 text-sm text-gray-600">
-                                    Level: <span className="font-medium">{egg.level || "Easy"}</span>
-                                </Dialog.Description>
-                                {egg.tip ? (
-                                    <div className="mt-3 rounded-xl border border-gray-200 bg-gray-50 p-3 text-sm text-gray-700">
-                                        <span className="font-medium">Hint:</span> {egg.tip}
-                                    </div>
-                                ) : null}
-                                {egg.message ? (
-                                    <p className="mt-3 text-sm text-gray-700">Unlock message: {egg.message}</p>
-                                ) : null}
-                                <div className="mt-5 flex justify-end gap-2">
-                                    <Dialog.Close asChild>
-                                        <button className="rounded-lg border px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100">Close</button>
-                                    </Dialog.Close>
-                                </div>
-                            </Dialog.Content>
-                        </Dialog.Portal>
-                    </Dialog.Root>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function EggRow({ egg, isFound }) {
-    const lvl = egg.level || "Easy";
-    const { icon: LvlIcon } = getMeta(lvl);
-    return (
-        <div className={`group flex items-start gap-3 rounded-xl border p-3 ${isFound ? "bg-green-50 border-green-300" : "bg-white border-gray-200"}`}>
-            <div className="h-9 w-9 shrink-0 grid place-items-center rounded-full border border-gray-300 bg-gray-50">
-                {isFound ? <CheckCircle2 className="h-5 w-5 text-emerald-600" /> : <Lock className="h-5 w-5 text-gray-400" />}
-            </div>
-            <div className="min-w-0 flex-1">
-                <div className="flex items-center justify-between gap-3">
-                    <div className="min-w-0">
-                        <p className="truncate text-sm font-sfbold text-gray-900">{egg.name || egg.id}</p>
-                        <p className="mt-0.5 flex items-center gap-1 text-[11px] text-gray-600"><LvlIcon className="h-3.5 w-3.5" /> {lvl}</p>
-                    </div>
-                    <span className="shrink-0 rounded-full border border-gray-200 bg-gray-50 px-2 py-0.5 text-[10px] font-medium text-gray-600">{egg.id}</span>
-                </div>
-                {egg.tip ? <p className="mt-2 text-sm text-gray-700">{egg.tip}</p> : null}
-            </div>
-        </div>
-    );
-}
-
-function EggColumn({ level, eggs, foundSet, totalCounts }) {
-    const meta = getMeta(level);
-    const total = totalCounts[level]?.total || 0;
-    const found = totalCounts[level]?.found || 0;
-    const p = total > 0 ? (found / total) * 100 : 0;
-    const Icon = meta.icon;
-
-    return (
-        <div className="w-[280px] sm:w-[300px] lg:w-[320px] flex-shrink-0 rounded-2xl border border-gray-200 bg-white">
-            <div className="sticky top-0 z-10 rounded-t-2xl border-b border-gray-200 bg-white/90 backdrop-blur px-4 py-3">
-                <div className="flex items-center justify-between">
-                    <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] ${meta.chip}`}>
-                        <Icon className="h-3.5 w-3.5" /> {level}
-                    </span>
-                    <span className="text-xs text-gray-500">{found}/{total}</span>
-                </div>
-                <div className="mt-2">
-                    <ProgressBar value={p} ariaLabel={`${level} difficulty progress`} barClass={meta.bar} />
-                </div>
-            </div>
-
-            <div className="px-3 py-3 space-y-3">
-                {eggs.length === 0 ? (
-                    <div className="rounded-xl border border-dashed border-gray-200 p-4 text-center text-xs text-gray-500">No eggs in this lane</div>
-                ) : (
-                    eggs.map((egg) => (
-                        <EggRow key={egg.id} egg={egg} isFound={foundSet.has(egg.id)} />
-                    ))
-                )}
-            </div>
-        </div>
-    );
-}
-
 // ---------- Main screen ----------
 export default function EasterEggsScreen() {
     const { EggList, foundEggs, eggsTotal, resetEggs, resetMissions } = useEasterEgg();
@@ -450,6 +346,15 @@ export default function EasterEggsScreen() {
                                             )}
                                         </div>
                                     </div>
+
+                                    {/* 👉 Spécifique à l'egg #6 */}
+                                    {egg.id === "#6" && (
+                                        <PlaceholdersAndVanishInput
+                                            placeholders={placeholders}
+                                            onChange={handleChange}
+                                            onSubmit={onSubmit}
+                                        />
+                                    )}
                                 </div>
                             );
                         })}

@@ -50,7 +50,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
       description:
         "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
       image: HomePortfolio,
-      link: "/work",
+      link: "Portfolio",
     },
     {
       logo: Cesiveroo,
@@ -62,7 +62,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
       description:
         "Description du deuxième projet qui met en avant ses objectifs et réalisations.",
       image: HomeCesiveroo,
-      link: "/project-two",
+      link: "Cesiveroo",
     },
   ];
 
@@ -287,7 +287,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
             whileInView="visible"
             viewport={{ once: true }}
             custom={1}
-            onClick={() => handleClick("Cesiveroo")}
+            onClick={() => handleClick(project.link)}
             className="w-full rounded-3xl bg-gray-50 pt-6 px-6 md:px-0 md:pt-0 hover:shadow-lg"
             role="button"
             tabIndex={0}

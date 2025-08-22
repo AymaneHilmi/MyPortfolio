@@ -16,6 +16,7 @@ import { useEasterEgg } from './context/EasterEggContext';
 import Footer from './components/footer';
 import { SmoothCursor } from './components/ui/smooth-cursor';
 import EasterEggsScreen from './Screens/EasterEggsScreen';
+import NotFoundScreen from './Screens/NotFoundScreen';
 
 
 
@@ -86,6 +87,7 @@ function App() {
         {/* <Route path="/Blog" className="h-screen" element={<BlogScreen />} /> */}
         <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} scrollToRoutes={scrollToRoutes} />
         <Route path="/easter-eggs" className="h-screen" element={<EasterEggsScreen />} scrollToRoutes={scrollToRoutes} />
+        <Route path="*" element={<NotFoundScreen />} />
       </Routes>
       <Footer />
 

@@ -32,7 +32,7 @@ const EggList = [
     {
         id: "#1",
         name: "Confettis",
-        tip: "Try typing your favorite dev’s name...",
+        tip: "Try typing your favorite developer's name...",
         message: "I think you can do better, it's the easiest one",
         level: "Easy",
         cursor: "egg#1",
@@ -70,8 +70,8 @@ const EggList = [
     },
     {
         id: "#6",
-        name: "////////",
-        tip: "/////////////",
+        name: "Not Found Egg",
+        tip: "You'll have to take the wrong road...",
         level: "Hard",
         cursor: "egg#6",
     },
@@ -158,7 +158,6 @@ export const EasterEggProvider = ({ children }) => {
     const resetMissions = () => {
         localStorage.removeItem("completedMissions");
         setCompletedMissions([]);
-        toast("Missions reset", { duration: 10000 });
     };
 
     /* ====== Progression des missions ====== */
