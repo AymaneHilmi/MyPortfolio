@@ -1,4 +1,5 @@
 import { React, } from 'react'
+import { cn } from "../lib/utils";
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEasterEgg } from "../context/EasterEggContext";
@@ -14,6 +15,7 @@ import "./screens.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X, Lock, Check, Search, Puzzle, Crown } from "lucide-react";
 import EasterEggsCard from "../context/EasterEggCard";
+import style from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -44,6 +46,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
       logo: logo,
       title: "My Portfolio",
       subtitle: "Montpellier • 2022",
+      style: "font-ramidots text-4xl md:text-6xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block",
       description:
         "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
       image: HomePortfolio,
@@ -55,6 +58,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
       highlight: "veroo",
       color: "#20CFBD",
       subtitle: "Aix-en-Provence • 2023",
+      style: "font-sfbold text-2xl md:text-4xl",
       description:
         "Description du deuxième projet qui met en avant ses objectifs et réalisations.",
       image: HomeCesiveroo,
@@ -302,12 +306,11 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
 
                 {/* Titre et sous-titre */}
                 <div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-sfbold text-darkGray">
+                  <h3 className={cn("text-2xl sm:text-3xl text-darkGray", project.style)}>
                     {project.title}
                     <span style={{ color: project.color }}>
                       {project.highlight}
-                    </span>{" "}
-                    Project
+                    </span>
                   </h3>
                   <p className="text-xs sm:text-sm font-sfregular text-lightGray mt-1">
                     {project.subtitle}

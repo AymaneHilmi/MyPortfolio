@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import "./screens.css";
 import aymane from "../assets/PDP.jpeg";
 import travel from "../assets/Aymane.jpg";
@@ -28,6 +28,7 @@ import {
   Calendar,
   Sparkles,
 } from "lucide-react";
+import { toast } from "react-hot-toast";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   DraggableCardBody,
@@ -35,6 +36,8 @@ import {
 } from "../components/ui/draggable-card";
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 import SaintGobain from "../assets/Saint-Gobain.png";
+
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -49,68 +52,24 @@ const fadeInUp = {
   }),
 };
 
+const FadeIn = ({ children, i = 0, className = "" }) => (
+  <motion.div
+    className={className}
+    variants={fadeInUp}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.2 }}
+    custom={i}
+  >
+    {children}
+  </motion.div>
+);
+
 export default function AboutScreen() {
   const navigate = useNavigate();
-  const { eggsFounded, incrementEggs, resetEggs, eggsTotal } = useEasterEgg();
-
-  const SGDisciplines = [
-    {
-      id: 1,
-      name: " C#",
-      designation: "Library",
-      image:
-        "https://blog.cellenza.com/wp-content/uploads/2017/02/CSharpLogo.png",
-    },
-    {
-      id: 2,
-      name: "ASP .NET & CORE",
-      designation: "Framework",
-      image:
-        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAb1BMVEVRK9T///9QKdRNJNNPJ9Q+ANF6Y9zq5/lGFtJYNdZ3X9thQtdIG9KpnedTLtVKH9O9s+z7+v7u6/qvo+mGct/y8PtpTdlxV9pCDNKll+bBuO2Aat1cO9aKd+BnSdnc1/WQf+G0qerHv++bi+TV0POcTBrBAAABJklEQVRIie2T0W6DMAxFY+N0oQ2k0FFCymjp+v/fOANpxiaYUPea8xBdyxwptoIQkUgk8l8QMaSpHAkhtH97lBj0iXAoR4h84LhoJjuANzkknXGgFCbcBQK7ZEWETL0oQksz8UOkaZrzkXOvy9N0cUQWiytc5Ux8NzRMS2T2AAeedk2EDuCmZ+LzZskgLmuTqHooDAZxJxnaIua2grsMYlWWZdXRFtHwsbc/tnreJKK8Qymf4ue5ruscN4loCsia53I0PxfcNCMKfQM4bd4qWUteFPIBhRcvVjN/iNRV1cF4kVoAL7oTk5l1UTcAjfKiUFyV31st7LqI4vHA5OzcKArVH08ac3cc6fVwJefapX8KreUnqZTvacUfo5rQ4zChF4lEIq/yBUTuEHYs2fJIAAAAAElFTkSuQmCC",
-    },
-    {
-      id: 3,
-      name: "Sample Manager",
-      designation: "Software",
-      image:
-        "https://careers.astrixinc.com/wp-content/uploads/2021/07/cq5dam.thumbnail.250.250.png",
-    },
-    {
-      id: 4,
-      name: "Oracle DB",
-      designation: "Data Base",
-      image:
-        "https://www.gravityer.com/_next/image?url=https%3A%2F%2Fvivid-cow-9924242169.media.strapiapp.com%2Foracle_database_18edd9bd15.jpg&w=2048&q=75",
-    },
-    {
-      id: 5,
-      name: "SQL Server",
-      designation: "Data Base",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROcY7avil2U_k5wxxhQGXOHK5CH79g0h4R7xY4fgUhqZNuZSNlvkGcw6RYsT29ailWpV8&usqp=CAU",
-    },
-    {
-      id: 6,
-      name: "Power Apps",
-      designation: "MS Application",
-      image:
-        "https://amsgcorp.net/wp-content/uploads/2022/08/power-apps-logo.png",
-    },
-    {
-      id: 7,
-      name: "Power Automate",
-      designation: "MS Application",
-      image:
-        "https://play-lh.googleusercontent.com/aeXs0qriXwmHVWtq9u4zVUO6SifULKtJOQdtBg6wDQqaNEaaJKl6b2oiABMmHn6yLH8=w240-h480-rw",
-    },
-    {
-      id: 8,
-      name: "Azure",
-      designation: "Cloud Computing Platform",
-      image:
-        "https://www.bizstream.com/wp-content/uploads/2022/06/azure-logo-white-circle-1-600x600.png",
-    },
-  ];
+  const { foundEggs, incrementEggs } = useEasterEgg();
+  const eggLongPressTimer = useRef(null);
+  const egg3Found = Array.isArray(foundEggs) ? foundEggs.includes("#3") : false;
 
   const items = [
     {
@@ -148,7 +107,7 @@ export default function AboutScreen() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-0 lg:px-8">
       <section className="h-screen w-full flex items-center justify-center">
-        <div className=" flex flex-col items-center text-center space-y-6">
+        <FadeIn className=" flex flex-col items-center text-center space-y-6">
           {/* Photo */}
           <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-gray-200 shadow-md">
             <img
@@ -175,22 +134,21 @@ export default function AboutScreen() {
 
           {/* Description */}
           <p className="text-sm md:text-lg text-darkGray text-justify md:text-center leading-relaxed ">
-            Aymane Hilmi is a 22-year-old software engineer based in
-            Aix-en-Provence, France. Born in Italy, raised in France, with
-            Moroccan roots and years spent in Spain, he grew up as a polyglot
-            fluent in five languages. His fascination for technology began in
-            childhood and led him to pursue computer science with determination.
-            Today, he sees programming not only as a skill but as a way to
-            empower people, simplify work, and foster innovation.
+
+            Aymane Hilmi is 22 and a software engineer based in Aix-en-Provence, France.
+            As a polyglot, he speaks five languages: Italian, French, Moroccan Arabic (Darija), English, and Spanish.
+            Born in Italy in 2002, he moved to France at age 12, earned a Scientific Baccalaureate (math option) with honors,
+            and later a computer engineering degree. Today, Aymane has chosen to focus on two things: building his own company
+            with his wife and traveling to discover new cultures and perspectives.
           </p>
           <div className=" h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full" />
-        </div>
+        </FadeIn>
       </section>
 
       <section id="journey" className="w-full flex px-6 h-screen">
         <div className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
           {/* Title & intro */}
-          <header className="md:col-span-2">
+          <FadeIn className="md:col-span-2" i={0}>
             <h2 className="text-3xl md:text-7xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
               My Journey
             </h2>
@@ -202,8 +160,8 @@ export default function AboutScreen() {
 
             {/* "Currently" card */}
 
-            <div
-              type="button"
+            <FadeIn
+              i={0.2}
               className="mt-8 w-full text-left rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow focus:outline-none"
             >
               <div className="flex flex-wrap items-center gap-3">
@@ -223,8 +181,8 @@ export default function AboutScreen() {
                 <span data-cursor-icon="wife">wife</span> to create meaningful
                 and innovative solutions.
               </p>
-            </div>
-          </header>
+            </FadeIn>
+          </FadeIn>
 
           {/* Timeline */}
           <div className="md:col-span-3">
@@ -733,22 +691,22 @@ export default function AboutScreen() {
       <section id="philosophy" className=" w-full px-6 pb-44">
         <div className="w-full max-w-6xl mx-auto">
           {/* Header */}
-          <header className="max-w-3xl">
+          <FadeIn className="" i={0}>
             <h2 className="text-3xl md:text-7xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
               My Style & Philosophy
             </h2>
             <div className="mt-3 h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full" />
             <p className="mt-5 text-gray-600 leading-relaxed">
-              I keep things simple, intentional, and user-first. These three
-              principles guide how I build and grow—both as an engineer and as
-              an entrepreneur.
+              As an entrepreneur, my overarching goal is to invest in myself, especially in discipline so I
+              can show up better every day. I want to simplify people’s daily lives with automated, practical
+              solutions. Additionally, I aim to travel, discover new cultures and viewpoints, and form my own understanding of the world.
             </p>
-          </header>
+          </FadeIn>
 
           {/* Cards */}
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* 1. Invest in myself */}
-            <div className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
+            <FadeIn className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow" i={0.1}>
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <Rocket className="size-5 text-gray-700" aria-hidden="true" />
@@ -759,13 +717,13 @@ export default function AboutScreen() {
               </div>
               <p className="mt-3 text-gray-600">
                 As a young entrepreneur, continuous learning and discipline are
-                my leverage. I invest time in skills, health, and mindset—so I
+                my leverage. I invest time in skills, health, and mindset so I
                 can move faster and smarter.
               </p>
-            </div>
+            </FadeIn>
 
             {/* 2. Build solutions that simplify work */}
-            <div className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
+            <FadeIn className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow" i={0.2}>
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <Target className="size-5 text-gray-700" aria-hidden="true" />
@@ -775,13 +733,13 @@ export default function AboutScreen() {
                 </h3>
               </div>
               <p className="mt-3 text-gray-600">
-                I design solutions that remove friction and make work simpler.
+                I want to develop solutions that remove friction and make work simpler.
                 Clarity, speed, and utility—grounded in real user needs.
               </p>
-            </div>
+            </FadeIn>
 
             {/* 3. Travel & broaden perspective */}
-            <div className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
+            <FadeIn className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow" i={0.3}>
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <Globe2 className="size-5 text-gray-700" aria-hidden="true" />
@@ -791,10 +749,10 @@ export default function AboutScreen() {
                 </h3>
               </div>
               <p className="mt-3 text-gray-600">
-                I travel to discover new cultures and new ways of seeing the
-                world. Diversity fuels empathy—and better product decisions.
+                I want to travel to discover new cultures and new ways of seeing the
+                world.
               </p>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -802,7 +760,7 @@ export default function AboutScreen() {
         id="passions"
         className=" w-full flex flex-col items-center px-6 py-16 min-h-screen "
       >
-        <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
+        <FadeIn className="w-full max-w-4xl mx-auto flex flex-col items-center text-center" i={0}>
           {/* Titre */}
           <h2 className="text-3xl md:text-7xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent px-1">
             Beyond Code: Things I Love
@@ -812,34 +770,69 @@ export default function AboutScreen() {
           {/* Texte principal */}
           <p className="mt-6 text-gray-600 leading-relaxed max-w-2xl">
             I’m driven by curiosity and movement. Outside of engineering, I
-            recharge by spending time with animals, staying active, and chasing
-            fresh powder in the mountains.
+            recharge by spending time with my wife, watching/reading mangas, riding bike or chasing
+            fresh powder in the mountains with my brother.
           </p>
-        </div>
+        </FadeIn>
         <div className="relative overflow-visible">
           <DraggableCardContainer className="relative flex w-full items-center justify-center overflow-visible">
             {/* Bouton déclencheur */}
-            <div className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center text-center font-sfregular">
+
+            <FadeIn className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center text-center font-sfregular" i={0.1}>
               <h2 className="text-darkGray text-2xl font-sfbold tracking-tight">
                 Looks like you found something?
               </h2>
               <CoolMode>
+                {/* {!egg3Found && (  TODO : corriger le beug de l'animation infinie avant d'implementer cette feature */}
                 <button
                   type="button"
-                  onClick={() => incrementEggs("#3")}
+                  onMouseDown={() => {
+                    eggLongPressTimer.current = setTimeout(() => {
+
+                      incrementEggs("#3");
+                      eggLongPressTimer.current = null; // mark as completed
+                    }, 3000);
+                  }}
+                  onMouseUp={() => {
+                    if (eggLongPressTimer.current) {
+                      clearTimeout(eggLongPressTimer.current);
+                      eggLongPressTimer.current = null;
+                      toast("Try to hold it", { duration: 4000 });
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (eggLongPressTimer.current) {
+                      clearTimeout(eggLongPressTimer.current);
+                      eggLongPressTimer.current = null;
+                      toast("Try to hold it", { duration: 4000 });
+                    }
+                  }}
+                  onTouchStart={() => {
+                    eggLongPressTimer.current = setTimeout(() => {
+                      incrementEggs("#3");
+                      eggLongPressTimer.current = null;
+                    }, 3000);
+                  }}
+                  onTouchEnd={() => {
+                    if (eggLongPressTimer.current) {
+                      clearTimeout(eggLongPressTimer.current);
+                      eggLongPressTimer.current = null;
+                      toast("Try to hold it", { duration: 4000 });
+                    }
+                  }}
                   className="pointer-events-auto mt-4 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-white hover:shadow-md transition-all"
                   data-cursor-icon="egg"
                 >
                   <Sparkles className="size-4" />
-                  Reveal Hidden Layers
+                  Reveal Easter Egg
                 </button>
+                {/* )} */}
               </CoolMode>
-            </div>
+            </FadeIn>
 
             {/* Cartes draggable */}
-            {items.map((item) => (
+            {items.map((item, idx) => (
               <DraggableCardBody
-                key={item.title}
                 className={cn(item.className, "z-20 mt-10")}
                 whileDrag={{ zIndex: 50 }}
               >

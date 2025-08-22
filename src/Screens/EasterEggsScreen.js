@@ -217,7 +217,7 @@ function EggColumn({ level, eggs, foundSet, totalCounts }) {
 
 // ---------- Main screen ----------
 export default function EasterEggsScreen() {
-    const { EggList, foundEggs, eggsTotal, resetEggs } = useEasterEgg();
+    const { EggList, foundEggs, eggsTotal, resetEggs, resetMissions } = useEasterEgg();
 
     const stats = useMemo(() => {
         const total = eggsTotal || EggList.length;
@@ -315,13 +315,13 @@ export default function EasterEggsScreen() {
 
                             {/* Right: small info cards */}
                             <div className="grid gap-3">
-                                <div className="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-start gap-2">
+                                <div className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
                                     <Keyboard className="h-4 w-4 text-gray-700 mt-0.5" />
                                     <p className="text-xs text-gray-700">
                                         Use your <span className="font-medium">keyboard</span> and <span className="font-medium">mouse</span>. Both matter.
                                     </p>
                                 </div>
-                                <div className="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-start gap-2">
+                                <div className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
                                     <Globe2 className="h-4 w-4 text-gray-700 mt-0.5" />
                                     <p className="text-xs text-gray-700">
                                         All Easter Eggs are hidden <span className="font-medium">inside this portfolio</span>, not outside it.
@@ -385,12 +385,14 @@ export default function EasterEggsScreen() {
                             ))}
                         </ul>
                     </div>
-                    {/* Controls */}
 
                     <button
-                        onClick={() => resetEggs()}
+                        onClick={() => {
+                            resetEggs();
+                            resetMissions();
+                        }}
                         className="group mt-4 w-full relative overflow-hidden rounded-xl bg-gradient-to-r from-red-500 via-orange-400 to-blue-500 px-6 py-4 
-               text-white font-ramidots text-2xl tracking-wider shadow-lg hover:opacity-95 transition"
+                                   text-white font-ramidots text-2xl tracking-wider shadow-lg hover:opacity-95 transition"
                     >
                         {/* Glow effect */}
                         <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition"></span>

@@ -14,10 +14,10 @@ const eggMission = [
             "Congratulations! You found the Egg Chamber.\n\n A new 'Easter Eggs' button has appeared in the navbar. You can now access to the Easter Egg chamber directly from there.",
     },
     {
-        id: "eggSteps",
-        label: "Solve the Easter Eggs",
+        id: "eggStep",
+        label: "Solve an Easter Egg",
         icon: <Puzzle />,
-        message: "Congratulations! You solved the Easter Eggs.",
+        message: "Congratulations! You solved you're first Easter Egg.",
     },
     {
         id: "eggLord",
@@ -29,59 +29,59 @@ const eggMission = [
 
 /* ===== Eggs (inchangé) ===== */
 const EggList = [
-  {
-    id: "#1",
-    name: "Confettis",
-    tip: "Try typing your favorite dev’s name...",
-    message: "I think you can do better, it's the easiest one",
-    level: "Easy",
-    cursor: "egg#1",
-  },
-  {
-    id: "#2",
-    name: "Back to Basics",
-    tip: "Sometimes you need to go back where it all began...",
-    message: "You found the birthplace egg",
-    level: "Easy",
-    cursor: "egg#2",
-  },
-  {
-    id: "#3",
-    name: "Hidden Layers",
-    tip: "Not everything is where it seems to be...",
-    message: "Good one you're starting being good",
-    level: "Medium",
-    cursor: "egg#3",
-  },
-  {
-    id: "#4",
-    name: "الهلال",
-    tip: "أين يختبئ الهلال؟ (شكرًا ترجمة جوجل)",
-    message: "You found the hidden crescent moon!",
-    level: "Medium",
-    cursor: "egg#4",
-  },
-  {
-    id: "#5",
-    name: "////////",
-    tip: "/////////////",
-    level: "Hard",
-    cursor: "egg#5",
-  },
-  {
-    id: "#6",
-    name: "////////",
-    tip: "/////////////",
-    level: "Hard",
-    cursor: "egg#6",
-  },
-  {
-    id: "#7",
-    name: "////////",
-    tip: "/////////////",
-    level: "Ultimate",
-    cursor: "egg#7",
-  },
+    {
+        id: "#1",
+        name: "Confettis",
+        tip: "Try typing your favorite dev’s name...",
+        message: "I think you can do better, it's the easiest one",
+        level: "Easy",
+        cursor: "egg#1",
+    },
+    {
+        id: "#2",
+        name: "Back to Basics",
+        tip: "Sometimes you need to go back where it all began...",
+        message: "You found the birthplace egg",
+        level: "Easy",
+        cursor: "egg#2",
+    },
+    {
+        id: "#3",
+        name: "Hidden Layers",
+        tip: "Not everything is where it seems to be...",
+        message: "Good one you're starting being good",
+        level: "Medium",
+        cursor: "egg#3",
+    },
+    {
+        id: "#4",
+        name: "الهلال",
+        tip: "أين يختبئ الهلال؟ (شكرًا ترجمة جوجل)",
+        message: "You found the hidden crescent moon!",
+        level: "Medium",
+        cursor: "egg#4",
+    },
+    {
+        id: "#5",
+        name: "////////",
+        tip: "/////////////",
+        level: "Hard",
+        cursor: "egg#5",
+    },
+    {
+        id: "#6",
+        name: "////////",
+        tip: "/////////////",
+        level: "Hard",
+        cursor: "egg#6",
+    },
+    {
+        id: "#7",
+        name: "////////",
+        tip: "/////////////",
+        level: "Ultimate",
+        cursor: "egg#7",
+    },
 ];
 
 export const useEasterEgg = () => useContext(EasterEggContext);
@@ -118,11 +118,14 @@ export const EasterEggProvider = ({ children }) => {
                 return prev;
             }
 
-            const message =
-                EggList.find((egg) => egg.id === eggId)?.message ||
-                `Easter Egg ${eggId} found!`;
+            // Si c'est le tout premier egg, compléter la mission 'eggStep' avant d'afficher le toast
+            if (prev.length === 0 && !completedMissions.includes("eggStep")) {
+                completeMission("eggStep");
+            }
 
-            showEggToast(EggList.find((egg) => egg.id === eggId));
+            const egg = EggList.find((e) => e.id === eggId);
+            const message = egg?.message || `Easter Egg ${eggId} found!`;
+            showEggToast(egg);
 
             return [...prev, eggId];
         });
