@@ -1,4 +1,6 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "react-hot-toast";
 import { useEasterEgg } from "../context/EasterEggContext";
 import { CheckCircle2, Lock, Star, Flame, Skull, Crown, HelpCircle, Keyboard, MousePointer2, Globe2, RotateCcw, Scan, ShieldAlert, Bug, Bot, AlertTriangle } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -9,19 +11,11 @@ import { PlaceholdersAndVanishInput } from "../components/ui/placeholders-and-va
 
 const placeholders = [
     "Are we truly lost if the search is the way?",
-    "404 error",
     "What if we’re not lost, but just early to a path not mapped?",
-    "error 404"
+    "isn't it strange how we find ourselves in the most unexpected places?"
 ];
 
-const handleChange = (e) => {
-    console.log(e.target.value);
-};
 
-const onSubmit = (e) => {
-    e.preventDefault();
-    console.log("submitted");
-};
 
 
 // ---------- Small helpers ----------
@@ -113,7 +107,33 @@ function DifficultyCard({ level, total = 0, found = 0 }) {
 }
 // ---------- Main screen ----------
 export default function EasterEggsScreen() {
-    const { EggList, foundEggs, eggsTotal, resetEggs, resetMissions } = useEasterEgg();
+    const { EggList, foundEggs, eggsTotal, resetEggs, resetMissions, incrementEggs } = useEasterEgg();
+
+    const [egg6Value, setEgg6Value] = useState("");
+    const [baitTriggered, setBaitTriggered] = useState(false);
+
+    const handleChange = (e) => {
+        const v = (e?.target?.value ?? "").toString();
+        setEgg6Value(v);
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        // Bait code handler
+        if (egg6Value === "12123490") {
+            if (!baitTriggered) {
+                setBaitTriggered(true);
+            }
+            return;
+        }
+        // Vérifie le code secret pour l'egg #6
+        if (egg6Value === "29220213") {
+            if (!foundEggs.includes("#6")) {
+                incrementEggs("#6");
+            }
+        }
+    };
+
 
     const stats = useMemo(() => {
         const total = eggsTotal || EggList.length;
@@ -348,7 +368,7 @@ export default function EasterEggsScreen() {
                                     </div>
 
                                     {/* 👉 Spécifique à l'egg #6 */}
-                                    {egg.id === "#6" && (
+                                    {egg.id === "#6" && !isFound && (
                                         <PlaceholdersAndVanishInput
                                             placeholders={placeholders}
                                             onChange={handleChange}
@@ -383,7 +403,31 @@ export default function EasterEggsScreen() {
                             <ul className="list-disc pl-5 space-y-1 text-xs text-gray-700">
                                 <li>The pineapple knows when you’re online.</li>
                                 <li>Never trust a left shoe after midnight.</li>
-                                <li>Bananas were considered dangerous in 1984.*</li>
+                                <AnimatePresence mode="wait">
+                                    {baitTriggered ? (
+                                        <motion.li
+                                            key="gotcha"
+                                            initial={{ opacity: 0, y: 6 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -6 }}
+                                            transition={{ duration: 0.25 }}
+                                            className="text-xs font-semibold text-rose-600"
+                                        >
+                                            Did you really think it was that? Cute.
+                                        </motion.li>
+                                    ) : (
+                                        <motion.li
+                                            key="bait"
+                                            initial={{ opacity: 0, y: 6 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -6 }}
+                                            transition={{ duration: 0.25 }}
+                                            className="text-xs text-gray-700"
+                                        >
+                                            The Easter eggs like the 12123490 number.
+                                        </motion.li>
+                                    )}
+                                </AnimatePresence>
                                 <li>Two clicks forward, one sneeze back.</li>
                                 <li className="text-gray-400">* probably not.</li>
                             </ul>

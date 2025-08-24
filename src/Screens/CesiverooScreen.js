@@ -15,38 +15,39 @@ import NeedSchema from '../assets/NeedsAssesment.png';
 import Footer from '../components/footer';
 import AOS from 'aos'
 import { cn } from "../lib/utils";
+import PropTypes from "prop-types";
 
 
 
 export default function CesiverooScreen() {
 
-    const [isVisible, setIsVisible] = useState(false);
+    // const [isVisible, setIsVisible] = useState(false);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect();
-                }
-            });
-        });
+    // useEffect(() => {
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach((entry) => {
+    //             if (entry.isIntersecting) {
+    //                 setIsVisible(true);
+    //                 observer.disconnect();
+    //             }
+    //         });
+    //     });
 
-        const target = document.querySelector('#landing-page');
-        if (target) {
-            observer.observe(target);
-        }
+    //     const target = document.querySelector('#landing-page');
+    //     if (target) {
+    //         observer.observe(target);
+    //     }
 
-        return () => {
-            if (target) {
-                observer.unobserve(target);
-            }
-        };
-    }, []);
+    //     return () => {
+    //         if (target) {
+    //             observer.unobserve(target);
+    //         }
+    //     };
+    // }, []);
 
-    const handleLoad = () => {
-        AOS.refresh();
-    };
+    // const handleLoad = () => {
+    //     AOS.refresh();
+    // };
 
     // const people = [
     //     {
@@ -63,303 +64,179 @@ export default function CesiverooScreen() {
     //     }
     // ];
 
-    const Disciplines = [
-        {
-            id: 1,
-            name: "React Native",
-            designation: "Library",
-            image:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz34OmNVyIMh1rguNfXC3MBk7Qq3DTduJVVg&s",
-        },
-        {
-            id: 2,
-            name: "Microsoft SQL",
-            designation: "Data Base",
-            image:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROcY7avil2U_k5wxxhQGXOHK5CH79g0h4R7xY4fgUhqZNuZSNlvkGcw6RYsT29ailWpV8&usqp=CAU",
-        },
-        {
-            id: 3,
-            name: "Express JS",
-            designation: "Framework",
-            image:
-                "https://e7.pngegg.com/pngimages/925/447/png-clipart-express-js-node-js-javascript-mongodb-node-js-text-trademark-thumbnail.png",
-        },
-        {
-            id: 4,
-            name: "Mongo DB",
-            designation: "Data Base",
-            image:
-                "https://www.svgrepo.com/show/331488/mongodb.svg",
-        },
-        {
-            id: 5,
-            name: "Docker",
-            designation: "Application",
-            image:
-                "https://img-0.journaldunet.com/FdWFphLk__fpZlVrdZArGSxwfyg=/1500x/smart/4cfbed5bddb0467bbecad96ca168bbe3/ccmcms-jdn/11507000.jpg"
+    // const Disciplines = [
+    //     {
+    //         id: 1,
+    //         name: "React Native",
+    //         designation: "Library",
+    //         image:
+    //             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz34OmNVyIMh1rguNfXC3MBk7Qq3DTduJVVg&s",
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Microsoft SQL",
+    //         designation: "Data Base",
+    //         image:
+    //             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROcY7avil2U_k5wxxhQGXOHK5CH79g0h4R7xY4fgUhqZNuZSNlvkGcw6RYsT29ailWpV8&usqp=CAU",
+    //     },
+    //     {
+    //         id: 3,
+    //         name: "Express JS",
+    //         designation: "Framework",
+    //         image:
+    //             "https://e7.pngegg.com/pngimages/925/447/png-clipart-express-js-node-js-javascript-mongodb-node-js-text-trademark-thumbnail.png",
+    //     },
+    //     {
+    //         id: 4,
+    //         name: "Mongo DB",
+    //         designation: "Data Base",
+    //         image:
+    //             "https://www.svgrepo.com/show/331488/mongodb.svg",
+    //     },
+    //     {
+    //         id: 5,
+    //         name: "Docker",
+    //         designation: "Application",
+    //         image:
+    //             "https://img-0.journaldunet.com/FdWFphLk__fpZlVrdZArGSxwfyg=/1500x/smart/4cfbed5bddb0467bbecad96ca168bbe3/ccmcms-jdn/11507000.jpg"
 
-        }
-    ];
+    //     }
+    // ];
 
     return (
-        <div className={cn('w-full flex flex-col items-center text-justify')} data-aos="fade-up">
-            <div className={cn("border-b border-gray-300 w-full h-screen flex flex-col justify-center items-center mb-4 bg-[#e6e6e6]")}>
-                <Spline scene="https://prod.spline.design/DGj8qhSyZN4FmvR1/scene.splinecode" onLoad={handleLoad} />
-            </div>
-            <div className={cn("flex flex-col w-11/12 mt-4 md:text-lg text-xs")}>
-
-                <div className='flex flex-col' data-aos="fade-up">
-
-                    <a className={cn('mt-3 font-sfregular text-lightGray')} > Process Highlights</a>
-                    <a className={cn("font-sfbold text-2xl md:text-4xl mt-1 text-darkGray")}>
-                        Cesi<span style={{ color: '#20CFBD' }}>veroo</span> Project</a>
-                    <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between")} />
-
-
-                    <div>
-                        <a className={cn("font-sfbold md:text-lg text-base text-darkGray")}>
-                            Challenge
-                            <br />
-                            <br />
-                            <span className={cn("font-sfregular text-darkGray")} style={{ textAlign: 'right' }}>
-                                This project was part of an academic assignment during my time in engineering school.
-                                The challenge was to create an Uber-like application with different types of users:
-                                customers, restaurants, delivery personnel, third-party developers, and service teams,
-                                all within 4 weeks. This solution will needs to involves managing asynchronous communication,
-                                load balancing, microservice integration, and real-time updates. The project also includes handling
-                                ambiguous requirements and working with limited prior experience, making it a practical
-                                exercise in problem-solving and collaboration within our team of 3 developers. 3 very cool
-                                developers.
-                            </span>
-                        </a>
+        <>
+            <section className="relative mx-auto max-w-6xl px-6 py-14 sm:py-20 mt-28" aria-label="Cesiveroo – Split intro section">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12">
+                    <div className="w-full text-left">
+                        <p className="text-xs uppercase tracking-widest text-gray-500">Process Highlights</p>
+                        <h2 className="mt-2 text-3xl sm:text-4xl font-semibold text-gray-900">Cesiveroo Project</h2>
+                        <p className="mt-3 text-sm font-medium text-gray-400">Challenge</p>
+                        <p className="mt-4 text-base sm:text-lg leading-relaxed text-gray-600 text-justify">
+                            This project was part of an academic assignment during my time in engineering school. The challenge was to create an Uber-like application with different types of users: customers, restaurants, delivery personnel, third-party developers, and service teams, all within 4 weeks. This solution involves managing asynchronous communication, load balancing, microservice integration, and real-time updates. The project also includes handling ambiguous requirements and working with limited prior experience, making it a practical exercise in problem-solving and collaboration within our team of 3 developers. 3 very cool developers.
+                        </p>
                     </div>
 
-                    <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row")} />
-                    <div className={cn('flex flex-row md:gap-28 gap-12 font-sfregular text-darkGray')}>
+                    <div className="w-full md:w-[48%]">
+                        <div className="relative aspect-[16/11] rounded-2xl ring-1 ring-gray-200 bg-white overflow-hidden grid place-items-center">
 
-                        <div className='flex flex-col'>
-                            <a>Timeline</a>
-                            <a>March 2024 -<br /> April 2024</a>
-                        </div>
-
-                        <div className='flex flex-col'>
-                            <a >Team</a>
-                            <a>Clement Fornes</a>
-                            <a>Teo Emirot</a>
-                        </div>
-                        <div className='flex flex-col'>
-                            <a className='mb-2'>Disciplines</a>
-                            <div className={cn("flex flex-row items-center justify-center mb-10 w-full")}>
-                                <AnimatedTooltip items={Disciplines} />
+                            <div className="text-center">
+                                <div className="mx-auto h-24 w-24 rounded-xl bg-gray-50 ring-1 ring-gray-200 grid place-items-center">
+                                    <span className="text-xs text-gray-400">Image / Spline</span>
+                                </div>
+                                <p className="mt-2 text-xs text-gray-400">Ajoute ta scène ici (iframe / canvas)</p>
                             </div>
+
+                            {/* si je met l'element 3D spline /}
+
+                                {/* <iframe
+                                    title="Cesiveroo 3D"
+                                    src=""
+                                    className="absolute inset-0 h-full w-full border-0"
+                                    allow="autoplay; fullscreen; xr-spatial-tracking"
+                                    allowFullScreen
+                                /> */}
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col' data-aos="fade-up">
-                    <a className={cn('mt-6 font-sfregular text-lightGray')} >  Background</a>
-                    <a className={cn("font-sfbold text-2xl md:text-xl mt-1 text-darkGray")}>
-                        Executive Summary
-                    </a>
+            </section>
 
-                    <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-between ")} />
-
-
-                    <div className=" items-start">
-                        <a className={cn(" md:text-lg text-base font-sfregular text-darkGray")}>
-                            <span className='' style={{ textAlign: 'justify', }} >
-                                <>
-                                    On our class we were 3 groups, each of the three groups had to design a separate application,
-                                    to make it more funny and competitive we choosed to inspire our application from existing
-                                    delivery services in France to make us "competitors".
-                                    One group chose Uber Eats, naming their platform <strong>Ces'</strong><strong className='text-[#7AC356]'>Eats</strong>, another took inspiration from
-                                    Just Eat, calling it <strong className='text-[#FF8515]'>Cesi Eat</strong>, while our group decided as you propably already guessed to base our platform on Deliveroo,
-                                    naming it <strong>CESI</strong><strong className=' text-[#20CFBD]'>VEROO</strong><strong >!</strong>
-                                </>
-                            </span>
-                        </a>
-                    </div>
+            {/*  Détails du projet */}
+            <section
+                className="mx-auto max-w-5xl px-6 py-16 sm:py-20"
+                aria-label="Détails du projet Cesiveroo"
+            >
+                <div className="text-center mb-10">
+                    <p className="text-xs uppercase tracking-widest text-gray-500">Aperçu du projet</p>
+                    <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">Détails & Objectifs</h2>
                 </div>
-                <div className='flex flex-col' data-aos="fade-up">
 
-                    <a className={cn("font-sfbold text-2xl md:text-xl mt-14 text-darkGray")}>
-                        The Process
-                    </a>
-
-                    <div className={cn("border-t border-gray-300 my-4 w-full flex flex-row justify-around")} />
-
-
-                    <div className={cn("flex flex-wrap justify-around gap-6 w-full mt-6")}>
-                        {[
-                            { src: Step1, title: "Research", description: <><strong>Needs</strong> Assessment <br />Study of <strong>Solutions</strong></> },
-                            { src: Step2, title: "Design", description: <>Mockups <br /><strong>UX/UI</strong> design</> },
-                            { src: Step3, title: "Development", description: <><strong>Architecture</strong> Setup <br />Backend & Frontend</> },
-                            { src: Step4, title: "Tests", description: <>Integration <br /><strong>Testing</strong></> },
-                            { src: Step5, title: "Documentation", description: <><strong>Git</strong> README.md <br /><strong>Technical</strong> Doc</> },
-                        ].map((step, index) => (
-                            <div key={index} className={cn("flex flex-col items-center text-center flex-none w-[calc(33.333%)] md:w-[calc(15%)]")}>
-                                <img
-                                    src={step.src}
-                                    alt={step.title}
-                                    className={cn("w-24 h-24 transition-transform transform hover:scale-105 duration-500 ease-in-out")}
-                                />
-                                <p className={cn("font-bold mt-2 text-xs md:text-sm font-sfregular text-darkGray")} >
-                                    {step.title}
-                                </p>
-                                <p className={cn("mt-2 text-xs md:text-sm font-sfregular text-darkGray")} >
-                                    {step.description}
-                                </p>
-                            </div>
-                        ))}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
+                    <div className="rounded-xl ring-1 ring-gray-200 p-4 text-center">
+                        <p className="text-3xl font-semibold text-gray-900">4</p>
+                        <p className="text-xs text-gray-500 mt-1">semaines</p>
+                    </div>
+                    <div className="rounded-xl ring-1 ring-gray-200 p-4 text-center">
+                        <p className="text-3xl font-semibold text-gray-900">3</p>
+                        <p className="text-xs text-gray-500 mt-1">développeurs</p>
+                    </div>
+                    <div className="rounded-xl ring-1 ring-gray-200 p-4 text-center">
+                        <p className="text-sm font-medium text-gray-900">Rôle</p>
+                        <p className="text-xs text-gray-500 mt-1">Lead Front & UX</p>
+                    </div>
+                    <div className="rounded-xl ring-1 ring-gray-200 p-4 text-center">
+                        <p className="text-sm font-medium text-gray-900">Livrables</p>
+                        <p className="text-xs text-gray-500 mt-1">MVP, docs, démo</p>
                     </div>
                 </div>
 
-                <div className='flex flex-col' data-aos="fade-up">
-                    <a className='mt-16 flex flex-row font-sfregular text-lightGray' >
-                        <a>
-                            Research
-                        </a>
-                    </a>
-                    <div className='flex flex-row justify-between align-middle'>
-                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
-                            Needs Assessment
-                        </a>
-                        <img src={Step1} className='w-10 h-10' />
-                    </div>
-                    <div className="border-t border-gray-300 my-2 w-full flex flex-row justify-between " />
-                    <div className=" flex flex-col justify-center items-center">
-                        <a
-                            className="font-sfbold md:text-lg text-base text-darkGray">
-                            <span className="font-sfregular" style={{ textAlign: 'justify', }} >
-                                The first step was to clearly analyze what needed to be done and gather all the functional
-                                requirements of the application. This phase included studying the various “risks” we might
-                                encounter and starting to think about which solutions to choose to address all the needs.
-                                These steps helped us plan and project how we would proceed over the course of the 4 weeks.
-                            </span>
-                        </a>
-                        <img src={NeedSchema} className="md:max-w-[80%] mt-8" />
-
-                    </div>
-                </div>
-
-                <div className='flex flex-col' data-aos="fade-up">
-
-                    <a className='mt-20 flex flex-row font-sfregular text-lightGray'>
-                        <a>
-                            Design
-                        </a>
-                    </a>
-                    <div className='flex flex-row justify-between align-middle'>
-                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
-                            Graphic Chart
-                        </a>
-                        <img src={Step2} className='w-10 h-10' />
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
+                    <div className="md:col-span-3">
+                        <h3 className="text-lg font-semibold text-gray-900">Objectifs</h3>
+                        <ul className="mt-3 space-y-2 text-sm text-gray-700">
+                            <li className="flex gap-3"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" /><span>Concevoir une expérience fluide inspirée de Deliveroo, adaptée au contexte académique.</span></li>
+                            <li className="flex gap-3"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" /><span>Structurer une architecture <em>microservices</em> simple, déployable en conteneurs.</span></li>
+                            <li className="flex gap-3"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" /><span>Livrer un MVP testable avec une base de données et un tableau de bord.</span></li>
+                        </ul>
                     </div>
 
-                    <div className="border-t border-gray-300 my-2 w-full flex flex-row justify-between " />
-
-
-                    <div className=" flex flex-col justify-center items-center">
-                        <a className="font-sfbold md:text-lg text-base text-darkGray">
-                            <span className='font-sfregular' style={{ textAlign: 'justify', }} >
-                                For the design part, firtsly we go to make a graphic chart, it wasn't very diffucult haha we just ctrl+C & Ctrl+V the Deeliveroo one.
-                                After that we started making our logos and starting designing our interfaces. For the interfaces and the logo we
-                                fully customized them, having only the visual identity similar to Deliveroo.
-                            </span>
-                        </a>
-
-                        <img src={GraphiChart} className="mt-14 md:max-w-[70%]" />
-                    </div>
-                </div>
-                <div className='flex flex-col' data-aos="fade-up">
-                    <a className='mt-20 flex flex-row font-sfregular text-lightGray'>
-                        <a>
-                            Design
-                        </a>
-                    </a>
-                    <div className='flex flex-row justify-between align-middle'>
-                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
-                            Mockups Interfaces
-                        </a>
-                        <img src={Step2} className='w-10 h-10' />
-                    </div>
-
-                    <div className="border-t border-gray-300 my-2 w-full flex flex-row justify-between " />
-
-
-                    <div className=" flex flex-col justify-center">
-                        <a
-                            className="font-sfbold md:text-lg text-base items-start text-start text-darkGray">
-                            <span className='font-sfregular' style={{ textAlign: 'justify', }} >
-                                As you can see below, we went throught an intensive design phases (as a developer it was a long,
-                                long, long, long, long... process). In this phase we had to design all the interfaces of our application, for each
-                                type of user. We had to make sure that the interfaces were user-friendly and that they were in line with the functionalities
-                                we wanted to implement.
-                            </span>
-                        </a>
-                        <div className="flex flex-row justify-center items-center">
-                            <img src={WireFrames} className="mt-14 md:max-w-[70%] items-center" />
+                    <div className="md:col-span-2">
+                        <h3 className="text-lg font-semibold text-gray-900">Stack & outils</h3>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            {[
+                                "React / React Native",
+                                "Express.js",
+                                "MongoDB",
+                                "MS SQL",
+                                "Docker",
+                                "TailwindCSS",
+                                "Playwright (tests)",
+                            ].map((chip) => (
+                                <span key={chip} className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
+                                    {chip}
+                                </span>
+                            ))}
                         </div>
+                        <p className="mt-4 text-xs text-gray-500">Focus: performance, accessibilité, DX propre, CI simplifiée.</p>
                     </div>
                 </div>
 
-                <div className='flex flex-col' data-aos="fade-up">
-                    <a className='mt-20 flex flex-row font-sfregular text-lightGray' >
-                        <a>
-                            Development
-                        </a>
-                    </a>
-                    <div className='flex flex-row justify-between align-middle'>
-                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
-                            Architecture
-                        </a>
-                        <img src={Step3} className='w-10 h-10' />
-                    </div>
-
-                    <div className="border-t border-gray-300 my-2 w-full flex flex-row justify-between " />
-                    <div className=" flex flex-col justify-center items-center text-darkGray">
-                        <a className="font-sfbold md:text-lg text-base">
-                            <span className='font-sfregular' style={{ textAlign: 'justify', }} >
-                                As the specifications required implementing a microservice architecture, we had to design a scalable and robust system.
-                                Ensuring that the application could handle a large number of users was a key priority. The most challenging part was
-                                implementing the developer service functionalities. These functionalities were designed to allow interaction with the
-                                application, enabling real-time modifications and maintenance of its features.
-                            </span>
-                        </a>
-
-                        <img src={Architecture} />
-                    </div>
-                </div>
-
-                <div className='flex flex-col' data-aos="fade-up">
-                    <a className='flex flex-row font-sfregular text-lightGray'>
-                        <a>
-                            Technical Informations
-                        </a>
-                    </a>
-                    <div className='flex flex-row justify-between align-middle'>
-                        <a className="font-sfbold text-2xl md:text-xl mt-1 text-darkGray">
-                            Conclusion
-                        </a>
-                        <div className='flex flex-row gap-2'>
-                            <img src={Step4} className='w-10 h-10' />
-                            <img src={Step5} className='w-10 h-10' />
+                <div className="mt-14">
+                    <h3 className="text-lg font-semibold text-gray-900 text-center">Processus en 5 étapes</h3>
+                    <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div className="rounded-2xl ring-1 ring-gray-200 p-4">
+                            <img src={NeedSchema} alt="Étude du besoin" className="w-full h-40 object-cover rounded-lg" />
+                            <p className="mt-3 text-sm font-medium text-gray-900">1. Étude du besoin</p>
+                            <p className="text-xs text-gray-600">Interviews, cadrage des users & parcours.</p>
+                        </div>
+                        <div className="rounded-2xl ring-1 ring-gray-200 p-4">
+                            <img src={WireFrames} alt="Wireframes" className="w-full h-40 object-cover rounded-lg" />
+                            <p className="mt-3 text-sm font-medium text-gray-900">2. Wireframes & UI</p>
+                            <p className="text-xs text-gray-600">Zoning, composants, hiérarchie visuelle.</p>
+                        </div>
+                        <div className="rounded-2xl ring-1 ring-gray-200 p-4">
+                            <img src={Architecture} alt="Architecture" className="w-full h-40 object-cover rounded-lg" />
+                            <p className="mt-3 text-sm font-medium text-gray-900">3. Architecture</p>
+                            <p className="text-xs text-gray-600">Microservices, schémas de données, APIs.</p>
                         </div>
                     </div>
 
-                    <div className="border-t border-gray-300 my-2 w-full flex flex-row justify-between " />
-
-
-                    <div className="flex flex-col justify-center md:textlg text-base font-sfregular text-darkGray" >
-                        To conclude, this project was actually one of the first I worked on that resulted in something real and concrete. After this project, I started having interest in developing technical projects during my personal time (like this portfolio, leetcode problems etc.....).
-                        <span >
-                            To see the technicals informations of the entire project i'll invite you to click <a className="underline" href='https://github.com/AymaneHilmi/Cesiveroo' target="_blank">here</a> to visit our repos project on Github.
-                        </span>
+                    <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="rounded-2xl ring-1 ring-gray-200 p-4">
+                            <img src={Step4} alt="Développement & tests" className="w-full h-40 object-cover rounded-lg" />
+                            <p className="mt-3 text-sm font-medium text-gray-900">4. Dev & Tests</p>
+                            <p className="text-xs text-gray-600">Itérations rapides, validation des scénarios clés.</p>
+                        </div>
+                        <div className="rounded-2xl ring-1 ring-gray-200 p-4">
+                            <img src={Step5} alt="Démo & retours" className="w-full h-40 object-cover rounded-lg" />
+                            <p className="mt-3 text-sm font-medium text-gray-900">5. Démo & Retex</p>
+                            <p className="text-xs text-gray-600">Présentation, métriques, axes d’amélioration.</p>
+                        </div>
                     </div>
                 </div>
-                <Footer />
-            </div>
-        </div >
+            </section>
+        </>
+
+
     )
 }
 

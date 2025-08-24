@@ -117,8 +117,7 @@ export const EasterEggProvider = ({ children }) => {
                 toast(`Easter Egg ${eggId} already found!`, { duration: 10000 });
                 return prev;
             }
-
-            // Si c'est le tout premier egg, compléter la mission 'eggStep' avant d'afficher le toast
+            // Si c'est le tout premier egg, compléter les mission 'eggStep' avant d'afficher le toast
             if (prev.length === 0 && !completedMissions.includes("eggStep")) {
                 completeMission("eggStep");
             }

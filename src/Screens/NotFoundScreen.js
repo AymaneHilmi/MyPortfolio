@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import avatar from "../assets/AvatarAymane.png";
+
 
 export default function NotFoundScreen() {
     const navigate = useNavigate();
@@ -24,7 +26,7 @@ export default function NotFoundScreen() {
     const digits = [
         { value: "29", left: "12%", top: "20%", floatDelay: 0 },
         { value: "13", left: "70%", top: "25%", floatDelay: 0.15 },
-        { value: "21", left: "22%", top: "68%", floatDelay: 0.3 },
+        { value: "22", left: "22%", top: "68%", floatDelay: 0.3 },
         { value: "02", left: "76%", top: "70%", floatDelay: 0.45 },
     ];
 
@@ -79,9 +81,9 @@ export default function NotFoundScreen() {
                                 },
                             },
                         }}
-                        className="text-center"
+                        className="text-center flex flex-col items-center justify-center"
                     >
-                        <motion.h1
+                        {/* <motion.h1
                             variants={{
                                 hidden: { opacity: 0, y: 30, scale: 0.95 },
                                 visible: { opacity: 1, y: 0, scale: 1 },
@@ -90,7 +92,32 @@ export default function NotFoundScreen() {
                             className="text-[48px] md:text-9xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block"
                         >
                             404
-                        </motion.h1>
+                        </motion.h1> */}
+
+
+                        <motion.img
+                            variants={{
+                                hidden: { opacity: 0, y: 30, scale: 0.95 },
+                                visible: { opacity: 1, y: 0, scale: 1 },
+                            }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            width={300}
+                            height={300}
+                            src={avatar}
+
+                        />
+
+                        <motion.p
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0 },
+                            }}
+                            transition={{ duration: 0.7, ease: "easeOut" }}
+                            className="mt-2 text-gray-600 font-sfbold text-2xl md:text-xl"
+                        >
+                            404 - Not Found
+                        </motion.p>
+
 
                         <motion.p
                             variants={{
@@ -100,12 +127,12 @@ export default function NotFoundScreen() {
                             transition={{ duration: 0.7, ease: "easeOut" }}
                             className="mt-2 text-gray-600 text-base md:text-lg"
                         >
-                            You look for something ? There is nothing here...
+                            You look for something ? There is probably nothing here...
                         </motion.p>
 
                         <motion.button
                             variants={{
-                                hidden: { opacity: 0, y: 20 },   // ❌ on enlève scale ici
+                                hidden: { opacity: 0, y: 20 },
                                 visible: { opacity: 1, y: 0 },
                             }}
                             transition={{ duration: 0.7, ease: "easeOut" }}

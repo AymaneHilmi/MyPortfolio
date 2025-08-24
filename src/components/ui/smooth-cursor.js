@@ -3,7 +3,7 @@
 import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SiDeliveroo } from "react-icons/si";
-import { FaGlobe, FaMoon, FaHandPaper, FaHandRock } from "react-icons/fa";
+import { FaGlobeAmericas, FaMoon, FaHandPaper, FaHandRock, FaSearchMinus } from "react-icons/fa";
 
 /** Styles “glass” — blur de l’arrière-plan + léger contour */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";
@@ -341,10 +341,11 @@ export function SmoothCursor({
             justifyContent: "center",
           }}
         >
-          <FaGlobe size={22} color="white" />
+          <FaGlobeAmericas size={26} color="white" />
         </motion.div>
       );
     }
+
     if (name === "egg#3") {
       return (
         <motion.div
@@ -423,58 +424,25 @@ export function SmoothCursor({
       );
     }
 
-    if (name === "grab") {
+    if (name === "egg#6") {
       return (
         <motion.div
-          key="grab"
-          initial={{ opacity: 0, scale: 1 }}
+          key="egg#6"
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.15 }}
-          style={{ position: "relative", display: "grid", placeItems: "center" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          {/* Main fist icon (grabbing) */}
-          <FaHandRock size={12} color="white" />
-
-          {/* Subtle left/right chevrons to hint draggable */}
-          <motion.svg
-            key="chev-left"
-            width="10"
-            height="10"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ position: "absolute", left: -6, opacity: 0.7 }}
-            initial={{ x: 2, opacity: 0 }}
-            animate={{ x: [2, -2, 2], opacity: [0, 0.7, 0] }}
-            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <path d="M15 18 L9 12 L15 6" />
-          </motion.svg>
-
-          <motion.svg
-            key="chev-right"
-            width="10"
-            height="10"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ position: "absolute", right: -6, opacity: 0.7 }}
-            initial={{ x: -2, opacity: 0 }}
-            animate={{ x: [-2, 2, -2], opacity: [0, 0.7, 0] }}
-            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <path d="M9 6 L15 12 L9 18" />
-          </motion.svg>
+          <span className="text-white text-sm font-bold select-none">404</span>
         </motion.div>
       );
     }
+
 
     return null;
   };

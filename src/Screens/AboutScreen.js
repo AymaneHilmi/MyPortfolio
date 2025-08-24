@@ -137,7 +137,7 @@ export default function AboutScreen() {
 
             Aymane Hilmi is 22 and a software engineer based in Aix-en-Provence, France.
             As a polyglot, he speaks five languages: Italian, French, Moroccan Arabic (Darija), English, and Spanish.
-            Born in Italy in 2002, he moved to France at age 12, earned a Scientific Baccalaureate (math option) with honors,
+            Born in <span className="">Italy</span> in 2002, he moved to France at age 12, earned a Scientific Baccalaureate (math option) with honors,
             and later a computer engineering degree. Today, Aymane has chosen to focus on two things: building his own company
             with his wife and traveling to discover new cultures and perspectives.
           </p>
