@@ -11,6 +11,8 @@
     "@radix-ui/react-tooltip": "^1.1.8",
     "@react-spring/parallax": "^9.7.4",
     "@react-spring/web": "^9.7.4",
+    "@react-three/drei": "^9.105.0",
+    "@react-three/fiber": "^8.18.0",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^1.1.8",
     "@tabler/icons-react": "^3.28.1",

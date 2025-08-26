@@ -1,4 +1,4 @@
-import { React, img, useEffect, useState, useRef } from "react";
+import React, { img, useEffect, useState, useRef } from "react";
 import Spline from "@splinetool/react-spline";
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 import { CodeBlock } from "../components/ui/code-block";
@@ -21,6 +21,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 import { ContainerScroll } from "../components/ui/container-scroll-animation";
+import CesiverooStack from "../components/ui/CesiverooStack";
 
 export default function CesiverooScreen() {
   // const [isVisible, setIsVisible] = useState(false);
@@ -105,8 +106,6 @@ export default function CesiverooScreen() {
   //     }
   // ];
 
-  const containerRef = useRef(null);
-  const rendererRef = useRef(null);
   const [active, setActive] = useState(1);
 
   // Contenu lié aux 4 étapes
@@ -142,268 +141,6 @@ export default function CesiverooScreen() {
   ];
 
   const activeIndex = steps.findIndex((s) => s.id === active);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    const rect = el.getBoundingClientRect(); // Safari-friendly
-    let w = rect.width || 800;
-    let h = rect.height || 450;
-
-    // --- Renderer (sans ombres)
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    rendererRef.current = renderer;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(w, h, false);
-    el.appendChild(renderer.domElement);
-
-    // --- Scene
-    const scene = new THREE.Scene();
-
-    // --- Camera orthographique (style isométrique / dessin)
-    const frustum = 8; // taille de la vue
-    let aspect = w / h;
-    const camera = new THREE.OrthographicCamera(
-      (-frustum * aspect) / 2,
-      (frustum * aspect) / 2,
-      frustum / 2,
-      -frustum / 2,
-      -100,
-      100
-    );
-    camera.position.set(0, 0, 6);
-    camera.lookAt(0, 2, 0);
-    scene.add(camera);
-
-    // --- Groupe principal
-    const group = new THREE.Group();
-    group.rotation.set(
-      THREE.MathUtils.degToRad(30),
-      THREE.MathUtils.degToRad(-35),
-      0
-    );
-    scene.add(group);
-
-    // --- Géométrie rectangulaire (pas d’arrondi)
-    const size = 6;
-    const thickness = 1;
-    const gap = 0.42;
-
-    const geom = new THREE.BoxGeometry(size, thickness, size);
-
-    // Helper couleurs
-    const toColor = (hex) => new THREE.Color(hex);
-    const zinc200 = toColor("#e5e7eb"); // border-zinc-200
-    const white = toColor("#ffffff");
-
-    // --- Helper: PLAN label « Step N » haute résolution (net, non étiré)
-    function makeLabelPlane(text, renderer) {
-      const dpr = Math.min(window.devicePixelRatio || 1, 3);
-
-      // Canvas haute résolution + plus large
-      const BASE_W = 2048;
-      const BASE_H = 512;
-
-      const canvas = document.createElement("canvas");
-      canvas.width = BASE_W * dpr;
-      canvas.height = BASE_H * dpr;
-
-      const ctx = canvas.getContext("2d");
-      ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, BASE_W, BASE_H);
-
-      ctx.fillStyle = "gray";
-      ctx.textAlign = "left";
-      ctx.textBaseline = "middle";
-
-      // police (tu peux remplacer sfregular par ta font)
-      const family = "sfregular, sans-serif";
-      ctx.font = `400 150px ${family}`;
-
-      // padding gauche/droite
-      const PADDING_LEFT = 100;
-      const PADDING_RIGHT = 120;
-      // Dessin aligné à gauche, centré verticalement
-      ctx.fillText(text, PADDING_LEFT, BASE_H / 2);
-
-      const texture = new THREE.CanvasTexture(canvas);
-      texture.generateMipmaps = true;
-      texture.minFilter = THREE.LinearMipmapLinearFilter;
-      texture.magFilter = THREE.LinearFilter;
-      texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-      texture.needsUpdate = true;
-
-      const material = new THREE.MeshBasicMaterial({
-        map: texture,
-        transparent: true,
-        depthTest: true,
-        depthWrite: false,
-        side: THREE.DoubleSide,
-        opacity: 0.98,
-        toneMapped: false,
-      });
-
-      // largeur du label dans la scène (presque la largeur du cube)
-      const worldW = size * 0.95;
-      const worldH = worldW * (BASE_H / BASE_W);
-      const geo = new THREE.PlaneGeometry(worldW, worldH);
-
-      const plane = new THREE.Mesh(geo, material);
-      plane.userData.isLabel = true;
-      plane.userData.baseScale = new THREE.Vector3(worldW, worldH, 1);
-      return plane;
-    }
-
-    // Création de la pile (du haut vers le bas visuellement)
-    const stack = [];
-    for (let i = 0; i < steps.length; i++) {
-      const stepIndex = steps.length - 1 - i; // inverse l’ordre des steps
-
-      const mat = new THREE.MeshBasicMaterial({
-        color: white,
-        polygonOffset: true,
-        polygonOffsetFactor: 1,
-        polygonOffsetUnits: 1,
-      });
-      const mesh = new THREE.Mesh(geom, mat);
-
-      // place Step 1 en haut et Step 4 en bas
-      mesh.position.set(0, i * (thickness + gap), 0);
-
-      // Arêtes fines façon "border-zinc-200"
-      const edges = new THREE.EdgesGeometry(geom);
-      const line = new THREE.LineSegments(
-        edges,
-        new THREE.LineBasicMaterial({ color: zinc200, linewidth: 1 })
-      );
-      line.renderOrder = 1;
-      mesh.add(line);
-
-      // Label avec l’index inversé
-      const label = makeLabelPlane(
-        `Step ${steps[stepIndex].id} : ${steps[stepIndex].label}`,
-        renderer
-      );
-      label.position.set(0, 0, size / 2 + 0.06);
-      mesh.add(label);
-
-      mesh.userData = {
-        baseY: mesh.position.y,
-        targetY: mesh.position.y,
-        color: white.clone(),
-        targetColor: white.clone(),
-        isActive: false,
-        phase: Math.random() * Math.PI * 2, // pour l'effet de lévitation
-        stepId: steps[stepIndex].id,
-        activeColor: new THREE.Color(steps[stepIndex].color), // <-- couleur correcte liée à ce layer
-      };
-
-      group.add(mesh);
-      stack.push(mesh);
-    }
-
-    // Interaction (clic)
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-
-    function setActiveLayer(idx) {
-      stack.forEach((m, i) => {
-        const active = i === idx;
-        m.userData.isActive = active;
-        m.userData.targetY = m.userData.baseY + (active ? 0.1 : 0.0);
-
-        // couleur correcte (pas liée à steps[i] qui n’est plus aligné)
-        m.userData.targetColor.copy(active ? m.userData.activeColor : white);
-      });
-    }
-    // État initial : le top actif (index 0 visuel)
-    setActiveLayer(0);
-
-    function pointerPos(e) {
-      const r = renderer.domElement.getBoundingClientRect();
-      mouse.x = ((e.clientX - r.left) / r.width) * 2 - 1;
-      mouse.y = -((e.clientY - r.top) / r.height) * 2 + 1;
-    }
-    function onPointerMove(e) {
-      pointerPos(e);
-    }
-    function onClick() {
-      raycaster.setFromCamera(mouse, camera);
-      const intersections = raycaster.intersectObjects(stack, false);
-      if (intersections.length) {
-        const idx = stack.indexOf(intersections[0].object);
-        if (idx !== -1) {
-          setActiveLayer(idx);
-          setActive(stack[idx].userData.stepId); // remonte l’id réel
-        }
-      }
-    }
-    renderer.domElement.addEventListener("pointermove", onPointerMove);
-    renderer.domElement.addEventListener("click", onClick);
-
-    // Animation (lévitation subtile)
-    let raf;
-    const clock = new THREE.Clock();
-    const floatAmp = 0.08;
-    const floatSpeed = 2.0;
-
-    function animate() {
-      raf = requestAnimationFrame(animate);
-      const dt = Math.min(clock.getDelta(), 0.033);
-      const t = clock.getElapsedTime();
-
-      stack.forEach((m) => {
-        const float = m.userData.isActive
-          ? Math.sin(t * floatSpeed + m.userData.phase) * floatAmp
-          : 0;
-        const target = m.userData.targetY + float;
-
-        m.position.y = THREE.MathUtils.damp(m.position.y, target, 8, dt);
-        m.material.color.lerp(m.userData.targetColor, 1 - Math.exp(-10 * dt));
-      });
-
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    // Resize (Safari-safe) + appel initial
-    function onResize() {
-      const r = el.getBoundingClientRect();
-      const nw = r.width || 800;
-      const nh = r.height || 450;
-
-      renderer.setSize(nw, nh, false);
-
-      const aspectNew = nw / nh;
-      camera.left = (-frustum * aspectNew) / 2;
-      camera.right = (frustum * aspectNew) / 2;
-      camera.top = frustum / 2;
-      camera.bottom = -frustum / 2;
-      aspect = aspectNew;
-      camera.updateProjectionMatrix();
-    }
-    window.addEventListener("resize", onResize);
-    // force un recalcul après montage (corrige Safari qui lit parfois 0x0 au 1er render)
-    onResize();
-
-    // Cleanup
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", onResize);
-      renderer.domElement.removeEventListener("pointermove", onPointerMove);
-      renderer.domElement.removeEventListener("click", onClick);
-      renderer.dispose();
-      scene.traverse((obj) => {
-        if (obj.isMesh) {
-          obj.geometry?.dispose();
-          if (Array.isArray(obj.material))
-            obj.material.forEach((m) => m.dispose?.());
-          else obj.material?.dispose?.();
-        }
-      });
-      el.removeChild(renderer.domElement);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // init once
 
   return (
     <div className="mx-auto max-w-6xl">
@@ -645,8 +382,13 @@ export default function CesiverooScreen() {
                 <p className="mt-2 text-zinc-700">{steps[activeIndex].body}</p>
               </div>
             </div>
-            {/* Canvas container  */}
-            <div ref={containerRef} />
+
+            {/* Stack 3D */}
+            <CesiverooStack
+              steps={steps}
+              active={active}
+              setActive={setActive}
+            />
           </div>
         </section>
 

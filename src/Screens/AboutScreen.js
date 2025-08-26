@@ -39,6 +39,8 @@ import SaintGobain from "../assets/Saint-Gobain.png";
 
 
 
+
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: (i) => ({
@@ -134,12 +136,21 @@ export default function AboutScreen() {
 
           {/* Description */}
           <p className="text-sm md:text-lg text-darkGray text-justify md:text-center leading-relaxed ">
-
-            Aymane Hilmi is 22 and a software engineer based in Aix-en-Provence, France.
-            As a polyglot, he speaks five languages: Italian, French, Moroccan Arabic (Darija), English, and Spanish.
-            Born in <span className="">Italy</span> in 2002, he moved to France at age 12, earned a Scientific Baccalaureate (math option) with honors,
-            and later a computer engineering degree. Today, Aymane has chosen to focus on two things: building his own company
-            with his wife and traveling to discover new cultures and perspectives.
+            Aymane Hilmi is 22 and a software engineer based in Aix-en-Provence,
+            France. As a polyglot, he speaks five languages: Italian, French,
+            Moroccan Arabic (Darija), English, and Spanish. Born in{" "}
+            <span
+              className="inline italic tracking-[0.5px] text-foreground/90 transition-all duration-300
+             font-bold hover:bg-gradient-to-r hover:from-[#009246] hover:via-white hover:to-[#CE2B37]
+             hover:text-transparent hover:bg-clip-text"
+            >
+              Italy
+            </span>{" "}
+            in 2002, he moved to France at age 12, earned a Scientific
+            Baccalaureate (math option) with honors, and later a computer
+            engineering degree. Today, Aymane has chosen to focus on two things:
+            building his own company with his wife and traveling to discover new
+            cultures and perspectives.
           </p>
           <div className=" h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full" />
         </FadeIn>
@@ -697,16 +708,21 @@ export default function AboutScreen() {
             </h2>
             <div className="mt-3 h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full" />
             <p className="mt-5 text-gray-600 leading-relaxed">
-              As an entrepreneur, my overarching goal is to invest in myself, especially in discipline so I
-              can show up better every day. I want to simplify people’s daily lives with automated, practical
-              solutions. Additionally, I aim to travel, discover new cultures and viewpoints, and form my own understanding of the world.
+              As an entrepreneur, my overarching goal is to invest in myself,
+              especially in discipline so I can show up better every day. I want
+              to simplify people’s daily lives with automated, practical
+              solutions. Additionally, I aim to travel, discover new cultures
+              and viewpoints, and form my own understanding of the world.
             </p>
           </FadeIn>
 
           {/* Cards */}
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* 1. Invest in myself */}
-            <FadeIn className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow" i={0.1}>
+            <FadeIn
+              className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow"
+              i={0.1}
+            >
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <Rocket className="size-5 text-gray-700" aria-hidden="true" />
@@ -723,7 +739,10 @@ export default function AboutScreen() {
             </FadeIn>
 
             {/* 2. Build solutions that simplify work */}
-            <FadeIn className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow" i={0.2}>
+            <FadeIn
+              className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow"
+              i={0.2}
+            >
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <Target className="size-5 text-gray-700" aria-hidden="true" />
@@ -733,13 +752,17 @@ export default function AboutScreen() {
                 </h3>
               </div>
               <p className="mt-3 text-gray-600">
-                I want to develop solutions that remove friction and make work simpler.
-                Clarity, speed, and utility—grounded in real user needs.
+                I want to develop solutions that remove friction and make work
+                simpler. Clarity, speed, and utility—grounded in real user
+                needs.
               </p>
             </FadeIn>
 
             {/* 3. Travel & broaden perspective */}
-            <FadeIn className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow" i={0.3}>
+            <FadeIn
+              className="rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow"
+              i={0.3}
+            >
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <Globe2 className="size-5 text-gray-700" aria-hidden="true" />
@@ -749,8 +772,8 @@ export default function AboutScreen() {
                 </h3>
               </div>
               <p className="mt-3 text-gray-600">
-                I want to travel to discover new cultures and new ways of seeing the
-                world.
+                I want to travel to discover new cultures and new ways of seeing
+                the world.
               </p>
             </FadeIn>
           </div>
@@ -760,7 +783,10 @@ export default function AboutScreen() {
         id="passions"
         className=" w-full flex flex-col items-center px-6 py-16 min-h-screen "
       >
-        <FadeIn className="w-full max-w-4xl mx-auto flex flex-col items-center text-center" i={0}>
+        <FadeIn
+          className="w-full max-w-4xl mx-auto flex flex-col items-center text-center"
+          i={0}
+        >
           {/* Titre */}
           <h2 className="text-3xl md:text-7xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent px-1">
             Beyond Code: Things I Love
@@ -770,15 +796,19 @@ export default function AboutScreen() {
           {/* Texte principal */}
           <p className="mt-6 text-gray-600 leading-relaxed max-w-2xl">
             I’m driven by curiosity and movement. Outside of engineering, I
-            recharge by spending time with my wife, watching/reading mangas, riding bike or chasing
-            fresh powder in the mountains with my brother.
+            recharge by spending time with my wife, watching/reading mangas,
+            riding bike or chasing fresh powder in the mountains with my
+            brother.
           </p>
         </FadeIn>
         <div className="relative overflow-visible">
           <DraggableCardContainer className="relative flex w-full items-center justify-center overflow-visible">
             {/* Bouton déclencheur */}
 
-            <FadeIn className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center text-center font-sfregular" i={0.1}>
+            <FadeIn
+              className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center text-center font-sfregular"
+              i={0.1}
+            >
               <h2 className="text-darkGray text-2xl font-sfbold tracking-tight">
                 Looks like you found something?
               </h2>
@@ -788,7 +818,6 @@ export default function AboutScreen() {
                   type="button"
                   onMouseDown={() => {
                     eggLongPressTimer.current = setTimeout(() => {
-
                       incrementEggs("#3");
                       eggLongPressTimer.current = null; // mark as completed
                     }, 3000);
