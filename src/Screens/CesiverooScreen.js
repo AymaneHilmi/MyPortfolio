@@ -1,8 +1,4 @@
 import React, { img, useEffect, useState, useRef } from "react";
-import Spline from "@splinetool/react-spline";
-import { AnimatedTooltip } from "../components/ui/animated-tooltip";
-import { CodeBlock } from "../components/ui/code-block";
-import Cesiveroo from "../assets/LogoCesiveroo.png";
 import Step1 from "../assets/CesiverooStep1.png";
 import Step2 from "../assets/CesiverooStep2.png";
 import Step3 from "../assets/CesiverooStep3.png";
@@ -11,17 +7,7 @@ import Step5 from "../assets/CesiverooStep5.png";
 import HomeCesiveroo from "../assets/CesiverooHome.png";
 import GraphiChart from "../assets/CesiverooIpadChart.png";
 import WireFrames from "../assets/CesiverooWireFrames.png";
-import Architecture from "../assets/CesiverooArchitecture.png";
-import NeedSchema from "../assets/NeedsAssesment.png";
-import Footer from "../components/footer";
-import AOS from "aos";
-import { cn } from "../lib/utils";
-import PropTypes from "prop-types";
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 import { ContainerScroll } from "../components/ui/container-scroll-animation";
-import CesiverooStack from "../components/ui/CesiverooStack";
 import InteractiveStepsSection from "../components/ui/interactivesteps";
 import {
   MonitorSmartphone,
