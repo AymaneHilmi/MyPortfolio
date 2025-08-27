@@ -22,125 +22,95 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 import { ContainerScroll } from "../components/ui/container-scroll-animation";
 import CesiverooStack from "../components/ui/CesiverooStack";
+import InteractiveStepsSection from "../components/ui/interactivesteps";
+import {
+  MonitorSmartphone,
+  ShieldCheck,
+  Boxes,
+  Database,
+  Wrench,
+  Activity,
+  Github,
+  Calendar,
+  Users,
+  Briefcase,
+  FileText,
+} from "lucide-react";
 
 export default function CesiverooScreen() {
-  // const [isVisible, setIsVisible] = useState(false);
-
-  // useEffect(() => {
-  //     const observer = new IntersectionObserver((entries) => {
-  //         entries.forEach((entry) => {
-  //             if (entry.isIntersecting) {
-  //                 setIsVisible(true);
-  //                 observer.disconnect();
-  //             }
-  //         });
-  //     });
-
-  //     const target = document.querySelector('#landing-page');
-  //     if (target) {
-  //         observer.observe(target);
-  //     }
-
-  //     return () => {
-  //         if (target) {
-  //             observer.unobserve(target);
-  //         }
-  //     };
-  // }, []);
-
-  // const handleLoad = () => {
-  //     AOS.refresh();
-  // };
-
-  // const people = [
-  //     {
-  //         id: 1,
-  //         name: "Clement Fornes",
-  //         designation: "Software Engineer",
-  //         image: "https://media.licdn.com/dms/image/v2/D4D03AQHJVCZM9XWnyA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710451743776?e=1741824000&v=beta&t=f5LejpCDWFVriiozl44PDamTStnrmrb4AcgIrRj2NFg",
-  //     },
-  //     {
-  //         id: 2,
-  //         name: "Teo Emirot",
-  //         designation: "IT Engineer",
-  //         image: "https://media.licdn.com/dms/image/v2/C4D03AQHk1JDj31er8A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1657905707102?e=1741824000&v=beta&t=bwgN7AnDXWT9NrCR8OuUU1pU2v6KOlPtMq4yUGq5wx0",
-  //     }
-  // ];
-
-  // const Disciplines = [
-  //     {
-  //         id: 1,
-  //         name: "React Native",
-  //         designation: "Library",
-  //         image:
-  //             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz34OmNVyIMh1rguNfXC3MBk7Qq3DTduJVVg&s",
-  //     },
-  //     {
-  //         id: 2,
-  //         name: "Microsoft SQL",
-  //         designation: "Data Base",
-  //         image:
-  //             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROcY7avil2U_k5wxxhQGXOHK5CH79g0h4R7xY4fgUhqZNuZSNlvkGcw6RYsT29ailWpV8&usqp=CAU",
-  //     },
-  //     {
-  //         id: 3,
-  //         name: "Express JS",
-  //         designation: "Framework",
-  //         image:
-  //             "https://e7.pngegg.com/pngimages/925/447/png-clipart-express-js-node-js-javascript-mongodb-node-js-text-trademark-thumbnail.png",
-  //     },
-  //     {
-  //         id: 4,
-  //         name: "Mongo DB",
-  //         designation: "Data Base",
-  //         image:
-  //             "https://www.svgrepo.com/show/331488/mongodb.svg",
-  //     },
-  //     {
-  //         id: 5,
-  //         name: "Docker",
-  //         designation: "Application",
-  //         image:
-  //             "https://img-0.journaldunet.com/FdWFphLk__fpZlVrdZArGSxwfyg=/1500x/smart/4cfbed5bddb0467bbecad96ca168bbe3/ccmcms-jdn/11507000.jpg"
-
-  //     }
-  // ];
-
-  const [active, setActive] = useState(1);
-
-  // Contenu lié aux 4 étapes
-  const steps = [
+  const stats = [
     {
-      id: 1,
-      label: "Needs Reassesment",
-      title: "1. Découvrir le besoin",
-      body: "Cadrage des objectifs, personas et parcours clés pour aligner la valeur et le scope.",
-      color: "#E0F7F5", // pastel turquoise très clair
+      label: "weeks",
+      value: "4",
+      icon: Calendar,
     },
     {
-      id: 2,
-      label: "Risk Analysis",
-      title: "2. Concevoir les solutions",
-      body: "Wireframes, design system Cesiveroo et prototypage rapide pour valider l’ergonomie.",
-      color: "#E0F7F5", // mint clair
+      label: "developers",
+      value: "3",
+      icon: Users,
     },
     {
-      id: 3,
-      label: "Architecture Diagram",
-      title: "3. Construire & intégrer",
-      body: "Dev modulaire, APIs, tests clés, intégration continue et petites boucles de feedback.",
-      color: "#E0F7F5", // teal pastel
+      label: "Rôle",
+      value: "Software Engineer",
+      icon: Briefcase,
     },
     {
-      id: 4,
-      label: "Projected Timeline",
-      title: "4. Lancer & apprendre",
-      body: "Métriques d’usage, collecte des retours et plan d’amélioration continue.",
-      color: "#E0F7F5", // turquoise accent
+      label: "Livrables",
+      value: "MVP, docs, démo",
+      icon: FileText,
     },
   ];
 
-  const activeIndex = steps.findIndex((s) => s.id === active);
+  const legend = [
+    {
+      title: "Client (Web & Mobile)",
+      desc: "App React (web) + mobile. Auth, state, routing.",
+      items: ["React", "TailwindCSS", "Auth tokens", "ExtraIgnored"],
+      icon: MonitorSmartphone,
+    },
+    {
+      title: "API Gateway",
+      desc: "Entrée unique : agrégation, routing, auth, rate-limit.",
+      items: ["Reverse proxy", "Logs", "Versioning", "Security"],
+      icon: ShieldCheck,
+    },
+    {
+      title: "Microservices",
+      desc: "Services Node/Express découplés, orientés métier.",
+      items: [
+        "Auth",
+        "Catalogue",
+        "Commandes",
+        "Paiements (mock)",
+        "Notifications",
+        "Webhooks",
+      ],
+      icon: Boxes,
+    },
+    {
+      title: "Data Stores",
+      desc: "Stockage polyglotte selon l’usage.",
+      items: [
+        "MongoDB (temps réel)",
+        "MS SQL (reporting)",
+        "Redis",
+        "Elasticsearch",
+      ],
+      icon: Database,
+    },
+    {
+      title: "Back-Office & Dev Tools",
+      desc: "Panneaux admin, tooling CI/CD, observabilité.",
+      items: ["Admin UI", "Pipelines", "Monitoring", "Docs"],
+      icon: Wrench,
+    },
+    {
+      title: "Observabilité & Monitoring",
+      desc: "Visibilité, logs, métriques et alertes.",
+      items: ["Grafana", "Prometheus", "Alertmanager", "ELK"],
+      icon: Activity,
+    },
+  ];
 
   return (
     <div className="mx-auto max-w-6xl">
@@ -181,11 +151,11 @@ export default function CesiverooScreen() {
             {/* TODO Proposition de gpt, voir si je laisse ou pas ????  */}
             {/* Subtle backdrop elements to blend the image into white site bg */}
             {/* <div
-              className="absolute -left-6 -top-6 h-28 w-28 rounded-full bg-gradient-to-br from-emerald-100 to-transparent blur-xl"
+              className="absolute -left-6 -top-6 h-60 w-60 rounded-full bg-gradient-to-br from-[#A7F3EB] to-transparent blur-xl"
               aria-hidden="true"
             />
             <div
-              className="absolute -bottom-8 -right-8 h-32 w-32 rounded-full bg-gradient-to-tr from-zinc-100 to-transparent blur-xl"
+              className="absolute -bottom-8 -right-8 h-60 w-60 rounded-full bg-gradient-to-tr from-[#A7F3EB] to-transparent blur-xl"
               aria-hidden="true"
             /> */}
 
@@ -211,31 +181,30 @@ export default function CesiverooScreen() {
         aria-label="Détails du projet Cesiveroo"
       >
         <div className="text-center mb-10">
-          <p className="text-xs uppercase tracking-widest text-gray-500">
+          <p className="text-base uppercase tracking-widest text-lightGray">
             Aperçu du projet
           </p>
-          <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
-            Détails & Objectifs
+          <h2 className="mt-2 text-2xl sm:text-3xl font-sfbold tracking-tight text-darkGray">
+            Details & Objectives
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
-          <div className="rounded-xl ring-1 ring-gray-200 p-4 text-center">
-            <p className="text-3xl font-semibold text-gray-900">4</p>
-            <p className="text-xs text-gray-500 mt-1">semaines</p>
-          </div>
-          <div className="rounded-xl ring-1 ring-gray-200 p-4 text-center">
-            <p className="text-3xl font-semibold text-gray-900">3</p>
-            <p className="text-xs text-gray-500 mt-1">développeurs</p>
-          </div>
-          <div className="rounded-xl ring-1 ring-gray-200 p-4 text-center">
-            <p className="text-sm font-medium text-gray-900">Rôle</p>
-            <p className="text-xs text-gray-500 mt-1">Lead Front & UX</p>
-          </div>
-          <div className="rounded-xl ring-1 ring-gray-200 p-4 text-center">
-            <p className="text-sm font-medium text-gray-900">Livrables</p>
-            <p className="text-xs text-gray-500 mt-1">MVP, docs, démo</p>
-          </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
+          {stats.map((stat) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={stat.label}
+                className="rounded-xl ring-1 ring-zinc-700 bg-[#3a3a3a] p-5 text-center shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex justify-center mb-2">
+                  <Icon className="h-5 w-5 text-[#20CFBD]" strokeWidth={2} />
+                </div>
+                <p className="text-2xl font-sfbold text-white">{stat.value}</p>
+                <p className="text-xs text-zinc-400 mt-1">{stat.label}</p>
+              </div>
+            );
+          })}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
@@ -329,80 +298,35 @@ export default function CesiverooScreen() {
             ].map((step, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center text-center p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition"
+                className="flex flex-col items-center text-center p-6 rounded-2xl   transition"
               >
                 <img
                   src={step.img}
                   alt={`Step ${idx + 1}`}
-                  className="w-24 h-24 object-contain"
+                  className="w-28 h-28 object-contain"
                 />
-                <p className="mt-4 text-sm font-medium text-gray-900">
+                <p className="mt-4 text-base font-medium text-gray-900">
                   {step.title}
                 </p>
-                <p className="text-xs text-gray-600 mt-1">{step.desc}</p>
+                <p className="text-sm text-gray-600 mt-1">{step.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="flex flex-col justify-center items-center py-12">
-          <div className="text-center mb-10">
-            <p className="text-xs uppercase tracking-widest text-sfregular text-gray-500">
-              Research
-            </p>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-sfbold tracking-tight text-darkGray">
-              Needs Assessment
-            </h2>
-          </div>
-
-          <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Panneau texte lié à l’étape active */}
-            <div className="self-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-sm text-zinc-600">
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                How it works (style dessin)
-              </div>
-              <h2 className="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900">
-                Pile 3D minimaliste — sans ombres
-              </h2>
-              <p className="mt-3 text-zinc-600">
-                Arêtes <code>border-zinc-200</code>, angles vifs, couleurs
-                plates. Cliquez un layer pour le mettre en avant (léger lift) et
-                changer le contenu.
-              </p>
-
-              <div className="mt-8 rounded-none border border-zinc-200 p-6 sm:p-8">
-                <div className="text-xs text-zinc-600">
-                  Étape <span className="font-medium">{active}</span> / 4 —{" "}
-                  {steps[activeIndex].label}
-                </div>
-                <h3 className="mt-2 text-xl font-semibold text-zinc-900">
-                  {steps[activeIndex].title}
-                </h3>
-                <p className="mt-2 text-zinc-700">{steps[activeIndex].body}</p>
-              </div>
-            </div>
-
-            {/* Stack 3D */}
-            <CesiverooStack
-              steps={steps}
-              active={active}
-              setActive={setActive}
-            />
-          </div>
-        </section>
+        <InteractiveStepsSection />
 
         <div className="flex flex-col overflow-hidden">
           <ContainerScroll
             titleComponent={
               <>
                 <div>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-sm text-zinc-600">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                  <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row gap-2 items-center justify-center">
+                    <img src={Step2} className="h-10 w-10" />
                     Design
-                  </div>
+                  </p>
                   <br />
-                  <span className="text-4xl md:text-8xl text-[#20CFBD] font-sfbold mt-1 leading-none">
+                  <span className="text-4xl md:text-7xl  font-sfbold leading-none">
                     Graphic Chart
                   </span>
                 </div>
@@ -410,10 +334,10 @@ export default function CesiverooScreen() {
             }
           >
             <img
-              src={WireFrames}
+              src={GraphiChart}
               alt="hero"
-              height={720}
-              width={1400}
+              height={848}
+              width={1235}
               className="mx-auto rounded-2xl object-cover h-full object-left-top"
               draggable={false}
             />
@@ -428,13 +352,15 @@ export default function CesiverooScreen() {
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: text */}
             <div className="order-2 lg:order-1 text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-sm text-zinc-600">
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                Design
-              </div>
-              <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-sfbold tracking-tight text-zinc-900">
-                Wireframes & User Flows
-              </h2>
+              <header className="mb-6">
+                <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row items-center gap-2">
+                  <img src={Step2} className="h-10 w-10" />
+                  Design
+                </p>
+                <h2 className="text-2xl md:text-5xl font-sfbold tracking-tight">
+                  Wireframes & User Flows
+                </h2>
+              </header>
               <p className="mt-4 text-base sm:text-lg leading-relaxed text-zinc-700 max-w-prose">
                 Définition des parcours clés, priorisation des écrans et
                 structuration des composants pour un MVP clair et rapide à
@@ -484,108 +410,98 @@ export default function CesiverooScreen() {
 
         {/* Architecture — Présentation */}
         <section className="py-16" aria-label="Architecture — Présentation">
-          <div className="relative overflow-hidden rounded-3xl bg-white ring-1 ring-zinc-200 shadow-sm">
+          <div className="relative overflow-hidden rounded-3xl bg-[#3a3a3a] ring-1 ring-zinc-700 shadow-sm">
             <div className="relative px-6 py-10 sm:px-12 sm:py-14">
               {/* Header */}
               <div className="max-w-3xl">
-                <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-sm text-zinc-600">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                  Tech • Architecture
-                </div>
-                <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-sfbold tracking-tight text-zinc-900">
-                  Application Architecture
-                </h2>
-                {/* Description – laissée telle quelle */}
-                <p className="mt-3 text-base sm:text-lg leading-relaxed text-zinc-700 max-w-prose">
+                <header className="mb-6">
+                  <p className="text-base uppercase tracking-widest text-sfregular text-white flex flex-row items-center gap-2">
+                    <img src={Step3} className="h-10 w-10" />
+                    Development
+                  </p>
+                  <h2 className="text-2xl md:text-5xl font-sfbold text-white tracking-tight">
+                    Application Architecture
+                  </h2>
+                </header>
+
+                <p className="mt-3 text-base sm:text-lg leading-relaxed text-zinc-300 max-w-prose">
                   Architecture orientée services : un front React, une gateway
                   d’API qui centralise l’accès et des microservices Node/Express
                   découplés. Stockage polyglotte suivant l’usage.
                 </p>
               </div>
 
-              {/* Body content updated */}
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
-                  <p className="text-xs uppercase tracking-widest text-zinc-500">
-                    Client
-                  </p>
-                  <h3 className="mt-1 text-lg font-semibold text-zinc-900">
-                    Front React
-                  </h3>
-                  <p className="mt-2 text-sm text-zinc-600">
-                    UI, routing, state, auth tokens
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {["React", "TailwindCSS", "Playwright"].map((chip) => (
-                      <span
-                        key={chip}
-                        className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] text-zinc-700"
-                      >
-                        {chip}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
-                  <p className="text-xs uppercase tracking-widest text-zinc-500">
-                    Edge
-                  </p>
-                  <h3 className="mt-1 text-lg font-semibold text-zinc-900">
-                    API Gateway
-                  </h3>
-                  <ul className="mt-2 space-y-1.5 text-sm text-zinc-600">
-                    <li>Aggregation & routing</li>
-                    <li>Auth, rate‑limit, logs</li>
-                    <li>Versioning</li>
-                  </ul>
-                </div>
-                <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
-                  <p className="text-xs uppercase tracking-widest text-zinc-500">
-                    Services & Data
-                  </p>
-                  <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
-                    {[
-                      "Auth",
-                      "Catalogue",
-                      "Commandes",
-                      "Paiements (mock)",
-                      "Notifications",
-                      "Webhooks",
-                    ].map((s) => (
-                      <div
-                        key={s}
-                        className="rounded-lg border border-zinc-200 bg-white px-3 py-2 text-zinc-700"
-                      >
-                        {s}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
-                    {["MongoDB (temps réel)", "MS SQL (reporting)"].map(
-                      (db) => (
-                        <div
-                          key={db}
-                          className="rounded-lg border border-zinc-200 bg-white px-3 py-2 text-zinc-700"
-                        >
-                          {db}
+              {/* Body content */}
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+                {legend.map((col, idx) => {
+                  const Icon = col.icon;
+                  return (
+                    <div
+                      key={col.title}
+                      className="rounded-2xl border border-zinc-700 bg-zinc-800/70 p-5 md:p-6"
+                    >
+                      <div className="flex items-start gap-3">
+                        <Icon className="h-10 w-10" color="#20CFBD" />
+                        <div className="min-w-0">
+                          <h3 className="text-base font-semibold text-white leading-tight">
+                            {col.title}
+                          </h3>
+                          <p className="mt-1 text-sm text-zinc-300">
+                            {col.desc}
+                          </p>
                         </div>
-                      )
-                    )}
-                  </div>
-                </div>
+                      </div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {col.items.map((chip) => (
+                          <span
+                            key={chip}
+                            className="inline-flex items-center rounded-full border border-zinc-600 bg-zinc-700 px-2.5 py-1 text-[11px] text-zinc-200"
+                          >
+                            {chip}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-
-              {/* Bottom: big architecture image */}
-              <figure className="mt-10 relative mx-auto w-full overflow-hidden rounded-2xl ring-1 ring-zinc-200 bg-white">
-                <img
-                  src={Architecture}
-                  alt="Architecture Cesiveroo"
-                  className="block w-full h-auto object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
             </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-white" aria-label="Conclusion">
+          {/* Header */}
+          <header className="mb-6">
+            <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row items-center gap-2">
+              <img src={Step4} className="h-10 w-10" />
+              <img src={Step5} className="h-10 w-10" />
+              Technical information
+            </p>
+            <h2 className="text-2xl md:text-5xl font-sfbold tracking-tight">
+              Application Architecture
+            </h2>
+          </header>
+          {/* Text */}
+          <p className="mt-4 text-lg leading-relaxed text-zinc-600">
+            To conclude, this project was actually one of the first I worked on
+            that resulted in something real and concrete. That's why I decided
+            to put it on this portfolio. After this project, I started having
+            interest in developing technical projects during my personal time
+            (like this portfolio, leetcode problems etc…).
+          </p>
+
+          {/* CTA */}
+          <div className="mt-8">
+            <a
+              href="https://github.com/AymaneHilmi/Cesiveroo" // remplace par ton lien GitHub
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-[#1ab3a5] transition"
+              data-cursor-icon="arrow"
+            >
+              <Github size={18} />
+              View on GitHub
+            </a>
           </div>
         </section>
       </section>

@@ -157,9 +157,9 @@ export default function AboutScreen() {
       </section>
 
       <section id="journey" className="w-full flex px-6 h-screen">
-        <div className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
+        <FadeIn className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
           {/* Title & intro */}
-          <FadeIn className="md:col-span-2" i={0}>
+          <div className="md:col-span-2" i={0}>
             <h2 className="text-3xl md:text-7xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
               My Journey
             </h2>
@@ -171,7 +171,7 @@ export default function AboutScreen() {
 
             {/* "Currently" card */}
 
-            <FadeIn
+            <div
               i={0.2}
               className="mt-8 w-full text-left rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow focus:outline-none"
             >
@@ -192,8 +192,8 @@ export default function AboutScreen() {
                 <span data-cursor-icon="wife">wife</span> to create meaningful
                 and innovative solutions.
               </p>
-            </FadeIn>
-          </FadeIn>
+            </div>
+          </div>
 
           {/* Timeline */}
           <div className="md:col-span-3">
@@ -696,7 +696,7 @@ export default function AboutScreen() {
               </li>
             </ol>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       <section id="philosophy" className=" w-full px-6 pb-44">
