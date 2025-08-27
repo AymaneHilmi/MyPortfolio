@@ -113,7 +113,7 @@ export default function CesiverooScreen() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl">
+    <div className="md:mx-auto max-w-6xl mx-6">
       <section className="mx-auto py-12 md:py-16 mt-32 flex justify-center items-center">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* Left column — Text */}
@@ -123,7 +123,7 @@ export default function CesiverooScreen() {
               Process Highlights
             </div>
 
-            <h1 className="text-3xl font-sfbold tracking-tight text-darkGray md:text-5xl">
+            <h1 className="text-4xl font-sfbold tracking-tight text-darkGray md:text-5xl">
               Cesi<span className="text-[#20CFBD]">veroo</span> Project
             </h1>
 
@@ -200,7 +200,9 @@ export default function CesiverooScreen() {
                 <div className="flex justify-center mb-2">
                   <Icon className="h-5 w-5 text-[#20CFBD]" strokeWidth={2} />
                 </div>
-                <p className="text-2xl font-sfbold text-white">{stat.value}</p>
+                <p className="text-base md:text-2xl font-sfbold text-white">
+                  {stat.value}
+                </p>
                 <p className="text-xs text-zinc-400 mt-1">{stat.label}</p>
               </div>
             );
@@ -321,7 +323,7 @@ export default function CesiverooScreen() {
             titleComponent={
               <>
                 <div>
-                  <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row gap-2 items-center justify-center">
+                  <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row gap-2 items-center justify-center mt-20 md:mt-0">
                     <img src={Step2} className="h-10 w-10" />
                     Design
                   </p>
@@ -351,7 +353,7 @@ export default function CesiverooScreen() {
         >
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: text */}
-            <div className="order-2 lg:order-1 text-left">
+            <div className="order-1 lg:order-1 text-left">
               <header className="mb-6">
                 <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row items-center gap-2">
                   <img src={Step2} className="h-10 w-10" />
@@ -384,8 +386,8 @@ export default function CesiverooScreen() {
             </div>
 
             {/* Right: image */}
-            <div className="order-1 lg:order-2">
-              <figure className="relative mx-auto w-full max-w-[720px] overflow-hidden rounded-2xl ring-1 ring-zinc-200 bg-white shadow-sm">
+            <div className="order-2 lg:order-2">
+              <figure className="relative mx-auto w-full max-w-[720px] overflow-hidden ">
                 {/* Subtle decorative backdrop */}
                 <div
                   aria-hidden
@@ -469,7 +471,7 @@ export default function CesiverooScreen() {
           </div>
         </section>
 
-        <section className="py-20 bg-white" aria-label="Conclusion">
+        <section className="pt-20 bg-white" aria-label="Conclusion">
           {/* Header */}
           <header className="mb-6">
             <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row items-center gap-2">
