@@ -8,6 +8,7 @@ import Cesiveroo from "../assets/CesiverooLogo.png";
 import HomeCesiveroo from "../assets/CesiverooHome.png";
 import HomePortfolio from "../assets/PortfolioHome.png";
 import logo from "../assets/Logo.png";
+import sg from "../assets/Saint-Gobain.png";
 import { ArrowRight, ScreenShare } from "lucide-react";
 import { LinkPreview } from "../components/ui/link-preview";
 import { Briefcase, PenTool, LayoutDashboard, BadgeCheck } from "lucide-react";
@@ -43,9 +44,19 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
 
   const Projects = [
     {
+      logo: sg,
+      title: "LIMS Mobility",
+      subtitle: "Cavaillon • 2025",
+      style: "font-sfbold text-2xl md:text-4xl",
+      description:
+        "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
+      image: HomePortfolio,
+      link: "Portfolio",
+    },
+    {
       logo: logo,
       title: "My Portfolio",
-      subtitle: "Montpellier • 2022",
+      subtitle: "Montpellier • 2024",
       style: "font-ramidots text-4xl md:text-6xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block",
       description:
         "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
@@ -63,6 +74,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
         "Description du deuxième projet qui met en avant ses objectifs et réalisations.",
       image: HomeCesiveroo,
       link: "Cesiveroo",
+      cursor: "cesiveroo",
     },
   ];
 
@@ -291,6 +303,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
             className="w-full rounded-3xl bg-gray-50 pt-6 px-6 md:px-0 md:pt-0 hover:shadow-lg"
             role="button"
             tabIndex={0}
+            data-cursor-icon={project.cursor}
           >
             <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 ">
               {/* Partie gauche : logo + titre + sous-titre + description + bouton */}

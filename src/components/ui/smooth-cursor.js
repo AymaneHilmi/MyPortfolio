@@ -25,12 +25,13 @@ export function SmoothCursor({
   const [cursorIcon, setCursorIcon] = useState(DEFAULT_CURSOR_ICON);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
-  const x = useSpring(0, springConfig);
-  const y = useSpring(0, springConfig);
+  const cursorRef = useRef(null);
   const diameter = useSpring(22, { ...springConfig, stiffness: 500 });
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    const el = cursorRef.current;
+    if (!el) return;
 
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
       setIsTouchDevice(true);
@@ -72,8 +73,8 @@ export function SmoothCursor({
     const onPointerMove = (e) => {
       if (rafId) return;
       rafId = requestAnimationFrame(() => {
-        x.set(e.clientX);
-        y.set(e.clientY);
+        el.style.left = `${e.clientX}px`;
+        el.style.top = `${e.clientY}px`;
         rafId = 0;
       });
     };
@@ -112,7 +113,7 @@ export function SmoothCursor({
       document.body.style.cursor = "auto";
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [x, y]);
+  }, []);
 
   useEffect(() => {
     diameter.set(isInteractive ? 44 : 22);
@@ -451,10 +452,11 @@ export function SmoothCursor({
 
   return (
     <motion.div
+      ref={cursorRef}
       style={{
         position: "fixed",
-        left: x,
-        top: y,
+        left: 0,
+        top: 0,
         translateX: "-50%",
         translateY: "-50%",
         width: diameter,
