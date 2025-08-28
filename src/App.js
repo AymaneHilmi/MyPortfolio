@@ -5,18 +5,18 @@ import HomeScreen from './Screens/HomeScreen';
 import Navbar from './components/Navbar';
 import React, { useEffect, useState, useRef } from 'react';
 import AboutScreen from './Screens/AboutScreen';
-import ProjectScreen from './Screens/ProjectScreen';
-import SaintGobainScreen from './Screens/SaintGobainScreen';
-import CvScreen from './Screens/JourneyScreen';
-import Confetti from 'react-confetti';
-import CesiverooScreen from './Screens/CesiverooScreen';
+import PortfolioScreen from "./Screens/PortfolioScreen";
+import SaintGobainScreen from "./Screens/SaintGobainScreen";
+import CvScreen from "./Screens/JourneyScreen";
+import Confetti from "react-confetti";
+import CesiverooScreen from "./Screens/CesiverooScreen";
 import { cn } from "./lib/utils";
 import JourneyScreen from "./Screens/JourneyScreen";
-import { useEasterEgg } from './context/EasterEggContext';
-import Footer from './components/footer';
-import { SmoothCursor } from './components/ui/smooth-cursor';
-import EasterEggsScreen from './Screens/EasterEggsScreen';
-import NotFoundScreen from './Screens/NotFoundScreen';
+import { useEasterEgg } from "./context/EasterEggContext";
+import Footer from "./components/footer";
+import { SmoothCursor } from "./components/ui/smooth-cursor";
+import EasterEggsScreen from "./Screens/EasterEggsScreen";
+import NotFoundScreen from "./Screens/NotFoundScreen";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -58,11 +58,6 @@ function App() {
         <Route path="/" element={<HomeScreen visitsTotal={visitsTotal} />} />
         <Route path="/About" className="h-screen" element={<AboutScreen />} />
         <Route
-          path="/ComingSoon"
-          className="h-screen"
-          element={<ProjectScreen />}
-        />
-        <Route
           path="/SaintGobain"
           className="h-screen"
           element={<SaintGobainScreen />}
@@ -82,6 +77,11 @@ function App() {
           path="/easter-eggs"
           className="h-screen"
           element={<EasterEggsScreen />}
+        />
+        <Route
+          path="/portfolio"
+          className="h-screen"
+          element={<PortfolioScreen />}
         />
         <Route path="*" element={<NotFoundScreen />} />
       </Routes>

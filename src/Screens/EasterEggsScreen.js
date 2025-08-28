@@ -478,10 +478,12 @@ export default function EasterEggsScreen() {
                     )}
                   </AnimatePresence>
                   <li>Two clicks forward, one sneeze back.</li>
-                  <li className="text-gray-400">* probably not.</li>
+                  <li className="text-gray-400">
+                    * probably not trustworthy .
+                  </li>
                 </ul>
                 <div className="mt-3 text-[10px] text-gray-500 flex items-center gap-1">
-                  <Bot className="h-3.5 w-3.5" /> Release managed by...
+                  <Bot className="h-3.5 w-3.5" /> Release managed Aymane
                 </div>
               </div>
 

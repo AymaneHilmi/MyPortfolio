@@ -72,6 +72,7 @@ const EggList = [
     id: "#6",
     name: "Not Found Egg",
     tip: "You'll have to take the wrong road...",
+    message: "You are actually starting impressing me !",
     level: "Hard",
     cursor: "egg#6",
   },
