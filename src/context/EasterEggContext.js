@@ -23,7 +23,8 @@ const eggMission = [
     id: "eggLord",
     label: "Become the Easter Egg Lord",
     icon: <Crown />,
-    message: "You became a Easter Egg Lord, i'm proud of you !",
+    message:
+      "You just became an Easter Egg Lord, You can go now to the easter-egg page and scroll down",
   },
   {
     id: "tip#1",
@@ -32,7 +33,7 @@ const eggMission = [
     id: "tip#2",
   },
   {
-    id: "Tip#3.0",
+    id: "tip#3.0",
   },
   {
     id: "tip#3",
@@ -98,7 +99,6 @@ const EggList = [
     cursor: "egg#7",
   },
 ];
-
 export const useEasterEgg = () => useContext(EasterEggContext);
 
 export const EasterEggProvider = ({ children }) => {
@@ -144,7 +144,15 @@ export const EasterEggProvider = ({ children }) => {
       const message = egg?.message || `Easter Egg ${eggId} found!`;
       showEggToast(egg);
 
-      return [...prev, eggId];
+      const newEggs = [...prev, eggId];
+
+      // ✅ Vérifie si tous les eggs ont été trouvés
+      const allEggsFound = EggList.every((e) => newEggs.includes(e.id));
+      if (allEggsFound && !completedMissions.includes("eggLord")) {
+        completeMission("eggLord");
+      }
+
+      return newEggs;
     });
   };
 
@@ -179,13 +187,15 @@ export const EasterEggProvider = ({ children }) => {
       }
 
       // 2) Si les 3 tips sont complétés ET que l’egg #3 n’est pas trouvé → on le déclenche
-      const hasAllTips = ["tip#1", "tip#2", "tip#3"].every((t) =>
+      const hasAllTips = ["tip#1", "tip#2", "tip#3.0", "tip#3"].every((t) =>
         next.includes(t)
       );
-      const egg3AlreadyFound =
-        Array.isArray(foundEggs) && foundEggs.includes("#3");
 
-      if (hasAllTips && !egg3AlreadyFound) {
+      const tip3Done = (completedMissions || []).some(
+        (id) => String(id).trim().toLowerCase() === "tip#3"
+      );
+
+      if (hasAllTips && !tip3Done) {
         // Si ta fonction s'appelle autrement (ex: incrementsegg), adapte ici.
         incrementEggs("#5");
       }

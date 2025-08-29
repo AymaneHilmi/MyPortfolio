@@ -648,10 +648,10 @@ export default function EasterEggsScreen() {
                 onClick={() => {
                   if (
                     completedMissions.includes("tip#2") &&
-                    !completedMissions.includes("Tip#3.0")
+                    !completedMissions.includes("tip#3.0")
                   ) {
                     toast("Something has been activated on this page.");
-                    completeMission("Tip#3.0");
+                    completeMission("tip#3.0");
                   } else if (!completedMissions.includes("tip#2")) {
                     toast("Scanning again...");
                   }
@@ -702,7 +702,7 @@ export default function EasterEggsScreen() {
               <div className="mt-3 text-[10px] text-gray-500 flex items-center gap-1">
                 <Bot className="h-3.5 w-3.5" /> Release managed by
                 <TooltipProvider>
-                  {completedMissions.includes("Tip#3.0") &&
+                  {completedMissions.includes("tip#3.0") &&
                   !completedMissions.includes("tip#3") ? (
                     <Tooltip>
                       <TooltipTrigger asChild>
