@@ -3,7 +3,14 @@
 import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SiDeliveroo } from "react-icons/si";
-import { FaGlobeAmericas, FaMoon, FaHandPaper, FaHandRock, FaSearchMinus } from "react-icons/fa";
+import {
+  FaGlobeAmericas,
+  FaMoon,
+  FaHandPaper,
+  FaHandRock,
+  FaSearchMinus,
+} from "react-icons/fa";
+import { Layers, Search } from "lucide-react";
 
 /** Styles “glass” — blur de l’arrière-plan + léger contour */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";
@@ -361,7 +368,44 @@ export function SmoothCursor({
             justifyContent: "center",
           }}
         >
+          <Layers size={26} color="white" strokeWidth={2} />
+        </motion.div>
+      );
+    }
+
+    if (name === "egg#4") {
+      return (
+        <motion.div
+          key="egg#3"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.15 }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <FaMoon size={22} color="white" />
+        </motion.div>
+      );
+    }
+    if (name === "egg#5") {
+      return (
+        <motion.div
+          key="egg#5"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.15 }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Search size={22} color="white" strokeWidth={2} />
         </motion.div>
       );
     }
@@ -401,9 +445,12 @@ export function SmoothCursor({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.15 }}
-          style={{ position: "relative", display: "grid", placeItems: "center" }}
+          style={{
+            position: "relative",
+            display: "grid",
+            placeItems: "center",
+          }}
         >
-
           {/* Floating small hearts */}
           {smallHearts.map((h, i) => (
             <motion.div
@@ -415,7 +462,12 @@ export function SmoothCursor({
                 y: [0, h.dy, 0],
                 scale: [h.s, h.s * 1.15, h.s],
               }}
-              transition={{ duration: 1.8, delay: h.d, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 1.8,
+                delay: h.d,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               style={{ position: "absolute" }}
             >
               <HeartSVG size={10} />
@@ -443,7 +495,6 @@ export function SmoothCursor({
         </motion.div>
       );
     }
-
 
     return null;
   };

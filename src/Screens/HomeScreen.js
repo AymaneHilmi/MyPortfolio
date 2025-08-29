@@ -5,8 +5,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEasterEgg } from "../context/EasterEggContext";
 import { motion, useAnimation } from "framer-motion";
 import Cesiveroo from "../assets/CesiverooLogo.png";
-import HomeCesiveroo from "../assets/CesiverooHome.png";
+import HomeCesiverooCompleted from "../assets/CesiverooHomeComplete.png";
 import HomePortfolio from "../assets/PortfolioHome.png";
+import LIMSmobility from "../assets/LIMSmobility.png";
 import logo from "../assets/Logo.png";
 import sg from "../assets/Saint-Gobain.png";
 import { ArrowRight, ScreenShare } from "lucide-react";
@@ -16,7 +17,7 @@ import "./screens.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X, Lock, Check, Search, Puzzle, Crown } from "lucide-react";
 import EasterEggsCard from "../context/EasterEggCard";
-import style from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
+import style from "react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -34,6 +35,7 @@ const fadeInUp = {
 export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
   const navigate = useNavigate();
   const {
+    foundEggs,
     eggsFounded,
     incrementEggs,
     resetEggs,
@@ -45,19 +47,20 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
   const Projects = [
     {
       logo: sg,
-      title: "LIMS Mobility",
+      title: "Connected Labs",
       subtitle: "Cavaillon • 2025",
       style: "font-sfbold text-2xl md:text-4xl",
       description:
         "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
-      image: HomePortfolio,
+      image: LIMSmobility,
       link: "Portfolio",
     },
     {
       logo: logo,
       title: "My Portfolio",
       subtitle: "Montpellier • 2024",
-      style: "font-ramidots text-4xl md:text-6xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block",
+      style:
+        "font-ramidots text-4xl md:text-6xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block",
       description:
         "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
       image: HomePortfolio,
@@ -72,7 +75,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
       style: "font-sfbold text-2xl md:text-4xl",
       description:
         "Description du deuxième projet qui met en avant ses objectifs et réalisations.",
-      image: HomeCesiveroo,
+      image: HomeCesiverooCompleted,
       link: "Cesiveroo",
       cursor: "cesiveroo",
     },
@@ -319,7 +322,12 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
 
                 {/* Titre et sous-titre */}
                 <div>
-                  <h3 className={cn("text-2xl sm:text-3xl text-darkGray", project.style)}>
+                  <h3
+                    className={cn(
+                      "text-2xl sm:text-3xl text-darkGray",
+                      project.style
+                    )}
+                  >
                     {project.title}
                     <span style={{ color: project.color }}>
                       {project.highlight}

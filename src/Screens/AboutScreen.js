@@ -36,10 +36,12 @@ import {
 } from "../components/ui/draggable-card";
 import { AnimatedTooltip } from "../components/ui/animated-tooltip";
 import SaintGobain from "../assets/Saint-Gobain.png";
-
-
-
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../components/ui/ToolTip";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -69,7 +71,17 @@ const FadeIn = ({ children, i = 0, className = "" }) => (
 
 export default function AboutScreen() {
   const navigate = useNavigate();
-  const { foundEggs, incrementEggs } = useEasterEgg();
+  const {} = useEasterEgg();
+  const {
+    foundEggs,
+    eggsFounded,
+    incrementEggs,
+    resetEggs,
+    eggsTotal,
+    eggMission,
+    completedMissions,
+    completeMission,
+  } = useEasterEgg();
   const eggLongPressTimer = useRef(null);
   const egg3Found = Array.isArray(foundEggs) ? foundEggs.includes("#3") : false;
 
@@ -106,6 +118,15 @@ export default function AboutScreen() {
     },
   ];
 
+  const [showSplash, setShowSplash] = useState(false);
+
+  const handleClickItaly = () => {
+    setShowSplash(true);
+    setTimeout(() => {
+      setShowSplash(false);
+    }, 5000); // 5 secondes
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-0 lg:px-8">
       <section className="h-screen w-full flex items-center justify-center">
@@ -140,6 +161,7 @@ export default function AboutScreen() {
             France. As a polyglot, he speaks five languages: Italian, French,
             Moroccan Arabic (Darija), English, and Spanish. Born in{" "}
             <span
+              onClick={() => incrementEggs("#2")}
               className="inline italic tracking-[0.5px] text-foreground/90 transition-all duration-300
              font-bold hover:bg-gradient-to-r hover:from-[#009246] hover:via-white hover:to-[#CE2B37]
              hover:text-transparent hover:bg-clip-text"
@@ -765,7 +787,38 @@ export default function AboutScreen() {
             >
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
-                  <Globe2 className="size-5 text-gray-700" aria-hidden="true" />
+                  <TooltipProvider>
+                    {completedMissions.includes("tip#1") &&
+                    !completedMissions.includes("tip#2") ? (
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Globe2
+                            className="size-5 text-gray-700"
+                            aria-hidden="true"
+                          />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <div className="flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm w-fit space-x-2">
+                            <span className="text-gray-600 text-sm font-medium">
+                              Hidden Tip #2
+                            </span>
+                            <button
+                              onClick={() => completeMission("tip#2")}
+                              className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
+                              data-cursor-icon="discover"
+                            >
+                              Discover Tip
+                            </button>
+                          </div>
+                        </TooltipContent>
+                      </Tooltip>
+                    ) : (
+                      <Globe2
+                        className="size-5 text-gray-700"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </TooltipProvider>
                 </div>
                 <h3 className="text-lg md:text-xl font-semibold text-gray-900">
                   Travel & Expand Perspective

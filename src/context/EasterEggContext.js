@@ -25,6 +25,18 @@ const eggMission = [
     icon: <Crown />,
     message: "You became a Easter Egg Lord, i'm proud of you !",
   },
+  {
+    id: "tip#1",
+  },
+  {
+    id: "tip#2",
+  },
+  {
+    id: "Tip#3.0",
+  },
+  {
+    id: "tip#3",
+  },
 ];
 
 /* ===== Eggs (inchangé) ===== */
@@ -32,7 +44,7 @@ const EggList = [
   {
     id: "#1",
     name: "Confettis",
-    tip: "Try typing your favorite developer's name...",
+    tip: "Try typing your favorite software engineer's name...",
     message: "I think you can do better, it's the easiest one",
     level: "Easy",
     cursor: "egg#1",
@@ -63,11 +75,12 @@ const EggList = [
   },
   {
     id: "#5",
-    name: "////////",
-    tip: "/////////////",
+    name: "ToolTip Quest",
+    tip: "Hover the right place... and the silence will speak.",
     level: "Hard",
     cursor: "egg#5",
   },
+
   {
     id: "#6",
     name: "Not Found Egg",
@@ -144,14 +157,39 @@ export const EasterEggProvider = ({ children }) => {
   const isMissionCompleted = (missionId) =>
     completedMissions.includes(missionId);
 
-  const completeMission = (missionId) => {
-    if (!missionId) return;
+  const completeMission = (missionIdRaw) => {
+    if (!missionIdRaw) return;
+
+    // normalisation douce (ex: " tip#1 " -> "tip#1")
+    const missionId = String(missionIdRaw).trim();
+    const isTip = missionId.toLowerCase().startsWith("tip#");
+
     setCompletedMissions((prev) => {
+      // déjà présent → rien à faire
       if (prev.includes(missionId)) return prev;
-      const label =
-        eggMission.find((m) => m.id === missionId)?.message ?? missionId;
-      showInfoToast(label);
-      return [...prev, missionId];
+
+      const next = [...prev, missionId];
+
+      // 1) Toast uniquement si ce n'est PAS un tip
+      if (!isTip) {
+        const label =
+          eggMission.find((m) => m.id === missionId)?.message ?? missionId;
+        showInfoToast(label);
+      }
+
+      // 2) Si les 3 tips sont complétés ET que l’egg #3 n’est pas trouvé → on le déclenche
+      const hasAllTips = ["tip#1", "tip#2", "tip#3"].every((t) =>
+        next.includes(t)
+      );
+      const egg3AlreadyFound =
+        Array.isArray(foundEggs) && foundEggs.includes("#3");
+
+      if (hasAllTips && !egg3AlreadyFound) {
+        // Si ta fonction s'appelle autrement (ex: incrementsegg), adapte ici.
+        incrementEggs("#5");
+      }
+
+      return next;
     });
   };
 

@@ -83,16 +83,18 @@ export default function EasterEggsCard({ }) {
               return (
                 <motion.div
                   key={m.id}
-                  animate={eggAnimationEnabled && !eggChamberCompleted ? controls : {}}
+                  animate={
+                    eggAnimationEnabled && !eggChamberCompleted ? controls : {}
+                  }
                   whileHover={
                     unlocked
                       ? {
-                        y: -2,
-                        scaleX: 1.012,
-                        scaleY: 0.992,
-                        rotateX: -1.25,
-                        rotateY: 1.25,
-                      }
+                          y: -2,
+                          scaleX: 1.012,
+                          scaleY: 0.992,
+                          rotateX: -1.25,
+                          rotateY: 1.25,
+                        }
                       : {}
                   }
                   transition={{
@@ -109,7 +111,7 @@ export default function EasterEggsCard({ }) {
                   ].join(" ")}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="h-7 w-7 flex items-center justify-center rounded-full bg-gray-200 text-darkGray">
+                    <div className="h-7 w-7 flex items-center justify-center text-darkGray">
                       {m.icon}
                     </div>
                     <div>
@@ -133,16 +135,20 @@ export default function EasterEggsCard({ }) {
                 <Dialog.Trigger asChild>
                   <motion.div
                     data-cursor-icon="egg"
-                    animate={eggAnimationEnabled && !eggChamberCompleted ? controls : {}}
+                    animate={
+                      eggAnimationEnabled && !eggChamberCompleted
+                        ? controls
+                        : {}
+                    }
                     whileHover={
                       unlocked
                         ? {
-                          y: -2,
-                          scaleX: 1.012,
-                          scaleY: 0.992,
-                          rotateX: -1.25,
-                          rotateY: 1.25,
-                        }
+                            y: -2,
+                            scaleX: 1.012,
+                            scaleY: 0.992,
+                            rotateX: -1.25,
+                            rotateY: 1.25,
+                          }
                         : {}
                     }
                     transition={{
@@ -159,7 +165,7 @@ export default function EasterEggsCard({ }) {
                     ].join(" ")}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="h-7 w-7 flex items-center justify-center rounded-full bg-gray-200 text-darkGray">
+                      <div className="h-7 w-7 flex items-center justify-center  text-darkGray">
                         {m.icon}
                       </div>
                       <div>
@@ -218,12 +224,12 @@ export default function EasterEggsCard({ }) {
                         style={
                           cancelOnRight
                             ? // se place juste à gauche du bouton droit avec un gap
-                            {
-                              right: `${CONFIRM_W_PX + GAP_PX}px`,
-                              left: "auto",
-                            }
+                              {
+                                right: `${CONFIRM_W_PX + GAP_PX}px`,
+                                left: "auto",
+                              }
                             : // collé à gauche
-                            { left: 0, right: "auto" }
+                              { left: 0, right: "auto" }
                         }
                       >
                         Cancel
@@ -243,23 +249,28 @@ export default function EasterEggsCard({ }) {
               whileHover={
                 unlocked && i !== 0
                   ? {
-                    y: -2,
-                    scaleX: 1.012,
-                    scaleY: 0.992,
-                    rotateX: -1.25,
-                    rotateY: 1.25,
-                  }
+                      y: -2,
+                      scaleX: 1.012,
+                      scaleY: 0.992,
+                      rotateX: -1.25,
+                      rotateY: 1.25,
+                    }
                   : {}
               }
               className={[
                 "group flex items-center justify-between rounded-2xl border px-3 py-2.5",
                 completed
                   ? "bg-green-50 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
-                  : "bg-gray-50 border-gray-200"
+                  : "bg-gray-50 border-gray-200",
               ].join(" ")}
             >
               <div className="flex items-center gap-3">
-                <div className={["h-7 w-7 flex items-center justify-center rounded-full bg-gray-200 text-darkGray", unlocked ? "" : "opacity-70"].join(" ")}>
+                <div
+                  className={[
+                    "h-7 w-7 flex items-center justify-center text-darkGray",
+                    unlocked ? "" : "opacity-70",
+                  ].join(" ")}
+                >
                   {m.icon}
                 </div>
                 <div>
@@ -270,7 +281,12 @@ export default function EasterEggsCard({ }) {
                 </div>
               </div>
 
-              <div className={["h-7 w-7 grid place-items-center rounded-full border border-gray-300 text-darkGray", unlocked ? "" : "opacity-80"].join(" ")}>
+              <div
+                className={[
+                  "h-7 w-7 grid place-items-center rounded-full border border-gray-300 text-darkGray",
+                  unlocked ? "" : "opacity-80",
+                ].join(" ")}
+              >
                 {rightBadge}
               </div>
             </motion.div>

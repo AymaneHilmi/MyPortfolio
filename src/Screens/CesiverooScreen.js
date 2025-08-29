@@ -5,6 +5,7 @@ import Step3 from "../assets/CesiverooStep3.png";
 import Step4 from "../assets/CesiverooStep4.png";
 import Step5 from "../assets/CesiverooStep5.png";
 import HomeCesiveroo from "../assets/CesiverooHome.png";
+import HomeCesiverooCompleted from "../assets/CesiverooHomeComplete.png";
 import GraphiChart from "../assets/CesiverooIpadChart.png";
 import WireFrames from "../assets/CesiverooWireFrames.png";
 import { ContainerScroll } from "../components/ui/container-scroll-animation";
@@ -24,9 +25,24 @@ import {
   FileText,
 } from "lucide-react";
 import { FaMoon } from "react-icons/fa";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../components/ui/ToolTip";
 
 export default function CesiverooScreen() {
-  const { incrementEggs } = useEasterEgg();
+  const {
+    foundEggs,
+    eggsFounded,
+    incrementEggs,
+    resetEggs,
+    eggsTotal,
+    eggMission,
+    completedMissions,
+    completeMission,
+  } = useEasterEgg();
 
   const stats = [
     {
@@ -172,17 +188,23 @@ export default function CesiverooScreen() {
               <div className="relative w-full aspect-[909/768]">
                 {/* 2) L'image occupe exactement la boîte à ratio */}
                 <img
-                  src={HomeCesiveroo}
+                  src={
+                    foundEggs.includes("#4")
+                      ? HomeCesiverooCompleted
+                      : HomeCesiveroo
+                  }
                   alt="Cesiveroo illustration with shopping bags and spheres"
                   className="absolute inset-0 h-full w-full object-contain"
                   loading="eager"
                   decoding="async"
                 />
-                <FaMoon
-                  className="absolute left-[69%] top-[63%] -translate-x-1/2 -translate-y-1/2 text-[#4b8747] text-xl opacity-100 transition duration-500 hover:scale-150 hover:text-yellow-400"
-                  aria-hidden="true"
-                  onClick={() => incrementEggs("#4")}
-                />
+                {!foundEggs.includes("#4") && (
+                  <FaMoon
+                    className="absolute left-[69%] top-[63%] -translate-x-1/2 -translate-y-1/2 text-[#4b8747] text-xl opacity-100 transition duration-500 hover:scale-150 hover:text-yellow-400"
+                    aria-hidden="true"
+                    onClick={() => incrementEggs("#4")}
+                  />
+                )}
               </div>
             </figure>
           </div>
@@ -503,8 +525,32 @@ export default function CesiverooScreen() {
             in something real and concrete. That's why I decided to put it on
             this portfolio. After this project, I started having interest in
             developing technical projects during my personal time (like this
-            portfolio, leetcode problems etc…). I'll invite you to check the
-            documentation on github
+            portfolio, leetcode problems etc…)
+            {!completedMissions.includes("tip#1") ? (
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span>. </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <div className="flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm w-fit space-x-2">
+                      <span className="text-gray-600 font-medium">
+                        Hidden Tip #1
+                      </span>
+                      <button
+                        onClick={() => completeMission("tip#1")}
+                        className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 "
+                      >
+                        Discover Tip
+                      </button>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            ) : (
+              <span>. </span>
+            )}
+            I'll invite you to check the documentation on github
           </p>
 
           {/* CTA */}
