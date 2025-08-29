@@ -14,12 +14,12 @@ import {
 } from "react-icons/fa";
 import { Layers, Search } from "lucide-react";
 
-/** Styles “glass” — blur de l’arrière-plan + léger contour */
+/** Styles “glass” du curseur */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";
 const GLASS_BORDER = "1px solid rgba(255,255,255,0.28)";
 const DOT_GRAY = "rgba(225, 225, 225, 0.95)";
 
-/** ✏️ Modifier ici pour changer le curseur standard */
+/* curseur standard */
 const DEFAULT_CURSOR_ICON = "grow";
 
 export function SmoothCursor({
@@ -37,7 +37,7 @@ export function SmoothCursor({
   const cursorRef = useRef(null);
   const diameter = useSpring(22, { ...springConfig, stiffness: 500 });
 
-  // ➕ Réfs pour robustesse
+  // Réfs pour robustesse
   const lastXY = useRef({ x: 0, y: 0 });
   const idleToDefaultTimer = useRef(0);
 
@@ -79,13 +79,13 @@ export function SmoothCursor({
       return false;
     };
 
-    // 🔒 Reset radical (fenêtre quittée / onglet caché / blur)
+    // Reset 
     const hardReset = () => {
       setIsInteractive(false);
       setCursorIcon(DEFAULT_CURSOR_ICON);
     };
 
-    // 🔁 Recalcule ce qu’il y a sous le pointeur (filet de sécurité)
+    // Recalcule ce qu’il y a sous le pointeur (bug lenteur de pc/mouvement hyper rapide)
     const recomputeFromPoint = (x, y) => {
       const target = document.elementFromPoint(x, y);
       const iconHost = target?.closest?.("[data-cursor-icon]");
@@ -112,16 +112,16 @@ export function SmoothCursor({
         const { x, y } = lastXY.current;
         el.style.left = `${x}px`;
         el.style.top = `${y}px`;
-        // ✅ Recalcul à chaque frame utile
+        // Recalcul à chaque frame utile
         recomputeFromPoint(x, y);
         rafId = 0;
       });
 
-      // ⏲️ Watchdog d’inactivité : remet par défaut si plus de move
+      // remet par défaut si plus de move
       if (idleToDefaultTimer.current) clearTimeout(idleToDefaultTimer.current);
       idleToDefaultTimer.current = setTimeout(() => {
         hardReset();
-      }, 600);
+      }, 1000);
     };
 
     // Quand la souris sort de la fenêtre → reset
@@ -163,6 +163,8 @@ export function SmoothCursor({
     diameter.set(isInteractive ? 44 : 22);
   }, [isInteractive, diameter]);
 
+
+  // icones pour chaque element sur le site
   const renderIcon = (name) => {
     if (name === "dot") {
       return (
