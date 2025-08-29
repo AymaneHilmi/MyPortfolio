@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SiDeliveroo } from "react-icons/si";
@@ -35,11 +37,16 @@ export function SmoothCursor({
   const cursorRef = useRef(null);
   const diameter = useSpring(22, { ...springConfig, stiffness: 500 });
 
+  // ➕ Réfs pour robustesse
+  const lastXY = useRef({ x: 0, y: 0 });
+  const idleToDefaultTimer = useRef(0);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     const el = cursorRef.current;
     if (!el) return;
 
+    // Touch → on n’affiche pas le curseur custom
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
       setIsTouchDevice(true);
       return;
@@ -59,65 +66,95 @@ export function SmoothCursor({
     ].join(", ");
 
     const isInteractiveElement = (node) => {
-      let el = node instanceof Element ? node : null;
-      while (el && el !== document.body) {
-        if (el.matches(interactiveSelector)) return true;
-        if (
-          el.hasAttribute("data-cursor") &&
-          el.getAttribute("data-cursor") === "interactive"
-        )
-          return true;
-        const cs = window.getComputedStyle(el);
-        if (cs && cs.cursor === "pointer") return true;
-        const ti = el.getAttribute("tabindex");
+      let n = node instanceof Element ? node : null;
+      while (n && n !== document.body) {
+        if (n.matches?.(interactiveSelector)) return true;
+        if (n.getAttribute?.("data-cursor") === "interactive") return true;
+        const cs = window.getComputedStyle(n);
+        if (cs?.cursor === "pointer") return true;
+        const ti = n.getAttribute?.("tabindex");
         if (ti !== null && ti !== undefined && ti !== "-1") return true;
-        el = el.parentElement;
+        n = n.parentElement;
       }
       return false;
     };
 
-    let rafId = 0;
-    const onPointerMove = (e) => {
-      if (rafId) return;
-      rafId = requestAnimationFrame(() => {
-        el.style.left = `${e.clientX}px`;
-        el.style.top = `${e.clientY}px`;
-        rafId = 0;
-      });
+    // 🔒 Reset radical (fenêtre quittée / onglet caché / blur)
+    const hardReset = () => {
+      setIsInteractive(false);
+      setCursorIcon(DEFAULT_CURSOR_ICON);
     };
 
-    const onPointerOver = (e) => {
-      const el = e.target;
-      const iconHost = el.closest?.("[data-cursor-icon]");
-      const interactive = isInteractiveElement(el) || !!iconHost;
+    // 🔁 Recalcule ce qu’il y a sous le pointeur (filet de sécurité)
+    const recomputeFromPoint = (x, y) => {
+      const target = document.elementFromPoint(x, y);
+      const iconHost = target?.closest?.("[data-cursor-icon]");
+      const interactive =
+        !!target && (isInteractiveElement(target) || !!iconHost);
 
       if (interactive) {
         const custom =
           iconHost?.getAttribute?.("data-cursor-icon") ||
-          el.getAttribute?.("data-cursor-icon");
+          target?.getAttribute?.("data-cursor-icon");
         setCursorIcon(custom?.length ? custom : DEFAULT_CURSOR_ICON);
         setIsInteractive(true);
-      }
-    };
-
-    const onPointerOut = (e) => {
-      const next = e.relatedTarget;
-      if (!next || !isInteractiveElement(next)) {
+      } else {
         setIsInteractive(false);
         setCursorIcon(DEFAULT_CURSOR_ICON);
       }
     };
 
+    let rafId = 0;
+    const onPointerMove = (e) => {
+      lastXY.current = { x: e.clientX, y: e.clientY };
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        const { x, y } = lastXY.current;
+        el.style.left = `${x}px`;
+        el.style.top = `${y}px`;
+        // ✅ Recalcul à chaque frame utile
+        recomputeFromPoint(x, y);
+        rafId = 0;
+      });
+
+      // ⏲️ Watchdog d’inactivité : remet par défaut si plus de move
+      if (idleToDefaultTimer.current) clearTimeout(idleToDefaultTimer.current);
+      idleToDefaultTimer.current = setTimeout(() => {
+        hardReset();
+      }, 600);
+    };
+
+    // Quand la souris sort de la fenêtre → reset
+    const onMouseOutWindow = (ev) => {
+      // relatedTarget null = sortie document
+      if (!ev.relatedTarget && !ev.toElement) hardReset();
+    };
+
+    // Sur scroll/resize/onglet visible, re-évalue sous le curseur
+    const rescan = () => {
+      const { x, y } = lastXY.current;
+      recomputeFromPoint(x, y);
+    };
+
     document.body.style.cursor = "none";
     window.addEventListener("pointermove", onPointerMove, { passive: true });
-    document.addEventListener("pointerover", onPointerOver, true);
-    document.addEventListener("pointerout", onPointerOut, true);
+    window.addEventListener("mouseout", onMouseOutWindow);
+    window.addEventListener("blur", hardReset);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) hardReset();
+      else rescan();
+    });
+    window.addEventListener("scroll", rescan, { passive: true });
+    window.addEventListener("resize", rescan);
 
     return () => {
       window.removeEventListener("pointermove", onPointerMove);
-      document.removeEventListener("pointerover", onPointerOver, true);
-      document.removeEventListener("pointerout", onPointerOut, true);
+      window.removeEventListener("mouseout", onMouseOutWindow);
+      window.removeEventListener("blur", hardReset);
+      window.removeEventListener("scroll", rescan);
+      window.removeEventListener("resize", rescan);
       document.body.style.cursor = "auto";
+      if (idleToDefaultTimer.current) clearTimeout(idleToDefaultTimer.current);
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
