@@ -116,12 +116,6 @@ export function SmoothCursor({
         recomputeFromPoint(x, y);
         rafId = 0;
       });
-
-      // remet par défaut si plus de move
-      if (idleToDefaultTimer.current) clearTimeout(idleToDefaultTimer.current);
-      idleToDefaultTimer.current = setTimeout(() => {
-        hardReset();
-      }, 1000);
     };
 
     // Quand la souris sort de la fenêtre → reset

@@ -44,6 +44,7 @@ export default function CesiverooScreen() {
     completeMission,
   } = useEasterEgg();
 
+  // details du projet
   const stats = [
     {
       label: "weeks",
@@ -66,7 +67,7 @@ export default function CesiverooScreen() {
       icon: FileText,
     },
   ];
-
+  // legende architecture
   const legend = [
     {
       title: "Client (Web & Mobile)",
@@ -117,20 +118,11 @@ export default function CesiverooScreen() {
       icon: Activity,
     },
   ];
-
-  const [ripples, setRipples] = useState(false);
-
-  const handleClick = () => {
-    incrementEggs("#4");
-    setRipples(true);
-    setTimeout(() => setRipples(false), 600);
-  };
-
   return (
     <div className="md:mx-auto max-w-6xl mx-6">
       <section className="mx-auto py-12 md:py-16 mt-32 flex justify-center items-center">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
-          {/* Left column — Text */}
+          {/* colonne de gauche — Texte */}
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-sm text-zinc-600">
               <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -160,7 +152,7 @@ export default function CesiverooScreen() {
             </div>
             <div className="mt-8">
               <a
-                href="https://github.com/AymaneHilmi/Cesiveroo" // remplace par ton lien GitHub
+                href="https://github.com/AymaneHilmi/Cesiveroo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl bg-darkGray px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-[#1ab3a5] transition"
@@ -172,21 +164,10 @@ export default function CesiverooScreen() {
             </div>
           </div>
 
-          {/* Right column — Image "incrustée" on white bg */}
+          {/* colonne de droite - Image */}
           <div className="relative">
-            {/* TODO Proposition de gpt, voir si je laisse ou pas ????  */}
-            {/* Subtle backdrop elements to blend the image into white site bg */}
-            {/* <div
-              className="absolute -left-6 -top-6 h-60 w-60 rounded-full bg-gradient-to-br from-[#A7F3EB] to-transparent blur-xl"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -bottom-8 -right-8 h-60 w-60 rounded-full bg-gradient-to-tr from-[#A7F3EB] to-transparent blur-xl"
-              aria-hidden="true"
-            /> */}
             <figure className="relative mx-auto w-full max-w-[640px] overflow-hidden rounded-2xl">
               <div className="relative w-full aspect-[909/768]">
-                {/* 2) L'image occupe exactement la boîte à ratio */}
                 <img
                   src={
                     foundEggs.includes("#4")
@@ -382,13 +363,13 @@ export default function CesiverooScreen() {
           </ContainerScroll>
         </div>
 
-        {/* Full‑screen — Wireframes presentation */}
+        {/* Wireframes  */}
         <section
           className="flex items-center py-16"
           aria-label="Wireframes — Présentation"
         >
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left: text */}
+            {/* gauche: texte */}
             <div className="order-1 lg:order-1 text-left">
               <header className="mb-6">
                 <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row items-center gap-2">
@@ -421,19 +402,9 @@ export default function CesiverooScreen() {
               </ul>
             </div>
 
-            {/* Right: image */}
+            {/* droite: image */}
             <div className="order-2 lg:order-2">
               <figure className="relative mx-auto w-full max-w-[720px] overflow-hidden ">
-                {/* Subtle decorative backdrop */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -top-16 -left-16 h-40 w-40 rounded-full bg-emerald-100/50 blur-2xl"
-                />
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -bottom-12 -right-12 h-48 w-48 rounded-full bg-zinc-100/70 blur-2xl"
-                />
-
                 <img
                   src={WireFrames}
                   alt="Wireframes Cesiveroo"
@@ -470,7 +441,7 @@ export default function CesiverooScreen() {
                 </p>
               </div>
 
-              {/* Body content */}
+              {/* contenu */}
               <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
                 {legend.map((col, idx) => {
                   const Icon = col.icon;
