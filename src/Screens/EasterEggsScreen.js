@@ -740,10 +740,11 @@ export default function EasterEggsScreen() {
               </p>
               <div className="flex flex-col gap-2">
                 <a
-                  href="https://www.linkedin.com/in/ton-profil" // 👉 mets ton LinkedIn
+                  href="https://www.linkedin.com/in/aymanehilmi/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
+                  data-cursor-icon="arrow"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

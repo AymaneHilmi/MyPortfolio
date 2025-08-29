@@ -1,18 +1,10 @@
 "use client";
 
-"use client";
-
 import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SiDeliveroo } from "react-icons/si";
-import {
-  FaGlobeAmericas,
-  FaMoon,
-  FaHandPaper,
-  FaHandRock,
-  FaSearchMinus,
-} from "react-icons/fa";
-import { Layers, Search } from "lucide-react";
+import { FaGlobeAmericas, FaMoon } from "react-icons/fa";
+import { Layers, Search, PartyPopper } from "lucide-react";
 
 /** Styles “glass” du curseur */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";
@@ -37,16 +29,17 @@ export function SmoothCursor({
   const cursorRef = useRef(null);
   const diameter = useSpring(22, { ...springConfig, stiffness: 500 });
 
-  // Réfs pour robustesse
+  // Robustesse
   const lastXY = useRef({ x: 0, y: 0 });
   const idleToDefaultTimer = useRef(0);
+  const rafIdRef = useRef(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const el = cursorRef.current;
     if (!el) return;
 
-    // Touch → on n’affiche pas le curseur custom
+    // Touch → pas de curseur custom
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
       setIsTouchDevice(true);
       return;
@@ -79,13 +72,13 @@ export function SmoothCursor({
       return false;
     };
 
-    // Reset 
+    // Reset total
     const hardReset = () => {
       setIsInteractive(false);
       setCursorIcon(DEFAULT_CURSOR_ICON);
     };
 
-    // Recalcule ce qu’il y a sous le pointeur (bug lenteur de pc/mouvement hyper rapide)
+    // Recalcule ce qu’il y a sous le pointeur
     const recomputeFromPoint = (x, y) => {
       const target = document.elementFromPoint(x, y);
       const iconHost = target?.closest?.("[data-cursor-icon]");
@@ -99,32 +92,30 @@ export function SmoothCursor({
         setCursorIcon(custom?.length ? custom : DEFAULT_CURSOR_ICON);
         setIsInteractive(true);
       } else {
+        // 👉 Sortie d’une zone interactive → force retour instantané au DOT
         setIsInteractive(false);
         setCursorIcon(DEFAULT_CURSOR_ICON);
       }
     };
 
-    let rafId = 0;
     const onPointerMove = (e) => {
       lastXY.current = { x: e.clientX, y: e.clientY };
-      if (rafId) return;
-      rafId = requestAnimationFrame(() => {
+      if (rafIdRef.current) return;
+      rafIdRef.current = requestAnimationFrame(() => {
         const { x, y } = lastXY.current;
         el.style.left = `${x}px`;
         el.style.top = `${y}px`;
-        // Recalcul à chaque frame utile
         recomputeFromPoint(x, y);
-        rafId = 0;
+        rafIdRef.current = 0;
       });
     };
 
-    // Quand la souris sort de la fenêtre → reset
+    // Sortie fenêtre
     const onMouseOutWindow = (ev) => {
-      // relatedTarget null = sortie document
       if (!ev.relatedTarget && !ev.toElement) hardReset();
     };
 
-    // Sur scroll/resize/onglet visible, re-évalue sous le curseur
+    // Rescan au scroll/resize/visibility (capture tous les scrolls)
     const rescan = () => {
       const { x, y } = lastXY.current;
       recomputeFromPoint(x, y);
@@ -138,18 +129,20 @@ export function SmoothCursor({
       if (document.hidden) hardReset();
       else rescan();
     });
-    window.addEventListener("scroll", rescan, { passive: true });
     window.addEventListener("resize", rescan);
+    window.addEventListener("scroll", rescan, { passive: true });
+    document.addEventListener("scroll", rescan, true); // ✅ scroll des conteneurs internes
 
     return () => {
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("mouseout", onMouseOutWindow);
       window.removeEventListener("blur", hardReset);
-      window.removeEventListener("scroll", rescan);
       window.removeEventListener("resize", rescan);
+      window.removeEventListener("scroll", rescan);
+      document.removeEventListener("scroll", rescan, true);
       document.body.style.cursor = "auto";
       if (idleToDefaultTimer.current) clearTimeout(idleToDefaultTimer.current);
-      if (rafId) cancelAnimationFrame(rafId);
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
     };
   }, []);
 
@@ -157,8 +150,7 @@ export function SmoothCursor({
     diameter.set(isInteractive ? 44 : 22);
   }, [isInteractive, diameter]);
 
-
-  // icones pour chaque element sur le site
+  // icones
   const renderIcon = (name) => {
     if (name === "dot") {
       return (
@@ -167,7 +159,7 @@ export function SmoothCursor({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
+          transition={{ duration: 0.12 }}
           style={{
             width: 6,
             height: 6,
@@ -175,47 +167,6 @@ export function SmoothCursor({
             background: DOT_GRAY,
           }}
         />
-      );
-    }
-    if (name === "grow") {
-      return (
-        <motion.div
-          key="grow"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1.8 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.15 }}
-          style={{
-            width: 6,
-            height: 6,
-            borderRadius: 9999,
-            background: DOT_GRAY,
-          }}
-        />
-      );
-    }
-    if (name === "mail") {
-      return (
-        <motion.svg
-          key="mail"
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          vectorEffect="non-scaling-stroke"
-          preserveAspectRatio="xMidYMid meet"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
-        >
-          <rect x="3" y="5" width="18" height="14" rx="2" ry="2" />
-          <polyline points="3,5 12,13 21,5" />
-        </motion.svg>
       );
     }
     if (name === "arrow") {
@@ -237,8 +188,33 @@ export function SmoothCursor({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.15 }}
         >
-          <path d="M6 18 L18 6" />
-          <path d="M9 6 H18 V15" />
+          {" "}
+          <path d="M6 18 L18 6" /> <path d="M9 6 H18 V15" />{" "}
+        </motion.svg>
+      );
+    }
+    if (name === "mail") {
+      return (
+        <motion.svg
+          key="mail"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
+          preserveAspectRatio="xMidYMid meet"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
+        >
+          {" "}
+          <rect x="3" y="5" width="18" height="14" rx="2" ry="2" />{" "}
+          <polyline points="3,5 12,13 21,5" />{" "}
         </motion.svg>
       );
     }
@@ -260,12 +236,30 @@ export function SmoothCursor({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.15 }}
         >
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          {" "}
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />{" "}
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />{" "}
         </motion.svg>
       );
     }
 
+    if (name === "grow") {
+      return (
+        <motion.div
+          key="grow"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1.8 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.12 }}
+          style={{
+            width: 6,
+            height: 6,
+            borderRadius: 9999,
+            background: DOT_GRAY,
+          }}
+        />
+      );
+    }
     if (name === "cesiveroo") {
       return (
         <motion.div
@@ -273,7 +267,7 @@ export function SmoothCursor({
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.15 }}
+          transition={{ duration: 0.12 }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -299,71 +293,41 @@ export function SmoothCursor({
             justifyContent: "center",
           }}
         >
+          {" "}
           <span
             style={{ color: "white", fontSize: "20px", fontWeight: "bold" }}
           >
-            ?
-          </span>
+            {" "}
+            ?{" "}
+          </span>{" "}
         </motion.div>
       );
     }
 
     if (name === "egg#1") {
-      const confettiColors = [
-        "#3b82f6",
-        "#fb923c",
-        "#ef4444",
-        "#22c55e",
-        "#a855f7",
-        "#f59e0b",
-      ];
-      const pieces = [
-        { dx: -9, dy: -7, d: 0.0 },
-        { dx: 10, dy: -6, d: 0.15 },
-        { dx: -8, dy: 8, d: 0.3 },
-        { dx: 8, dy: 9, d: 0.45 },
-        { dx: 0, dy: -10, d: 0.6 },
-      ];
-
       return (
         <motion.div
           key="egg#1"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.15 }}
+          transition={{ duration: 0.12 }}
           style={{
-            position: "relative",
-            display: "grid",
-            placeItems: "center",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          {pieces.map((p, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, x: 0, y: 0, rotate: 0, scale: 0.9 }}
-              animate={{
-                opacity: [0, 1, 0],
-                x: [0, p.dx, 0],
-                y: [0, p.dy, 0],
-                rotate: [0, 180, 360],
-                scale: [0.9, 1.1, 0.9],
-              }}
-              transition={{
-                duration: 1.6,
-                delay: p.d,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{
-                position: "absolute",
-                width: 3.5,
-                height: 3.5,
-                borderRadius: 1,
-                backgroundColor: confettiColors[i % confettiColors.length],
-              }}
-            />
-          ))}
+          <PartyPopper
+            size={22}
+            color="white"
+            strokeWidth={2}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          />
         </motion.div>
       );
     }
@@ -375,7 +339,7 @@ export function SmoothCursor({
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.15 }}
+          transition={{ duration: 0.12 }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -386,7 +350,6 @@ export function SmoothCursor({
         </motion.div>
       );
     }
-
     if (name === "egg#3") {
       return (
         <motion.div
@@ -394,7 +357,7 @@ export function SmoothCursor({
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.15 }}
+          transition={{ duration: 0.12 }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -405,15 +368,14 @@ export function SmoothCursor({
         </motion.div>
       );
     }
-
     if (name === "egg#4") {
       return (
         <motion.div
-          key="egg#3"
+          key="egg#4"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.15 }}
+          transition={{ duration: 0.12 }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -431,7 +393,7 @@ export function SmoothCursor({
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.15 }}
+          transition={{ duration: 0.12 }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -439,73 +401,6 @@ export function SmoothCursor({
           }}
         >
           <Search size={22} color="white" strokeWidth={2} />
-        </motion.div>
-      );
-    }
-
-    if (name === "wife") {
-      const heartColor = "#ff4d7d";
-      const smallHearts = [
-        { dx: -10, dy: -12, d: 0.0, s: 0.7 },
-        { dx: 12, dy: -10, d: 0.15, s: 0.6 },
-        { dx: -14, dy: 8, d: 0.3, s: 0.55 },
-        { dx: 16, dy: 10, d: 0.45, s: 0.65 },
-        { dx: 0, dy: -16, d: 0.6, s: 0.6 },
-      ];
-
-      const HeartSVG = ({ size = 22, fill = heartColor }) => (
-        <motion.svg
-          width={size}
-          height={size}
-          viewBox="0 0 24 24"
-          fill={fill}
-          xmlns="http://www.w3.org/2000/svg"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
-          style={{ display: "block" }}
-        >
-          {/* Classic heart shape */}
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.42 3.92 4.5 6 4.5c1.54 0 3.04.99 4 2.09 0.96-1.1 2.46-2.09 4-2.09 2.08 0 4 1.92 4 4 0 3.78-3.4 6.86-8.05 11.54L12 21.35z" />
-        </motion.svg>
-      );
-
-      return (
-        <motion.div
-          key="wife"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.15 }}
-          style={{
-            position: "relative",
-            display: "grid",
-            placeItems: "center",
-          }}
-        >
-          {/* Floating small hearts */}
-          {smallHearts.map((h, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: 0, y: 0, scale: h.s }}
-              animate={{
-                opacity: [0, 1, 0],
-                x: [0, h.dx, 0],
-                y: [0, h.dy, 0],
-                scale: [h.s, h.s * 1.15, h.s],
-              }}
-              transition={{
-                duration: 1.8,
-                delay: h.d,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{ position: "absolute" }}
-            >
-              <HeartSVG size={10} />
-            </motion.div>
-          ))}
         </motion.div>
       );
     }
@@ -524,12 +419,29 @@ export function SmoothCursor({
             justifyContent: "center",
           }}
         >
-          <span className="text-white text-sm font-bold select-none">404</span>
+          {" "}
+          <span className="text-white text-sm font-bold select-none">
+            404
+          </span>{" "}
         </motion.div>
       );
     }
-
-    return null;
+    // Default fallback
+    return (
+      <motion.div
+        key="grow"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1.8 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.12 }}
+        style={{
+          width: 6,
+          height: 6,
+          borderRadius: 9999,
+          background: DOT_GRAY,
+        }}
+      />
+    );
   };
 
   if (isTouchDevice) return null;
@@ -562,9 +474,14 @@ export function SmoothCursor({
       animate={{ scale: 1 }}
       transition={{ type: "spring", stiffness: 480, damping: 30 }}
     >
-      <AnimatePresence initial={false} mode="wait">
-        {renderIcon(isInteractive ? cursorIcon : "dot")}
-      </AnimatePresence>
+      {/* 👉 Pas d'AnimatePresence lors du retour au DOT pour éviter toute icône “bloquée” */}
+      {isInteractive ? (
+        <AnimatePresence initial={false} mode="sync">
+          {renderIcon(cursorIcon)}
+        </AnimatePresence>
+      ) : (
+        renderIcon("dot")
+      )}
     </motion.div>
   );
 }

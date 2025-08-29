@@ -32,7 +32,7 @@ const fadeInUp = {
   }),
 };
 
-export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
+export default function HomeScreen({ visitsTotal }) {
   const navigate = useNavigate();
   const {
     foundEggs,
@@ -45,16 +45,16 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
   } = useEasterEgg();
 
   const Projects = [
-    {
-      logo: sg,
-      title: "Connected Labs",
-      subtitle: "Cavaillon • 2025",
-      style: "font-sfbold text-2xl md:text-4xl",
-      description:
-        "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
-      image: LIMSmobility,
-      link: "Portfolio",
-    },
+    // {
+    //   logo: sg,
+    //   title: "Connected Labs",
+    //   subtitle: "Cavaillon • 2025",
+    //   style: "font-sfbold text-2xl md:text-4xl",
+    //   description:
+    //     "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
+    //   image: LIMSmobility,
+    //   link: "Portfolio",
+    // },
     {
       logo: logo,
       title: "My Portfolio",
@@ -80,14 +80,6 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
       cursor: "cesiveroo",
     },
   ];
-
-  const handleClick = (link) => {
-    navigate(`/${link}`);
-    if (scrollToRoutes) {
-      scrollToRoutes();
-    }
-  };
-
   return (
     <div className="max-w-6xl mx-auto px-6">
       <div className="relative flex flex-col items-center justify-center min-h-screen">
@@ -123,9 +115,8 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
             Recently, I’ve completed my work-study program at{" "}
             <LinkPreview
               imageSrc="https://www.verreetprotections.com/wp-content/uploads/2016/06/logoSGG2016.jpg"
-              url="/saintgobain"
+              url="https://www.saint-gobain.com/"
               isStatic
-              onClick={scrollToRoutes}
               className="font-bold underline underline-offset-4 text-black hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 hover:bg-clip-text hover:text-transparent transition-colors duration-300"
             >
               Saint-Gobain Research Provence
@@ -302,7 +293,7 @@ export default function HomeScreen({ scrollToRoutes, visitsTotal }) {
             whileInView="visible"
             viewport={{ once: true }}
             custom={1}
-            onClick={() => handleClick(project.link)}
+            onClick={() => navigate(project.link)}
             className="w-full rounded-3xl bg-gray-50 pt-6 px-6 md:px-0 md:pt-0 hover:shadow-lg"
             role="button"
             tabIndex={0}
