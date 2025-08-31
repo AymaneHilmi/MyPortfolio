@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useEasterEgg } from '../context/EasterEggContext';
+import { useEasterEgg } from '@/context/EasterEggContext';
 
 const MobileTypingInput = () => {
   const { incrementEggs, setConfettiActive } = useEasterEgg();

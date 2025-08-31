@@ -1,13 +1,7 @@
 import { React, img } from 'react'
-import { AnimatedTooltip } from "../components/ui/animated-tooltip";
-import SaintGobain from '../assets/Saint-Gobain.png';
-import { cn } from "../lib/utils";
-// import CSharp from '../assets/C#.png';
-// import SaintGobain from '../assets/Saint-Gobain.png';
-// import SaintGobain from '../assets/Saint-Gobain.png';
-// import SaintGobain from '../assets/Saint-Gobain.png';
-// import SaintGobain from '../assets/Saint-Gobain.png';
-// import SaintGobain from '../assets/Saint-Gobain.png';
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import SaintGobain from '@/assets/Saint-Gobain.png';
+import { cn } from "@/lib/utils";
 
 
 
@@ -126,4 +120,3 @@ export default function SaintGobainScreen() {
         </div >
     )
 }
-

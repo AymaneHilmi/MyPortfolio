@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 

@@ -9,7 +9,7 @@ import {
     useSpring,
 } from "framer-motion";
 
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 
 export const LinkPreview = ({
     children,

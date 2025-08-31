@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Step1 from "../../assets/CesiverooStep1.png";
+import Step1 from "@/assets/CesiverooStep1.png";
 
 export default function InteractiveStepsSection() {
   const steps = [

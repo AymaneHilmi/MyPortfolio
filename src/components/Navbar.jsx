@@ -1,9 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import "./components.css";
-import LogoMobile from '../assets/LogoMobile.png';
+import LogoMobile from '@/assets/LogoMobile.png';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { cn } from "../lib/utils";
+import { cn } from "@/lib/utils";
 import React, { useEffect, useState, useRef } from 'react';
 import {
     Tooltip,
@@ -12,7 +12,7 @@ import {
     TooltipTrigger,
 } from "./ui/ToolTip"
 
-import { useEasterEgg } from "../context/EasterEggContext";
+import { useEasterEgg } from "@/context/EasterEggContext";
 
 export default function Navbar({ scrollToRoutes }) {
     const [isOpen, setIsOpen] = useState(false);

@@ -1,16 +1,16 @@
 import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-hot-toast";
-import { useEasterEgg } from "../context/EasterEggContext";
+import { useEasterEgg } from "@/context/EasterEggContext";
 import { CheckCircle2, Lock, Star, Flame, Skull, Crown, HelpCircle, Keyboard, MousePointer2, Globe2, RotateCcw, Scan, ShieldAlert, Bug, Bot, AlertTriangle } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { PlaceholdersAndVanishInput } from "../components/ui/placeholders-and-vanish-input";
+import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../components/ui/ToolTip";
+} from "@/components/ui/ToolTip";
 
 const placeholders = [
   "Are we truly lost if the search is the way?",

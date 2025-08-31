@@ -1,4 +1,4 @@
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion"; // Corrigé ici aussi
 import React, { useEffect, useMemo, useState } from "react";
 

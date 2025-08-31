@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { cn } from "../lib/utils";
-import HomePortfolio from "../assets/PortfolioHome.png";
+import { cn } from "@/lib/utils";
+import HomePortfolio from "@/assets/PortfolioHome.png";
 import {
   MonitorSmartphone,
   ShieldCheck,
@@ -14,6 +14,7 @@ import {
   Briefcase,
   FileText,
 } from "lucide-react";
+import Laptop from "@/assets/Laptop.png";
 
 export default function PortfolioScreen() {
   const stats = [
@@ -70,7 +71,7 @@ export default function PortfolioScreen() {
             </div>
             <div className="mt-8">
               <a
-                href="https://github.com/AymaneHilmi/MyPortfolio" // remplace par ton lien GitHub
+                href="https://github.com/AymaneHilmi/MyPortfolio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl bg-darkGray px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 transition-colors"
@@ -81,11 +82,8 @@ export default function PortfolioScreen() {
               </a>
             </div>
           </div>
-
-          {/* Right column — Image "incrustée" on white bg */}
           <div className="relative">
             <figure className="relative mx-auto w-full max-w-[640px] overflow-hidden rounded-2xl ">
-              {/* Replace the src below with your image path */}
               <img
                 src={HomePortfolio}
                 alt="Cesiveroo illustration with shopping bags and spheres"
@@ -93,28 +91,45 @@ export default function PortfolioScreen() {
                 loading="eager"
                 decoding="async"
               />
-
-              {/* A soft inner shadow to "embed" it into the page */}
             </figure>
           </div>
         </div>
       </section>
 
-      {/*  Détails du projet */}
-      <section
-        className="mx-auto py-16 sm:py-20"
-        aria-label="Détails du projet Cesiveroo"
-      >
-        <div className="text-center mb-10">
-          <p className="text-base uppercase tracking-widest text-lightGray">
-            Aperçu du projet
-          </p>
-          <h2 className="mt-2 text-2xl sm:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block px-1">
-            Details & Objectives
-          </h2>
+      {/* Minimal full-screen section */}
+      <section className="h-screen min-h-[640px] flex items-center">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center w-full">
+          {/* Text side */}
+          <div className="space-y-6">
+            <h2 className="text-4xl md:text-6xl font-ramidots tracking-tight text-darkGray">
+              why building this portfolio
+            </h2>
+            <p className="text-base md:text-lg text-darkGray/80 leading-relaxed text-justify">
+              I’m building this portfolio to create a clean, focused space to
+              share my work, thinking, and growth. It’s intentionally simple so
+              the content stays front and center: projects that matter to me,
+              notes from what I learn, and a visual timeline of where I’m
+              heading next.
+            </p>
+          </div>
+          {/* Image side */}
+          <div className="relative">
+            <figure className="relative mx-auto w-full max-w-[600px] overflow-hidden rounded-2xl border border-zinc-200/60 bg-white">
+              <img
+                src={Laptop}
+                alt="Minimal laptop illustration"
+                className="block h-auto w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
         </div>
-        coming soon....
       </section>
+
+
+
+
     </div>
   );
 }

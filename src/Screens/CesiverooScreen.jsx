@@ -1,16 +1,16 @@
 import React, { img, useEffect, useState, useRef } from "react";
-import Step1 from "../assets/CesiverooStep1.png";
-import Step2 from "../assets/CesiverooStep2.png";
-import Step3 from "../assets/CesiverooStep3.png";
-import Step4 from "../assets/CesiverooStep4.png";
-import Step5 from "../assets/CesiverooStep5.png";
-import HomeCesiveroo from "../assets/CesiverooHome.png";
-import HomeCesiverooCompleted from "../assets/CesiverooHomeComplete.png";
-import GraphiChart from "../assets/CesiverooIpadChart.png";
-import WireFrames from "../assets/CesiverooWireFrames.png";
-import { ContainerScroll } from "../components/ui/container-scroll-animation";
-import { useEasterEgg } from "../context/EasterEggContext";
-import InteractiveStepsSection from "../components/ui/interactivesteps";
+import Step1 from "@/assets/CesiverooStep1.png";
+import Step2 from "@/assets/CesiverooStep2.png";
+import Step3 from "@/assets/CesiverooStep3.png";
+import Step4 from "@/assets/CesiverooStep4.png";
+import Step5 from "@/assets/CesiverooStep5.png";
+import HomeCesiveroo from "@/assets/CesiverooHome.png";
+import HomeCesiverooCompleted from "@/assets/CesiverooHomeComplete.png";
+import GraphiChart from "@/assets/CesiverooIpadChart.png";
+import WireFrames from "@/assets/CesiverooWireFrames.png";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import { useEasterEgg } from "@/context/EasterEggContext";
+import InteractiveStepsSection from "@/components/ui/interactivesteps";
 import {
   MonitorSmartphone,
   ShieldCheck,
@@ -30,7 +30,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../components/ui/ToolTip";
+} from "@/components/ui/ToolTip";
 
 export default function CesiverooScreen() {
   const {

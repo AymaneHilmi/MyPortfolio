@@ -69,7 +69,7 @@ const EggList = [
   {
     id: "#4",
     name: "الهلال",
-    tip: "أين يختبئ الهلال؟ (شكرًا ترجمة جوجل)",
+    tip: "أين يختبئ هلال القمر؟ (شكرًا ترجمة جوجل)",
     message: "You found the hidden crescent moon egg",
     level: "Medium",
     cursor: "egg#4",
@@ -314,64 +314,64 @@ export const EasterEggProvider = ({ children }) => {
 
 
 const showEggToast = (egg) => {
-    toast.custom((t) => (
-        <div
-            className={`${t.visible ? "animate-custom-enter" : "animate-custom-leave"
-                } max-w-md w-full bg-white shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+  toast.custom((t) => (
+    <div
+      className={`${t.visible ? "animate-custom-enter" : "animate-custom-leave"
+        } max-w-md w-full bg-white shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+    >
+      {/* ID en gros */}
+      <div className="flex items-center justify-center px-4 bg-gradient-to-b from-blue-500 via-orange-400 to-red-500 text-white font-ramidots text-6xl rounded-l-xl">
+        {egg.id}
+      </div>
+
+      {/* Texte */}
+      <div className="flex-1 w-0 p-4">
+        <p className="text-sm font-semibold text-gray-900">{egg.name} Egg</p>
+        <p className="mt-1 text-sm text-gray-600">{egg.message}</p>
+      </div>
+
+      {/* Bouton fermer */}
+      <div className="flex border-l border-gray-200">
+        <button
+          onClick={() => toast.dismiss(t.id)}
+          className="w-full h-full px-3 flex items-center justify-center text-xs font-medium text-gray-500 hover:text-gray-700"
         >
-            {/* ID en gros */}
-            <div className="flex items-center justify-center px-4 bg-gradient-to-b from-blue-500 via-orange-400 to-red-500 text-white font-ramidots text-6xl rounded-l-xl">
-                {egg.id}
-            </div>
-
-            {/* Texte */}
-            <div className="flex-1 w-0 p-4">
-                <p className="text-sm font-semibold text-gray-900">{egg.name} Egg</p>
-                <p className="mt-1 text-sm text-gray-600">{egg.message}</p>
-            </div>
-
-            {/* Bouton fermer */}
-            <div className="flex border-l border-gray-200">
-                <button
-                    onClick={() => toast.dismiss(t.id)}
-                    className="w-full h-full px-3 flex items-center justify-center text-xs font-medium text-gray-500 hover:text-gray-700"
-                >
-                    ✕
-                </button>
-            </div>
-        </div>
-    ), { duration: 10000 });
+          ✕
+        </button>
+      </div>
+    </div>
+  ), { duration: 10000 });
 };
 
 const showInfoToast = (title, message) => {
-    toast.custom(
-        (t) => (
-            <div
-                className={`${t.visible ? "animate-custom-enter" : "animate-custom-leave"
-                    } max-w-md w-full bg-white shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-            >
-                {/* Bloc couleur à gauche */}
-                <div className="flex items-center justify-center px-4 bg-gradient-to-b from-blue-500 via-orange-400 to-red-500 text-white font-extrabold text-2xl rounded-l-xl">
-                    i
-                </div>
+  toast.custom(
+    (t) => (
+      <div
+        className={`${t.visible ? "animate-custom-enter" : "animate-custom-leave"
+          } max-w-md w-full bg-white shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+      >
+        {/* Bloc couleur à gauche */}
+        <div className="flex items-center justify-center px-4 bg-gradient-to-b from-blue-500 via-orange-400 to-red-500 text-white font-extrabold text-2xl rounded-l-xl">
+          i
+        </div>
 
-                {/* Texte */}
-                <div className="flex-1 w-0 p-4">
-                    <p className="text-sm font-semibold text-gray-900">{title}</p>
-                    <p className="mt-1 text-sm text-gray-600">{message}</p>
-                </div>
+        {/* Texte */}
+        <div className="flex-1 w-0 p-4">
+          <p className="text-sm font-semibold text-gray-900">{title}</p>
+          <p className="mt-1 text-sm text-gray-600">{message}</p>
+        </div>
 
-                {/* Bouton fermer */}
-                <div className="flex border-l border-gray-200">
-                    <button
-                        onClick={() => toast.dismiss(t.id)}
-                        className="w-full h-full px-3 flex items-center justify-center text-xs font-medium text-gray-500 hover:text-gray-700"
-                    >
-                        ✕
-                    </button>
-                </div>
-            </div>
-        ),
-        { duration: 10000 }
-    );
+        {/* Bouton fermer */}
+        <div className="flex border-l border-gray-200">
+          <button
+            onClick={() => toast.dismiss(t.id)}
+            className="w-full h-full px-3 flex items-center justify-center text-xs font-medium text-gray-500 hover:text-gray-700"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+    ),
+    { duration: 10000 }
+  );
 };

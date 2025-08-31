@@ -1,9 +1,9 @@
 
 import { React } from "react";
-// import { Timeline } from "../components/ui/timeline";
-import lab from "../assets/AymaneLab.jpeg"
-import philipp from "../assets/AymanePhilipp.jpeg"
-import { cn } from "../lib/utils";
+// import { Timeline } from "@/components/ui/timeline";
+import lab from "@/assets/AymaneLab.jpeg"
+import philipp from "@/assets/AymanePhilipp.jpeg"
+import { cn } from "@/lib/utils";
 
 export default function JourneyScreen() {
     const data = [

@@ -1,22 +1,22 @@
 import { React, } from 'react'
-import { cn } from "../lib/utils";
+import { cn } from "@/lib/utils";
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
-import { useEasterEgg } from "../context/EasterEggContext";
+import { useEasterEgg } from "@/context/EasterEggContext";
 import { motion, useAnimation } from "framer-motion";
-import Cesiveroo from "../assets/CesiverooLogo.png";
-import HomeCesiverooCompleted from "../assets/CesiverooHomeComplete.png";
-import HomePortfolio from "../assets/PortfolioHome.png";
-import LIMSmobility from "../assets/LIMSmobility.png";
-import logo from "../assets/Logo.png";
-import sg from "../assets/Saint-Gobain.png";
+import Cesiveroo from "@/assets/CesiverooLogo.png";
+import HomeCesiverooCompleted from "@/assets/CesiverooHomeComplete.png";
+import HomePortfolio from "@/assets/PortfolioHome.png";
+import LIMSmobility from "@/assets/LIMSmobility.png";
+import logo from "@/assets/Logo.png";
+import sg from "@/assets/Saint-Gobain.png";
 import { ArrowRight, ScreenShare } from "lucide-react";
-import { LinkPreview } from "../components/ui/link-preview";
+import { LinkPreview } from "@/components/ui/link-preview";
 import { Briefcase, PenTool, LayoutDashboard, BadgeCheck } from "lucide-react";
 import "./screens.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X, Lock, Check, Search, Puzzle, Crown } from "lucide-react";
-import EasterEggsCard from "../context/EasterEggCard";
+import EasterEggsCard from "@/context/EasterEggCard";
 import style from "react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark";
 
 const fadeInUp = {

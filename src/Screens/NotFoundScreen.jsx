@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import avatar from "../assets/AvatarAymane.png";
+import avatar from "@/assets/AvatarAymane.png";
 
 
 export default function NotFoundScreen() {

@@ -1,17 +1,17 @@
 import { React, useState, useRef } from "react";
 import "./screens.css";
-import aymane from "../assets/PDP.jpeg";
-import travel from "../assets/Aymane.jpg";
-import maroc from "../assets/Maroc.jpg";
-import snow from "../assets/AymaneSnow.JPG";
-import mangas from "../assets/mangas.jpg";
-import bike from "../assets/bike.JPG";
-import { cn } from "../lib/utils";
+import aymane from "@/assets/PDP.jpeg";
+import travel from "@/assets/Aymane.jpg";
+import maroc from "@/assets/Maroc.jpg";
+import snow from "@/assets/AymaneSnow.JPG";
+import mangas from "@/assets/mangas.jpg";
+import bike from "@/assets/bike.JPG";
+import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
-import { useEasterEgg } from "../context/EasterEggContext";
-import { CoolMode } from "../components/ui/cool-particle";
+import { useEasterEgg } from "@/context/EasterEggContext";
+import { CoolMode } from "@/components/ui/cool-particle";
 import {
   Briefcase,
   GraduationCap,
@@ -33,15 +33,15 @@ import * as Dialog from "@radix-ui/react-dialog";
 import {
   DraggableCardBody,
   DraggableCardContainer,
-} from "../components/ui/draggable-card";
-import { AnimatedTooltip } from "../components/ui/animated-tooltip";
-import SaintGobain from "../assets/Saint-Gobain.png";
+} from "@/components/ui/draggable-card";
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import SaintGobain from "@/assets/Saint-Gobain.png";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../components/ui/ToolTip";
+} from "@/components/ui/ToolTip";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -943,4 +943,3 @@ function Badge({ children }) {
     </span>
   );
 }
-

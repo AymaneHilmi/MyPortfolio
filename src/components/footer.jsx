@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import "./components.css";
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { cn } from "../lib/utils";
+import { cn } from "@/lib/utils";
 
 
 export default function Footer() {
