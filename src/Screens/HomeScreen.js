@@ -147,7 +147,7 @@ export default function HomeScreen({ visitsTotal }) {
 
       {/* Content Section */}
       <section className="flex flex-col items-center px-4 sm:px-6 pb-6 gap-6">
-        <section className="w-full mx-auto  px-6 md:px-10 py-16 md:py-24 h-screen">
+        <section className="w-full mx-auto  px-6 md:px-10 py-16 md:py-24">
           {/* Titre + sous-titre */}
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-4xl md:text-8xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block px-1">
