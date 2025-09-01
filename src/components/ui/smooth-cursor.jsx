@@ -4,7 +4,7 @@ import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SiDeliveroo } from "react-icons/si";
 import { FaGlobeAmericas, FaMoon } from "react-icons/fa";
-import { Layers, Search, PartyPopper } from "lucide-react";
+import { Layers, Search, PartyPopper, Star } from "lucide-react";
 
 /** Styles “glass” du curseur */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";
@@ -426,6 +426,25 @@ export function SmoothCursor({
         </motion.div>
       );
     }
+
+    if (name === "star") {
+  return (
+    <motion.div
+      key="star"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.12 }}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Star size={22} color="white" strokeWidth={2} />
+    </motion.div>
+  );
+}
     // Default fallback
     return (
       <motion.div

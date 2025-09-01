@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { Search, Puzzle, Crown } from "lucide-react";
+import { Navigate } from "react-router-dom";
 
 const EasterEggContext = createContext();
 
@@ -62,7 +63,7 @@ const EggList = [
     id: "#3",
     name: "Hidden Layers",
     tip: "Not everything is where it seems to be...",
-    message: "You found the Hidden Layers egg, you're starting being good",
+    message: "You found the Hidden Layers egg",
     level: "Medium",
     cursor: "egg#3",
   },
@@ -78,7 +79,7 @@ const EggList = [
     id: "#5",
     name: "ToolTip Quest",
     tip: "Hover the right place... and the silence will speak.",
-    message: "You found the ToolTip Quest egg, you're impressing me !",
+    message: "You found the ToolTip Quest egg",
     level: "Hard",
     cursor: "egg#5",
   },
@@ -87,17 +88,17 @@ const EggList = [
     id: "#6",
     name: "Not Found",
     tip: "You'll have to take the wrong road...",
-    message: "You found the Not Found egg, you're really Good",
+    message: "You found the Not Found egg",
     level: "Hard",
     cursor: "egg#6",
   },
-  {
-    id: "#7",
-    name: "////////",
-    tip: "/////////////",
-    level: "Ultimate",
-    cursor: "egg#7",
-  },
+  // {
+  //   id: "#7",
+  //   name: "////////",
+  //   tip: "/////////////",
+  //   level: "Ultimate",
+  //   cursor: "egg#7",
+  // },
 ];
 export const useEasterEgg = () => useContext(EasterEggContext);
 
@@ -150,6 +151,7 @@ export const EasterEggProvider = ({ children }) => {
       const allEggsFound = EggList.every((e) => newEggs.includes(e.id));
       if (allEggsFound && !completedMissions.includes("eggLord")) {
         completeMission("eggLord");
+        Navigate("/easter-eggs");
       }
 
       return newEggs;
@@ -159,7 +161,7 @@ export const EasterEggProvider = ({ children }) => {
   const resetEggs = () => {
     localStorage.removeItem("foundEggs");
     setFoundEggs([]);
-    toast("Easter Eggs reset", { duration: 10000 });
+    toast("Quest reset. Fresh start!", { duration: 10000 });
   };
 
   /* ====== API Missions ====== */
