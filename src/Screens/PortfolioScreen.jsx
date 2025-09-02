@@ -20,7 +20,6 @@ import { LinkPreview } from "@/components/ui/link-preview";
 
 // Image not used in the following section
 import logo from "@/assets/Logo.png";
-import { NumberTicker } from "../components/ui/NumberTicker";
 
 export default function PortfolioScreen({ visitsTotal }) {
   const { number, suffix } = getOrdinalParts(visitsTotal);
