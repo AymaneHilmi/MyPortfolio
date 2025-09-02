@@ -71,7 +71,7 @@ const FadeIn = ({ children, i = 0, className = "" }) => (
 
 export default function AboutScreen() {
   const navigate = useNavigate();
-  const {} = useEasterEgg();
+  const { } = useEasterEgg();
   const {
     foundEggs,
     eggsFounded,
@@ -789,7 +789,7 @@ export default function AboutScreen() {
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <TooltipProvider>
                     {completedMissions.includes("tip#1") &&
-                    !completedMissions.includes("tip#2") ? (
+                      !completedMissions.includes("tip#2") ? (
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <Globe2
@@ -799,13 +799,12 @@ export default function AboutScreen() {
                         </TooltipTrigger>
                         <TooltipContent>
                           <div className="flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm w-fit space-x-2">
-                            <span className="text-gray-600 text-sm font-medium">
+                            <span className="text-gray-600 font-medium">
                               Hidden Tip #2
                             </span>
                             <button
                               onClick={() => completeMission("tip#2")}
-                              className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
-                              data-cursor-icon="discover"
+                              className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 "
                             >
                               Discover Tip
                             </button>
@@ -858,59 +857,59 @@ export default function AboutScreen() {
           <DraggableCardContainer className="relative flex w-full items-center justify-center overflow-visible">
             {/* Bouton déclencheur */}
 
-            <FadeIn
-              className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center text-center font-sfregular"
-              i={0.1}
-            >
-              <h2 className="text-darkGray text-2xl font-sfbold tracking-tight">
-                Looks like you found something?
-              </h2>
-              <CoolMode>
-                {/* {!egg3Found && (  TODO : corriger le beug de l'animation infinie avant d'implementer cette feature */}
-                <button
-                  type="button"
-                  onMouseDown={() => {
-                    eggLongPressTimer.current = setTimeout(() => {
-                      incrementEggs("#3");
-                      eggLongPressTimer.current = null; // mark as completed
-                    }, 3000);
-                  }}
-                  onMouseUp={() => {
-                    if (eggLongPressTimer.current) {
-                      clearTimeout(eggLongPressTimer.current);
-                      eggLongPressTimer.current = null;
-                      toast("Try to hold it", { duration: 4000 });
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    if (eggLongPressTimer.current) {
-                      clearTimeout(eggLongPressTimer.current);
-                      eggLongPressTimer.current = null;
-                      toast("Try to hold it", { duration: 4000 });
-                    }
-                  }}
-                  onTouchStart={() => {
-                    eggLongPressTimer.current = setTimeout(() => {
-                      incrementEggs("#3");
-                      eggLongPressTimer.current = null;
-                    }, 3000);
-                  }}
-                  onTouchEnd={() => {
-                    if (eggLongPressTimer.current) {
-                      clearTimeout(eggLongPressTimer.current);
-                      eggLongPressTimer.current = null;
-                      toast("Try to hold it", { duration: 4000 });
-                    }
-                  }}
-                  className="pointer-events-auto mt-4 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-white hover:shadow-md transition-all"
-                  data-cursor-icon="egg"
-                >
-                  <Sparkles className="size-4" />
-                  Reveal Easter Egg
-                </button>
-                {/* )} */}
-              </CoolMode>
-            </FadeIn>
+            {!egg3Found && (
+              <FadeIn
+                className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center text-center font-sfregular"
+                i={0.1}
+              >
+                <h2 className="text-darkGray text-2xl font-sfbold tracking-tight">
+                  Looks like you found something?
+                </h2>
+                <CoolMode>
+                  <button
+                    type="button"
+                    onMouseDown={() => {
+                      eggLongPressTimer.current = setTimeout(() => {
+                        incrementEggs("#3");
+                        eggLongPressTimer.current = null; // mark as completed
+                      }, 3000);
+                    }}
+                    onMouseUp={() => {
+                      if (eggLongPressTimer.current) {
+                        clearTimeout(eggLongPressTimer.current);
+                        eggLongPressTimer.current = null;
+                        toast("Try to hold it", { duration: 4000 });
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      if (eggLongPressTimer.current) {
+                        clearTimeout(eggLongPressTimer.current);
+                        eggLongPressTimer.current = null;
+                        toast("Try to hold it", { duration: 4000 });
+                      }
+                    }}
+                    onTouchStart={() => {
+                      eggLongPressTimer.current = setTimeout(() => {
+                        incrementEggs("#3");
+                        eggLongPressTimer.current = null;
+                      }, 3000);
+                    }}
+                    onTouchEnd={() => {
+                      if (eggLongPressTimer.current) {
+                        clearTimeout(eggLongPressTimer.current);
+                        eggLongPressTimer.current = null;
+                        toast("Try to hold it", { duration: 4000 });
+                      }
+                    }}
+                    className="pointer-events-auto mt-4 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-white hover:shadow-md transition-all"
+                    data-cursor-icon="egg"
+                  >
+                    <Sparkles className="size-4" />
+                    Reveal Easter Egg
+                  </button>
+                </CoolMode>
+              </FadeIn>
+            )}
 
             {/* Cartes draggable */}
             {items.map((item, idx) => (

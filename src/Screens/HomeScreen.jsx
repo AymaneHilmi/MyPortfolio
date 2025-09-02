@@ -155,8 +155,7 @@ export default function HomeScreen({ visitsTotal }) {
             </h2>
             <p className="mt-3 md:mt-4 text-sm md:text-base font-sfregular text-lightGray">
               Here you'll find three things about me: my academic & personal
-              projects, a (slightly) complicated easter-eggs quest, and who I am
-              + what I like to do.
+              projects, a (slightly) complicated easter-eggs quest, and who I am and what I like to do.
             </p>
           </div>
 

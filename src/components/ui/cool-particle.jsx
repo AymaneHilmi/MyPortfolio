@@ -160,6 +160,10 @@ const applyParticleEffect = (element, options = {}) => {
 
   const disableAutoAddParticle = () => {
     autoAddParticle = false;
+    if (lastParticleTimestamp) {
+      clearTimeout(lastParticleTimestamp);
+      lastParticleTimestamp = null;
+    }
   };
 
   element.addEventListener(move, updateMousePosition, { passive: true });
@@ -168,6 +172,7 @@ const applyParticleEffect = (element, options = {}) => {
   element.addEventListener("mouseleave", disableAutoAddParticle, { passive: true });
 
   return () => {
+    disableAutoAddParticle();
     element.removeEventListener(move, updateMousePosition);
     element.removeEventListener(tap, tapHandler);
     element.removeEventListener(tapEnd, disableAutoAddParticle);

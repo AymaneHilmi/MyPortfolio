@@ -14,7 +14,10 @@ import {
   Briefcase,
   FileText,
 } from "lucide-react";
-import Laptop from "@/assets/Laptop.png";
+import { NumberTicker } from "../components/ui/NumberTicker";
+import { LinkPreview } from "@/components/ui/link-preview";
+
+// Image not used in the following section
 
 export default function PortfolioScreen() {
   const stats = [
@@ -95,39 +98,106 @@ export default function PortfolioScreen() {
           </div>
         </div>
       </section>
-
-      {/* Minimal full-screen section */}
-      <section className="h-screen min-h-[640px] flex items-center">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center w-full">
-          {/* Text side */}
-          <div className="space-y-6">
-            <h2 className="text-4xl md:text-6xl font-ramidots tracking-tight text-darkGray">
-              why building this portfolio
-            </h2>
-            <p className="text-base md:text-lg text-darkGray/80 leading-relaxed text-justify">
-              I’m building this portfolio to create a clean, focused space to
-              share my work, thinking, and growth. It’s intentionally simple so
-              the content stays front and center: projects that matter to me,
-              notes from what I learn, and a visual timeline of where I’m
-              heading next.
+      <section
+        className="mx-auto py-16 sm:py-20"
+        aria-label="Why building this portfolio"
+      >
+        <div className="text-center">
+          <p className="text-xs uppercase tracking-widest text-zinc-500">Objective</p>
+          <h3 className="mt-3 text-3xl md:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+            Why building this portfolio?
+          </h3>
+          <div className="relative mx-auto max-w-5xl text-center mt-4">
+            <p className="text-darkGray/90 text-base md:text-lg leading-relaxed">
+              When I first discovered the world of computing online, especially through {" "}
+              <LinkPreview
+                imageSrc="https://play-lh.googleusercontent.com/ZRfghwQudJzza7Zb7k1tlc7aXd3WpnVb48AGg_kP-r84kiOcsLKpeM5goGkAQVT16P0=w526-h296-rw"
+                url="https://agar.io"
+                isStatic
+                className="font-bold text-black hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 hover:bg-clip-text hover:text-transparent transition-colors duration-300"
+              >
+                Agar.io
+              </LinkPreview>
+              . I instantly fell in love with websites,
+              particularly the ones that felt impressive to build. From that point, I set myself the goal
+              of creating one that truly reflects <span className="font-semibold">my own universe</span>.
+              This portfolio isn’t about selling myself to recruiters or chasing opportunities.
+              I’m building it purely <span className="italic">for the joy and passion of it</span>.
             </p>
           </div>
-          {/* Image side */}
-          <div className="relative">
-            <figure className="relative mx-auto w-full max-w-[600px] overflow-hidden rounded-2xl border border-zinc-200/60 bg-white">
-              <img
-                src={Laptop}
-                alt="Minimal laptop illustration"
-                className="block h-auto w-full object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-          </div>
+          <span className="mt-6 inline-block h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
         </div>
       </section>
 
+      {/* <div className=" mx-auto max-w-6xl px-6 h-screen flex flex-col justify-center">
+        <p className="-rotate-12 text-darkGray/60 text-sm md:text-base tracking-widest uppercase text-left">
+          live counter
+        </p>
+        <h2 className="-rotate-12 font-ramidots leading-none text-[11vw] md:text-[9vw] text-darkGray ">
+          you are the
+        </h2>
 
+        <div className="mt-2 text-center">
+          <NumberTicker className="font-ramidots text-[22vw] md:text-[12vw] leading-none bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent" value={1234} startValue={0} delay={0.2} />
+        </div>
+
+        <h3 className="mt-4 font-ramidots text-[10vw] md:text-[7vw] leading-none text-darkGray text-right ">
+          visitors of this portfolio
+        </h3>
+
+        <div className="mt-6 flex items-center justify-center gap-3 -rotate-12">
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+          <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
+          <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+        </div>
+
+
+
+
+
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-white">
+                <ShieldCheck size={18} />
+              </span>
+              <h3 className="text-base font-semibold text-darkGray">Clarity</h3>
+            </div>
+            <p className="mt-3 text-sm text-darkGray/80">
+              Simple layouts, readable content, and a focus on signal over noise.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-white">
+                <Activity size={18} />
+              </span>
+              <h3 className="text-base font-semibold text-darkGray">Substance</h3>
+            </div>
+            <p className="mt-3 text-sm text-darkGray/80">
+              Emphasis on decisions, code, and results — what’s behind the UI.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-white">
+                <Wrench size={18} />
+              </span>
+              <h3 className="text-base font-semibold text-darkGray">Iteration</h3>
+            </div>
+            <p className="mt-3 text-sm text-darkGray/80">
+              Always evolving with new experiments, notes, and improvements.
+            </p>
+          </div>
+        </div>
+
+
+
+
+        
+      </div> */}
 
 
     </div>
