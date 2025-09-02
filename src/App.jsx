@@ -36,13 +36,13 @@ function App() {
 
   const [visitsTotal, setVisitsTotal] = useState(null);
 
-  // useEffect(() => {
-  //   // ✅ Pour afficher le total dans le compteur
-  //   fetch("https://visit-counter.aymanehilmi1.workers.dev/api/visits")
-  //     .then(res => res.json())
-  //     .then(data => setVisitsTotal(data.total))
-  //     .catch(() => setVisitsTotal(null));
-  // }, []);
+  useEffect(() => {
+    // ✅ Pour afficher le total dans le compteur
+    fetch("https://visit-counter.aymanehilmi1.workers.dev/api/visits")
+      .then(res => res.json())
+      .then(data => setVisitsTotal(data.total))
+      .catch(() => setVisitsTotal(null));
+  }, []);
 
   // pop up pour les projets
   const location = useLocation();
@@ -55,7 +55,7 @@ function App() {
       <Navbar />
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<HomeScreen visitsTotal={visitsTotal} />} />
+        <Route path="/" element={<HomeScreen />} />
         <Route path="/About" className="h-screen" element={<AboutScreen />} />
         <Route
           path="/SaintGobain"
@@ -81,7 +81,7 @@ function App() {
         <Route
           path="/portfolio"
           className="h-screen"
-          element={<PortfolioScreen />}
+          element={<PortfolioScreen visitsTotal={visitsTotal} />}
         />
         <Route path="*" element={<NotFoundScreen />} />
       </Routes>

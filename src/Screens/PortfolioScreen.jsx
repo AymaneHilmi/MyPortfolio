@@ -13,17 +13,22 @@ import {
   Users,
   Briefcase,
   FileText,
+  Sparkles,
 } from "lucide-react";
 import { NumberTicker } from "../components/ui/NumberTicker";
 import { LinkPreview } from "@/components/ui/link-preview";
 
 // Image not used in the following section
+import logo from "@/assets/Logo.png";
+import { NumberTicker } from "../components/ui/NumberTicker";
 
-export default function PortfolioScreen() {
+export default function PortfolioScreen({ visitsTotal }) {
+  const { number, suffix } = getOrdinalParts(visitsTotal);
+
   const stats = [
     {
-      label: "Context",
-      value: "Personal Project",
+      label: "weeks",
+      value: "4",
       icon: Calendar,
     },
     {
@@ -42,6 +47,7 @@ export default function PortfolioScreen() {
       icon: FileText,
     },
   ];
+
   return (
     <div className="md:mx-auto max-w-6xl mx-6">
       <section className="mx-auto py-12 md:py-16 mt-32 flex justify-center items-center">
@@ -53,9 +59,12 @@ export default function PortfolioScreen() {
               Process Highlights
             </div>
 
-            <h1 className="text-4xl font-ramidots tracking-tight md:text-7xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">
-              My Portfolio Project
-            </h1>
+            <div className="flex flex-row gap-4 items-center">
+              {/* <img src={logo} alt="Portfolio logo" className="h-20 w-20" /> */}
+              <span className="text-4xl font-ramidots tracking-tight md:text-7xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit pr-4">
+                My Portfolio Project
+              </span>
+            </div>
 
             <div className="prose prose-zinc max-w-none text-darkGray text-justify">
               <p>
@@ -202,4 +211,15 @@ export default function PortfolioScreen() {
 
     </div>
   );
+}
+
+function getOrdinalParts(n) {
+  const j = n % 10,
+    k = n % 100;
+  let suffix = "th";
+  if (j === 1 && k !== 11) suffix = "st";
+  else if (j === 2 && k !== 12) suffix = "nd";
+  else if (j === 3 && k !== 13) suffix = "rd";
+
+  return { number: n, suffix };
 }

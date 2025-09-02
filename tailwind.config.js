@@ -15,6 +15,9 @@ module.exports = {
         darkGray: '#3b3d41',
         lightGray: '#a9a5ac',
       },
+      backgroundImage: {
+        "brand-gradient": "linear-gradient(to right, #3B82F6, #fb923c, #ef4444)", 
+      },
       fontFamily: {
         sfbold: ['SFBOLD', 'sans-serif'],
         sfregular: ['SFREGULAR', 'sans-serif'],
