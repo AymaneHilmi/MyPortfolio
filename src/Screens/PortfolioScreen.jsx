@@ -136,6 +136,7 @@ export default function PortfolioScreen({ visitsTotal }) {
           <span className="mt-6 inline-block h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
         </div>
       </section>
+      page in construction....
 
       {/* <div className=" mx-auto max-w-6xl px-6 h-screen flex flex-col justify-center">
         <p className="-rotate-12 text-darkGray/60 text-sm md:text-base tracking-widest uppercase text-left">

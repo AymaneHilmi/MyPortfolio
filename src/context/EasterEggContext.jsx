@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { Search, Puzzle, Crown } from "lucide-react";
-import { Navigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 const EasterEggContext = createContext();
 
@@ -24,8 +25,6 @@ const eggMission = [
     id: "eggLord",
     label: "Become the Easter Egg Lord",
     icon: <Crown />,
-    message:
-      "You just became an Easter Egg Lord, You can go now to the easter-egg page and scroll down",
   },
   {
     id: "tip#1",
@@ -103,6 +102,8 @@ const EggList = [
 export const useEasterEgg = () => useContext(EasterEggContext);
 
 export const EasterEggProvider = ({ children }) => {
+  const navigate = useNavigate();
+
   /* ===== Eggs trouvés (persistés) ===== */
   const [foundEggs, setFoundEggs] = useState(() => {
     const saved = localStorage.getItem("foundEggs");
@@ -151,7 +152,8 @@ export const EasterEggProvider = ({ children }) => {
       const allEggsFound = EggList.every((e) => newEggs.includes(e.id));
       if (allEggsFound && !completedMissions.includes("eggLord")) {
         completeMission("eggLord");
-        Navigate("/easter-eggs");
+        navigate("/easter-eggs");
+        window.scrollTo({ top: 0, behavior: "smooth" })
       }
 
       return newEggs;
