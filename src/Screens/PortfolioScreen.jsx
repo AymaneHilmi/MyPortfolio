@@ -106,6 +106,95 @@ export default function PortfolioScreen({ visitsTotal }) {
           </div>
         </div>
       </section>
+
+      {/* <section>
+        <div className="text-center mb-12">
+
+        <p className="text-xs uppercase tracking-widest text-zinc-500">Objective</p>
+          <h3 className="mt-3 text-3xl md:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+            Details & Objectives
+          </h3>
+        </div>
+        
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
+          {stats.map((stat) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={stat.label}
+                className="rounded-xl ring-1 ring-zinc-700 bg-[#3a3a3a] p-5 text-center shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex justify-center mb-2">
+                  <Icon className="h-5 w-5 text-[#20CFBD]" strokeWidth={2} />
+                </div>
+                <p className="text-base md:text-2xl font-sfbold text-white">
+                  {stat.value}
+                </p>
+                <p className="text-xs text-zinc-400 mt-1">{stat.label}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
+          <div className="md:col-span-3">
+            <h3 className="text-lg font-semibold text-gray-900">Objectifs</h3>
+            <ul className="mt-3 space-y-2 text-sm text-gray-700">
+              <li className="flex gap-3">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
+                <span>
+                  Concevoir une expérience fluide inspirée de Deliveroo, adaptée
+                  au contexte académique.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
+                <span>
+                  Structurer une architecture <em>microservices</em> simple,
+                  déployable en conteneurs.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
+                <span>
+                  Livrer un MVP testable avec une base de données et un tableau
+                  de bord.
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Stack & outils
+            </h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {[
+                "React / React Native",
+                "Express.js",
+                "MongoDB",
+                "MS SQL",
+                "Docker",
+                "TailwindCSS",
+                "Playwright (tests)",
+              ].map((chip) => (
+                <span
+                  key={chip}
+                  className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm"
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+            <p className="mt-4 text-xs text-gray-500">
+              Focus: performance, accessibilité, DX propre, CI simplifiée.
+            </p>
+          </div>
+        </div>
+      </section> */}
+
+
+
       <section
         className="mx-auto py-16 sm:py-20"
         aria-label="Why building this portfolio"
@@ -138,75 +227,48 @@ export default function PortfolioScreen({ visitsTotal }) {
       </section>
       page in construction....
 
-      {/* <div className=" mx-auto max-w-6xl px-6 h-screen flex flex-col justify-center">
-        <p className="-rotate-12 text-darkGray/60 text-sm md:text-base tracking-widest uppercase text-left">
-          live counter
-        </p>
-        <h2 className="-rotate-12 font-ramidots leading-none text-[11vw] md:text-[9vw] text-darkGray ">
-          you are the
-        </h2>
-
-        <div className="mt-2 text-center">
-          <NumberTicker className="font-ramidots text-[22vw] md:text-[12vw] leading-none bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent" value={1234} startValue={0} delay={0.2} />
-        </div>
-
-        <h3 className="mt-4 font-ramidots text-[10vw] md:text-[7vw] leading-none text-darkGray text-right ">
-          visitors of this portfolio
-        </h3>
-
-        <div className="mt-6 flex items-center justify-center gap-3 -rotate-12">
-          <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-          <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
-          <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
-        </div>
+     
 
 
 
 
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-white">
-                <ShieldCheck size={18} />
-              </span>
-              <h3 className="text-base font-semibold text-darkGray">Clarity</h3>
-            </div>
-            <p className="mt-3 text-sm text-darkGray/80">
-              Simple layouts, readable content, and a focus on signal over noise.
-            </p>
+        <section className="mt-24">
+        <div className="relative px-8 py-16 flex flex-col items-center text-center gap-8">
+          <div className="space-y-4">
+           
+            <h3 className="text-3xl md:text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit -rotate-12 pr-2">
+              You are the
+            </h3>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-white">
-                <Activity size={18} />
-              </span>
-              <h3 className="text-base font-semibold text-darkGray">Substance</h3>
-            </div>
-            <p className="mt-3 text-sm text-darkGray/80">
-              Emphasis on decisions, code, and results — what’s behind the UI.
-            </p>
+          <div className="relative">
+            <div className="absolute inset-0 blur-3xl bg-gradient-to-r from-blue-500/30 via-orange-400/20 to-red-500/30 animate-pulse" />
+
+            <span className="relative inline-block font-ramidots text-[4.5rem] md:text-[12rem] leading-none tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit drop-shadow-sm select-none">
+              <NumberTicker value={visitsTotal} />
+              <sup className="align-super text-[0.3em] tracking-wide font-ramidots text-red-500">
+                {suffix}
+              </sup>
+            </span>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-white">
-                <Wrench size={18} />
-              </span>
-              <h3 className="text-base font-semibold text-darkGray">Iteration</h3>
-            </div>
-            <p className="mt-3 text-sm text-darkGray/80">
-              Always evolving with new experiments, notes, and improvements.
-            </p>
-          </div>
+          <h3 className="text-3xl md:text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">
+            visitor of this website.
+          </h3>
+
+          {/* <p className="max-w-xl text-sm md:text-base text-gray-600 leading-relaxed">
+            Every visit helps me iterate, refine and add more hidden layers.
+            Your presence is now part of this project’s timeline. If you restart
+            the quest, the counter will keep evolving for future adventurers.
+          </p> */}
         </div>
+      </section> 
 
 
 
 
         
-      </div> */}
 
 
     </div>

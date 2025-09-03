@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { Search, Puzzle, Crown } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Fireworks } from "fireworks-js";
 
 
 const EasterEggContext = createContext();
@@ -22,8 +23,9 @@ const eggMission = [
     message: "Congratulations! You solved you're first Easter Egg.",
   },
   {
-    id: "eggLord",
+    id: "Achievement : EggLord",
     label: "Become the Easter Egg Lord",
+    message: "Congratulations! You found all the Easter Eggs!",
     icon: <Crown />,
   },
   {
@@ -153,7 +155,8 @@ export const EasterEggProvider = ({ children }) => {
       if (allEggsFound && !completedMissions.includes("eggLord")) {
         completeMission("eggLord");
         navigate("/easter-eggs");
-        window.scrollTo({ top: 0, behavior: "smooth" })
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setTriggerFireworks(true);
       }
 
       return newEggs;
