@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import HomePortfolio from "@/assets/PortfolioHome.png";
+import MobilePortfolio from "@/assets/MobilePortfolio.png";
 import {
   MonitorSmartphone,
   ShieldCheck,
@@ -20,29 +21,30 @@ import { LinkPreview } from "@/components/ui/link-preview";
 
 // Image not used in the following section
 import logo from "@/assets/Logo.png";
+import IconSwitcher from "../components/ui/IconSwitcherSection";
 
 export default function PortfolioScreen({ visitsTotal }) {
   const { number, suffix } = getOrdinalParts(visitsTotal);
 
   const stats = [
     {
-      label: "weeks",
-      value: "4",
+      label: "???",
+      value: "??",
       icon: Calendar,
     },
     {
-      label: "developers",
-      value: "3",
+      label: "???",
+      value: "??",
       icon: Users,
     },
     {
-      label: "Rôle",
-      value: "Software Engineer",
+      label: "???",
+      value: "??",
       icon: Briefcase,
     },
     {
-      label: "Livrables",
-      value: "MVP, docs, démo",
+      label: "???",
+      value: "??",
       icon: FileText,
     },
   ];
@@ -106,31 +108,38 @@ export default function PortfolioScreen({ visitsTotal }) {
           </div>
         </div>
       </section>
-
-      {/* <section>
+      page in construction....
+      {/* <section className="relative mt-24 overflow-hidden bg-white">
         <div className="text-center mb-12">
-
-        <p className="text-xs uppercase tracking-widest text-zinc-500">Objective</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
+            Objective
+          </p>
           <h3 className="mt-3 text-3xl md:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
             Details & Objectives
           </h3>
+          <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
         </div>
-        
+
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
           {stats.map((stat) => {
             const Icon = stat.icon;
             return (
               <div
                 key={stat.label}
-                className="rounded-xl ring-1 ring-zinc-700 bg-[#3a3a3a] p-5 text-center shadow-sm hover:shadow-md transition"
+                className="group rounded-2xl border border-zinc-200 bg-white p-5 text-center shadow-sm transition hover:shadow-md"
               >
-                <div className="flex justify-center mb-2">
-                  <Icon className="h-5 w-5 text-[#20CFBD]" strokeWidth={2} />
+                <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-full ring-1 ring-zinc-200">
+                  <Icon
+                    className="h-5 w-5 text-zinc-700 group-hover:text-zinc-900 transition"
+                    strokeWidth={2}
+                  />
                 </div>
-                <p className="text-base md:text-2xl font-sfbold text-white">
+                <p className="text-base md:text-4xl font-ramidots text-zinc-900 tracking-tight">
                   {stat.value}
                 </p>
-                <p className="text-xs text-zinc-400 mt-1">{stat.label}</p>
+                <p className="text-xs text-zinc-500 mt-1">{stat.label}</p>
+
+                <span className="mt-3 block h-1 w-10 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 opacity-60" />
               </div>
             );
           })}
@@ -138,75 +147,68 @@ export default function PortfolioScreen({ visitsTotal }) {
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
           <div className="md:col-span-3">
-            <h3 className="text-lg font-semibold text-gray-900">Objectifs</h3>
-            <ul className="mt-3 space-y-2 text-sm text-gray-700">
-              <li className="flex gap-3">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
-                <span>
-                  Concevoir une expérience fluide inspirée de Deliveroo, adaptée
-                  au contexte académique.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
-                <span>
-                  Structurer une architecture <em>microservices</em> simple,
-                  déployable en conteneurs.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
-                <span>
-                  Livrer un MVP testable avec une base de données et un tableau
-                  de bord.
-                </span>
-              </li>
+            <h3 className="text-lg font-semibold text-zinc-900">Objectives</h3>
+            <ul className="mt-3 space-y-2 text-sm text-zinc-700">
+              {[
+                "?????????????????????????????????????????????????????????????",
+                "?????????????????????????????????????????????????????????????",
+                "?????????????????????????????????????????????????????????????",
+              ].map((item) => (
+                <li key={item} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+                  <span dangerouslySetInnerHTML={{ __html: item }} />
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-zinc-900">
               Stack & outils
             </h3>
             <div className="mt-3 flex flex-wrap gap-2">
               {[
-                "React / React Native",
-                "Express.js",
-                "MongoDB",
-                "MS SQL",
-                "Docker",
-                "TailwindCSS",
-                "Playwright (tests)",
+                "React",
+                "???????",
+                "???????",
+                "???????",
+                "???????",
+                "???????",
+                "???????",
+                "???????",
+                "???????",
+                "???????",
               ].map((chip) => (
                 <span
                   key={chip}
-                  className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm"
+                  className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-700 shadow-sm"
                 >
+                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
                   {chip}
                 </span>
               ))}
             </div>
-            <p className="mt-4 text-xs text-gray-500">
-              Focus: performance, accessibilité, DX propre, CI simplifiée.
+            <p className="mt-4 text-xs text-zinc-500">
+              Focus&nbsp;: performance, accessibilité, DX propre, CI simplifiée.
             </p>
           </div>
         </div>
-      </section> */}
-
-
-
+      </section>
       <section
         className="mx-auto py-16 sm:py-20"
         aria-label="Why building this portfolio"
       >
         <div className="text-center">
-          <p className="text-xs uppercase tracking-widest text-zinc-500">Objective</p>
+          <p className="text-xs uppercase tracking-widest text-zinc-500">
+            Objective
+          </p>
           <h3 className="mt-3 text-3xl md:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
             Why building this portfolio?
           </h3>
           <div className="relative mx-auto max-w-5xl text-center mt-4">
             <p className="text-darkGray/90 text-base md:text-lg leading-relaxed">
-              When I first discovered the world of computing online, especially through {" "}
+              When I first discovered the world of computing online, especially
+              through{" "}
               <LinkPreview
                 imageSrc="https://play-lh.googleusercontent.com/ZRfghwQudJzza7Zb7k1tlc7aXd3WpnVb48AGg_kP-r84kiOcsLKpeM5goGkAQVT16P0=w526-h296-rw"
                 url="https://agar.io"
@@ -215,62 +217,131 @@ export default function PortfolioScreen({ visitsTotal }) {
               >
                 Agar.io
               </LinkPreview>
-              . I instantly fell in love with websites,
-              particularly the ones that felt impressive to build. From that point, I set myself the goal
-              of creating one that truly reflects <span className="font-semibold">my own universe</span>.
-              This portfolio isn’t about selling myself to recruiters or chasing opportunities.
-              I’m building it purely <span className="italic">for the joy and passion of it</span>.
+              . I instantly fell in love with websites, particularly the ones
+              that felt impressive to build. From that point, I set myself the
+              goal of creating one that truly reflects my own universe. This
+              portfolio isn’t about selling myself to recruiters or chasing
+              opportunities. I’m building it purely{" "}
+              <span className="italic">for the joy and passion of it</span>.
             </p>
           </div>
           <span className="mt-6 inline-block h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
         </div>
       </section>
-      page in construction....
+      <section className="relative">
+        <div
+          aria-hidden
+          className="absolute inset-0 flex items-center justify-center opacity-20"
+        >
+          <span
+            className="font-ramidots text-[20vw] md:text-[16vw] leading-none tracking-tight bg-gradient-to-r
+             from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent select-none py-20 px-32"
+          >
+            PORTFOLIO
+          </span>
+        </div>
 
-     
+        <div className="relative mx-auto max-w-6xl px-6 text-center">
+          
 
+          <div className="mt-10 md:mt-14 flex justify-center gap-8">
+            <PhoneFrame>
+              <img
+                src={MobilePortfolio}
+                alt="App preview"
+                className="h-full w-full object-cover"
+              />
+            </PhoneFrame>
+            <PhoneFrame>
+              <img
+                src={MobilePortfolio}
+                alt="App preview"
+                className="h-full w-full object-cover"
+              />
+            </PhoneFrame>
+            <PhoneFrame>
+              <img
+                src={MobilePortfolio}
+                alt="App preview"
+                className="h-full w-full object-cover"
+              />
+            </PhoneFrame>
+            
+          </div>
+        </div>
+      </section>
+      <section className="relative mt-24 overflow-hidden">
+        
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-15"
+        >
+          <span
+            className="font-ramidots text-[22vw] md:text-[28vw] leading-none tracking-tight
+      bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent select-none"
+          >
+            VISITOR
+          </span>
+        </div>
 
-
-
-
-        <section className="mt-24">
         <div className="relative px-8 py-16 flex flex-col items-center text-center gap-8">
-          <div className="space-y-4">
-           
-            <h3 className="text-3xl md:text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit -rotate-12 pr-2">
+          
+          <div className="space-y-3">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+              Live Counter
+            </p>
+            <h3
+              className="text-3xl md:text-7xl font-ramidots tracking-tight
+        bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit"
+            >
               You are the
             </h3>
           </div>
 
+          
           <div className="relative">
-            <div className="absolute inset-0 blur-3xl bg-gradient-to-r from-blue-500/30 via-orange-400/20 to-red-500/30 animate-pulse" />
+           
+            <div
+              className="absolute -inset-6 md:-inset-10 rounded-full blur-3xl
+        bg-gradient-to-r from-blue-500/25 via-orange-400/20 to-red-500/25 animate-pulse"
+            />
 
-            <span className="relative inline-block font-ramidots text-[4.5rem] md:text-[12rem] leading-none tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit drop-shadow-sm select-none">
+            
+            <span
+              className="relative inline-flex items-baseline justify-center gap-2
+          font-ramidots text-[4.5rem] md:text-[12rem] leading-none tracking-tight
+          bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent
+          drop-shadow-sm select-none"
+              aria-live="polite"
+            >
               <NumberTicker value={visitsTotal} />
-              <sup className="align-super text-[0.3em] tracking-wide font-ramidots text-red-500">
+              <sup className="align-super text-[0.28em] tracking-wide font-ramidots text-red-500">
                 {suffix}
               </sup>
             </span>
+
+            
+            <span
+              className="relative mt-4 block h-1 w-28 md:w-40 mx-auto rounded-full
+        bg-gradient-to-r from-blue-500 via-orange-400 to-red-500"
+            />
           </div>
 
-          <h3 className="text-3xl md:text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">
-            visitor of this website.
+          
+          <h3
+            className="text-3xl md:text-7xl font-ramidots tracking-tight
+      bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit"
+          >
+            visitor of this Portfolio.
           </h3>
 
-          {/* <p className="max-w-xl text-sm md:text-base text-gray-600 leading-relaxed">
-            Every visit helps me iterate, refine and add more hidden layers.
-            Your presence is now part of this project’s timeline. If you restart
-            the quest, the counter will keep evolving for future adventurers.
-          </p> */}
+           mini note optionnelle 
+           <p className="max-w-xl text-sm md:text-base text-gray-600 leading-relaxed">
+      Every visit helps me iterate and add more hidden layers. Thanks for being part of the timeline.
+    </p> 
         </div>
-      </section> 
-
-
-
-
-        
-
-
+      </section> */}
+      {/* <IconSwitcher/> */}
     </div>
   );
 }
@@ -284,4 +355,26 @@ function getOrdinalParts(n) {
   else if (j === 3 && k !== 13) suffix = "rd";
 
   return { number: n, suffix };
+}
+
+function PhoneFrame({ children }) {
+  return (
+    <div className="relative h-[520px] w-[260px] md:h-[660px] md:w-[320px]">
+      {/* device body */}
+      <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-b from-zinc-900 to-zinc-800 shadow-[0_20px_60px_rgba(0,0,0,0.35)]" />
+      <div className="absolute inset-[10px] rounded-[2.5rem] bg-black overflow-hidden">
+        {children}
+      </div>
+
+      {/* side buttons (decorative) */}
+      <div className="absolute -left-1 top-24 h-16 w-1.5 rounded-r bg-zinc-700" />
+      <div className="absolute -right-1 top-40 h-10 w-1.5 rounded-l bg-zinc-700" />
+
+      {/* notch */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-[10px] h-6 w-36 rounded-b-2xl bg-black" />
+
+      {/* lens / speakers subtle gloss */}
+      <div className="pointer-events-none absolute inset-0 rounded-[3rem] ring-2 ring-black/5" />
+    </div>
+  );
 }

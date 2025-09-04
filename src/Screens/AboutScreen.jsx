@@ -12,6 +12,7 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import { useEasterEgg } from "@/context/EasterEggContext";
 import { CoolMode } from "@/components/ui/cool-particle";
+import { LinkPreview } from "@/components/ui/link-preview";
 import {
   Briefcase,
   GraduationCap,
@@ -71,7 +72,7 @@ const FadeIn = ({ children, i = 0, className = "" }) => (
 
 export default function AboutScreen() {
   const navigate = useNavigate();
-  const { } = useEasterEgg();
+  const {} = useEasterEgg();
   const {
     foundEggs,
     eggsFounded,
@@ -187,8 +188,8 @@ export default function AboutScreen() {
             </h2>
             <div className="mt-3 h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full" />
             <p className="mt-5 text-gray-600 leading-relaxed">
-              From studies to hands-on projects, here are the milestones that
-              shaped me — and what I’m doing now.
+              A look at my recent experiences that had the biggest impact on me,
+              both professionally and personally.
             </p>
 
             {/* "Currently" card */}
@@ -210,9 +211,8 @@ export default function AboutScreen() {
               </h3>
               <p className="mt-2 text-gray-600">
                 I decided to leave Saint-Gobain to focus on building my own
-                projects, collaborating with my{" "}
-                <span data-cursor-icon="wife">wife</span> to create meaningful
-                and innovative solutions.
+                projects, collaborating with my wife to create meaningful and
+                innovative solutions.
               </p>
             </div>
           </div>
@@ -644,14 +644,22 @@ export default function AboutScreen() {
                         {/* Texte */}
                         <div className="space-y-4 text-gray-700 leading-relaxed">
                           <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                            I completed a Voluntary Civic Service, a French
-                            national program that allows young people to engage
-                            in meaningful social missions while gaining
-                            experience. My role combined academic support and
-                            community engagement: I helped high school and
-                            middle school students prepare for their Scientific
-                            Baccalaureate and Brevet exams by mentoring them in
-                            core scientific subjects.
+                            I completed a{" "}
+                            <LinkPreview
+                              imageSrc="https://www.missionlocalehautperigord.fr/wp-content/uploads/2023/08/Service-Civique-1080x627.jpg"
+                              url="https://www.service-civique.gouv.fr/"
+                              isStatic
+                              className="font-sfbold text-black hover:bg-gradient-to-r hover:from-blue-500 hover:to-red-500 hover:bg-clip-text hover:text-transparent"
+                            >
+                              Voluntary Civic Service
+                            </LinkPreview>
+                            , a French national program that allows young people
+                            to engage in meaningful social missions while
+                            gaining experience. My role combined academic
+                            support and community engagement: I helped high
+                            school and middle school students prepare for their
+                            Scientific Baccalaureate and Brevet exams by
+                            mentoring them in core scientific subjects.
                             <br />
                             <br />I also took part in organizing animations and
                             educational activities during school holidays,
@@ -789,7 +797,7 @@ export default function AboutScreen() {
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <TooltipProvider>
                     {completedMissions.includes("tip#1") &&
-                      !completedMissions.includes("tip#2") ? (
+                    !completedMissions.includes("tip#2") ? (
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <Globe2

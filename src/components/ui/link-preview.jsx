@@ -78,6 +78,7 @@ export const LinkPreview = ({
                     className={cn(className)}
                     href={url}
                     target="_blank"
+                    data-cursor-icon="arrow"
                 >
                     {children}
                 </HoverCardPrimitive.Trigger>

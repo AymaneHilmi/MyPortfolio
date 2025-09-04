@@ -10,6 +10,7 @@ export default function NotFoundScreen() {
     const navigate = useNavigate();
     const containerRef = useRef(null);
     const [spot, setSpot] = useState({ x: 50, y: 50 });
+    
 
     // Déplace le spotlight (souris & touch)
     const handlePointer = (e) => {
