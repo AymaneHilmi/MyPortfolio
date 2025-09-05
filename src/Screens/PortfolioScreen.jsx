@@ -15,6 +15,8 @@ import {
   Briefcase,
   FileText,
   Sparkles,
+  Lightbulb,
+  MousePointerClick,
 } from "lucide-react";
 import { NumberTicker } from "../components/ui/NumberTicker";
 import { LinkPreview } from "@/components/ui/link-preview";
@@ -108,7 +110,79 @@ export default function PortfolioScreen({ visitsTotal }) {
           </div>
         </div>
       </section>
-      page in construction....
+      {/* <section className="relative mt-24 overflow-hidden bg-white">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-10"
+        >
+          <span className="font-ramidots text-[22vw] md:text-[26vw] leading-none tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent select-none">
+            Déclic
+          </span>
+        </div>
+
+        <div className="mx-auto max-w-7xl px-6">
+
+          <div className="text-center">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+              Section 1 — Le Déclic
+            </p>
+            <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+              Plus qu’un CV, une présence vivante
+            </h2>
+            <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="order-2 md:order-1">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-zinc-900/5"
+                  aria-hidden
+                />
+                <img
+                  src=""
+                  alt="Visuel du déclic"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="order-1 md:order-2">
+              <div className="space-y-5 text-zinc-700 md:text-lg leading-relaxed">
+                <p className="flex items-start gap-3">
+                  <Lightbulb className="w-8 text-blue-600 mt-1" />
+                  <span>
+                    Au départ, j’ai ressenti le besoin d’avoir plus qu’un CV
+                    statique pour me différencier auprès des recruteurs.
+                  </span>
+                </p>
+                <p className="flex items-start gap-3">
+                  <Sparkles className=" w-14 text-orange-600 mt-1" />
+                  <span>
+                    Je voulais un espace qui reflète ma personnalité et mes
+                    compétences de façon vivante : un endroit où l’on ne se
+                    contente pas de lire mon parcours, mais où l’on voit
+                    concrètement ce que je sais faire.
+                  </span>
+                </p>
+                <p className="flex items-start gap-3">
+                  <MousePointerClick className="h-5 w-5 text-red-600 mt-1" />
+                  <span>
+                    C’est de là qu’est née l’idée de créer mon propre portfolio.
+                  </span>
+                </p>
+              </div>
+              <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
+                <p className="text-sm text-zinc-600">
+                  Objectif : transformer une idée en expérience interactive,
+                  claire et élégante.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
       {/* <section className="relative mt-24 overflow-hidden bg-white">
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
