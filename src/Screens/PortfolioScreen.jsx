@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import HomePortfolio from "@/assets/PortfolioHome.png";
 import MobilePortfolio from "@/assets/MobilePortfolio.png";
+import LogoMobile from '@/assets/LogoMobile.png';
 import {
   MonitorSmartphone,
   ShieldCheck,
@@ -17,6 +18,10 @@ import {
   Sparkles,
   Lightbulb,
   MousePointerClick,
+  Linkedin, 
+  Rocket, 
+  Gamepad2, 
+  Palette
 } from "lucide-react";
 import { NumberTicker } from "../components/ui/NumberTicker";
 import { LinkPreview } from "@/components/ui/link-preview";
@@ -24,6 +29,9 @@ import { LinkPreview } from "@/components/ui/link-preview";
 // Image not used in the following section
 import logo from "@/assets/Logo.png";
 import IconSwitcher from "../components/ui/IconSwitcherSection";
+import ConceptionScroller from "../components/ui/conceptionScroller";
+import TechniqueSection from "../components/ui/TechniqueSection";
+import { MacbookScroll } from "../components/ui/macbook-scroll";
 
 export default function PortfolioScreen({ visitsTotal }) {
   const { number, suffix } = getOrdinalParts(visitsTotal);
@@ -50,6 +58,33 @@ export default function PortfolioScreen({ visitsTotal }) {
       icon: FileText,
     },
   ];
+
+  const STEPS = [
+{
+title: "At the beginning",
+subtitle: "A living extension of my resume",
+description:
+"Presenting clearly my journey, projects, and skills with a professional purpose.",
+icons: [<FileText key="cv" className="h-4 w-4" />, <Linkedin key="in" className="h-4 w-4" />],
+image: "",
+},
+{
+title: "The transition",
+subtitle: "Exploring creative freedom",
+description:
+"Starting to use the portfolio as a lab: experimenting with interactions, layouts and ideas.",
+icons: [<Gamepad2 key="gp" className="h-4 w-4" />],
+image: "",
+},
+{
+title: "Today",
+subtitle: "A creative playground",
+description:
+"Experiment, learn and iterate freely: UX, micro-interactions, performance and fun.",
+icons: [<Rocket key="rocket" className="h-4 w-4" />, <Palette key="pal" className="h-4 w-4" />],
+image: "",
+},
+];
 
   return (
     <div className="md:mx-auto max-w-6xl mx-6">
@@ -116,24 +151,23 @@ export default function PortfolioScreen({ visitsTotal }) {
           className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-10"
         >
           <span className="font-ramidots text-[22vw] md:text-[26vw] leading-none tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent select-none">
-            Déclic
+            Trigger
           </span>
         </div>
 
         <div className="mx-auto max-w-7xl px-6">
-
           <div className="text-center">
             <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-              Section 1 — Le Déclic
+              Section 1 — The Trigger
             </p>
             <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
-              Plus qu’un CV, une présence vivante
+              More than a resume, a living presence
             </h2>
             <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
           </div>
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <div className="order-2 md:order-1">
+            <div className="order-1">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
                 <div
                   className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-zinc-900/5"
@@ -141,47 +175,111 @@ export default function PortfolioScreen({ visitsTotal }) {
                 />
                 <img
                   src=""
-                  alt="Visuel du déclic"
+                  alt="Trigger visual"
                   className="h-full w-full object-cover"
                 />
               </div>
             </div>
 
-            <div className="order-1 md:order-2">
+            <div className="order-2">
               <div className="space-y-5 text-zinc-700 md:text-lg leading-relaxed">
                 <p className="flex items-start gap-3">
                   <Lightbulb className="w-8 text-blue-600 mt-1" />
                   <span>
-                    Au départ, j’ai ressenti le besoin d’avoir plus qu’un CV
-                    statique pour me différencier auprès des recruteurs.
+                    At first, I felt the need for more than a static resume to
+                    stand out to recruiters.
                   </span>
                 </p>
                 <p className="flex items-start gap-3">
-                  <Sparkles className=" w-14 text-orange-600 mt-1" />
+                  <Sparkles className="w-12 text-orange-600 mt-1" />
                   <span>
-                    Je voulais un espace qui reflète ma personnalité et mes
-                    compétences de façon vivante : un endroit où l’on ne se
-                    contente pas de lire mon parcours, mais où l’on voit
-                    concrètement ce que je sais faire.
+                    I wanted a space that reflected my personality and skills in
+                    a lively way: a place where you don’t just read my journey,
+                    but actually see what I can do.
                   </span>
                 </p>
                 <p className="flex items-start gap-3">
-                  <MousePointerClick className="h-5 w-5 text-red-600 mt-1" />
+                  <MousePointerClick className="w-6 text-red-600 mt-1" />
                   <span>
-                    C’est de là qu’est née l’idée de créer mon propre portfolio.
+                    That’s when the idea of creating my own portfolio was born.
                   </span>
                 </p>
               </div>
+
               <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
                 <p className="text-sm text-zinc-600">
-                  Objectif : transformer une idée en expérience interactive,
-                  claire et élégante.
+                  Goal: turn an idea into an interactive, clear, and elegant
+                  experience.
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
+
+       <section className="relative mt-24 bg-white">
+      <div className="">
+        <div className="text-center">
+          <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Section 2 — The Vision</p>
+          <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+            From professional tool to creative playground
+          </h2>
+          <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+        </div>
+        <div className="mt-16 relative">
+
+          <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
+            {STEPS.map((step, idx) => (
+              <div key={idx} className="relative">
+                <article className="md:h-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm md:pl-0">
+                  <div className="relative aspect-[16/10] md:aspect-[4/3] overflow-hidden rounded-t-2xl">
+                    <img src={step.image} alt={step.subtitle} className="h-full w-full object-cover" />
+                    <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-t-2xl" />
+                  </div>
+                  <div className="p-5 space-y-3">
+                    <h3 className="font-ramidots text-xl md:text-2xl tracking-tight text-zinc-900">{step.title}</h3>
+                    <p className="text-xs uppercase tracking-widest text-zinc-500">{step.subtitle}</p>
+                    <div className="flex gap-2 text-zinc-600">
+                      {step.icons.map((icon, i) => (
+                        <IconBadge key={i}>{icon}</IconBadge>
+                      ))}
+                    </div>
+                    <p className="text-sm text-zinc-600 leading-relaxed">{step.description}</p>
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ConceptionScroller steps={[
+    { id: "s1", layout: "left",  title: "Wireframe — navigation & layout", description: "Esquisser rapidement la structure : header, menu, zones de contenu.", image: "/images/wireframe-1.jpg", caption: "Low-fi #1" },
+    { id: "s2", layout: "right", title: "Wireframe — flows & priorités",   description: "Valider les parcours clés et la hiérarchie visuelle.",          image: "/images/wireframe-2.jpg", caption: "Low-fi #2" },
+    { id: "s3", layout: "full",  title: "Mood & Direction visuelle",        description: "Inspirations, micro-interactions : une image full-width pour marquer l’étape.", image: "/images/mood.jpg" },
+    { id: "s4", layout: "left",  title: "Post-its — organisation",          description: "Clusteriser les idées, prioriser ce qui compte vraiment.",     image: "/images/postits.jpg", caption: "Workshop notes" },
+  ]} />
+
+  <TechniqueSection/>
+  <MacbookScroll
+        title={
+          <span>
+            This Macbook is built with Tailwindcss. <br /> No kidding.
+          </span>
+        }
+        badge={
+          <a href="https://peerlist.io/manuarora">
+            <Badge className="h-10 w-10 -rotate-12 transform" />
+          </a>
+        }
+        src={`/linear.webp`}
+        showGradient={false}
+      />
+
+  <TechniqueSection/> */}
+
+    
 
       {/* <section className="relative mt-24 overflow-hidden bg-white">
         <div className="text-center mb-12">
@@ -452,3 +550,17 @@ function PhoneFrame({ children }) {
     </div>
   );
 }
+
+function IconBadge({ children }) {
+return (
+<span className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-zinc-200 bg-white shadow-sm">
+{children}
+</span>
+);
+}
+
+const Badge = ({ className }) => {
+  return (
+    <img src={LogoMobile} className="w-10 h-10" alt="Logo" />
+  );
+};
