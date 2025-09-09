@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import HomePortfolio from "@/assets/PortfolioHome.png";
 import MobilePortfolio from "@/assets/MobilePortfolio.png";
 import LogoMobile from '@/assets/LogoMobile.png';
+import { motion } from "framer-motion";
+import intro from '@/assets/IntroPortfolio.mp4';
 import {
   MonitorSmartphone,
   ShieldCheck,
   Boxes,
+  Box,
   Database,
   Wrench,
   Activity,
@@ -18,10 +21,13 @@ import {
   Sparkles,
   Lightbulb,
   MousePointerClick,
-  Linkedin, 
-  Rocket, 
-  Gamepad2, 
-  Palette
+  Linkedin,
+  Rocket,
+  Gamepad2,
+  Palette,
+  Image,
+  Wand2,
+  LayoutDashboard,
 } from "lucide-react";
 import { NumberTicker } from "../components/ui/NumberTicker";
 import { LinkPreview } from "@/components/ui/link-preview";
@@ -30,8 +36,9 @@ import { LinkPreview } from "@/components/ui/link-preview";
 import logo from "@/assets/Logo.png";
 import IconSwitcher from "../components/ui/IconSwitcherSection";
 import ConceptionScroller from "../components/ui/conceptionScroller";
-import TechniqueSection from "../components/ui/TechniqueSection";
-import { MacbookScroll } from "../components/ui/macbook-scroll";
+import TechniqueSection from "@/components/ui/TechniqueSection";
+import { MacbookScroll } from "@/components/ui/macbook-scroll";
+import AutoPlayVideo from "../components/ui/autoplayVideo";
 
 export default function PortfolioScreen({ visitsTotal }) {
   const { number, suffix } = getOrdinalParts(visitsTotal);
@@ -60,31 +67,37 @@ export default function PortfolioScreen({ visitsTotal }) {
   ];
 
   const STEPS = [
-{
-title: "At the beginning",
-subtitle: "A living extension of my resume",
-description:
-"Presenting clearly my journey, projects, and skills with a professional purpose.",
-icons: [<FileText key="cv" className="h-4 w-4" />, <Linkedin key="in" className="h-4 w-4" />],
-image: "",
-},
-{
-title: "The transition",
-subtitle: "Exploring creative freedom",
-description:
-"Starting to use the portfolio as a lab: experimenting with interactions, layouts and ideas.",
-icons: [<Gamepad2 key="gp" className="h-4 w-4" />],
-image: "",
-},
-{
-title: "Today",
-subtitle: "A creative playground",
-description:
-"Experiment, learn and iterate freely: UX, micro-interactions, performance and fun.",
-icons: [<Rocket key="rocket" className="h-4 w-4" />, <Palette key="pal" className="h-4 w-4" />],
-image: "",
-},
-];
+    {
+      title: "At the beginning",
+      subtitle: "A living extension of my resume",
+      description:
+        "Presenting clearly my journey, projects, and skills with only a professional purpose.",
+      icons: [<FileText key="cv" className="h-4 w-4" />, <Linkedin key="in" className="h-4 w-4" />],
+      image: "",
+    },
+    {
+      title: "The transition",
+      subtitle: "Exploring creative freedom",
+      description:
+        "Starting to use the portfolio as a lab: experimenting with interactions, layouts, pictures, design and ideas.",
+      icons: [
+        <Wand2 key="wand" className="h-4 w-4" />,
+        <LayoutDashboard key="layout" className="h-4 w-4" />
+      ],
+      image: "",
+    },
+    {
+      title: "At the end",
+      subtitle: "A creative playground",
+      description:
+        "Bringing the portfolio with subtle 3D touches and micro-animations, hiding playful easter eggs. Make it feels like my own little world.",
+      icons: [
+        <Box key="cube" className="h-4 w-4" />,
+        <Sparkles key="sprk" className="h-4 w-4" />
+      ],
+      image: "",
+    },
+  ];
 
   return (
     <div className="md:mx-auto max-w-6xl mx-6">
@@ -145,16 +158,8 @@ image: "",
           </div>
         </div>
       </section>
-      {/* <section className="relative mt-24 overflow-hidden bg-white">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-10"
-        >
-          <span className="font-ramidots text-[22vw] md:text-[26vw] leading-none tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent select-none">
-            Trigger
-          </span>
-        </div>
 
+      <section className="relative mt-24 overflow-hidden bg-white ">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
@@ -166,19 +171,40 @@ image: "",
             <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-14 items-center ">
             <div className="order-1">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
-                <div
-                  className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-zinc-900/5"
-                  aria-hidden
-                />
-                <img
-                  src=""
-                  alt="Trigger visual"
-                  className="h-full w-full object-cover"
-                />
+              <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+                {/* Safari top bar */}
+                <div className="flex items-center gap-1.5 px-2 py-1.5 bg-zinc-100/80 backdrop-blur-sm border-b border-zinc-200">
+                  <span className="h-2 w-2 rounded-full bg-red-500/80" />
+                  <span className="h-2 w-2 rounded-full bg-yellow-400/80" />
+                  <span className="h-2 w-2 rounded-full bg-emerald-500/80" />
+                  <div className="flex-1 flex justify-center">
+                    <a className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 ring-1 ring-zinc-300 text-[10px] text-zinc-600 shadow-sm"
+                      data-cursor-icon="arrow"
+                      href="https://aymanehilmi.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="font-sfregular text-zinc-400">https://</span>
+                      <span className="font-sfregular tracking-tight">aymanehilmi.com</span>
+                    </a>
+                  </div>
+                  <span className="hidden sm:inline-block h-2 w-6 rounded bg-zinc-200 " />
+                </div>
+
+                <div className="">
+                  <AutoPlayVideo
+                    src={intro}
+                    poster="/images/poster.jpg"
+                    className="w-full"
+                  />
+                </div>
+
+                <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl" />
               </div>
+
+
             </div>
 
             <div className="order-2">
@@ -206,63 +232,65 @@ image: "",
                 </p>
               </div>
 
-              <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
-                <p className="text-sm text-zinc-600">
-                  Goal: turn an idea into an interactive, clear, and elegant
-                  experience.
-                </p>
-              </div>
+
             </div>
           </div>
         </div>
       </section>
 
-       <section className="relative mt-24 bg-white">
-      <div className="">
-        <div className="text-center">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Section 2 — The Vision</p>
-          <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
-            From professional tool to creative playground
-          </h2>
-          <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
-        </div>
-        <div className="mt-16 relative">
 
-          <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
-            {STEPS.map((step, idx) => (
-              <div key={idx} className="relative">
-                <article className="md:h-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm md:pl-0">
-                  <div className="relative aspect-[16/10] md:aspect-[4/3] overflow-hidden rounded-t-2xl">
-                    <img src={step.image} alt={step.subtitle} className="h-full w-full object-cover" />
-                    <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-t-2xl" />
-                  </div>
-                  <div className="p-5 space-y-3">
-                    <h3 className="font-ramidots text-xl md:text-2xl tracking-tight text-zinc-900">{step.title}</h3>
-                    <p className="text-xs uppercase tracking-widest text-zinc-500">{step.subtitle}</p>
-                    <div className="flex gap-2 text-zinc-600">
-                      {step.icons.map((icon, i) => (
-                        <IconBadge key={i}>{icon}</IconBadge>
-                      ))}
+      <section className="relative mt-24 bg-white">
+        <div className="">
+          <div className="text-center">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Section 2 — The Vision</p>
+            <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+              From professional tool to creative playground
+            </h2>
+            <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+          </div>
+          <div className="mt-16 relative">
+
+            <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
+              {STEPS.map((step, idx) => (
+                <div key={idx} className="relative">
+                  <article className="md:h-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm md:pl-0">
+                    <div className="relative aspect-[16/10] md:aspect-[4/3] overflow-hidden rounded-t-2xl">
+
+                      {idx === 0 && <StackVisual variant="cv" />}
+                      {idx === 1 && <StackVisual variant="image" />}
+                      {idx === 2 && <StackVisual variant="image3d" />}
+
+
+                      {/* <img src={step.image} alt={step.subtitle} className="h-full w-full object-cover" /> */}
+                      <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-t-2xl" />
                     </div>
-                    <p className="text-sm text-zinc-600 leading-relaxed">{step.description}</p>
-                  </div>
-                </article>
-              </div>
-            ))}
+                    <div className="p-5 space-y-3">
+                      <h3 className="font-ramidots px-2 text-xl md:text-4xl tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block ">{step.title}</h3>
+                      <p className="text-xs uppercase tracking-widest text-zinc-500">{step.subtitle}</p>
+                      <div className="flex gap-2 text-zinc-600">
+                        {step.icons.map((icon, i) => (
+                          <IconBadge key={i}>{icon}</IconBadge>
+                        ))}
+                      </div>
+                      <p className="text-sm text-zinc-600 leading-relaxed">{step.description}</p>
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <ConceptionScroller steps={[
-    { id: "s1", layout: "left",  title: "Wireframe — navigation & layout", description: "Esquisser rapidement la structure : header, menu, zones de contenu.", image: "/images/wireframe-1.jpg", caption: "Low-fi #1" },
-    { id: "s2", layout: "right", title: "Wireframe — flows & priorités",   description: "Valider les parcours clés et la hiérarchie visuelle.",          image: "/images/wireframe-2.jpg", caption: "Low-fi #2" },
-    { id: "s3", layout: "full",  title: "Mood & Direction visuelle",        description: "Inspirations, micro-interactions : une image full-width pour marquer l’étape.", image: "/images/mood.jpg" },
-    { id: "s4", layout: "left",  title: "Post-its — organisation",          description: "Clusteriser les idées, prioriser ce qui compte vraiment.",     image: "/images/postits.jpg", caption: "Workshop notes" },
-  ]} />
+      {/* <ConceptionScroller steps={[
+        { id: "s1", layout: "left", title: "Wireframe — navigation & layout", description: "Esquisser rapidement la structure : header, menu, zones de contenu.", image: "/images/wireframe-1.jpg", caption: "Low-fi #1" },
+        { id: "s2", layout: "right", title: "Wireframe — flows & priorités", description: "Valider les parcours clés et la hiérarchie visuelle.", image: "/images/wireframe-2.jpg", caption: "Low-fi #2" },
+        { id: "s3", layout: "full", title: "Mood & Direction visuelle", description: "Inspirations, micro-interactions : une image full-width pour marquer l’étape.", image: "/images/mood.jpg" },
+        { id: "s4", layout: "left", title: "Post-its — organisation", description: "Clusteriser les idées, prioriser ce qui compte vraiment.", image: "/images/postits.jpg", caption: "Workshop notes" },
+      ]} />
 
-  <TechniqueSection/>
-  <MacbookScroll
+      <TechniqueSection />
+      <MacbookScroll
         title={
           <span>
             This Macbook is built with Tailwindcss. <br /> No kidding.
@@ -275,11 +303,9 @@ image: "",
         }
         src={`/linear.webp`}
         showGradient={false}
-      />
+      /> */}
 
-  <TechniqueSection/> */}
 
-    
 
       {/* <section className="relative mt-24 overflow-hidden bg-white">
         <div className="text-center mb-12">
@@ -552,15 +578,109 @@ function PhoneFrame({ children }) {
 }
 
 function IconBadge({ children }) {
-return (
-<span className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-zinc-200 bg-white shadow-sm">
-{children}
-</span>
-);
+  return (
+    <span className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-zinc-200 bg-white shadow-sm">
+      {children}
+    </span>
+  );
 }
 
 const Badge = ({ className }) => {
   return (
-    <img src={LogoMobile} className="w-10 h-10" alt="Logo" />
+    <div className=" bg-white rounded-full" data-cursor-icon="arrow">
+
+      < img src={LogoMobile} className="w-10 h-10" alt="Logo" />
+    </div>
   );
 };
+
+
+
+function StackVisual({ variant }) {
+  return (
+    <div className="absolute inset-0 bg-white group">
+      {/* stack container */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[78%] max-w-sm h-[78%]">
+        {/* sheet 3 (back) */}
+        <div className="absolute inset-0 translate-x-[-10px] translate-y-[10px] rounded-xl bg-white border border-zinc-200 shadow-sm transition-transform duration-300 group-hover:-rotate-6 group-hover:-translate-x-3 group-hover:translate-y-3" />
+        {/* sheet 2 */}
+        <div className="absolute inset-0 translate-x-[-6px] translate-y-[6px] rounded-xl bg-white border border-zinc-200 shadow-sm transition-transform duration-300 group-hover:-rotate-3 group-hover:-translate-x-1.5 group-hover:translate-y-1.5" />
+        {/* sheet 1 (top) */}
+        <div className="absolute inset-0 rounded-xl bg-white border border-zinc-200 shadow-sm overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
+          {/* inner content by variant */}
+          {variant === "cv" && (
+            <div className="p-4 space-y-2">
+              <div className="h-3 w-24 rounded bg-zinc-200" />
+              <div className="h-2 w-40 rounded bg-zinc-100" />
+              <div className="h-2 w-36 rounded bg-zinc-100" />
+              <div className="mt-2 space-y-1.5">
+                <div className="h-2 w-48 rounded bg-zinc-100" />
+                <div className="h-2 w-44 rounded bg-zinc-100" />
+                <div className="h-2 w-40 rounded bg-zinc-100" />
+              </div>
+              <div className="mt-2 space-y-1.5">
+                <div className="h-2 w-48 rounded bg-zinc-100" />
+                <div className="h-2 w-44 rounded bg-zinc-100" />
+                <div className="h-2 w-40 rounded bg-zinc-100" />
+              </div>
+              <div className="mt-2 space-y-1.5">
+                <div className="h-2 w-48 rounded bg-zinc-100" />
+                <div className="h-2 w-44 rounded bg-zinc-100" />
+                <div className="h-2 w-40 rounded bg-zinc-100" />
+              </div>
+            </div>
+          )}
+
+          {variant === "image" && (
+            <div className="h-full w-full p-4">
+              <div className="grid h-full w-full grid-cols-3 grid-rows-3 gap-3">
+                {/* Big hero tile */}
+                <div className="col-span-2 row-span-2 rounded-lg bg-zinc-50 ring-1 ring-inset ring-zinc-200 overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
+                  <div className="h-full w-full grid place-items-center">
+                    <Image className="h-10 w-10 text-zinc-400 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110" strokeWidth={1} />
+                  </div>
+                </div>
+                {/* Small square */}
+                <div className="col-span-1 row-span-1 rounded-lg bg-zinc-50 ring-1 ring-inset ring-zinc-200 grid place-items-center transition-transform duration-300 group-hover:-rotate-1">
+                  <Image className="h-6 w-6 text-zinc-400" strokeWidth={1} />
+                </div>
+                {/* Tall tile with caption bars */}
+                <div className="col-span-1 row-span-2 rounded-lg bg-zinc-50 ring-1 ring-inset ring-zinc-200 p-3 flex flex-col justify-between transition-transform duration-300 group-hover:translate-y-0.5">
+                  <div className="grid place-items-center py-4">
+                    <Image className="h-7 w-7 text-zinc-400" strokeWidth={1} />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-2 w-5/6 rounded bg-zinc-200" />
+                    <div className="h-2 w-4/6 rounded bg-zinc-100" />
+                  </div>
+                </div>
+                {/* Wide caption strip */}
+                <div className="col-span-2 row-span-1 rounded-lg bg-zinc-50 ring-1 ring-inset ring-zinc-200 p-3 flex items-center gap-3 transition-transform duration-300 group-hover:translate-x-0.5">
+                  <div className="h-8 w-8 grid place-items-center rounded bg-white ring-1 ring-zinc-200">
+                    <Image className="h-4 w-4 text-zinc-400" strokeWidth={1} />
+                  </div>
+                  <div className="flex-1 space-y-2">
+                    <div className="h-2 w-4/5 rounded bg-zinc-200" />
+                    <div className="h-2 w-3/5 rounded bg-zinc-100" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {variant === "image3d" && (
+            <div className="relative h-full w-full">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="grid place-items-center rounded-lg ring-1 ring-inset ring-zinc-200 bg-zinc-50 w-[78%] h-[64%]">
+                  <div className="flex items-center gap-2 text-zinc-600">
+                    <Boxes className="h-10 w-10 text-zinc-400 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" strokeWidth={1} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

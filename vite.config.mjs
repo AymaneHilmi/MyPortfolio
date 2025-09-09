@@ -9,7 +9,7 @@ export default defineConfig({
     alias: { '@': path.resolve(__dirname, 'src') },
   },
   server: {
-    port: 3000,
+    port: 5173,
     open: true,
     hmr: { overlay: true }, // <- s'assurer que ce n’est pas désactivé
   },

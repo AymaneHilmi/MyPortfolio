@@ -72,7 +72,7 @@ const FadeIn = ({ children, i = 0, className = "" }) => (
 
 export default function AboutScreen() {
   const navigate = useNavigate();
-  const {} = useEasterEgg();
+  const { } = useEasterEgg();
   const {
     foundEggs,
     eggsFounded,
@@ -231,7 +231,7 @@ export default function AboutScreen() {
                     <button
                       type="button"
                       className="group w-full text-left rounded-2xl border border-gray-200 p-5 
-             hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer"
+             hover:shadow-lg hover:-translate-y-1 transition-all"
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                         <h4 className="text-lg md:text-xl font-semibold text-gray-900 flex items-center gap-2">
@@ -404,7 +404,7 @@ export default function AboutScreen() {
                     <button
                       type="button"
                       className="group w-full text-left rounded-2xl border border-gray-200 p-5 
-             hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer"
+             hover:shadow-lg hover:-translate-y-1 transition-all"
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                         <h4 className="text-lg md:text-xl font-semibold text-gray-900 flex items-center gap-2">
@@ -555,7 +555,7 @@ export default function AboutScreen() {
                     <button
                       type="button"
                       className="group w-full text-left rounded-2xl border border-gray-200 p-5 
-             hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer"
+             hover:shadow-lg hover:-translate-y-1 transition-all"
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                         <h4 className="text-lg md:text-xl font-semibold text-gray-900 flex items-center gap-2">
@@ -797,7 +797,7 @@ export default function AboutScreen() {
                 <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <TooltipProvider>
                     {completedMissions.includes("tip#1") &&
-                    !completedMissions.includes("tip#2") ? (
+                      !completedMissions.includes("tip#2") ? (
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <Globe2

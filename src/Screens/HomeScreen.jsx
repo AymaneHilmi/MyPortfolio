@@ -62,7 +62,7 @@ export default function HomeScreen({ visitsTotal }) {
       style:
         "font-ramidots text-4xl md:text-6xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block",
       description:
-        "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
+        "A personal portfolio website displaying my journey and projects, crafted to demonstrate my growth and creativity.",
       image: HomePortfolio,
       link: "Portfolio",
     },
@@ -74,7 +74,7 @@ export default function HomeScreen({ visitsTotal }) {
       subtitle: "Aix-en-Provence • 2023",
       style: "font-sfbold text-2xl md:text-4xl",
       description:
-        "Description du deuxième projet qui met en avant ses objectifs et réalisations.",
+        "A food delivery platform designed to connect customers, restaurants, and delivery drivers, developed as part of an academic project.",
       image: HomeCesiverooCompleted,
       link: "Cesiveroo",
       cursor: "cesiveroo",
@@ -352,3 +352,4 @@ export default function HomeScreen({ visitsTotal }) {
     </div>
   );
 }
+
