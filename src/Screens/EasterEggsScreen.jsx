@@ -380,7 +380,6 @@ export default function EasterEggsScreen() {
                 </div>
               </div>
 
-              {/* NEW: Description & GitHub Star CTA */}
               <div className="w-full max-w-3xl space-y-4">
                 <div className="relative rounded-2xl border border-emerald-200/70 bg-white/80 backdrop-blur-sm p-6 shadow-inner">
                   <div className="absolute inset-0 pointer-events-none rounded-2xl [background:radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.15),transparent_60%)]"></div>
@@ -586,8 +585,8 @@ export default function EasterEggsScreen() {
                       </span>
                       <span
                         className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] ${m.reached
-                            ? "text-emerald-700 bg-emerald-50 border-emerald-200"
-                            : "text-gray-600 bg-gray-50 border-gray-200"
+                          ? "text-emerald-700 bg-emerald-50 border-emerald-200"
+                          : "text-gray-600 bg-gray-50 border-gray-200"
                           }`}
                       >
                         {m.reached ? "Reached" : "Locked"}
@@ -714,8 +713,8 @@ export default function EasterEggsScreen() {
                                       <div className="relative pb-4">
                                         <div
                                           className={`flex items-start justify-between ${completedMissions.includes("tip#1")
-                                              ? ""
-                                              : "blur-sm opacity-50 select-none pointer-events-none"
+                                            ? ""
+                                            : "blur-sm opacity-50 select-none pointer-events-none"
                                             }`}
                                         >
                                           <div>
@@ -750,8 +749,8 @@ export default function EasterEggsScreen() {
                                       <div className="relative">
                                         <div
                                           className={`flex items-start justify-between ${completedMissions.includes("tip#2")
-                                              ? ""
-                                              : "blur-sm opacity-50 select-none pointer-events-none"
+                                            ? ""
+                                            : "blur-sm opacity-50 select-none pointer-events-none"
                                             }`}
                                         >
                                           <div>
