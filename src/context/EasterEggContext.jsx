@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { Search, Puzzle, Crown } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Fireworks } from "fireworks-js";
+
 
 
 const EasterEggContext = createContext();
@@ -156,7 +156,7 @@ export const EasterEggProvider = ({ children }) => {
         completeMission("eggLord");
         navigate("/easter-eggs");
         window.scrollTo({ top: 0, behavior: "smooth" });
-        setTriggerFireworks(true);
+
       }
 
       return newEggs;
