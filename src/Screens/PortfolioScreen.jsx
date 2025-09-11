@@ -11,6 +11,7 @@ import CesiverooSpline from "@/assets/CesiverooSpline.mp4";
 import LandingPageSpline from "@/assets/LandingPageSpline.mp4";
 import AymanePortfolioV1 from "@/assets/AymanePortfolioV1.mp4";
 import ComingSoon from "@/assets/ComingSoon.mp4";
+import rework from "@/assets/ReworkPortfolio.jpg";
 import {
   MonitorSmartphone,
   ShieldCheck,
@@ -45,6 +46,7 @@ import ConceptionScroller from "../components/ui/conceptionScroller";
 import TechniqueSection from "@/components/ui/TechniqueSection";
 import { MacbookScroll } from "@/components/ui/macbook-scroll";
 import AutoPlayVideo from "../components/ui/autoplayVideo";
+import LighthouseSection from "../components/ui/lightHousesection";
 
 export default function PortfolioScreen({ visitsTotal }) {
   const { number, suffix } = getOrdinalParts(visitsTotal);
@@ -169,14 +171,14 @@ export default function PortfolioScreen({ visitsTotal }) {
       </section>
 
       <section className="" aria-label="Why building this portfolio">
-        <div className="text-center">
-          <p className="text-xs uppercase tracking-widest text-zinc-500">
+        <div className="text-left">
+          <p className="text-[10px] uppercase tracking-widest text-zinc-500">
             Objective
           </p>
           <h3 className="mt-3 text-3xl md:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
             Why building this portfolio?
           </h3>
-          <div className="relative mx-auto max-w-5xl text-center mt-4">
+          <div className="relative mx-auto max-w-5xl text-left text-justify mt-4">
             <p className="text-darkGray/90 text-base md:text-lg leading-relaxed">
               When I first discovered the world of computing online, especially
               through{" "}
@@ -196,7 +198,7 @@ export default function PortfolioScreen({ visitsTotal }) {
               <span className="italic">for the joy and passion of it</span>.
             </p>
           </div>
-          <span className="mt-6 inline-block h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+          {/* <span className="mt-6 inline-block h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" /> */}
         </div>
       </section>
 
@@ -214,6 +216,9 @@ export default function PortfolioScreen({ visitsTotal }) {
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-14 items-center ">
             <div className="order-1">
+              <p className="text-[10px] text-center uppercase tracking-widest text-zinc-500 mb-2">
+                Final Version of the Portfolio
+              </p>
               <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
                 {/* Safari top bar */}
                 <div className="flex items-center gap-1.5 px-2 py-1.5 bg-zinc-100/80 backdrop-blur-sm border-b border-zinc-200">
@@ -240,6 +245,7 @@ export default function PortfolioScreen({ visitsTotal }) {
                 </div>
 
                 <div className="">
+
                   <AutoPlayVideo src={intro} className="w-full" />
                 </div>
 
@@ -335,14 +341,12 @@ export default function PortfolioScreen({ visitsTotal }) {
       </section>
 
       <section>
-        <div className="text-center mt-44">
+        <div className="text-center mt-10">
           <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
             The Conception
           </p>
-          <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block px-2">
-            Getting Inspiration
-          </h2>
-          <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+
+          {/* <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" /> */}
         </div>
 
         <figure className=" translate-y-6 transition will-change-transform">
@@ -870,7 +874,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
           <figcaption className="mt-10 text-center">
             <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">
-              Here’s what it looked like once I implemented it on the website :
+              Here’s what it looked like once I implemented it on the website.
             </p>
           </figcaption>
         </figure>
@@ -974,6 +978,47 @@ export default function PortfolioScreen({ visitsTotal }) {
           </div>
         </div>
       </section>
+
+      <p className="text-zinc-600 md:text-lg leading-relaxed  mt-16">
+
+        I really enjoyed experimenting with 3D, even though my skills in this area were very limited. Discovering this field was exciting and I had a lot of fun at the beginning, but over time I started to enjoy it less as I ran into major performance issues on my website.
+      </p>
+
+      <LighthouseSection />
+
+      <p className="text-zinc-600 md:text-lg leading-relaxed  mt-24">
+
+        This issue was a significant challenge because I wanted to maintain a smooth and fast user experience, which is crucial for a portfolio site. After several attempts to optimize the 3D models and scenes, I realized that the performance trade-offs were too high. The loading times were long, and the animations were not as smooth as I wanted them to be, especially on mobile devices.
+      </p>
+      <p className="text-zinc-600 md:text-lg leading-relaxed  mt-8">
+        I also realized that I was losing the first idea of simplicity and clarity that I wanted to keep in my portfolio. So I decided to focus more on clean design and smooth interactions rather than adding too many 3D elements that could distract from the main content.
+        Which is why I decided to remove the 3D elements and make a complete redesign of the portfolio, refocusing on simplicity and performance.
+      </p>
+
+      <section className="relative mt-24">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+          {/* LEFT — Image */}
+          <figure className="order-1">
+            <figcaption className="mb-3 text-[10px] text-zinc-500 text-center uppercase">Redesign preview</figcaption>
+            <div className="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+              <img src={rework} alt="Redesign preview" className="w-full h-auto object-cover" />
+              <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl" />
+            </div>
+          </figure>
+
+          {/* RIGHT — Text */}
+          <div className="order-2 text-left">
+            <p className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
+              For the new design, I wanted to add a touch of color, which is why {" "}
+              <span className="bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">
+                this gradient</span> became a strong visual element throughout the site. I also introduced a new typeface called <span className="font-ramidots text-2xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">Ramidots</span> {" "}
+              to give the portfolio a more unique identity. Alongside the visuals, I spent time testing the experience on both desktop and mobile, making sure that the user journey felt the same across devices.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
 
 
       {/* <section className="relative mt-44 bg-white">
@@ -1548,3 +1593,5 @@ function StackVisual({ variant }) {
     </div>
   );
 }
+
+
