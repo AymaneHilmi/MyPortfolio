@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import HomePortfolio from "@/assets/PortfolioHome.png";
-import MobilePortfolio from "@/assets/MobilePortfolio.png";
-import LogoMobile from '@/assets/LogoMobile.png';
+import LogoMobile from "@/assets/LogoMobile.png";
 import { motion } from "framer-motion";
-import intro from '@/assets/IntroPortfolio.mp4';
-import ethanchng from '@/assets/ethanchng.mp4';
-import zaid from '@/assets/zaid.mp4';
-import Yiko from '@/assets/Yiko-Li.mp4';
+import intro from "@/assets/IntroPortfolio.mp4";
+import ethanchng from "@/assets/ethanchng.mp4";
+import zaid from "@/assets/zaid.mp4";
+import Yiko from "@/assets/Yiko-Li.mp4";
 import {
   MonitorSmartphone,
   ShieldCheck,
@@ -75,7 +74,10 @@ export default function PortfolioScreen({ visitsTotal }) {
       subtitle: "A living extension of my resume",
       description:
         "Presenting clearly my journey, projects, and skills with only a professional purpose.",
-      icons: [<FileText key="cv" className="h-4 w-4" />, <Linkedin key="in" className="h-4 w-4" />],
+      icons: [
+        <FileText key="cv" className="h-4 w-4" />,
+        <Linkedin key="in" className="h-4 w-4" />,
+      ],
       image: "",
     },
     {
@@ -85,7 +87,7 @@ export default function PortfolioScreen({ visitsTotal }) {
         "Starting to use the portfolio as a lab: experimenting with interactions, layouts, pictures, design and ideas.",
       icons: [
         <Wand2 key="wand" className="h-4 w-4" />,
-        <LayoutDashboard key="layout" className="h-4 w-4" />
+        <LayoutDashboard key="layout" className="h-4 w-4" />,
       ],
       image: "",
     },
@@ -96,14 +98,14 @@ export default function PortfolioScreen({ visitsTotal }) {
         "Bringing the portfolio with subtle 3D touches and micro-animations, hiding playful easter eggs. Make it feels like my own little world.",
       icons: [
         <Box key="cube" className="h-4 w-4" />,
-        <Sparkles key="sprk" className="h-4 w-4" />
+        <Sparkles key="sprk" className="h-4 w-4" />,
       ],
       image: "",
     },
   ];
 
   return (
-    <div className="md:mx-auto max-w-6xl mx-6">
+    <div className="md:mx-auto max-w-5xl mx-6">
       <section className="mx-auto py-12 md:py-16 mt-32 flex justify-center items-center">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* Left column — Text */}
@@ -162,6 +164,38 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
       </section>
 
+      <section className="" aria-label="Why building this portfolio">
+        <div className="text-center">
+          <p className="text-xs uppercase tracking-widest text-zinc-500">
+            Objective
+          </p>
+          <h3 className="mt-3 text-3xl md:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+            Why building this portfolio?
+          </h3>
+          <div className="relative mx-auto max-w-5xl text-center mt-4">
+            <p className="text-darkGray/90 text-base md:text-lg leading-relaxed">
+              When I first discovered the world of computing online, especially
+              through{" "}
+              <LinkPreview
+                imageSrc="https://play-lh.googleusercontent.com/ZRfghwQudJzza7Zb7k1tlc7aXd3WpnVb48AGg_kP-r84kiOcsLKpeM5goGkAQVT16P0=w526-h296-rw"
+                url="https://agar.io"
+                isStatic
+                className="font-bold text-black hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 hover:bg-clip-text hover:text-transparent transition-colors duration-300"
+              >
+                Agar.io
+              </LinkPreview>
+              . I instantly fell in love with websites, particularly the ones
+              that felt impressive to build. From that point, I set myself the
+              goal of creating one that truly reflects my own universe. This
+              portfolio isn’t about selling myself to recruiters or chasing
+              opportunities. I’m building it purely{" "}
+              <span className="italic">for the joy and passion of it</span>.
+            </p>
+          </div>
+          <span className="mt-6 inline-block h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+        </div>
+      </section>
+
       <section className="relative mt-24 overflow-hidden bg-white ">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
@@ -183,30 +217,33 @@ export default function PortfolioScreen({ visitsTotal }) {
                   <span className="h-2 w-2 rounded-full bg-yellow-400/80" />
                   <span className="h-2 w-2 rounded-full bg-emerald-500/80" />
                   <div className="flex-1 flex justify-center">
-                    <a className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 ring-1 ring-zinc-300 text-[10px] text-zinc-600 shadow-sm"
+                    <a
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 ring-1 ring-zinc-300 text-[10px] text-zinc-600 shadow-sm"
                       data-cursor-icon="arrow"
                       href="https://aymanehilmi.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span className="font-sfregular text-zinc-400">https://</span>
-                      <span className="font-sfregular tracking-tight">aymanehilmi.com</span>
+                      <span className="font-sfregular text-zinc-400">
+                        https://
+                      </span>
+                      <span className="font-sfregular tracking-tight">
+                        aymanehilmi.com
+                      </span>
                     </a>
                   </div>
                   <span className="hidden sm:inline-block h-2 w-6 rounded bg-zinc-200 " />
                 </div>
 
                 <div className="">
-                  <AutoPlayVideo
-                    src={intro}
-                    className="w-full"
-                  />
+                  <AutoPlayVideo src={intro} className="w-full" />
                 </div>
 
-                <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl" />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl"
+                />
               </div>
-
-
             </div>
 
             <div className="order-2">
@@ -233,48 +270,57 @@ export default function PortfolioScreen({ visitsTotal }) {
                   </span>
                 </p>
               </div>
-
-
             </div>
           </div>
         </div>
       </section>
 
-
       <section className="relative mt-24 bg-white">
         <div className="">
           <div className="text-center">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">The Vision</p>
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+              The Vision
+            </p>
             <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
               From professional tool to creative playground
             </h2>
             <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+
+            <div className="mt-10 font-sfregular text-zinc-600 text-center">
+              Over time, the vision for my portfolio has evolved significantly.
+              What started as a space focused solely on professional topics has
+              gradually become a personal creative outlet where I can express
+              myself freely.
+            </div>
           </div>
           <div className="mt-16 relative">
-
             <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
               {STEPS.map((step, idx) => (
                 <div key={idx} className="relative">
                   <article className="md:h-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm md:pl-0">
                     <div className="relative aspect-[16/10] md:aspect-[4/3] overflow-hidden rounded-t-2xl">
-
                       {idx === 0 && <StackVisual variant="cv" />}
                       {idx === 1 && <StackVisual variant="image" />}
                       {idx === 2 && <StackVisual variant="image3d" />}
-
 
                       {/* <img src={step.image} alt={step.subtitle} className="h-full w-full object-cover" /> */}
                       <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-t-2xl" />
                     </div>
                     <div className="p-5 space-y-3">
-                      <h3 className="font-ramidots px-2 text-xl md:text-4xl tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block ">{step.title}</h3>
-                      <p className="text-xs uppercase tracking-widest text-zinc-500">{step.subtitle}</p>
+                      <h3 className="font-ramidots px-2 text-xl md:text-4xl tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block ">
+                        {step.title}
+                      </h3>
+                      <p className="text-xs uppercase tracking-widest text-zinc-500">
+                        {step.subtitle}
+                      </p>
                       <div className="flex gap-2 text-zinc-600">
                         {step.icons.map((icon, i) => (
                           <IconBadge key={i}>{icon}</IconBadge>
                         ))}
                       </div>
-                      <p className="text-sm text-zinc-600 leading-relaxed">{step.description}</p>
+                      <p className="text-sm text-zinc-600 leading-relaxed">
+                        {step.description}
+                      </p>
                     </div>
                   </article>
                 </div>
@@ -284,39 +330,11 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
       </section>
 
-      {/* <section className="relative mt-44 bg-white">
-        <div className="text-center">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Section 3 — La Conception</p>
-          {/* <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
-            Croquis, maquettes & coulisses
-          </h2>
-          <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" /> 
-        </div>
-
-        <div className=" translate-y-6 transition will-change-transform">
-          <div className="grid items-center gap-8 md:gap-12 md:grid-cols-[0.8fr_1fr]">
-            <figure className="order-1 md:order-none">
-              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
-                <AutoPlayVideo
-                  src={ethanchng}
-                  className="w-full"
-                />
-                <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl" />
-              </div>
-              <figcaption className="mt-2 text-sm text-zinc-500">Ethan's Portfolio</figcaption>
-            </figure>
-
-            <div className="order-2 md:order-none">
-              <h3 className="font-ramidots text-2xl md:text-5xl tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block pr-2">Getting Inspiration</h3>
-              <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">One of the sites that inspired me the most was Ethan Chng’s portfolio. His monochrome design and subtle mockup line effects perfectly matched the style I wanted to create, and they strongly influenced the way I envisioned my own portfolio.</p>
-            </div>
-          </div>
-        </div>
-
-      </section> */}
       <section>
         <div className="text-center mt-44">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">The Conception</p>
+          <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+            The Conception
+          </p>
           <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block px-2">
             Getting Inspiration
           </h2>
@@ -324,21 +342,33 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
 
         <figure className=" translate-y-6 transition will-change-transform">
-
           <div className="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)] maw-w-xl">
-            <AutoPlayVideo
-              src={ethanchng}
-              className="w-full"
+            <AutoPlayVideo src={ethanchng} className="w-full" />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl"
             />
-            <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl" />
           </div>
+          <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mt-2 ml-4">
+            Ethan’s Portfolio
+          </p>
 
           <figcaption className="mt-16 ">
-            <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">One of the sites that inspired me the most was {" "}
-              <a data-cursor-icon="arrow" className="font-bold underline" href="https://ethanchng.com" target="_blank" rel="noopener noreferrer">
-                Ethan Chng’s portfolio</a>. His monochrome design and subtle mockup line effects perfectly matched the style I wanted
-              to create, and they strongly influenced the way I envisioned my own portfolio. There were
-              also two other websites that inspired me on specific aspects, here they are:
+            <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">
+              One of the sites that inspired me the most was{" "}
+              <a
+                data-cursor-icon="arrow"
+                className="font-bold underline"
+                href="https://ethanchng.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ethan Chng’s portfolio
+              </a>
+              . His monochrome design and subtle mockup line effects perfectly
+              matched the style I wanted to create, and they strongly influenced
+              the way I envisioned my own portfolio. There were also two other
+              websites that inspired me on specific aspects, here they are:
             </p>
           </figcaption>
         </figure>
@@ -350,42 +380,76 @@ export default function PortfolioScreen({ visitsTotal }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* Vidéo gauche */}
             <div>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 text-center mb-2">
+                Zaid's Portfolio
+              </p>
               <figure className="rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
                 <div className="relative aspect-[16/9] w-full">
                   <AutoPlayVideo
                     src={zaid}
                     className="h-full w-full object-cover"
                   />
-                  <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5"
+                  />
                 </div>
               </figure>
               <figcaption className="mt-8 md:mt-10">
                 <p className="text-zinc-600 md:text-lg leading-relaxed max-w-3xl mx-auto">
-                  Among the portfolios I explored, <a data-cursor-icon="arrow" className="font-bold underline" href="https://www.zaidsyed.com" target="_blank" rel="noopener noreferrer">Zaid’s portfolio</a> stood out to me in a special way. I was really inspired by
-                  how he manages the cursor. He created a fluid and intuitive interaction where the cursor adapts
-                  depending on the type of action the user is making. Without words, this subtle design choice
-                  makes the whole experience clearer and more engaging.
+                  Among the portfolios I explored,{" "}
+                  <a
+                    data-cursor-icon="arrow"
+                    className="font-bold underline"
+                    href="https://www.zaidsyed.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Zaid’s portfolio
+                  </a>{" "}
+                  stood out to me in a special way. I was really inspired by how
+                  he manages the cursor. He created a fluid and intuitive
+                  interaction where the cursor adapts depending on the type of
+                  action the user is making. Without words, this subtle design
+                  choice makes the whole experience clearer and more engaging.
                 </p>
               </figcaption>
             </div>
 
             {/* Vidéo droite */}
             <div>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 text-center mb-2">
+                Yiko's Portfolio
+              </p>
               <figure className="rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
                 <div className="relative aspect-[16/9] w-full">
                   <AutoPlayVideo
                     src={Yiko}
                     className="h-full w-full object-cover"
                   />
-                  <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5"
+                  />
                 </div>
               </figure>
               {/* Description (uniquement du texte) */}
               <figcaption className="mt-8 md:mt-10 ">
                 <p className="text-zinc-600 md:text-lg leading-relaxed max-w-3xl mx-auto">
-                  <a className="font-bold underline" href="https://yikodesign.com" target="_blank" rel="noopener noreferrer" data-cursor-icon="arrow">Yiko’s portfolio</a> inspired me with the way she kept things extremely simple, going straight to the
-                  essentials without any unnecessary distractions. The way she structured her projects was also clear
-                  and effective, influencing how I organized and presented mine in this portfolio.
+                  <a
+                    className="font-bold underline"
+                    href="https://yikodesign.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor-icon="arrow"
+                  >
+                    Yiko’s portfolio
+                  </a>{" "}
+                  inspired me with the way she kept things extremely simple,
+                  going straight to the essentials without any unnecessary
+                  distractions. The way she structured her projects was also
+                  clear and effective, influencing how I organized and presented
+                  mine in this portfolio.
                 </p>
               </figcaption>
             </div>
@@ -399,27 +463,23 @@ export default function PortfolioScreen({ visitsTotal }) {
             Unlike many designers, I didn’t really start with Figma mockups or
             detailed wireframes. Instead, I jumped straight into the code. The
             conception happened step by step, I would test an idea, build a
-            small piece, then adjust or scrap it if it didn’t feel right.
-            Every evening, as a pastime, I was experimenting and iterating directly
-            on VS Code.
+            small piece, then adjust or scrap it if it didn’t feel right. Every
+            evening, as a pastime, I was experimenting and iterating directly on
+            VS Code.
           </p>
           <p>
-            This approach turned the project into a playful lab. It wasn’t just about
-            shipping a “perfect” portfolio, but about enjoying the process of coding,
-            trying, failing, and improving in an agile, iterative way.
+            This approach turned the project into a playful lab. It wasn’t just
+            about shipping a “perfect” portfolio, but about enjoying the process
+            of coding, trying, failing, and improving in an agile, iterative
+            way.
           </p>
         </div>
       </section>
 
-
-
       <section className="relative">
         <div className="mt-10 text-zinc-600 md:text-lg space-y-4">
-          <p>
-            The conception of this portfolio happened in three main steps:
-          </p>
+          <p>The conception of this portfolio happened in three main steps:</p>
         </div>
-
 
         {/* Timeline */}
         <div className="mt-32 relative">
@@ -429,23 +489,28 @@ export default function PortfolioScreen({ visitsTotal }) {
               {
                 num: "1",
                 title: "Website Navigation",
-                description: "The first step was to define the navigation flow, starting with a sidebar to give quick access to all sections.",
+                description:
+                  "The first step was to define the navigation flow, starting with a sidebar to give quick access to all sections.",
               },
               {
                 num: "2",
                 title: "Landing Page",
-                description: "Then I focused on designing a strong landing page to try to create a first stunning impression.",
+                description:
+                  "Then I focused on designing a strong landing page to try to create a first stunning impression.",
               },
               {
                 num: "3",
                 title: "Home & Logical Flow",
-                description: "Finally, I organized the homepage and content flow to make everything intuitive and easy to navigate.",
+                description:
+                  "Finally, I organized the homepage and content flow to make everything intuitive and easy to navigate.",
               },
             ].map((step, i) => (
               <div key={i} className="relative flex-1 text-center px-4">
                 {/* Number circle */}
-                <div className="mx-auto flex items-center justify-center h-12  rounded-full 
-            text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit mb-4">
+                <div
+                  className="mx-auto flex items-center justify-center h-12  rounded-full 
+            text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit mb-4"
+                >
                   {step.num}
                 </div>
                 {/* Title */}
@@ -462,44 +527,45 @@ export default function PortfolioScreen({ visitsTotal }) {
               {
                 num: "1",
                 title: "Sidebar navigation",
-                description: "The first idea was to structure the site around a sidebar, giving quick access to all the sections.",
+                description:
+                  "The first idea was to structure the site around a sidebar, giving quick access to all the sections.",
               },
               {
                 num: "2",
                 title: "Landing page",
-                description: "Then I focused on designing a strong landing page to create the first impression.",
+                description:
+                  "Then I focused on designing a strong landing page to create the first impression.",
               },
               {
                 num: "3",
                 title: "Home & logical flow",
-                description: "Finally, I organized the homepage and content flow to make everything intuitive and easy to navigate.",
+                description:
+                  "Finally, I organized the homepage and content flow to make everything intuitive and easy to navigate.",
               },
             ].map((step, i) => (
               <div key={i} className="relative pl-10 text-left">
                 {/* Number circle */}
-                <div className="absolute left-0 top-1 flex items-center justify-center rounded-full 
-            text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit ">
+                <div
+                  className="absolute left-0 top-1 flex items-center justify-center rounded-full 
+            text-7xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit "
+                >
                   {step.num}
                 </div>
                 {/* Content */}
                 <div className="pl-6">
                   <h3 className="font-semibold text-zinc-900">{step.title}</h3>
-                  <p className="mt-2 text-sm text-zinc-600">{step.description}</p>
+                  <p className="mt-2 text-sm text-zinc-600">
+                    {step.description}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
-
       </section>
-
-
-
 
       <section className="mt-10 md:mt-24">
         <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-start">
-
           <div className="flex flex-col justify-center items-center text-center md:text-left h-full">
             <div className="flex flex-col justify-center items-center md:items-start h-full">
               <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
@@ -518,9 +584,9 @@ export default function PortfolioScreen({ visitsTotal }) {
 
               <div className="mt-6 text-zinc-600 md:text-lg leading-relaxed space-y-4 max-w-xl">
                 <p>
-                  The idea was to start with a clean landing page, and as the user scrolls,
-                  the sidebar would gradually appear and then remain fixed for the rest of
-                  the navigation.
+                  The idea was to start with a clean landing page, and as the
+                  user scrolls, the sidebar would gradually appear and then
+                  remain fixed for the rest of the navigation.
                 </p>
               </div>
             </div>
@@ -528,6 +594,10 @@ export default function PortfolioScreen({ visitsTotal }) {
 
           {/* RIGHT — Scrolling mockup */}
           <div className="mx-auto w-full max-w-3xl select-none">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 text-center mb-2">
+              Scrolling Flow{" "}
+            </p>
+
             <div className="rounded-2xl border border-zinc-200 bg-white shadow-[0_16px_50px_rgba(0,0,0,0.06)] overflow-hidden">
               <div className="relative h-[380px] bg-white">
                 {/* Content that scrolls */}
@@ -551,10 +621,7 @@ export default function PortfolioScreen({ visitsTotal }) {
                         <div className="h-80 rounded-lg bg-zinc-50 ring-1 ring-inset ring-zinc-200 flex items-center justify-center text-zinc-400">
                           Main Content
                         </div>
-
-
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -597,18 +664,16 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
       </section>
 
-
-
       <div className="mt-32 text-zinc-600 md:text-lg leading-relaxed ">
         <p>
-          When I started developing the sidebar, I chose to follow the same design as Ethan’s
-          portfolio because I really loved it. For my version, I added a personal touch by placing my name in Arabic on the home button.
+          When I started developing the sidebar, I chose to follow the same
+          design as Ethan’s portfolio because I really loved it. For my version,
+          I added a personal touch by placing my name in Arabic on the home
+          button.
         </p>
       </div>
 
-
-      <section className="mt-20 flex justify-center">
-
+      <section className="mt-32 flex justify-center">
         {/* Two columns that stay side-by-side on mobile but scale down */}
         <div className="grid grid-cols-[minmax(140px,200px)_1fr] sm:grid-cols-[minmax(180px,240px)_1fr] md:grid-cols-[minmax(200px,200px)_1fr] gap-6 md:gap-10 items-stretch">
           {/* SIDEBAR (mock) */}
@@ -623,7 +688,11 @@ export default function PortfolioScreen({ visitsTotal }) {
                 <span className="pointer-events-none absolute inset-0 rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-zinc-100/70 to-transparent" />
 
                 <a className="bg-zinc-200 h-16 sm:h-18 w-28 sm:w-32 flex items-center justify-center rounded-xl ring-1 ring-inset ring-zinc-300 transition-all duration-300 group-hover:ring-zinc-400 group-hover:shadow-sm">
-                  <img src={LogoMobile} alt="Aymane Logo" className="rounded-[8px] w-20 sm:w-24" />
+                  <img
+                    src={LogoMobile}
+                    alt="Aymane Logo"
+                    className="rounded-[8px] w-20 sm:w-24"
+                  />
                 </a>
 
                 <a className="mt-3 opacity-90 transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">
@@ -642,15 +711,27 @@ export default function PortfolioScreen({ visitsTotal }) {
                 <span className="pointer-events-none absolute inset-0 rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-zinc-100/70 to-transparent" />
 
                 <div className="flex flex-col gap-1">
-                  <h1 className="text-[10px] sm:text-xs pb-2 text-zinc-400 tracking-widest">MOBILE APPLICATION</h1>
-                  <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">Saint-Gobain</a>
-                  <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">Cesiveroo</a>
+                  <h1 className="text-[10px] sm:text-xs pb-2 text-zinc-400 tracking-widest">
+                    MOBILE APPLICATION
+                  </h1>
+                  <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">
+                    Saint-Gobain
+                  </a>
+                  <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">
+                    Cesiveroo
+                  </a>
                 </div>
 
                 <div className="flex flex-col gap-1 mt-5 sm:mt-6">
-                  <h1 className="text-[10px] sm:text-xs pb-2 text-zinc-400 tracking-widest">WEB DEVELOPMENT</h1>
-                  <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">Aymane&apos;s Portfolio</a>
-                  <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">SAAS project</a>
+                  <h1 className="text-[10px] sm:text-xs pb-2 text-zinc-400 tracking-widest">
+                    WEB DEVELOPMENT
+                  </h1>
+                  <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">
+                    Aymane&apos;s Portfolio
+                  </a>
+                  <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">
+                    SAAS project
+                  </a>
                 </div>
               </div>
 
@@ -661,14 +742,37 @@ export default function PortfolioScreen({ visitsTotal }) {
                 {/* voile subtil */}
                 <span className="pointer-events-none absolute inset-0 rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-zinc-100/70 to-transparent" />
 
-                <h1 className="text-[10px] sm:text-xs pb-2 text-zinc-400 tracking-widest">PERSONAL</h1>
-                <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">Journey</a>
-                <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">Blog</a>
+                <h1 className="text-[10px] sm:text-xs pb-2 text-zinc-400 tracking-widest">
+                  PERSONAL
+                </h1>
+                <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">
+                  Journey
+                </a>
+                <a className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">
+                  Blog
+                </a>
 
-                <h1 className="text-[10px] sm:text-xs pb-2 mt-4 text-zinc-400 tracking-widest">CONTACT</h1>
-                <a data-cursor-icon="mail" className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">Mail</a>
-                <a data-cursor-icon="arrow" className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">Linkedin</a>
-                <a data-cursor-icon="arrow" className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit">Github</a>
+                <h1 className="text-[10px] sm:text-xs pb-2 mt-4 text-zinc-400 tracking-widest">
+                  CONTACT
+                </h1>
+                <a
+                  data-cursor-icon="mail"
+                  className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit"
+                >
+                  Mail
+                </a>
+                <a
+                  data-cursor-icon="arrow"
+                  className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit"
+                >
+                  Linkedin
+                </a>
+                <a
+                  data-cursor-icon="arrow"
+                  className="transform transition-transform duration-300 group-hover:translate-x-[1px] w-fit"
+                >
+                  Github
+                </a>
               </div>
             </div>
           </div>
@@ -678,29 +782,124 @@ export default function PortfolioScreen({ visitsTotal }) {
             {/* Row 1 — Top */}
             <div className="relative flex items-center pl-4 sm:pl-6">
               <div>
-                <h3 className="text-xs sm:text-lg md:text-xl font-semibold text-zinc-900 mb-1">Personal section</h3>
-                <p className="text-xs sm:text-sm md:text-base text-zinc-600">About & Resume — entry point and quick context about me.</p>
+                <h3 className="text-xs sm:text-lg md:text-xl font-semibold text-zinc-900 mb-1">
+                  Personal section
+                </h3>
+                <p className="text-xs sm:text-sm md:text-base text-zinc-600">
+                  About & Resume — entry point and quick context about me.
+                </p>
               </div>
             </div>
 
             {/* Row 2 — Middle */}
             <div className="relative flex items-center pl-4 sm:pl-6">
               <div>
-                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-zinc-900 mb-1">Projects section</h3>
-                <p className="text-xs sm:text-sm md:text-base text-zinc-600">Mobile & Web — all current and future projects I develop.</p>
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-zinc-900 mb-1">
+                  Projects section
+                </h3>
+                <p className="text-xs sm:text-sm md:text-base text-zinc-600">
+                  Mobile & Web — all current and future projects I develop.
+                </p>
               </div>
             </div>
 
             {/* Row 3 — Bottom */}
             <div className="relative flex items-center pl-4 sm:pl-6">
               <div>
-                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-zinc-900 mb-1">Social section</h3>
-                <p className="text-xs sm:text-sm md:text-base text-zinc-600">Personal posts & contact — blog and ways to reach me.</p>
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-zinc-900 mb-1">
+                  Social section
+                </h3>
+                <p className="text-xs sm:text-sm md:text-base text-zinc-600">
+                  Personal posts & contact — blog and ways to reach me.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <div className="mt-44 text-zinc-600 md:text-lg leading-relaxed ">
+        <p>
+          After finishing the sidebar, I moved on to the landing page with the
+          goal of creating a strong first impression through a clear and
+          engaging introduction. To achieve this, I decided to use{" "}
+          <LinkPreview
+            imageSrc="https://ai.google.dev/static/images/showcase/spline/hero-image.jpg"
+            url="https://spline.design/"
+            isStatic
+            className="font-bold underline hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 hover:bg-clip-text hover:text-transparent transition-colors duration-300"
+          >
+            Spline
+          </LinkPreview>
+          , allowing me to bring 3D elements into the portfolio and make the
+          landing page more visually dynamic.
+        </p>
+      </div>
+
+      <section>
+        <div className="text-center mt-12">
+          <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+            3D Conception
+          </p>
+        </div>
+
+        <figure className="translate-y-6 transition will-change-transform">
+          <div className="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)] ">
+            <AutoPlayVideo src="" className="w-full" />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl"
+            />
+          </div>
+          {/* CTA */}
+          <div className="mt-6 text-center">
+            <a
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor-icon="arrow"
+              className="inline-flex items-center gap-2 rounded-xl bg-darkGray px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 transition-colors"
+            >
+              View demo
+            </a>
+          </div>
+
+          <figcaption className="mt-10 text-center">
+            <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">
+              Here’s what it looked like once I implemented it on the website :
+            </p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <div className="text-center mt-12">
+          <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+            Preview
+          </p>
+        </div>
+
+        <figure className=" translate-y-6 transition will-change-transform">
+          <div className="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)] maw-w-xl">
+            <AutoPlayVideo src="" className="w-full" />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl"
+            />
+          </div>
+
+          <figcaption className="mt-16 ">
+            <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed"></p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <p className="text-zinc-600 md:text-lg leading-relaxed  mx-auto">
+        inspired me with the way she kept things extremely simple, going
+        straight to the essentials without any unnecessary distractions. The way
+        she structured her projects was also clear and effective, influencing
+        how I organized and presented mine in this portfolio.
+      </p>
 
       {/* <section className="relative mt-44 bg-white">
         <div className="mx-auto max-w-7xl px-6">
@@ -847,9 +1046,6 @@ export default function PortfolioScreen({ visitsTotal }) {
         <span className="italic"> without needing text or explanation.</span>
       </p> */}
 
-
-
-
       {/* <div className="opacity-0 translate-y-6 transition will-change-transform">
         <div className="grid items-center gap-8 md:gap-12 md:grid-cols-[0.8fr_1fr]">
           <figure className="order-1 md:order-none">
@@ -871,7 +1067,6 @@ export default function PortfolioScreen({ visitsTotal }) {
 
         </div>
       </div> */}
-
 
       {/* <ConceptionScroller steps={[
         { id: "s1", layout: "left", title: "Wireframe — navigation & layout", description: "Esquisser rapidement la structure : header, menu, zones de contenu.", image: "/images/wireframe-1.jpg", caption: "Low-fi #1" },
@@ -1179,13 +1374,10 @@ function IconBadge({ children }) {
 const Badge = ({ className }) => {
   return (
     <div className=" bg-white rounded-full" data-cursor-icon="arrow">
-
-      < img src={LogoMobile} className="w-10 h-10" alt="Logo" />
+      <img src={LogoMobile} className="w-10 h-10" alt="Logo" />
     </div>
   );
 };
-
-
 
 function StackVisual({ variant }) {
   return (
@@ -1228,7 +1420,10 @@ function StackVisual({ variant }) {
                 {/* Big hero tile */}
                 <div className="col-span-2 row-span-2 rounded-lg bg-zinc-50 ring-1 ring-inset ring-zinc-200 overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
                   <div className="h-full w-full grid place-items-center">
-                    <Image className="h-10 w-10 text-zinc-400 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110" strokeWidth={1} />
+                    <Image
+                      className="h-10 w-10 text-zinc-400 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110"
+                      strokeWidth={1}
+                    />
                   </div>
                 </div>
                 {/* Small square */}
@@ -1264,7 +1459,10 @@ function StackVisual({ variant }) {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="grid place-items-center rounded-lg ring-1 ring-inset ring-zinc-200 bg-zinc-50 w-[78%] h-[64%]">
                   <div className="flex items-center gap-2 text-zinc-600">
-                    <Boxes className="h-10 w-10 text-zinc-400 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" strokeWidth={1} />
+                    <Boxes
+                      className="h-10 w-10 text-zinc-400 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110"
+                      strokeWidth={1}
+                    />
                   </div>
                 </div>
               </div>
