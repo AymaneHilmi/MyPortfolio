@@ -4,7 +4,7 @@ import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SiDeliveroo } from "react-icons/si";
 import { FaGlobeAmericas, FaMoon } from "react-icons/fa";
-import { Layers, Search, PartyPopper, Star, Play, Pause } from "lucide-react";
+import { Layers, Search, PartyPopper, Star, Play, Pause, RotateCcw } from "lucide-react";
 
 /** Styles “glass” du curseur */
 const GLASS_BG = "rgba(120, 120, 120, 0.28)";
@@ -480,6 +480,19 @@ export function SmoothCursor({
         </motion.div>
       );
     }
+
+    if (name === "restart") {
+      return (
+        <motion.div
+          key="restart"
+          {...ICON_ANIM}
+          style={ICON_BOX}
+        >
+          <RotateCcw size={22} color="white" strokeWidth={2} />
+        </motion.div>
+      );
+    }
+
 
     // Default fallback
     return (

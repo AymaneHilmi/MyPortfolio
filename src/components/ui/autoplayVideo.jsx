@@ -47,23 +47,40 @@ export default function AutoPlayVideo({
         }
     };
 
+    const restartVideo = () => {
+        const el = ref.current;
+        if (!el) return;
+        el.currentTime = 0;
+        el.play().then(() => setIsPlaying(true)).catch(() => { });
+    };
+
     return (
-        <video
-            ref={ref}
-            poster={poster}
-            muted
-            playsInline
-            preload="metadata"
-            loop={loop}
-            onClick={togglePlay}
-            data-cursor-icon={isPlaying ? "stop" : "start"}
-            className={`h-full w-full rounded-lg object-cover ${className}`}
-        >
-            {sources.length > 0 ? (
-                sources.map((s) => <source key={s.src} src={s.src} type={s.type} />)
-            ) : (
-                <source src={src} type="video/mp4" />
-            )}
-        </video>
+        <div className="relative group">
+            <video
+                ref={ref}
+                poster={poster}
+                muted
+                playsInline
+                preload="metadata"
+                loop={loop}
+                onClick={togglePlay}
+                data-cursor-icon={isPlaying ? "stop" : "start"}
+                className={`h-full w-full rounded-lg object-cover ${className}`}
+            >
+                {sources.length > 0 ? (
+                    sources.map((s) => <source key={s.src} src={s.src} type={s.type} />)
+                ) : (
+                    <source src={src} type="video/mp4" />
+                )}
+            </video>
+            <button
+                onClick={restartVideo}
+                className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition bg-white/80 text-zinc-800 text-xs px-2 py-1 rounded-md shadow hover:bg-white"
+                type="button"
+                data-cursor-icon="restart"
+            >
+                Restart
+            </button>
+        </div>
     );
 }

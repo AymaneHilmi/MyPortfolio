@@ -7,6 +7,10 @@ import intro from "@/assets/IntroPortfolio.mp4";
 import ethanchng from "@/assets/ethanchng.mp4";
 import zaid from "@/assets/zaid.mp4";
 import Yiko from "@/assets/Yiko-Li.mp4";
+import CesiverooSpline from "@/assets/CesiverooSpline.mp4";
+import LandingPageSpline from "@/assets/LandingPageSpline.mp4";
+import AymanePortfolioV1 from "@/assets/AymanePortfolioV1.mp4";
+import ComingSoon from "@/assets/ComingSoon.mp4";
 import {
   MonitorSmartphone,
   ShieldCheck,
@@ -397,7 +401,7 @@ export default function PortfolioScreen({ visitsTotal }) {
               </figure>
               <figcaption className="mt-8 md:mt-10">
                 <p className="text-zinc-600 md:text-lg leading-relaxed max-w-3xl mx-auto">
-                  Among the portfolios I explored,{" "}
+                  Additionally, I also drew inspiration from{" "}
                   <a
                     data-cursor-icon="arrow"
                     className="font-bold underline"
@@ -405,9 +409,9 @@ export default function PortfolioScreen({ visitsTotal }) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Zaid’s portfolio
+                    Zaid’s portfolio.
                   </a>{" "}
-                  stood out to me in a special way. I was really inspired by how
+                  I was really inspired by how
                   he manages the cursor. He created a fluid and intuitive
                   interaction where the cursor adapts depending on the type of
                   action the user is making. Without words, this subtle design
@@ -845,7 +849,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
         <figure className="translate-y-6 transition will-change-transform">
           <div className="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)] ">
-            <AutoPlayVideo src="" className="w-full" />
+            <AutoPlayVideo src={LandingPageSpline} className="w-full" />
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl"
@@ -854,7 +858,7 @@ export default function PortfolioScreen({ visitsTotal }) {
           {/* CTA */}
           <div className="mt-6 text-center">
             <a
-              href=""
+              href="https://my.spline.design/portfoliolandingpage-5a9fe475db2ad59c87a47f07a727266f/"
               target="_blank"
               rel="noopener noreferrer"
               data-cursor-icon="arrow"
@@ -881,7 +885,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
         <figure className=" translate-y-6 transition will-change-transform">
           <div className="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)] maw-w-xl">
-            <AutoPlayVideo src="" className="w-full" />
+            <AutoPlayVideo src={AymanePortfolioV1} className="w-full" />
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl"
@@ -895,11 +899,82 @@ export default function PortfolioScreen({ visitsTotal }) {
       </section>
 
       <p className="text-zinc-600 md:text-lg leading-relaxed  mx-auto">
-        inspired me with the way she kept things extremely simple, going
-        straight to the essentials without any unnecessary distractions. The way
-        she structured her projects was also clear and effective, influencing
-        how I organized and presented mine in this portfolio.
+        I also decided to add 3D scenes to some project pages to make them more engaging and interactive. For example, on the Cesiveroo project page I built a 3D model of the app’s main interface that users can interact with directly. I created another one for the Coming Soon pages, giving them a more dynamic and immersive feel. These additions not only highlight the design work but also make the overall portfolio experience more captivating.
       </p>
+
+
+      <section className="relative mt-10">
+        <div className="mx-auto">
+          {/* Grid vidéos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {/* Vidéo gauche */}
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 text-center mb-2">
+                3D Conception - Cesiveroo App
+              </p>
+              <figure className="rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+                <div className="relative aspect-[16/9] w-full">
+                  <AutoPlayVideo
+                    src={CesiverooSpline}
+                    className="h-full w-full object-cover"
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5"
+                  />
+                </div>
+              </figure>
+              <figcaption className="mt-8 md:mt-10">
+                <div className="mt-6 text-center">
+                  <a
+                    href="https://my.spline.design/animatedphonemockup-934096e2cae61571850f5f387382bd02/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor-icon="arrow"
+                    className="inline-flex items-center gap-2 rounded-xl bg-darkGray px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-[#1ab3a5] transition"
+                  >
+                    View demo
+                  </a>
+                </div>
+              </figcaption>
+            </div>
+
+            {/* Vidéo droite */}
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 text-center mb-2">
+                3D Conception - Coming Soon
+              </p>
+              <figure className="rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+                <div className="relative aspect-[16/9] w-full">
+                  <AutoPlayVideo
+                    src={ComingSoon}
+                    className="h-full w-full object-cover"
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5"
+                  />
+                </div>
+              </figure>
+              {/* Description (uniquement du texte) */}
+              <figcaption className="mt-8 md:mt-10 ">
+                <div className="mt-6 text-center">
+                  <a
+                    href="https://my.spline.design/particles-751e267f61cbd5b23e5d29c849ef8d38/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor-icon="arrow"
+                    className="inline-flex items-center gap-2 rounded-xl bg-darkGray px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 transition-colors"
+                  >
+                    View demo
+                  </a>
+                </div>
+              </figcaption>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* <section className="relative mt-44 bg-white">
         <div className="mx-auto max-w-7xl px-6">
