@@ -49,8 +49,6 @@ import AutoPlayVideo from "../components/ui/autoplayVideo";
 import LighthouseSection from "../components/ui/lightHousesection";
 
 export default function PortfolioScreen({ visitsTotal }) {
-  const { number, suffix } = getOrdinalParts(visitsTotal);
-
   const stats = [
     {
       label: "???",
@@ -245,7 +243,6 @@ export default function PortfolioScreen({ visitsTotal }) {
                 </div>
 
                 <div className="">
-
                   <AutoPlayVideo src={intro} className="w-full" />
                 </div>
 
@@ -415,11 +412,11 @@ export default function PortfolioScreen({ visitsTotal }) {
                   >
                     Zaid’s portfolio.
                   </a>{" "}
-                  I was really inspired by how
-                  he manages the cursor. He created a fluid and intuitive
-                  interaction where the cursor adapts depending on the type of
-                  action the user is making. Without words, this subtle design
-                  choice makes the whole experience clearer and more engaging.
+                  I was really inspired by how he manages the cursor. He created
+                  a fluid and intuitive interaction where the cursor adapts
+                  depending on the type of action the user is making. Without
+                  words, this subtle design choice makes the whole experience
+                  clearer and more engaging.
                 </p>
               </figcaption>
             </div>
@@ -903,9 +900,14 @@ export default function PortfolioScreen({ visitsTotal }) {
       </section>
 
       <p className="text-zinc-600 md:text-lg leading-relaxed  mx-auto">
-        I also decided to add 3D scenes to some project pages to make them more engaging and interactive. For example, on the Cesiveroo project page I built a 3D model of the app’s main interface that users can interact with directly. I created another one for the Coming Soon pages, giving them a more dynamic and immersive feel. These additions not only highlight the design work but also make the overall portfolio experience more captivating.
+        I also decided to add 3D scenes to some project pages to make them more
+        engaging and interactive. For example, on the Cesiveroo project page I
+        built a 3D model of the app’s main interface that users can interact
+        with directly. I created another one for the Coming Soon pages, giving
+        them a more dynamic and immersive feel. These additions not only
+        highlight the design work but also make the overall portfolio experience
+        more captivating.
       </p>
-
 
       <section className="relative mt-10">
         <div className="mx-auto">
@@ -980,46 +982,403 @@ export default function PortfolioScreen({ visitsTotal }) {
       </section>
 
       <p className="text-zinc-600 md:text-lg leading-relaxed  mt-16">
-
-        I really enjoyed experimenting with 3D, even though my skills in this area were very limited. Discovering this field was exciting and I had a lot of fun at the beginning, but over time I started to enjoy it less as I ran into major performance issues on my website.
+        I really enjoyed experimenting with 3D, even though my skills in this
+        area were very limited. Discovering this field was exciting and I had a
+        lot of fun at the beginning, but over time I started to enjoy it less as
+        I ran into major performance issues on my website.
       </p>
 
       <LighthouseSection />
 
       <p className="text-zinc-600 md:text-lg leading-relaxed  mt-24">
-
-        This issue was a significant challenge because I wanted to maintain a smooth and fast user experience, which is crucial for a portfolio site. After several attempts to optimize the 3D models and scenes, I realized that the performance trade-offs were too high. The loading times were long, and the animations were not as smooth as I wanted them to be, especially on mobile devices.
+        This issue was a significant challenge because I wanted to maintain a
+        smooth and fast user experience, which is crucial for a portfolio site.
+        After several attempts to optimize the 3D models and scenes, I realized
+        that the performance trade-offs were too high (and I wasn't good enough
+        to optimize it through the code...). The loading times were long, and
+        the animations were not as smooth as I wanted them to be, especially on
+        mobile devices.
       </p>
       <p className="text-zinc-600 md:text-lg leading-relaxed  mt-8">
-        I also realized that I was losing the first idea of simplicity and clarity that I wanted to keep in my portfolio. So I decided to focus more on clean design and smooth interactions rather than adding too many 3D elements that could distract from the main content.
-        Which is why I decided to remove the 3D elements and make a complete redesign of the portfolio, refocusing on simplicity and performance.
+        I also realized that I was losing the first idea of simplicity and
+        clarity that I wanted to keep in my portfolio. So I decided to focus
+        more on clean design and smooth interactions rather than adding too many
+        3D elements that could distract from the main content. Which is why I
+        decided to remove the 3D elements and make a complete redesign of the
+        portfolio, refocusing on simplicity and performance.
       </p>
 
       <section className="relative mt-24">
-        <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 md:gap-12 items-center">
           {/* LEFT — Image */}
           <figure className="order-1">
-            <figcaption className="mb-3 text-[10px] text-zinc-500 text-center uppercase">Redesign preview</figcaption>
+            <figcaption className="mb-3 text-[10px] text-zinc-500 text-center uppercase">
+              Preview
+            </figcaption>
             <div className="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
-              <img src={rework} alt="Redesign preview" className="w-full h-auto object-cover" />
-              <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl" />
+              <img
+                src={rework}
+                alt="Redesign preview"
+                className="w-full h-auto object-cover"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl"
+              />
             </div>
           </figure>
 
           {/* RIGHT — Text */}
-          <div className="order-2 text-left">
-            <p className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
-              For the new design, I wanted to add a touch of color, which is why {" "}
-              <span className="bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">
-                this gradient</span> became a strong visual element throughout the site. I also introduced a new typeface called <span className="font-ramidots text-2xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">Ramidots</span> {" "}
-              to give the portfolio a more unique identity. Alongside the visuals, I spent time testing the experience on both desktop and mobile, making sure that the user journey felt the same across devices.
+          <div className="order-2 md:self-center">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+              Redesign
             </p>
+            <h2
+              className="mt-2 text-3xl md:text-5xl font-ramidots tracking-tight
+        bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block"
+            >
+              A cleaner, Livelier Direction
+            </h2>
+            <span
+              className="mt-4 block h-[3px] w-24 rounded-full
+        bg-gradient-to-r from-blue-500 via-orange-400 to-red-500"
+            />
+
+            <div className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
+              <p>
+                For the new design, I wanted to add a touch of color, which is
+                why
+                <span className="mx-1 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent font-semibold">
+                  this gradient
+                </span>
+                became a strong visual element throughout the site. I also
+                introduced a new typeface called
+                <span className="mx-1 font-ramidots text-2xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent tracking-widest">
+                  Ramidots
+                </span>
+                to give the portfolio a more unique identity. Alongside the
+                visuals, I spent time testing the experience on desktop and
+                mobile to keep the journey consistent across devices.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
+      <p className="mt-12 text-zinc-600 md:text-lg leading-relaxed text-left">
+        As presented before with zaid's portfolio, I designed a custom cursor
+        inspired by his system to give instant context for the users. Each
+        element can suggest its action on hover an external link, send an email,
+        copy to clipboard, start/pause media, or reveal hidden surprises.
+        Simple, playful, and always informative. The idea was to give more
+        context to the user about what they can do on each element —
+        <span className="italic"> without needing text or explanation.</span>
+      </p>
 
+      <div className="mt-16 grid grid-cols-2 sm:grid-cols-6 gap-8 text-center">
+        <div>
+          <a
+            data-cursor-icon="arrow"
+            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 opacity-0 group-hover:opacity-10 transition" />
+            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+              Link
+            </span>
+          </a>
+          <p className="mt-2 text-xs text-zinc-500">External website</p>
+        </div>
+        <div>
+          <a
+            data-cursor-icon="mail"
+            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-blue-200/20 opacity-0 group-hover:opacity-30 transition" />
+            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+              Mail
+            </span>
+          </a>
+          <p className="mt-2 text-xs text-zinc-500">Send an email</p>
+        </div>
 
+        <div>
+          <a
+            data-cursor-icon="copy"
+            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-red-200/20 opacity-0 group-hover:opacity-30 transition" />
+            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+              Copy
+            </span>
+          </a>
+          <p className="mt-2 text-xs text-zinc-500">Copy to clipboard</p>
+        </div>
+
+        <div>
+          <div
+            data-cursor-icon="start"
+            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-emerald-300/20 opacity-0 group-hover:opacity-30 transition" />
+            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+              Start
+            </span>
+          </div>
+          <p className="mt-2 text-xs text-zinc-500">Start a Video</p>
+        </div>
+
+        <div>
+          <div
+            data-cursor-icon="stop"
+            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-yellow-300/30 to-orange-200/20 opacity-0 group-hover:opacity-40 transition" />
+            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+              Pause
+            </span>
+          </div>
+          <p className="mt-2 text-xs text-zinc-500">Stop a Video</p>
+        </div>
+
+        <div>
+          <div
+            data-cursor-icon="egg"
+            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-pink-300/20 to-purple-300/20 opacity-0 group-hover:opacity-40 transition" />
+            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+              Egg
+            </span>
+          </div>
+          <p className="mt-2 text-xs text-zinc-500">Mystery easter egg</p>
+        </div>
+      </div>
+
+      <p className="mt-16 text-zinc-600 md:text-lg leading-relaxed text-center md:text-left">
+        As presented before with zaid's portfolio, I designed a custom cursor
+        inspired by his system to give instant context for the users. Each
+        element can suggest its action on hover an external link, send an email,
+        copy to clipboard, start/pause media, or reveal hidden surprises.
+        Simple, playful, and always informative. The idea was to give more
+        context to the user about what they can do on each element —
+        <span className="italic"> without needing text or explanation.</span>
+      </p>
+
+      <section className="relative mt-24">
+        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 md:gap-12 items-start">
+          <div className="space-y-4">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+              Easter Egg Quest
+            </p>
+            <h2 className="text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+              Hidden Quest inside the Portfolio
+            </h2>
+            <span className="block h-[3px] w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+
+            <p className="text-zinc-600 md:text-lg leading-relaxed">
+              As a competitor, I’ve always loved challenges, which is why the
+              Easter Egg quest was born. I created it to challenge my family and
+              friends to find all the hidden eggs scattered throughout the site.
+              Beyond the fun, it also adds a unique touch to my portfolio, since
+              I didn’t want it to feel like just another typical portfolio.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <div className="relative rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_16px_50px_rgba(0,0,0,0.06)]">
+              <div className="p-6 relative">
+                <svg viewBox="0 0 600 280" className="w-full h-[220px]">
+                  <path
+                    d="M20,240 C140,200 180,60 300,100 C420,140 460,40 580,80"
+                    fill="none"
+                    className="stroke-zinc-300"
+                    strokeDasharray="6 8"
+                    strokeWidth="3"
+                  />
+                </svg>
+
+                <div className="pointer-events-none absolute inset-0">
+                  <div className="pointer-events-auto absolute left-[6%] bottom-[22%]">
+                    <button
+                      data-cursor-icon="egg"
+                      className="group inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs text-zinc-700 ring-1 ring-zinc-300 shadow-sm hover:shadow-md transition"
+                    >
+                      <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                      Egg #1
+                    </button>
+                  </div>
+                  <div className="pointer-events-auto absolute left-[46%] top-[34%]">
+                    <button
+                      data-cursor-icon="egg"
+                      className="group inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs text-zinc-700 ring-1 ring-zinc-300 shadow-sm hover:shadow-md transition"
+                    >
+                      <span className="h-2 w-2 rounded-full bg-amber-500" />
+                      Egg #2
+                    </button>
+                  </div>
+                  <div className="pointer-events-auto absolute right-[5%] top-[25%]">
+                    <button
+                      data-cursor-icon="egg"
+                      className="group inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs text-zinc-700 ring-1 ring-zinc-300 shadow-sm hover:shadow-md transition"
+                    >
+                      <span className="h-2 w-2 rounded-full bg-red-500" />
+                      Final Egg
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* footer léger de la carte */}
+              <div className="px-6 py-3 border-t border-zinc-200 text-xs text-zinc-500 text-center">
+                <span>Explore the home page to find the starting point.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p className="mt-16 text-zinc-600 md:text-lg leading-relaxed text-center md:text-left">
+        The architecture of my portfolio is intentionally simple, fast, and
+        reliable. There’s no backend, everything runs on a lightweight frontend
+        built with React, Vite, and TailwindCSS. The code lives on GitHub, where
+        every commit triggers a build pipeline. From there, Cloudflare Pages
+        handles the deployment, instantly distributing the static assets across
+        the network. In short,
+        it’s a streamlined pipeline: I write the code, push to GitHub,
+        Cloudflare builds and deploys, and users benefit from it.
+      </p>
+
+      <section className="relative w-full mt-24">
+        <div className="relative ">
+          {/* Grille responsive: cartes larges, mêmes hauteurs */}
+          <div className="grid items-stretch gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+            {/* 1 — Frontend */}
+            <div className="relative rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm flex flex-col h-full">
+              <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-[10px] font-medium text-white px-2">
+                1
+              </span>
+              <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-500 mb-1">
+                Frontend
+              </p>
+              <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                React App
+              </h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-zinc-600">
+                <li>Vite (bundler)</li>
+                <li>TailwindCSS</li>
+              </ul>
+              <div className="mt-auto pt-4">
+                <span className="block h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+              </div>
+            </div>
+
+            {/* 2 — GitHub */}
+            <div className="relative rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm flex flex-col h-full">
+              <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-[10px] font-medium text-white px-2">
+                2
+              </span>
+              <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-500 mb-1">
+                Source & CI
+              </p>
+              <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                GitHub
+              </h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-zinc-600">
+                <li>Repository</li>
+                <li>Build via Cloudflare Pages</li>
+              </ul>
+              <div className="mt-auto pt-4">
+                <span className="block h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+              </div>
+            </div>
+
+            {/* 3 — Cloudflare Pages / CDN */}
+            <div className="relative rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm flex flex-col h-full">
+              <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-[10px] font-medium text-white px-2">
+                3
+              </span>
+              <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-500 mb-1">
+                Edge / CDN
+              </p>
+              <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                Cloudflare Pages 
+              </h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-zinc-600">
+                <li>Global edge cache </li>
+                <li>Worker</li>
+              </ul>
+              <div className="mt-auto pt-4">
+                <span className="block h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+              </div>
+            </div>
+
+            {/* 4 — Users */}
+            <div className="relative rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm flex flex-col h-full">
+              <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-[10px] font-medium text-white px-2">
+                4
+              </span>
+              <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-500 mb-1">
+                Users
+              </p>
+              <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                Visitors
+              </h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-zinc-600">
+                <li>Desktop - Mobile</li>
+              </ul>
+              <div className="mt-auto pt-4">
+                <span className="block h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p className="mt-24 text-zinc-600 md:text-lg leading-relaxed text-center md:text-left">
+        There is no database in the architecture by design. However, I implemented a Cloudflare Worker to keep track of the number of visitors and display it directly on the site. Thanks to this Worker, I can know that you are visitor number
+      </p>
+
+      <section className="relative overflow-hidden">
+        
+
+        <div className="relative mx-auto max-w-6xl px-6">
+          <div className="group relative flex flex-col items-center text-center py-8">
+            <div
+              className="
+          relative mt-6 inline-flex items-baseline justify-center gap-2 select-none
+          transition-all duration-200
+          group-hover:scale-[1.02] group-hover:[letter-spacing:0.5px]
+        "
+              aria-live="polite"
+            >
+              <span
+                className="
+            absolute inset-0 translate-y-[2px] blur-[1.2px]
+            text-zinc-400/40
+            font-ramidots text-[16vw] md:text-[10vw] leading-none
+          "
+                style={{ WebkitTextStroke: "0 transparent" }}
+              >
+                <NumberTicker value={visitsTotal} />
+              </span>
+
+              <span
+                className="
+            relative font-ramidots text-[16vw] md:text-[10vw] leading-none
+            tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block 
+            transition-transform duration-200
+            motion-safe:group-hover:scale-[1.015]
+          "
+              >
+                <NumberTicker value={visitsTotal} />
+              </span>
+            </div>
+
+          
+            
+          </div>
+        </div>
+      </section>
 
       {/* <section className="relative mt-44 bg-white">
         <div className="mx-auto max-w-7xl px-6">
@@ -1038,7 +1397,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
               <figure className="mt-6 rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_16px_50px_rgba(0,0,0,0.06)]">
                 <div className="relative aspect-[4/3] w-full">
-                  <img src="" alt="Desktop sidebar mockup" className="h-full w-full object-cover" />
+                  <img src={rework} alt="Desktop sidebar mockup" className="h-full w-full object-cover" />
                   <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
                 </div>
                 <figcaption className="px-4 py-3 text-xs text-zinc-500">
@@ -1070,11 +1429,9 @@ export default function PortfolioScreen({ visitsTotal }) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-
-
-
+      {/*
 
 
 
@@ -1450,16 +1807,7 @@ export default function PortfolioScreen({ visitsTotal }) {
   );
 }
 
-function getOrdinalParts(n) {
-  const j = n % 10,
-    k = n % 100;
-  let suffix = "th";
-  if (j === 1 && k !== 11) suffix = "st";
-  else if (j === 2 && k !== 12) suffix = "nd";
-  else if (j === 3 && k !== 13) suffix = "rd";
 
-  return { number: n, suffix };
-}
 
 function PhoneFrame({ children }) {
   return (
@@ -1593,5 +1941,3 @@ function StackVisual({ variant }) {
     </div>
   );
 }
-
-
