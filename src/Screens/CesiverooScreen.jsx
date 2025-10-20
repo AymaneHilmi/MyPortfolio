@@ -44,7 +44,7 @@ export default function CesiverooScreen() {
     completeMission,
   } = useEasterEgg();
 
-  // details du projet
+  // project details
   const stats = [
     {
       label: "weeks",
@@ -57,38 +57,38 @@ export default function CesiverooScreen() {
       icon: Users,
     },
     {
-      label: "Rôle",
+      label: "Role",
       value: "Software Engineer",
       icon: Briefcase,
     },
     {
-      label: "Livrables",
-      value: "MVP, docs, démo",
+      label: "Deliverables",
+      value: "MVP, docs, demo",
       icon: FileText,
     },
   ];
-  // legende architecture
+  // architecture legend
   const legend = [
     {
       title: "Client (Web & Mobile)",
-      desc: "App React (web) + mobile. Auth, state, routing.",
+      desc: "React app (web) + mobile. Auth, state, routing.",
       items: ["React", "TailwindCSS", "Auth tokens", "ExtraIgnored"],
       icon: MonitorSmartphone,
     },
     {
       title: "API Gateway",
-      desc: "Entrée unique : agrégation, routing, auth, rate-limit.",
+      desc: "Single entry point: aggregation, routing, auth, rate-limiting.",
       items: ["Reverse proxy", "Logs", "Versioning", "Security"],
       icon: ShieldCheck,
     },
     {
       title: "Microservices",
-      desc: "Services Node/Express découplés, orientés métier.",
+      desc: "Decoupled Node/Express services, domain‑oriented.",
       items: [
         "Auth",
-        "Catalogue",
-        "Commandes",
-        "Paiements (mock)",
+        "Catalog",
+        "Orders",
+        "Payments (mock)",
         "Notifications",
         "Webhooks",
       ],
@@ -96,9 +96,9 @@ export default function CesiverooScreen() {
     },
     {
       title: "Data Stores",
-      desc: "Stockage polyglotte selon l’usage.",
+      desc: "Polyglot storage depending on use.",
       items: [
-        "MongoDB (temps réel)",
+        "MongoDB (real‑time)",
         "MS SQL (reporting)",
         "Redis",
         "Elasticsearch",
@@ -107,13 +107,13 @@ export default function CesiverooScreen() {
     },
     {
       title: "Back-Office & Dev Tools",
-      desc: "Panneaux admin, tooling CI/CD, observabilité.",
+      desc: "Admin panels, CI/CD tooling, observability.",
       items: ["Admin UI", "Pipelines", "Monitoring", "Docs"],
       icon: Wrench,
     },
     {
-      title: "Observabilité & Monitoring",
-      desc: "Visibilité, logs, métriques et alertes.",
+      title: "Observability & Monitoring",
+      desc: "Visibility, logs, metrics, and alerts.",
       items: ["Grafana", "Prometheus", "Alertmanager", "ELK"],
       icon: Activity,
     },
@@ -192,14 +192,14 @@ export default function CesiverooScreen() {
         </div>
       </section>
 
-      {/*  Détails du projet */}
+      {/*  Project details */}
       <section
         className="mx-auto py-16 sm:py-20"
-        aria-label="Détails du projet Cesiveroo"
+        aria-label="Cesiveroo project details"
       >
         <div className="text-center mb-10">
           <p className="text-base uppercase tracking-widest text-lightGray">
-            Aperçu du projet
+            Project overview
           </p>
           <h2 className="mt-2 text-2xl sm:text-3xl font-sfbold tracking-tight text-darkGray">
             Details & Objectives
@@ -228,27 +228,24 @@ export default function CesiverooScreen() {
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
           <div className="md:col-span-3">
-            <h3 className="text-lg font-semibold text-gray-900">Objectifs</h3>
+            <h3 className="text-lg font-semibold text-gray-900">Objectives</h3>
             <ul className="mt-3 space-y-2 text-sm text-gray-700">
               <li className="flex gap-3">
                 <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
                 <span>
-                  Concevoir une expérience fluide inspirée de Deliveroo, adaptée
-                  au contexte académique.
+                  Design a smooth experience inspired by Deliveroo, adapted to an academic context.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
                 <span>
-                  Structurer une architecture <em>microservices</em> simple,
-                  déployable en conteneurs.
+                  Structure a simple <em>microservices</em> architecture, deployable in containers.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
                 <span>
-                  Livrer un MVP testable avec une base de données et un tableau
-                  de bord.
+                  Deliver a testable MVP with a database and a dashboard.
                 </span>
               </li>
             </ul>
@@ -256,7 +253,7 @@ export default function CesiverooScreen() {
 
           <div className="md:col-span-2">
             <h3 className="text-lg font-semibold text-gray-900">
-              Stack & outils
+              Stack & tools
             </h3>
             <div className="mt-3 flex flex-wrap gap-2">
               {[
@@ -277,14 +274,14 @@ export default function CesiverooScreen() {
               ))}
             </div>
             <p className="mt-4 text-xs text-gray-500">
-              Focus: performance, accessibilité, DX propre, CI simplifiée.
+              Focus: performance, accessibility, clean DX, simplified CI.
             </p>
           </div>
         </div>
 
         <section className="mx-auto max-w-6xl py-16">
           <h3 className="text-lg font-semibold text-gray-900 text-center">
-            Processus en 5 étapes
+            5‑step process
           </h3>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-5 gap-6">
@@ -355,8 +352,8 @@ export default function CesiverooScreen() {
             <img
               src={GraphiChart}
               alt="hero"
-              height={848}
-              width={1235}
+              height={1848}
+              width={1350}
               className="mx-auto rounded-2xl object-cover h-full object-left-top"
               draggable={false}
             />
@@ -366,10 +363,10 @@ export default function CesiverooScreen() {
         {/* Wireframes  */}
         <section
           className="flex items-center py-16"
-          aria-label="Wireframes — Présentation"
+          aria-label="Wireframes — Overview"
         >
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* gauche: texte */}
+            {/* left column — Text */}
             <div className="order-1 lg:order-1 text-left">
               <header className="mb-6">
                 <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row items-center gap-2">
@@ -381,28 +378,25 @@ export default function CesiverooScreen() {
                 </h2>
               </header>
               <p className="mt-4 text-base sm:text-lg leading-relaxed text-zinc-700 max-w-prose">
-                Définition des parcours clés, priorisation des écrans et
-                structuration des composants pour un MVP clair et rapide à
-                itérer. Les wireframes ont servi de contrat visuel pour aligner
-                l’équipe et sécuriser les décisions produit.
+                Definition of key journeys, screen prioritization, and component structuring for a clear MVP that’s quick to iterate on. The wireframes served as a visual contract to align the team and de‑risk product decisions.
               </p>
               <ul className="mt-6 space-y-2 text-sm text-zinc-700">
                 <li className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
-                  <span>Zoning et hiérarchie visuelle cohérente.</span>
+                  <span>Consistent zoning and visual hierarchy.</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
-                  <span>Composants réutilisables pour accélérer le dev.</span>
+                  <span>Reusable components to speed up development.</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
-                  <span>Pré‑validation des interactions et bords de cas.</span>
+                  <span>Pre‑validation of interactions and edge cases.</span>
                 </li>
               </ul>
             </div>
 
-            {/* droite: image */}
+            {/* right column — Image */}
             <div className="order-2 lg:order-2">
               <figure className="relative mx-auto w-full max-w-[720px] overflow-hidden ">
                 <img
@@ -417,8 +411,8 @@ export default function CesiverooScreen() {
           </div>
         </section>
 
-        {/* Architecture — Présentation */}
-        <section className="py-16" aria-label="Architecture — Présentation">
+        {/* Architecture — Overview */}
+        <section className="py-16" aria-label="Architecture — Overview">
           <div className="relative overflow-hidden rounded-3xl bg-[#3a3a3a] ring-1 ring-zinc-700 shadow-sm">
             <div className="relative px-6 py-10 sm:px-12 sm:py-14">
               {/* Header */}
@@ -435,13 +429,11 @@ export default function CesiverooScreen() {
                 </header>
 
                 <p className="mt-3 text-base sm:text-lg leading-relaxed text-zinc-300 ">
-                  Architecture orientée services : un front React, une gateway
-                  d’API qui centralise l’accès et des microservices Node/Express
-                  découplés. Stockage polyglotte suivant l’usage.
+                  Service‑oriented architecture: a React frontend, an API gateway centralizing access, and decoupled Node/Express microservices. Polyglot storage depending on use.
                 </p>
               </div>
 
-              {/* contenu */}
+              {/* content */}
               <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
                 {legend.map((col, idx) => {
                   const Icon = col.icon;

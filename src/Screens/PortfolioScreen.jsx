@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
-import { cn } from "@/lib/utils";
+import React from "react";
 import HomePortfolio from "@/assets/PortfolioHome.png";
 import LogoMobile from "@/assets/LogoMobile.png";
-import { motion } from "framer-motion";
 import intro from "@/assets/IntroPortfolio.mp4";
 import ethanchng from "@/assets/ethanchng.mp4";
 import zaid from "@/assets/zaid.mp4";
@@ -12,26 +10,17 @@ import LandingPageSpline from "@/assets/LandingPageSpline.mp4";
 import AymanePortfolioV1 from "@/assets/AymanePortfolioV1.mp4";
 import ComingSoon from "@/assets/ComingSoon.mp4";
 import rework from "@/assets/ReworkPortfolio.jpg";
+import { toast } from "react-hot-toast";
+
 import {
-  MonitorSmartphone,
-  ShieldCheck,
   Boxes,
   Box,
-  Database,
-  Wrench,
-  Activity,
   Github,
-  Calendar,
-  Users,
-  Briefcase,
   FileText,
   Sparkles,
   Lightbulb,
   MousePointerClick,
   Linkedin,
-  Rocket,
-  Gamepad2,
-  Palette,
   Image,
   Wand2,
   LayoutDashboard,
@@ -40,39 +29,47 @@ import { NumberTicker } from "../components/ui/NumberTicker";
 import { LinkPreview } from "@/components/ui/link-preview";
 
 // Image not used in the following section
-import logo from "@/assets/Logo.png";
-import IconSwitcher from "../components/ui/IconSwitcherSection";
-import ConceptionScroller from "../components/ui/conceptionScroller";
-import TechniqueSection from "@/components/ui/TechniqueSection";
-import { MacbookScroll } from "@/components/ui/macbook-scroll";
 import AutoPlayVideo from "../components/ui/autoplayVideo";
 import LighthouseSection from "../components/ui/lightHousesection";
 
-export default function PortfolioScreen({ visitsTotal }) {
-  const { number, suffix } = getOrdinalParts(visitsTotal);
+import { useEasterEgg } from "@/context/EasterEggContext";
 
-  const stats = [
-    {
-      label: "???",
-      value: "??",
-      icon: Calendar,
-    },
-    {
-      label: "???",
-      value: "??",
-      icon: Users,
-    },
-    {
-      label: "???",
-      value: "??",
-      icon: Briefcase,
-    },
-    {
-      label: "???",
-      value: "??",
-      icon: FileText,
-    },
-  ];
+function EggProgress() {
+  const { EggList, foundEggs } = useEasterEgg();
+  const total = EggList.length;
+  const count = foundEggs.length;
+  const pct = Math.round((count / Math.max(total, 1)) * 100);
+
+  return (
+    <section className="relative mt-16">
+      <div className=" rounded-2xl border border-zinc-200 bg-white shadow-sm p-6">
+        <div className="flex items-center gap-4">
+          <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Easter Eggs Progress</p>
+        </div>
+
+        {/* Progress bar */}
+        <div className="mt-4" role="region" aria-label="Easter eggs progress">
+          <div
+            className="h-2 w-full rounded-full bg-zinc-100"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={total}
+            aria-valuenow={count}
+            aria-label="Easter eggs found"
+          >
+            <div
+              className="h-2 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 transition-[width] duration-300"
+              style={{ width: `${pct}%` }}
+            />
+          </div>
+          <p className="mt-2 text-xs text-zinc-500 text-center">{count} / {total} found</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function PortfolioScreen({ visitsTotal }) {
 
   const STEPS = [
     {
@@ -171,14 +168,10 @@ export default function PortfolioScreen({ visitsTotal }) {
       </section>
 
       <section className="" aria-label="Why building this portfolio">
-        <div className="text-left">
-          <p className="text-[10px] uppercase tracking-widest text-zinc-500">
-            Objective
-          </p>
-          <h3 className="mt-3 text-3xl md:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
-            Why building this portfolio?
-          </h3>
-          <div className="relative mx-auto max-w-5xl text-left text-justify mt-4">
+        <div className="text-center">
+
+
+          <div className="relative mx-auto max-w-5xl text-justify mt-4">
             <p className="text-darkGray/90 text-base md:text-lg leading-relaxed">
               When I first discovered the world of computing online, especially
               through{" "}
@@ -288,13 +281,13 @@ export default function PortfolioScreen({ visitsTotal }) {
       <section className="relative mt-24 bg-white">
         <div className="">
           <div className="text-center">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+            {/* <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
               The Vision
-            </p>
-            <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+            </p> */}
+            {/* <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
               From professional tool to creative playground
-            </h2>
-            <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+            </h2> */}
+            {/* <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" /> */}
 
             <div className="mt-10 font-sfregular text-zinc-600 text-center">
               Over time, the vision for my portfolio has evolved significantly.
@@ -675,7 +668,7 @@ export default function PortfolioScreen({ visitsTotal }) {
       <div className="mt-32 text-zinc-600 md:text-lg leading-relaxed ">
         <p>
           When I started developing the sidebar, I chose to follow the same
-          design as Ethan’s portfolio because I really loved it. For my version,
+          design as Ethan’s portfolio as I really loved it. For my version,
           I added a personal touch by placing my name in Arabic on the home
           button.
         </p>
@@ -999,6 +992,7 @@ export default function PortfolioScreen({ visitsTotal }) {
         <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
           {/* LEFT — Image */}
           <figure className="order-1">
+
             <figcaption className="mb-3 text-[10px] text-zinc-500 text-center uppercase">Redesign preview</figcaption>
             <div className="relative rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
               <img src={rework} alt="Redesign preview" className="w-full h-auto object-cover" />
@@ -1006,479 +1000,437 @@ export default function PortfolioScreen({ visitsTotal }) {
             </div>
           </figure>
 
-          {/* RIGHT — Text */}
-          <div className="order-2 text-left">
-            <p className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
-              For the new design, I wanted to add a touch of color, which is why {" "}
-              <span className="bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">
-                this gradient</span> became a strong visual element throughout the site. I also introduced a new typeface called <span className="font-ramidots text-2xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit">Ramidots</span> {" "}
-              to give the portfolio a more unique identity. Alongside the visuals, I spent time testing the experience on both desktop and mobile, making sure that the user journey felt the same across devices.
-            </p>
-          </div>
-        </div>
-      </section>
+          {/* RIGHT — Content cards (modern & minimal) */}
+          <div className="order-2 h-full flex flex-col gap-4">
+            {/* Card 1 — Palette & Gradient */}
+            <figcaption className=" text-[10px] text-zinc-500 text-center uppercase">Palette & Gradient</figcaption>
+            <article className="rounded-2xl border border-zinc-200 bg-white shadow-sm p-5">
 
-
-
-
-      {/* <section className="relative mt-44 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
-            <div>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Desktop</p>
-
-              <h4 className="mt-1 font-ramidots text-2xl md:text-4xl tracking-tight text-zinc-900">
-                Left Sidebar
-              </h4>
-              <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">
-                First decision: a left-aligned, persistent sidebar to anchor navigation.
-                It keeps key sections visible at all times and reduces page-to-page friction.
-                Ideal for a portfolio with multiple chapters (story, vision, tech, experiments).
-              </p>
-
-              <figure className="mt-6 rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_16px_50px_rgba(0,0,0,0.06)]">
-                <div className="relative aspect-[4/3] w-full">
-                  <img src="" alt="Desktop sidebar mockup" className="h-full w-full object-cover" />
-                  <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
-                </div>
-                <figcaption className="px-4 py-3 text-xs text-zinc-500">
-                  Desktop layout — Sidebar as the main spine of navigation
-                </figcaption>
-              </figure>
-            </div>
-
-            <div className="md:pl-8 md:border-l md:border-zinc-200">
-              <h3 className="text-sm uppercase tracking-widest text-zinc-500">Global</h3>
-              <h4 className="mt-1 font-ramidots text-2xl md:text-4xl tracking-tight text-zinc-900">
-                Minimal Top Navbar
-              </h4>
-              <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">
-                For broader screens and mobile, a compact top navbar keeps things clear:
-                primary links, quick actions, and room for the cursor interactions. It
-                prioritizes content while preserving orientation and easy access.
-              </p>
-
-              <figure className="mt-6 rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_16px_50px_rgba(0,0,0,0.06)]">
-                <div className="relative aspect-[4/3] w-full">
-                  <img src="" alt="Top navbar mockup" className="h-full w-full object-cover" />
-                  <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
-                </div>
-                <figcaption className="px-4 py-3 text-xs text-zinc-500">
-                  Global header — Simple navbar for focus and clarity
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-
-
-
-
-      <div className="mt-16 grid grid-cols-2 sm:grid-cols-6 gap-8 text-center">
-        <div>
-          <a
-            data-cursor-icon="arrow"
-            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 opacity-0 group-hover:opacity-10 transition" />
-            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
-              Link
-            </span>
-          </a>
-          <p className="mt-2 text-xs text-zinc-500">External website</p>
-        </div>
-        <div>
-          <a
-            data-cursor-icon="mail"
-            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-blue-200/20 opacity-0 group-hover:opacity-30 transition" />
-            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
-              Mail
-            </span>
-          </a>
-          <p className="mt-2 text-xs text-zinc-500">Send an email</p>
-        </div>
-
-        <div>
-          <a
-            data-cursor-icon="copy"
-            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
-          >
-            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
-              Copy
-            </span>
-          </a>
-          <p className="mt-2 text-xs text-zinc-500">Copy to clipboard</p>
-        </div>
-
-
-        <div>
-          <div
-            data-cursor-icon="start"
-            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-emerald-300/20 opacity-0 group-hover:opacity-30 transition" />
-            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
-              Start
-            </span>
-          </div>
-          <p className="mt-2 text-xs text-zinc-500">Start a Video</p>
-        </div>
-
-        <div>
-          <div
-            data-cursor-icon="stop"
-            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-yellow-300/30 to-orange-200/20 opacity-0 group-hover:opacity-40 transition" />
-            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
-              Pause
-            </span>
-          </div>
-          <p className="mt-2 text-xs text-zinc-500">Stop a Video</p>
-        </div>
-
-        <div>
-          <div
-            data-cursor-icon="egg"
-            className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-pink-300/20 to-purple-300/20 opacity-0 group-hover:opacity-40 transition" />
-            <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
-              Egg
-            </span>
-          </div>
-          <p className="mt-2 text-xs text-zinc-500">Mystery easter egg</p>
-        </div>
-      </div>
-
-
-
-
-      <p className="text-zinc-600 md:text-lg leading-relaxed mt-12 text-center max-w-3xl mx-auto">
-        Here are some examples of the different cursor variations I implemented in this portfolio.
-        The idea is to give more context to the user about what they can do on each element —
-        <span className="italic"> without needing text or explanation.</span>
-      </p> */}
-
-      {/* <div className="opacity-0 translate-y-6 transition will-change-transform">
-        <div className="grid items-center gap-8 md:gap-12 md:grid-cols-[0.8fr_1fr]">
-          <figure className="order-1 md:order-none">
-            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
-              <img src={image} alt={caption || "Visual"} className="h-full w-full object-cover" />
-              <div aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl" />
-            </div>
-            {caption && <figcaption className="mt-2 text-sm text-zinc-500">{caption}</figcaption>}
-          </figure>
-
-          <div className="order-2 md:order-none">
-            {title && (
-              <h3 className="font-ramidots text-2xl md:text-3xl text-zinc-900 tracking-tight">{title}</h3>
-            )}
-            {description && (
-              <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">{description}</p>
-            )}
-          </div>
-
-        </div>
-      </div> */}
-
-      {/* <ConceptionScroller steps={[
-        { id: "s1", layout: "left", title: "Wireframe — navigation & layout", description: "Esquisser rapidement la structure : header, menu, zones de contenu.", image: "/images/wireframe-1.jpg", caption: "Low-fi #1" },
-        { id: "s2", layout: "right", title: "Wireframe — flows & priorités", description: "Valider les parcours clés et la hiérarchie visuelle.", image: "/images/wireframe-2.jpg", caption: "Low-fi #2" },
-        { id: "s3", layout: "full", title: "Mood & Direction visuelle", description: "Inspirations, micro-interactions : une image full-width pour marquer l’étape.", image: "/images/mood.jpg" },
-        { id: "s4", layout: "left", title: "Post-its — organisation", description: "Clusteriser les idées, prioriser ce qui compte vraiment.", image: "/images/postits.jpg", caption: "Workshop notes" },
-      ]} /> */}
-
-      {/* <TechniqueSection />
-      <MacbookScroll
-        title={
-          <span>
-            This Macbook is built with Tailwindcss. <br /> No kidding.
-          </span>
-        }
-        badge={
-          <a href="https://peerlist.io/manuarora">
-            <Badge className="h-10 w-10 -rotate-12 transform" />
-          </a>
-        }
-        src={`/linear.webp`}
-        showGradient={false}
-      /> */}
-
-      {/* ////////////////////////////////////////////////////////////////////// */}
-
-      {/* <section className="relative mt-24 overflow-hidden bg-white">
-        <div className="text-center mb-12">
-          <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
-            Objective
-          </p>
-          <h3 className="mt-3 text-3xl md:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
-            Details & Objectives
-          </h3>
-          <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
-          {stats.map((stat) => {
-            const Icon = stat.icon;
-            return (
-              <div
-                key={stat.label}
-                className="group rounded-2xl border border-zinc-200 bg-white p-5 text-center shadow-sm transition hover:shadow-md"
-              >
-                <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-full ring-1 ring-zinc-200">
-                  <Icon
-                    className="h-5 w-5 text-zinc-700 group-hover:text-zinc-900 transition"
-                    strokeWidth={2}
-                  />
-                </div>
-                <p className="text-base md:text-4xl font-ramidots text-zinc-900 tracking-tight">
-                  {stat.value}
-                </p>
-                <p className="text-xs text-zinc-500 mt-1">{stat.label}</p>
-
-                <span className="mt-3 block h-1 w-10 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 opacity-60" />
+              {/* Large preview bar */}
+              <div className="h-12 rounded-xl ring-1 ring-zinc-200 overflow-hidden">
+                <div className="w-full h-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
               </div>
-            );
-          })}
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
-          <div className="md:col-span-3">
-            <h3 className="text-lg font-semibold text-zinc-900">Objectives</h3>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-700">
-              {[
-                "?????????????????????????????????????????????????????????????",
-                "?????????????????????????????????????????????????????????????",
-                "?????????????????????????????????????????????????????????????",
-              ].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
-                  <span dangerouslySetInnerHTML={{ __html: item }} />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-2">
-            <h3 className="text-lg font-semibold text-zinc-900">
-              Stack & outils
-            </h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {[
-                "React",
-                "???????",
-                "???????",
-                "???????",
-                "???????",
-                "???????",
-                "???????",
-                "???????",
-                "???????",
-                "???????",
-              ].map((chip) => (
-                <span
-                  key={chip}
-                  className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-700 shadow-sm"
+              {/* Swatches (illustrative) */}
+              <div className="mt-3 flex items-center gap-2">
+                {/* Blue */}
+                <button
+                  data-cursor-icon="copy"
+                  type="button"
+                  aria-label="Copy hex #3b82f6"
+                  onClick={() => navigator.clipboard?.writeText('#3b82f6') & toast('Hex code #3b82f6 copied to clipboard')}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigator.clipboard?.writeText('#3b82f6')}
+                  className="group relative inline-flex items-center gap-1.5 rounded-full ring-1 ring-zinc-200 px-2 py-1 text-[11px] bg-white transition 
+               hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
-                  {chip}
-                </span>
-              ))}
-            </div>
-            <p className="mt-4 text-xs text-zinc-500">
-              Focus&nbsp;: performance, accessibilité, DX propre, CI simplifiée.
-            </p>
+                  {/* subtle glow on hover */}
+                  <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/15 via-blue-400/10 to-transparent opacity-0
+                     group-hover:opacity-100 blur-[6px] transition" />
+                  <span className="relative h-3 w-3 rounded-full bg-blue-500" />
+                  <span className="relative font-medium text-zinc-700">#3b82f6</span>
+                </button>
+
+                {/* Orange */}
+                <button
+                  data-cursor-icon="copy"
+                  type="button"
+                  aria-label="Copy hex #fb923c"
+                  onClick={() => navigator.clipboard?.writeText('#fb923c') & toast('Hex code #fb923c copied to clipboard')}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigator.clipboard?.writeText('#fb923c')}
+                  className="group relative inline-flex items-center gap-1.5 rounded-full ring-1 ring-zinc-200 px-2 py-1 text-[11px] bg-white transition 
+               hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300"
+                >
+                  <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-orange-400/20 via-orange-300/10 to-transparent opacity-0
+                     group-hover:opacity-100 blur-[6px] transition" />
+                  <span className="relative h-3 w-3 rounded-full bg-orange-400" />
+                  <span className="relative font-medium text-zinc-700">#fb923c</span>
+                </button>
+
+                {/* Red */}
+                <button
+                  data-cursor-icon="copy"
+                  type="button"
+                  aria-label="Copy hex #ef4444"
+                  onClick={() => navigator.clipboard?.writeText('#ef4444') & toast('Hex code #ef4444 copied to clipboard')}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigator.clipboard?.writeText('#ef4444')}
+                  className="group relative inline-flex items-center gap-1.5 rounded-full ring-1 ring-zinc-200 px-2 py-1 text-[11px] bg-white transition 
+               hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300"
+                >
+                  <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-red-500/15 via-red-400/10 to-transparent opacity-0
+                     group-hover:opacity-100 blur-[6px] transition" />
+                  <span className="relative h-3 w-3 rounded-full bg-red-500" />
+                  <span className="relative font-medium text-zinc-700">#ef4444</span>
+                </button>
+              </div>
+
+              <p className="mt-4 text-sm text-zinc-700 leading-relaxed">
+                For the new design, I wanted to add a touch of color, which is why this gradient became a strong visual element throughout the site
+              </p>
+            </article>
+
+            {/* Card 2 — Typeface demo */}
+            {/* Card 2 — Typeface demo */}
+            <figcaption className="text-[10px] text-zinc-500 text-center uppercase">
+              Typography
+            </figcaption>
+            <article className="rounded-2xl border border-zinc-200 bg-white shadow-sm p-5">
+
+              <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Ramidots */}
+                <div className="relative rounded-xl ring-1 ring-zinc-200 p-4 bg-white">
+                  <span className="absolute right-3 top-3 text-[10px] rounded-full px-2 py-0.5 ring-1 ring-zinc-200">Accent</span>
+                  <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1">Display — Titles</p>
+                  <h4 className="font-ramidots text-3xl md:text-4xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block w-fit pr-1">
+                    Ramidots
+                  </h4>
+                  <p className="mt-1 text-sm text-zinc-600 leading-relaxed">
+                    <span className="font-medium">Ramidots</span> is used for main titles and accents.
+                  </p>
+                </div>
+
+                {/* SF Family */}
+                <div className="rounded-xl ring-1 ring-zinc-200 p-4 bg-zinc-50">
+                  <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-1">Body — Interface</p>
+                  <h4 className="text-2xl font-sfbold tracking-tight text-zinc-900">
+                    SF Family
+                  </h4>
+                  <p className="mt-1 text-sm text-zinc-600 leading-relaxed">
+                    Inspired by <span className="font-medium">Apple’s San Francisco</span> typeface family
+                  </p>
+                </div>
+              </div>
+
+              <p className="mt-4 text-sm text-zinc-700 leading-relaxed">
+                The typography system balances <span className="font-medium">expressive identity</span> (Ramidots)
+                with <span className="font-medium">functional readability</span> (SF family).
+              </p>
+            </article>
+
+            {/* Explanatory paragraph (from your brief) */}
+            {/* <div className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
+              <p>
+                For the new design, I wanted to add a touch of color, which is why
+                <span className="mx-1 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent font-semibold">this gradient</span>
+                became a strong visual element throughout the site. I also introduced a new typeface called
+                <span className="mx-1 font-ramidots text-2xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent tracking-widest">Ramidots</span>
+                to give the portfolio a more unique identity. Alongside the visuals, I spent time testing the experience on desktop and mobile to keep the journey consistent across devices.
+              </p>
+            </div> */}
           </div>
         </div>
       </section>
-      <section
-        className="mx-auto py-16 sm:py-20"
-        aria-label="Why building this portfolio"
-      >
-        <div className="text-center">
-          <p className="text-xs uppercase tracking-widest text-zinc-500">
-            Objective
+
+
+
+
+
+
+      <section className="relative mt-14">
+        <div className="mx-auto text-justify ">
+          {/* <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Navigation Update</p> */}
+
+          <p className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
+            In this redesign, I decided to remove the sidebar.
+            It was originally inspired by Ethan’s portfolio, which I really liked at first for its structure and presence.
+            But over time, I realized it was taking up too much space and made navigation feel heavier than it should.
+            So I replaced it with a centered top navbar.
+            It’s simpler, lighter, and just feels more natural to use (for me).
+            Everything stays accessible without cluttering the layout, and the whole page breathes much better now.
           </p>
-          <h3 className="mt-3 text-3xl md:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
-            Why building this portfolio?
-          </h3>
-          <div className="relative mx-auto max-w-5xl text-center mt-4">
-            <p className="text-darkGray/90 text-base md:text-lg leading-relaxed">
-              When I first discovered the world of computing online, especially
-              through{" "}
-              <LinkPreview
-                imageSrc="https://play-lh.googleusercontent.com/ZRfghwQudJzza7Zb7k1tlc7aXd3WpnVb48AGg_kP-r84kiOcsLKpeM5goGkAQVT16P0=w526-h296-rw"
-                url="https://agar.io"
-                isStatic
-                className="font-bold text-black hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 hover:bg-clip-text hover:text-transparent transition-colors duration-300"
-              >
-                Agar.io
-              </LinkPreview>
-              . I instantly fell in love with websites, particularly the ones
-              that felt impressive to build. From that point, I set myself the
-              goal of creating one that truly reflects my own universe. This
-              portfolio isn’t about selling myself to recruiters or chasing
-              opportunities. I’m building it purely{" "}
-              <span className="italic">for the joy and passion of it</span>.
-            </p>
-          </div>
-          <span className="mt-6 inline-block h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
-        </div>
-      </section>
-      <section className="relative">
-        <div
-          aria-hidden
-          className="absolute inset-0 flex items-center justify-center opacity-20"
-        >
-          <span
-            className="font-ramidots text-[20vw] md:text-[16vw] leading-none tracking-tight bg-gradient-to-r
-             from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent select-none py-20 px-32"
-          >
-            PORTFOLIO
-          </span>
+          <p className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
+            Still in the spirit of navigation, you’ve probably noticed the custom cursor.
+            It was inspired by Zaid’s portfolio, which had a really smart way of using motion and feedback
+            to guide users without extra UI elements.
+            The idea here was the same: keep things simple but meaningful.
+            Instead of adding labels or animations everywhere, the cursor itself becomes
+            part of the navigation language — showing context about what you can do,
+            where you can click, and how the interface reacts.
+          </p>
+
+          <p className="mt-4 text-zinc-600 md:text-lg leading-relaxed">
+            Here are some examples of the different cursor variations
+            I implemented in this portfolio :
+          </p>
+
+          {/* Mobile-only note */}
+          <p className="mt-6 text-center text-xs text-red-500 md:hidden">
+            [Cursor demos are only available on desktop devices]
+          </p>
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-6 text-center">
-          
-
-          <div className="mt-10 md:mt-14 flex justify-center gap-8">
-            <PhoneFrame>
-              <img
-                src={MobilePortfolio}
-                alt="App preview"
-                className="h-full w-full object-cover"
-              />
-            </PhoneFrame>
-            <PhoneFrame>
-              <img
-                src={MobilePortfolio}
-                alt="App preview"
-                className="h-full w-full object-cover"
-              />
-            </PhoneFrame>
-            <PhoneFrame>
-              <img
-                src={MobilePortfolio}
-                alt="App preview"
-                className="h-full w-full object-cover"
-              />
-            </PhoneFrame>
-            
-          </div>
-        </div>
-      </section>
-      <section className="relative mt-24 overflow-hidden">
-        
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-15"
-        >
-          <span
-            className="font-ramidots text-[22vw] md:text-[28vw] leading-none tracking-tight
-      bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent select-none"
-          >
-            VISITOR
-          </span>
-        </div>
-
-        <div className="relative px-8 py-16 flex flex-col items-center text-center gap-8">
-          
-          <div className="space-y-3">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-              Live Counter
-            </p>
-            <h3
-              className="text-3xl md:text-7xl font-ramidots tracking-tight
-        bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit"
+        {/* Desktop-only grid */}
+        <div className="mt-16 hidden md:grid grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+          <div>
+            <a
+              data-cursor-icon="arrow"
+              className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
             >
-              You are the
-            </h3>
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 opacity-0 group-hover:opacity-10 transition" />
+              <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+                Link
+              </span>
+            </a>
+            <p className="mt-2 text-xs text-zinc-500">External website</p>
           </div>
 
-          
-          <div className="relative">
-           
-            <div
-              className="absolute -inset-6 md:-inset-10 rounded-full blur-3xl
-        bg-gradient-to-r from-blue-500/25 via-orange-400/20 to-red-500/25 animate-pulse"
-            />
+          <div>
+            <a
+              data-cursor-icon="mail"
+              className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-blue-200/20 opacity-0 group-hover:opacity-30 transition" />
+              <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+                Mail
+              </span>
+            </a>
+            <p className="mt-2 text-xs text-zinc-500">Send an email</p>
+          </div>
 
-            
-            <span
-              className="relative inline-flex items-baseline justify-center gap-2
-          font-ramidots text-[4.5rem] md:text-[12rem] leading-none tracking-tight
-          bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent
-          drop-shadow-sm select-none"
+          <div>
+            <a
+              data-cursor-icon="copy"
+              className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+            >
+              <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+                Copy
+              </span>
+            </a>
+            <p className="mt-2 text-xs text-zinc-500">Copy to clipboard</p>
+          </div>
+
+          <div>
+            <div
+              data-cursor-icon="start"
+              className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-emerald-300/20 opacity-0 group-hover:opacity-30 transition" />
+              <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+                Start
+              </span>
+            </div>
+            <p className="mt-2 text-xs text-zinc-500">Start a Video</p>
+          </div>
+
+          <div>
+            <div
+              data-cursor-icon="stop"
+              className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-yellow-300/30 to-orange-200/20 opacity-0 group-hover:opacity-40 transition" />
+              <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+                Pause
+              </span>
+            </div>
+            <p className="mt-2 text-xs text-zinc-500">Stop a Video</p>
+          </div>
+
+          <div>
+            <div
+              data-cursor-icon="egg"
+              className="group flex items-center justify-center h-28 rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition relative overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-pink-300/20 to-purple-300/20 opacity-0 group-hover:opacity-40 transition" />
+              <span className="text-sm text-zinc-600 group-hover:text-zinc-900 transition">
+                Egg
+              </span>
+            </div>
+            <p className="mt-2 text-xs text-zinc-500">Mystery easter egg</p>
+          </div>
+        </div>
+      </section>
+      <p className="mt-16 text-zinc-600 md:text-lg leading-relaxed text-center md:text-left">
+        The architecture of this portfolio is not very complicated. There’s no backend, everything runs on a frontend
+        built with React, Vite, and TailwindCSS. The code lives on GitHub, where
+        every commit triggers a build pipeline. From there, Cloudflare Pages
+        handles the deployment across the network.
+        <br></br>
+        In short, it’s a streamlined pipeline: I write the code, push to GitHub,
+        Cloudflare builds and deploys, and users benefit from it.
+      </p>
+      <section className="relative w-full mt-14">
+        <div className="relative ">
+          {/* Grille responsive: cartes larges, mêmes hauteurs */}
+          <div className="grid items-stretch gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+            {/* 1 — Frontend */}
+            <div className="relative rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm flex flex-col h-full">
+              <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-[10px] font-medium text-white px-2">
+                1
+              </span>
+              <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-500 mb-1">
+                Frontend
+              </p>
+              <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                React App
+              </h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-zinc-600">
+                <li>Vite (bundler)</li>
+                <li>TailwindCSS</li>
+              </ul>
+              <div className="mt-auto pt-4">
+                <span className="block h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+              </div>
+            </div>
+
+            {/* 2 — GitHub */}
+            <div className="relative rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm flex flex-col h-full">
+              <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-[10px] font-medium text-white px-2">
+                2
+              </span>
+              <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-500 mb-1">
+                Source & CI
+              </p>
+              <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                GitHub
+              </h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-zinc-600">
+                <li>Repository</li>
+                <li>Build via Cloudflare Pages</li>
+              </ul>
+              <div className="mt-auto pt-4">
+                <span className="block h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+              </div>
+            </div>
+
+            {/* 3 — Cloudflare Pages / CDN */}
+            <div className="relative rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm flex flex-col h-full">
+              <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-[10px] font-medium text-white px-2">
+                3
+              </span>
+              <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-500 mb-1">
+                Edge / CDN
+              </p>
+              <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                Cloudflare Pages
+              </h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-zinc-600">
+                <li>Deployment </li>
+                <li>Workers</li>
+              </ul>
+              <div className="mt-auto pt-4">
+                <span className="block h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+              </div>
+            </div>
+
+            {/* 4 — Users */}
+            <div className="relative rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm flex flex-col h-full">
+              <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 text-[10px] font-medium text-white px-2">
+                4
+              </span>
+              <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-500 mb-1">
+                Users
+              </p>
+              <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                Visitors
+              </h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-zinc-600">
+                <li>Desktop - Mobile</li>
+              </ul>
+              <div className="mt-auto pt-4">
+                <span className="block h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <p className="mt-24 text-zinc-600 md:text-lg leading-relaxed text-center md:text-left">
+        There is no database in the architecture by design. However, I implemented a Cloudflare Worker to keep track of the number of visitors and display it directly on the site. Thanks to this Worker, I know that you are visitor number...
+      </p>
+
+      <section className="relative overflow-hidden">
+
+
+        <div className="relative mx-auto max-w-6xl px-6">
+          <div className="group relative flex flex-col items-center text-center py-8">
+            <div
+              className="
+          relative mt-6 inline-flex items-baseline justify-center gap-2 select-none
+          transition-all duration-200
+          group-hover:scale-[1.02] group-hover:[letter-spacing:0.5px]
+        "
               aria-live="polite"
             >
-              <NumberTicker value={visitsTotal} />
-              <sup className="align-super text-[0.28em] tracking-wide font-ramidots text-red-500">
-                {suffix}
-              </sup>
-            </span>
+              <span
+                className="
+            absolute inset-0 translate-y-[2px] blur-[1.2px]
+            text-zinc-400/40
+            font-ramidots text-[16vw] md:text-[10vw] leading-none
+          "
+                style={{ WebkitTextStroke: "0 transparent" }}
+              >
+                <NumberTicker value={visitsTotal} />
+              </span>
 
-            
-            <span
-              className="relative mt-4 block h-1 w-28 md:w-40 mx-auto rounded-full
-        bg-gradient-to-r from-blue-500 via-orange-400 to-red-500"
-            />
+              <span
+                className="
+            relative font-ramidots text-[16vw] md:text-[10vw] leading-none
+            tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block 
+            transition-transform duration-200
+            motion-safe:group-hover:scale-[1.015]
+          "
+              >
+                <NumberTicker value={visitsTotal} />
+              </span>
+            </div>
+
+
+
           </div>
-
-          
-          <h3
-            className="text-3xl md:text-7xl font-ramidots tracking-tight
-      bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit"
-          >
-            visitor of this Portfolio.
-          </h3>
-
-           mini note optionnelle 
-           <p className="max-w-xl text-sm md:text-base text-gray-600 leading-relaxed">
-      Every visit helps me iterate and add more hidden layers. Thanks for being part of the timeline.
-    </p> 
         </div>
-      </section> */}
-      {/* <IconSwitcher/> */}
-    </div>
-  );
-}
+      </section>
+      <section className="relative mt-24">
+        <div className=" gap-10 md:gap-12 items-start">
+          <div className="space-y-4">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+              Easter Eggs
+            </p>
+            <h2 className="text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+              Easter Eggs Quest
+            </h2>
+            <span className="block h-[3px] w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
 
-function getOrdinalParts(n) {
-  const j = n % 10,
-    k = n % 100;
-  let suffix = "th";
-  if (j === 1 && k !== 11) suffix = "st";
-  else if (j === 2 && k !== 12) suffix = "nd";
-  else if (j === 3 && k !== 13) suffix = "rd";
+            <p className="text-zinc-600 md:text-lg leading-relaxed">
+              As a competitor, I’ve always loved challenges, which is why the
+              Easter Egg quest was born in this website. I created it to challenge my family and
+              friends (and you !) to find all the hidden eggs scattered throughout the site.
+              Beyond the fun, it also adds a unique touch to my portfolio, since
+              I didn’t want it to feel like just another typical portfolio.
+              The starting point of this hidden quest can be found right on the homepage.
+            </p>
+          </div>
+        </div>
+      </section>
+      <EggProgress />
+      <section className="flex flex-col justify-center items-center mt-14  ">
+        <div className=" text-center">
+          <p className="mt-4 text-zinc-600 md:text-lg leading-relaxed">
+            If you enjoyed exploring this portfolio, consider giving it a star,
+            it helps others discover it and means a lot to me.
+            And if you’d like to collaborate, ask a question, or just chat about design & dev,
+            feel free to reach out anytime.
+          </p>
 
-  return { number: n, suffix };
-}
+          <div className="mt-8 flex flex-row items-center justify-center gap-4">
+            {/* GitHub Star button */}
+            <a
+              href=" https://github.com/AymaneHilmi/MyPortfolio" // 👉 remplace par ton vrai lien GitHub
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-6 py-3 text-sm font-medium text-zinc-700 shadow-sm hover:shadow-md hover:border-zinc-300 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                className="h-4 w-4 text-yellow-500 group-hover:scale-110 transition-transform"
+              >
+                <path d="M12 .587l3.668 7.568L24 9.75l-6 5.847L19.336 24 12 19.897 4.664 24 6 15.597 0 9.75l8.332-1.595z" />
+              </svg>
+              Star on GitHub
+            </a>
 
-function PhoneFrame({ children }) {
-  return (
-    <div className="relative h-[520px] w-[260px] md:h-[660px] md:w-[320px]">
-      {/* device body */}
-      <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-b from-zinc-900 to-zinc-800 shadow-[0_20px_60px_rgba(0,0,0,0.35)]" />
-      <div className="absolute inset-[10px] rounded-[2.5rem] bg-black overflow-hidden">
-        {children}
-      </div>
-
-      {/* side buttons (decorative) */}
-      <div className="absolute -left-1 top-24 h-16 w-1.5 rounded-r bg-zinc-700" />
-      <div className="absolute -right-1 top-40 h-10 w-1.5 rounded-l bg-zinc-700" />
-
-      {/* notch */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[10px] h-6 w-36 rounded-b-2xl bg-black" />
-
-      {/* lens / speakers subtle gloss */}
-      <div className="pointer-events-none absolute inset-0 rounded-[3rem] ring-2 ring-black/5" />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
@@ -1491,13 +1443,6 @@ function IconBadge({ children }) {
   );
 }
 
-const Badge = ({ className }) => {
-  return (
-    <div className=" bg-white rounded-full" data-cursor-icon="arrow">
-      <img src={LogoMobile} className="w-10 h-10" alt="Logo" />
-    </div>
-  );
-};
 
 function StackVisual({ variant }) {
   return (
