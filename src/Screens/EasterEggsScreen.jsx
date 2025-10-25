@@ -204,6 +204,15 @@ export default function EasterEggsScreen() {
   const [egg6Value, setEgg6Value] = useState("");
   const [baitTriggered, setBaitTriggered] = useState(false);
 
+  // Mobile input for Egg #1 (trigger with "aymane")
+
+  const handleChangeEgg1 = (e) => {
+    const v = (e?.target?.value ?? "").toString();
+    setEgg1Value(v);
+  };
+
+  const [egg1Value, setEgg1Value] = useState("");
+
   const handleChange = (e) => {
     const v = (e?.target?.value ?? "").toString();
     setEgg6Value(v);
@@ -224,6 +233,22 @@ export default function EasterEggsScreen() {
         incrementEggs("#6");
       }
     }
+  };
+
+  const handleEgg1Change = (e) => {
+    const v = (e?.target?.value ?? "").toString();
+    setEgg1Value(v);
+  };
+
+  const onSubmitEgg1 = (e) => {
+    e?.preventDefault?.();
+    const key = egg1Value.trim().toLowerCase();
+    if (key === "aymane") {
+      if (!foundEggs.includes("#1")) {
+        incrementEggs("#1");
+      }
+    }
+    setEgg1Value("");
   };
 
   const stats = useMemo(() => {
@@ -789,6 +814,17 @@ export default function EasterEggsScreen() {
                             <p className="text-sm text-gray-500 italic">
                               {egg.tip}
                             </p>
+                          )}
+                          {egg.id === "#1" && !isFound && (
+                            <div className="mt-2 block md:hidden">
+                              <PlaceholdersAndVanishInput
+                                placeholders={[
+                                  "On mobile? Type here…"
+                                ]}
+                                onChange={handleEgg1Change}
+                                onSubmit={onSubmitEgg1}
+                              />
+                            </div>
                           )}
                         </div>
                         <div className="ml-4 mt-1">
