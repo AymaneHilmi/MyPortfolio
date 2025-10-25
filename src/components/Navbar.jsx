@@ -205,7 +205,7 @@ export default function Navbar({ scrollToRoutes }) {
                         className="text-xl py-2"
                         onClick={() => {
                             closeNavbar();
-                            scrollToRoutes();
+
                         }}
                     >
                         Home
@@ -215,7 +215,6 @@ export default function Navbar({ scrollToRoutes }) {
                         className="text-xl py-2"
                         onClick={() => {
                             closeNavbar();
-                            scrollToRoutes();
                         }}
                     >
                         About
@@ -225,7 +224,6 @@ export default function Navbar({ scrollToRoutes }) {
                         className="text-xl py-2"
                         onClick={() => {
                             closeNavbar();
-                            scrollToRoutes();
                         }}
                     >
                         Resume
@@ -235,7 +233,6 @@ export default function Navbar({ scrollToRoutes }) {
                         className="text-xl py-2"
                         onClick={() => {
                             closeNavbar();
-                            scrollToRoutes();
                         }}
                     >
                         Saint-Gobain
@@ -245,7 +242,6 @@ export default function Navbar({ scrollToRoutes }) {
                         className="text-xl py-2"
                         onClick={() => {
                             closeNavbar();
-                            scrollToRoutes();
                         }}
                     >
                         Email

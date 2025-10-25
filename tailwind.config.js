@@ -16,7 +16,7 @@ module.exports = {
         lightGray: '#a9a5ac',
       },
       backgroundImage: {
-        "brand-gradient": "linear-gradient(to right, #3B82F6, #fb923c, #ef4444)", 
+        "brand-gradient": "linear-gradient(to right, #3B82F6, #fb923c, #ef4444)",
       },
       fontFamily: {
         sfbold: ['SFBOLD', 'sans-serif'],
@@ -25,8 +25,9 @@ module.exports = {
         InkBrushArabic: ['InkBrushArabic', 'sans-serif'],
         AutomnBrush: ['AutomnBrush', 'sans-serif'],
         ramidots: ['ramidots', 'sans-serif'],
+        handwriting: ['"Caveat"', "cursive"],
 
-        
+
       },
       cursor: {
         none: 'none',

@@ -161,6 +161,28 @@ export default function HomeScreen({ visitsTotal }) {
 
           {/* 3 cartes inclinées */}
           <div className="relative flex flex-col lg:flex-row items-stretch lg:items-end justify-center gap-6 lg:gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20, rotate: -3 }}
+              whileInView={{ opacity: 1, y: 0, rotate: -3 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="absolute -top-10 flex-col items-center z-50 hidden md:flex">
+
+              <p className=" text-gray-400 text-base text-center  font-handwriting opacity-80 pr-1 mb-4">
+                Try this ✨
+                <br />
+                (people are addicted)
+              </p>
+              <svg
+                className="w-10 h-6 text-gray-400 opacity-70 -rotate-90"
+                viewBox="0 0 220 50"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path d="M21.489 29.4305C36.9333 31.3498 51.3198 33.0559 65.7063 34.9753C66.7641 35.1885 67.6104 36.4681 69.9376 38.3875C63.1675 39.2406 57.8783 40.3069 52.5892 40.5201C38.6259 40.9467 24.8741 40.9467 10.9107 40.9467C9.21821 40.9467 7.5257 41.1599 5.83317 40.7334C0.332466 39.6671 -1.57164 36.0416 1.39028 31.1365C2.87124 28.7906 4.56377 26.658 6.46786 24.7386C13.6611 17.4876 21.0659 10.4499 28.4707 3.41224C29.7401 2.13265 31.6442 1.49285 34.183 0C34.6061 10.8765 23.8162 13.8622 21.489 22.3927C23.3931 21.9662 25.0856 21.7529 26.5666 21.3264C83.6894 5.54486 140.601 7.25099 197.3 22.606C203.224 24.0988 208.936 26.4447 214.649 28.5773C217.61 29.6437 220.149 31.9896 218.457 35.6151C216.976 39.2406 214.014 39.2406 210.629 37.7477C172.759 20.6866 132.561 18.7672 91.9404 19.407C70.7838 19.6203 50.0504 21.9662 29.5285 26.8713C26.9897 27.5111 24.4509 28.3641 21.489 29.4305Z" />
+              </svg>
+            </motion.div>
             {/* 1 — Projects */}
             <motion.div
               initial={{ opacity: 0, y: 20, rotate: -3 }}
@@ -349,7 +371,7 @@ export default function HomeScreen({ visitsTotal }) {
           </motion.a>
         ))}
       </section>
-    </div>
+    </div >
   );
 }
 

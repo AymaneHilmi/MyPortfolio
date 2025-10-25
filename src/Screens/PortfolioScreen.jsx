@@ -71,7 +71,28 @@ function EggProgress() {
 
 export default function PortfolioScreen({ visitsTotal }) {
 
-  const STEPS = [
+  const architectureSteps = [
+    {
+      num: "1",
+      title: "Website Navigation",
+      description:
+        "The first step was to define the navigation flow, starting with a sidebar to give quick access to all sections.",
+    },
+    {
+      num: "2",
+      title: "Landing Page",
+      description:
+        "Then I focused on designing a strong landing page to try to create a first stunning impression.",
+    },
+    {
+      num: "3",
+      title: "Home & Logical Flow",
+      description:
+        "Finally, I organized the homepage and content flow to make everything intuitive and easy to navigate.",
+    }
+  ];
+
+  const VisionsSteps = [
     {
       title: "At the beginning",
       subtitle: "A living extension of my resume",
@@ -98,7 +119,7 @@ export default function PortfolioScreen({ visitsTotal }) {
       title: "At the end",
       subtitle: "A creative playground",
       description:
-        "Bringing the portfolio with subtle 3D touches and micro-animations, hiding playful easter eggs. Make it feels like my own little world.",
+        "Bringing the portfolio with subtle touches and micro-animations, hidden easter eggs. Make it feels like my own little world.",
       icons: [
         <Box key="cube" className="h-4 w-4" />,
         <Sparkles key="sprk" className="h-4 w-4" />,
@@ -108,8 +129,8 @@ export default function PortfolioScreen({ visitsTotal }) {
   ];
 
   return (
-    <div className="md:mx-auto max-w-5xl mx-6">
-      <section className="mx-auto py-12 md:py-16 mt-32 flex justify-center items-center">
+    <div className="lg:mx-auto max-w-5xl mx-6">
+      <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* Left column — Text */}
           <div className="space-y-6">
@@ -125,7 +146,7 @@ export default function PortfolioScreen({ visitsTotal }) {
               </span>
             </div>
 
-            <div className="prose prose-zinc max-w-none text-darkGray text-justify">
+            <div className="prose prose-zinc max-w-none text-darkGray text-justify text-sm md:text-base lg:text-lg">
               <p>
                 This portfolio is a personal project where I share my journey,
                 projects, resume, and passion for technology. It’s built to be
@@ -167,12 +188,20 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
       </section>
 
-      <section className="" aria-label="Why building this portfolio">
-        <div className="text-center">
+      <section className="relative mt-6 overflow-hidden bg-white ">
+        <div>
+          <div className="text-center">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+              The Trigger
+            </p>
+            <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+              More than a resume, a living presence
+            </h2>
+            <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
+          </div>
 
-
-          <div className="relative mx-auto max-w-5xl text-justify mt-4">
-            <p className="text-darkGray/90 text-base md:text-lg leading-relaxed">
+          <div className="relative text-justify mt-4">
+            <p className="text-darkGray/90 text-sm md:text-base lg:text-lg leading-relaxed">
               When I first discovered the world of computing online, especially
               through{" "}
               <LinkPreview
@@ -190,21 +219,6 @@ export default function PortfolioScreen({ visitsTotal }) {
               opportunities. I’m building it purely{" "}
               <span className="italic">for the joy and passion of it</span>.
             </p>
-          </div>
-          {/* <span className="mt-6 inline-block h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" /> */}
-        </div>
-      </section>
-
-      <section className="relative mt-24 overflow-hidden bg-white ">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-              The Trigger
-            </p>
-            <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
-              More than a resume, a living presence
-            </h2>
-            <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
           </div>
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-14 items-center ">
@@ -250,16 +264,16 @@ export default function PortfolioScreen({ visitsTotal }) {
             </div>
 
             <div className="order-2">
-              <div className="space-y-5 text-zinc-700 md:text-lg leading-relaxed">
+              <div className="space-y-5 text-zinc-700 text-sm md:text-base lg:text-lg leading-relaxed">
                 <p className="flex items-start gap-3">
-                  <Lightbulb className="w-8 text-blue-600 mt-1" />
+                  <Lightbulb className="w-8 text-blue-600 md:mt-1" />
                   <span>
                     At first, I felt the need for more than a static resume to
                     stand out to recruiters.
                   </span>
                 </p>
                 <p className="flex items-start gap-3">
-                  <Sparkles className="w-12 text-orange-600 mt-1" />
+                  <Sparkles className="w-12 text-orange-600 md:mt-1" />
                   <span>
                     I wanted a space that reflected my personality and skills in
                     a lively way: a place where you don’t just read my journey,
@@ -267,7 +281,7 @@ export default function PortfolioScreen({ visitsTotal }) {
                   </span>
                 </p>
                 <p className="flex items-start gap-3">
-                  <MousePointerClick className="w-6 text-red-600 mt-1" />
+                  <MousePointerClick className="w-6 text-red-600 md:mt-1" />
                   <span>
                     That’s when the idea of creating my own portfolio was born.
                   </span>
@@ -276,9 +290,9 @@ export default function PortfolioScreen({ visitsTotal }) {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
-      <section className="relative mt-24 bg-white">
+      <section className="relative mt-10 md:mt-24 bg-white">
         <div className="">
           <div className="text-center">
             {/* <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
@@ -289,7 +303,7 @@ export default function PortfolioScreen({ visitsTotal }) {
             </h2> */}
             {/* <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" /> */}
 
-            <div className="mt-10 font-sfregular text-zinc-600 text-center">
+            <div className=" font-sfregular text-zinc-600 text-center text-sm md:text-base lg:text-lg" >
               Over time, the vision for my portfolio has evolved significantly.
               What started as a space focused solely on professional topics has
               gradually become a personal creative outlet where I can express
@@ -298,7 +312,7 @@ export default function PortfolioScreen({ visitsTotal }) {
           </div>
           <div className="mt-16 relative">
             <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
-              {STEPS.map((step, idx) => (
+              {VisionsSteps.map((step, idx) => (
                 <div key={idx} className="relative">
                   <article className="md:h-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm md:pl-0">
                     <div className="relative aspect-[16/10] md:aspect-[4/3] overflow-hidden rounded-t-2xl">
@@ -354,8 +368,8 @@ export default function PortfolioScreen({ visitsTotal }) {
             Ethan’s Portfolio
           </p>
 
-          <figcaption className="mt-16 ">
-            <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">
+          <figcaption className="mt-10 md:mt-16 ">
+            <p className=" text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
               One of the sites that inspired me the most was{" "}
               <a
                 data-cursor-icon="arrow"
@@ -375,7 +389,7 @@ export default function PortfolioScreen({ visitsTotal }) {
         </figure>
       </section>
 
-      <section className="relative mt-24">
+      <section className="relative mt-16 md:mt-24">
         <div className="mx-auto">
           {/* Grid vidéos */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -397,7 +411,7 @@ export default function PortfolioScreen({ visitsTotal }) {
                 </div>
               </figure>
               <figcaption className="mt-8 md:mt-10">
-                <p className="text-zinc-600 md:text-lg leading-relaxed max-w-3xl mx-auto">
+                <p className="text-zinc-600 leading-relaxed max-w-3xl mx-auto text-sm md:text-base lg:text-lg text-justify">
                   Additionally, I also drew inspiration from{" "}
                   <a
                     data-cursor-icon="arrow"
@@ -436,7 +450,7 @@ export default function PortfolioScreen({ visitsTotal }) {
               </figure>
               {/* Description (uniquement du texte) */}
               <figcaption className="mt-8 md:mt-10 ">
-                <p className="text-zinc-600 md:text-lg leading-relaxed max-w-3xl mx-auto">
+                <p className="text-zinc-600 leading-relaxed max-w-3xl mx-auto text-sm md:text-base lg:text-lg text-justify">
                   <a
                     className="font-bold underline"
                     href="https://yikodesign.com"
@@ -458,8 +472,8 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
       </section>
 
-      <section className="relative mt-12 bg-white">
-        <div className="mt-10 text-zinc-600 md:text-lg space-y-4">
+      <section className="relative mt-6 bg-white">
+        <div className=" text-zinc-600 space-y-4 text-sm md:text-base lg:text-lg text-justify">
           <p>
             Unlike many designers, I didn’t really start with Figma mockups or
             detailed wireframes. Instead, I jumped straight into the code. The
@@ -473,39 +487,18 @@ export default function PortfolioScreen({ visitsTotal }) {
             about shipping a “perfect” portfolio, but about enjoying the process
             of coding, trying, failing, and improving in an agile, iterative
             way.
+            The conception of this portfolio happened in three main steps:
           </p>
         </div>
       </section>
 
       <section className="relative">
-        <div className="mt-10 text-zinc-600 md:text-lg space-y-4">
-          <p>The conception of this portfolio happened in three main steps:</p>
-        </div>
 
         {/* Timeline */}
-        <div className="mt-32 relative">
+        <div className="mt-16 relative">
           {/* Desktop (horizontal) */}
-          <div className="hidden md:flex justify-between items-start max-w-5xl mx-auto">
-            {[
-              {
-                num: "1",
-                title: "Website Navigation",
-                description:
-                  "The first step was to define the navigation flow, starting with a sidebar to give quick access to all sections.",
-              },
-              {
-                num: "2",
-                title: "Landing Page",
-                description:
-                  "Then I focused on designing a strong landing page to try to create a first stunning impression.",
-              },
-              {
-                num: "3",
-                title: "Home & Logical Flow",
-                description:
-                  "Finally, I organized the homepage and content flow to make everything intuitive and easy to navigate.",
-              },
-            ].map((step, i) => (
+          <div className="hidden md:flex justify-between items-start mx-auto">
+            {architectureSteps.map((step, i) => (
               <div key={i} className="relative flex-1 text-center px-4">
                 {/* Number circle */}
                 <div
@@ -517,33 +510,14 @@ export default function PortfolioScreen({ visitsTotal }) {
                 {/* Title */}
                 <h3 className="font-semibold text-zinc-900">{step.title}</h3>
                 {/* Description */}
-                <p className="mt-2 text-sm text-zinc-600">{step.description}</p>
+                <p className="mt-2 text-base text-zinc-600">{step.description}</p>
               </div>
             ))}
           </div>
 
           {/* Mobile (vertical) */}
           <div className="md:hidden space-y-10 max-w-md mx-auto">
-            {[
-              {
-                num: "1",
-                title: "Sidebar navigation",
-                description:
-                  "The first idea was to structure the site around a sidebar, giving quick access to all the sections.",
-              },
-              {
-                num: "2",
-                title: "Landing page",
-                description:
-                  "Then I focused on designing a strong landing page to create the first impression.",
-              },
-              {
-                num: "3",
-                title: "Home & logical flow",
-                description:
-                  "Finally, I organized the homepage and content flow to make everything intuitive and easy to navigate.",
-              },
-            ].map((step, i) => (
+            {architectureSteps.map((step, i) => (
               <div key={i} className="relative pl-10 text-left">
                 {/* Number circle */}
                 <div
@@ -566,7 +540,7 @@ export default function PortfolioScreen({ visitsTotal }) {
       </section>
 
       <section className="mt-10 md:mt-24">
-        <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-start">
+        <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-start">
           <div className="flex flex-col justify-center items-center text-center md:text-left h-full">
             <div className="flex flex-col justify-center items-center md:items-start h-full">
               <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
@@ -583,7 +557,7 @@ export default function PortfolioScreen({ visitsTotal }) {
         bg-gradient-to-r from-blue-500 via-orange-400 to-red-500"
               />
 
-              <div className="mt-6 text-zinc-600 md:text-lg leading-relaxed space-y-4 max-w-xl">
+              <div className="mt-6 text-zinc-600 leading-relaxed space-y-4 text-sm md:text-base lg:text-lg text-justify">
                 <p>
                   The idea was to start with a clean landing page, and as the
                   user scrolls, the sidebar would gradually appear and then
@@ -665,7 +639,7 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
       </section>
 
-      <div className="mt-32 text-zinc-600 md:text-lg leading-relaxed ">
+      <div className="mt-24 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
         <p>
           When I started developing the sidebar, I chose to follow the same
           design as Ethan’s portfolio as I really loved it. For my version,
@@ -674,7 +648,7 @@ export default function PortfolioScreen({ visitsTotal }) {
         </p>
       </div>
 
-      <section className="mt-32 flex justify-center">
+      <section className="mt-16 md:mt-32 flex justify-center">
         {/* Two columns that stay side-by-side on mobile but scale down */}
         <div className="grid grid-cols-[minmax(140px,200px)_1fr] sm:grid-cols-[minmax(180px,240px)_1fr] md:grid-cols-[minmax(200px,200px)_1fr] gap-6 md:gap-10 items-stretch">
           {/* SIDEBAR (mock) */}
@@ -783,7 +757,7 @@ export default function PortfolioScreen({ visitsTotal }) {
             {/* Row 1 — Top */}
             <div className="relative flex items-center pl-4 sm:pl-6">
               <div>
-                <h3 className="text-xs sm:text-lg md:text-xl font-semibold text-zinc-900 mb-1">
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-zinc-900 mb-1">
                   Personal section
                 </h3>
                 <p className="text-xs sm:text-sm md:text-base text-zinc-600">
@@ -819,7 +793,7 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
       </section>
 
-      <div className="mt-44 text-zinc-600 md:text-lg leading-relaxed ">
+      <div className="mt-16 md:mt-32 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify ">
         <p>
           After finishing the sidebar, I moved on to the landing page with the
           goal of creating a strong first impression through a clear and
@@ -852,18 +826,55 @@ export default function PortfolioScreen({ visitsTotal }) {
               className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl"
             />
           </div>
-          {/* CTA */}
-          <div className="mt-6 text-center">
+          <div className="mt-10 flex flex-col items-center justify-center relative">
+            {/* --- Bouton centré --- */}
             <a
               href="https://my.spline.design/portfoliolandingpage-5a9fe475db2ad59c87a47f07a727266f/"
               target="_blank"
               rel="noopener noreferrer"
               data-cursor-icon="arrow"
-              className="inline-flex items-center gap-2 rounded-xl bg-darkGray px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl bg-darkGray px-6 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 transition-colors"
             >
               View demo
             </a>
+            {/* REPRENDRE A PARTIR D'ICI, AVEC LA FLECHE SVG QUI DECONNE SUR MOBILE */}
+            {/* --- Version mobile --- */}
+
+            <div className="absolute -bottom-[60%] right-[2%] flex flex-row items-center gap-2 md:hidden">
+              <svg
+                className="w-10 h-6 text-gray-400 opacity-70 scale-y-[-1] rotate-[30deg]"
+                viewBox="0 0 220 50"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path d="M21.489 29.4305C36.9333 31.3498 51.3198 33.0559 65.7063 34.9753C66.7641 35.1885 67.6104 36.4681 69.9376 38.3875C63.1675 39.2406 57.8783 40.3069 52.5892 40.5201C38.6259 40.9467 24.8741 40.9467 10.9107 40.9467C9.21821 40.9467 7.5257 41.1599 5.83317 40.7334C0.332466 39.6671 -1.57164 36.0416 1.39028 31.1365C2.87124 28.7906 4.56377 26.658 6.46786 24.7386C13.6611 17.4876 21.0659 10.4499 28.4707 3.41224C29.7401 2.13265 31.6442 1.49285 34.183 0C34.6061 10.8765 23.8162 13.8622 21.489 22.3927C23.3931 21.9662 25.0856 21.7529 26.5666 21.3264C83.6894 5.54486 140.601 7.25099 197.3 22.606C203.224 24.0988 208.936 26.4447 214.649 28.5773C217.61 29.6437 220.149 31.9896 218.457 35.6151C216.976 39.2406 214.014 39.2406 210.629 37.7477C172.759 20.6866 132.561 18.7672 91.9404 19.407C70.7838 19.6203 50.0504 21.9662 29.5285 26.8713C26.9897 27.5111 24.4509 28.3641 21.489 29.4305Z" />
+              </svg>
+
+              <p className="text-gray-400 text-base font-handwriting opacity-80 -mb-3">
+                try this, it’s interactive!
+              </p>
+            </div>
+
+            {/* --- Version desktop (visible ≥ md) --- */}
+            <div className="absolute translate-x-[100%] flex-row items-center gap-2 hidden md:flex">
+              <svg
+                className="w-8 h-5 text-gray-400 opacity-70"
+                viewBox="0 0 220 50"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path d="M21.489 29.4305C36.9333 31.3498 51.3198 33.0559 65.7063 34.9753C66.7641 35.1885 67.6104 36.4681 69.9376 38.3875C63.1675 39.2406 57.8783 40.3069 52.5892 40.5201C38.6259 40.9467 24.8741 40.9467 10.9107 40.9467C9.21821 40.9467 7.5257 41.1599 5.83317 40.7334C0.332466 39.6671 -1.57164 36.0416 1.39028 31.1365C2.87124 28.7906 4.56377 26.658 6.46786 24.7386C13.6611 17.4876 21.0659 10.4499 28.4707 3.41224C29.7401 2.13265 31.6442 1.49285 34.183 0C34.6061 10.8765 23.8162 13.8622 21.489 22.3927C23.3931 21.9662 25.0856 21.7529 26.5666 21.3264C83.6894 5.54486 140.601 7.25099 197.3 22.606C203.224 24.0988 208.936 26.4447 214.649 28.5773C217.61 29.6437 220.149 31.9896 218.457 35.6151C216.976 39.2406 214.014 39.2406 210.629 37.7477C172.759 20.6866 132.561 18.7672 91.9404 19.407C70.7838 19.6203 50.0504 21.9662 29.5285 26.8713C26.9897 27.5111 24.4509 28.3641 21.489 29.4305Z" />
+              </svg>
+
+              <p className="pr-2 text-gray-400 text-base font-handwriting opacity-80 -mb-3">
+                try this, it’s interactive!
+              </p>
+            </div>
           </div>
+
+
 
           <figcaption className="mt-10 text-center">
             <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">
@@ -1131,10 +1142,9 @@ export default function PortfolioScreen({ visitsTotal }) {
 
           <p className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
             In this redesign, I decided to remove the sidebar.
-            It was originally inspired by Ethan’s portfolio, which I really liked at first for its structure and presence.
-            But over time, I realized it was taking up too much space and made navigation feel heavier than it should.
+            I realized it was taking up too much space and made navigation feel heavier than it should.
             So I replaced it with a centered top navbar.
-            It’s simpler, lighter, and just feels more natural to use (for me).
+            It’s simpler, lighter, and just feels more natural to use.
             Everything stays accessible without cluttering the layout, and the whole page breathes much better now.
           </p>
           <p className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
@@ -1143,7 +1153,7 @@ export default function PortfolioScreen({ visitsTotal }) {
             to guide users without extra UI elements.
             The idea here was the same: keep things simple but meaningful.
             Instead of adding labels or animations everywhere, the cursor itself becomes
-            part of the navigation language — showing context about what you can do,
+            part of the navigation language, showing context about what you can do,
             where you can click, and how the interface reacts.
           </p>
 
@@ -1159,7 +1169,25 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
 
         {/* Desktop-only grid */}
-        <div className="mt-16 hidden md:grid grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+        <div className="relative mt-16 hidden md:grid grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+          {/* --- Flèche + texte "Actions" en haut à droite --- */}
+          <div className="absolute -top-10 -right-2 flex flex-row items-center gap-2">
+            <svg
+              className="w-10 h-6 text-gray-400 opacity-70 -rotate-12"
+              viewBox="0 0 220 50"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M21.489 29.4305C36.9333 31.3498 51.3198 33.0559 65.7063 34.9753C66.7641 35.1885 67.6104 36.4681 69.9376 38.3875C63.1675 39.2406 57.8783 40.3069 52.5892 40.5201C38.6259 40.9467 24.8741 40.9467 10.9107 40.9467C9.21821 40.9467 7.5257 41.1599 5.83317 40.7334C0.332466 39.6671 -1.57164 36.0416 1.39028 31.1365C2.87124 28.7906 4.56377 26.658 6.46786 24.7386C13.6611 17.4876 21.0659 10.4499 28.4707 3.41224C29.7401 2.13265 31.6442 1.49285 34.183 0C34.6061 10.8765 23.8162 13.8622 21.489 22.3927C23.3931 21.9662 25.0856 21.7529 26.5666 21.3264C83.6894 5.54486 140.601 7.25099 197.3 22.606C203.224 24.0988 208.936 26.4447 214.649 28.5773C217.61 29.6437 220.149 31.9896 218.457 35.6151C216.976 39.2406 214.014 39.2406 210.629 37.7477C172.759 20.6866 132.561 18.7672 91.9404 19.407C70.7838 19.6203 50.0504 21.9662 29.5285 26.8713C26.9897 27.5111 24.4509 28.3641 21.489 29.4305Z" />
+            </svg>
+
+            <p className=" text-gray-400 text-base font-handwriting opacity-80 pr-1 -rotate-6 -mt-4">
+              Try to hover over these
+            </p>
+          </div>
+
+          {/* --- Grille d’éléments --- */}
           <div>
             <a
               data-cursor-icon="arrow"
@@ -1237,9 +1265,10 @@ export default function PortfolioScreen({ visitsTotal }) {
             <p className="mt-2 text-xs text-zinc-500">Mystery easter egg</p>
           </div>
         </div>
+
       </section>
       <p className="mt-16 text-zinc-600 md:text-lg leading-relaxed text-center md:text-left">
-        The architecture of this portfolio is not very complicated. There’s no backend, everything runs on a frontend
+        The architecture of this portfolio is not complicated. There’s no backend, everything runs on a frontend
         built with React, Vite, and TailwindCSS. The code lives on GitHub, where
         every commit triggers a build pipeline. From there, Cloudflare Pages
         handles the deployment across the network.
@@ -1403,19 +1432,19 @@ export default function PortfolioScreen({ visitsTotal }) {
       <section className="flex flex-col justify-center items-center mt-14  ">
         <div className=" text-center">
           <p className="mt-4 text-zinc-600 md:text-lg leading-relaxed">
-            If you enjoyed exploring this portfolio, consider giving it a star,
+            If you enjoyed exploring this portfolio, consider giving it a star on github,
             it helps others discover it and means a lot to me.
             And if you’d like to collaborate, ask a question, or just chat about design & dev,
             feel free to reach out anytime.
           </p>
 
           <div className="mt-8 flex flex-row items-center justify-center gap-4">
-            {/* GitHub Star button */}
             <a
-              href=" https://github.com/AymaneHilmi/MyPortfolio" // 👉 remplace par ton vrai lien GitHub
+              href="https://github.com/AymaneHilmi/MyPortfolio"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-6 py-3 text-sm font-medium text-zinc-700 shadow-sm hover:shadow-md hover:border-zinc-300 transition"
+              data-cursor-icon="star"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1431,7 +1460,7 @@ export default function PortfolioScreen({ visitsTotal }) {
           </div>
         </div>
       </section>
-    </div>
+    </div >
   );
 }
 
