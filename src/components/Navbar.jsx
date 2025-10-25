@@ -72,6 +72,7 @@ export default function Navbar({ scrollToRoutes }) {
     const { links } = useEasterEgg();
     return (
         <div className="fixed top-0 left-0 w-full z-40">
+            {/* Desktop navbar */}
             <nav className="md:flex items-center justify-around px-6 py-10 hidden bg-white/60 backdrop-blur-md">
                 <div
                     className="flex items-center gap-6 text-darkGray font-sfregular"
@@ -82,7 +83,6 @@ export default function Navbar({ scrollToRoutes }) {
                             className="inline-flex h-8 items-center"
                         >
                             {(() => {
-                                // Cas spécial : Email -> Tooltip
                                 if (link.name === "Email") {
                                     return (
                                         <TooltipProvider delayDuration={0}>
@@ -176,6 +176,8 @@ export default function Navbar({ scrollToRoutes }) {
                     ))}
                 </div>
             </nav>
+
+            {/* mobile navbar */}
             <div
                 ref={navbarRef}
                 className={cn(
@@ -200,52 +202,58 @@ export default function Navbar({ scrollToRoutes }) {
             backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform 
             duration-500 ${isOpen ? "translate-y-0" : "-translate-y-full"}`)}
                 >
-                    <Link
-                        to={""}
-                        className="text-xl py-2"
-                        onClick={() => {
-                            closeNavbar();
+                    {links.map((link) => (
+                        <div key={link.name} className="w-full flex justify-center">
+                            {(() => {
+                                if (link.name === "Email") {
+                                    return (
+                                        <a
+                                            href={link.path}
+                                            className="text-xl py-2"
+                                            onClick={() => {
+                                                closeNavbar();
+                                            }}
+                                            rel="noreferrer"
+                                            data-cursor-icon="mail"
+                                        >
+                                            {link.name}
+                                        </a>
+                                    );
+                                }
 
-                        }}
-                    >
-                        Home
-                    </Link>
-                    <Link
-                        to={"/About"}
-                        className="text-xl py-2"
-                        onClick={() => {
-                            closeNavbar();
-                        }}
-                    >
-                        About
-                    </Link>
-                    <Link
-                        to={"/Resume"}
-                        className="text-xl py-2"
-                        onClick={() => {
-                            closeNavbar();
-                        }}
-                    >
-                        Resume
-                    </Link>
-                    <Link
-                        to={"/SaintGobain"}
-                        className="text-xl py-2"
-                        onClick={() => {
-                            closeNavbar();
-                        }}
-                    >
-                        Saint-Gobain
-                    </Link>
-                    <a
-                        href="mailto:contact@aymanehilmi.com"
-                        className="text-xl py-2"
-                        onClick={() => {
-                            closeNavbar();
-                        }}
-                    >
-                        Email
-                    </a>
+                                if (link.external) {
+                                    return (
+                                        <a
+                                            href={link.path}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className={cn(
+                                                "text-xl py-2",
+                                                location.pathname === link.path && "font-semibold"
+                                            )}
+                                            data-cursor-icon="arrow"
+                                            onClick={() => closeNavbar()}
+                                        >
+                                            {link.name}
+                                        </a>
+                                    );
+                                }
+
+                                return (
+                                    <Link
+                                        to={link.path}
+                                        className={cn(
+                                            "text-xl py-2",
+                                            location.pathname === link.path && "font-semibold"
+                                        )}
+                                        onClick={() => closeNavbar()}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                );
+                            })()}
+                        </div>
+                    ))}
                 </div>
 
                 <label id="hamburger" className="z-50">
@@ -262,14 +270,3 @@ export default function Navbar({ scrollToRoutes }) {
         </div>
     );
 }
-
-{/* <div className='flex flex-col'>
-                        <h1 className='text-xs pb-2 text-lightGray'>MOBILE APPLICATION</h1>
-                        <div><Link to="/SaintGobain" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Saint-Gobain</Link></div>
-                        <div><Link to="/Cesiveroo" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Cesiveroo</Link></div>
-                    </div>
-                    <div className='flex flex-col mt-4'>
-                        <h1 className='text-xs pb-2 text-lightGray'>WEB DEVELOPMENT</h1>
-                        <div><Link to="Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Aymane's Portfolio</Link></div>
-                        <div><Link to="/Comingsoon" className={cn('text-sm transition-opacity duration-300 hover:opacity-30 text-darkGray')} onClick={scrollToRoutes}>Blog</Link></div>
-                    </div> */}

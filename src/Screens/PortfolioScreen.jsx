@@ -41,7 +41,7 @@ function EggProgress() {
   const pct = Math.round((count / Math.max(total, 1)) * 100);
 
   return (
-    <section className="relative mt-16">
+    <section className="relative mt-6 md:mt-16">
       <div className=" rounded-2xl border border-zinc-200 bg-white shadow-sm p-6">
         <div className="flex items-center gap-4">
           <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Easter Eggs Progress</p>
@@ -129,7 +129,7 @@ export default function PortfolioScreen({ visitsTotal }) {
   ];
 
   return (
-    <div className="lg:mx-auto max-w-5xl mx-6">
+    <div className="lg:mx-auto max-w-5xl px-6">
       <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* Left column — Text */}
@@ -141,7 +141,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
             <div className="flex flex-row gap-4 items-center">
               {/* <img src={logo} alt="Portfolio logo" className="h-20 w-20" /> */}
-              <span className="text-4xl font-ramidots tracking-tight md:text-7xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit pr-4">
+              <span className=" font-ramidots tracking-tight text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit pr-4">
                 My Portfolio Project
               </span>
             </div>
@@ -194,7 +194,7 @@ export default function PortfolioScreen({ visitsTotal }) {
             <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
               The Trigger
             </p>
-            <h2 className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+            <h2 className="mt-2 text-4xl md:text-5xl lg:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
               More than a resume, a living presence
             </h2>
             <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
@@ -324,7 +324,7 @@ export default function PortfolioScreen({ visitsTotal }) {
                       <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 rounded-t-2xl" />
                     </div>
                     <div className="p-5 space-y-3">
-                      <h3 className="font-ramidots px-2 text-xl md:text-4xl tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block ">
+                      <h3 className="font-ramidots px-2 text-4xl tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block ">
                         {step.title}
                       </h3>
                       <p className="text-xs uppercase tracking-widest text-zinc-500">
@@ -547,15 +547,13 @@ export default function PortfolioScreen({ visitsTotal }) {
                 Website Navigation
               </p>
               <h2
-                className="mt-2 text-3xl md:text-6xl font-ramidots tracking-tight 
-        bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block"
-              >
+                className="mt-2 text-4xl md:text-5xl lg:text-6xl font-ramidots tracking-tight 
+                          bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
                 Navigation Flow
               </h2>
               <span
                 className="mt-4 block h-[3px] w-24 mx-auto md:mx-0 rounded-full 
-        bg-gradient-to-r from-blue-500 via-orange-400 to-red-500"
-              />
+                          bg-gradient-to-r from-blue-500 via-orange-400 to-red-500"/>
 
               <div className="mt-6 text-zinc-600 leading-relaxed space-y-4 text-sm md:text-base lg:text-lg text-justify">
                 <p>
@@ -877,7 +875,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
 
           <figcaption className="mt-10 text-center">
-            <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed">
+            <p className="mt-3 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg">
               Here’s what it looked like once I implemented it on the website.
             </p>
           </figcaption>
@@ -906,7 +904,7 @@ export default function PortfolioScreen({ visitsTotal }) {
         </figure>
       </section>
 
-      <p className="text-zinc-600 md:text-lg leading-relaxed  mx-auto">
+      <p className="text-zinc-600 leading-relaxed mx-auto text-sm md:text-base lg:text-lg text-justify">
         I also decided to add 3D scenes to some project pages to make them more engaging and interactive. For example, on the Cesiveroo project page I built a 3D model of the app’s main interface that users can interact with directly. I created another one for the Coming Soon pages, giving them a more dynamic and immersive feel. These additions not only highlight the design work but also make the overall portfolio experience more captivating.
       </p>
 
@@ -983,23 +981,23 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
       </section>
 
-      <p className="text-zinc-600 md:text-lg leading-relaxed  mt-16">
+      <p className="text-zinc-600 leading-relaxed mt-10 md:mt-16 text-sm md:text-base lg:text-lg text-justify">
 
         I really enjoyed experimenting with 3D, even though my skills in this area were very limited. Discovering this field was exciting and I had a lot of fun at the beginning, but over time I started to enjoy it less as I ran into major performance issues on my website.
       </p>
 
       <LighthouseSection />
 
-      <p className="text-zinc-600 md:text-lg leading-relaxed  mt-24">
+      <p className="text-zinc-600 leading-relaxed mt-8 md:mt-16 text-sm md:text-base lg:text-lg text-justify">
 
         This issue was a significant challenge because I wanted to maintain a smooth and fast user experience, which is crucial for a portfolio site. After several attempts to optimize the 3D models and scenes, I realized that the performance trade-offs were too high. The loading times were long, and the animations were not as smooth as I wanted them to be, especially on mobile devices.
       </p>
-      <p className="text-zinc-600 md:text-lg leading-relaxed  mt-8">
+      <p className="text-zinc-600 leading-relaxed mt-4 text-sm md:text-base lg:text-lg text-justify">
         I also realized that I was losing the first idea of simplicity and clarity that I wanted to keep in my portfolio. So I decided to focus more on clean design and smooth interactions rather than adding too many 3D elements that could distract from the main content.
         Which is why I decided to remove the 3D elements and make a complete redesign of the portfolio, refocusing on simplicity and performance.
       </p>
 
-      <section className="relative mt-24">
+      <section className="relative mt-12 md:mt-24">
         <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
           {/* LEFT — Image */}
           <figure className="order-1">
@@ -1140,14 +1138,14 @@ export default function PortfolioScreen({ visitsTotal }) {
         <div className="mx-auto text-justify ">
           {/* <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Navigation Update</p> */}
 
-          <p className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
+          <p className="mt-6 text-zinc-600 text-sm md:text-base lg:text-lg text-justify leading-relaxed">
             In this redesign, I decided to remove the sidebar.
             I realized it was taking up too much space and made navigation feel heavier than it should.
             So I replaced it with a centered top navbar.
             It’s simpler, lighter, and just feels more natural to use.
             Everything stays accessible without cluttering the layout, and the whole page breathes much better now.
           </p>
-          <p className="mt-6 text-zinc-600 md:text-lg leading-relaxed">
+          <p className="mt-6 text-zinc-600 text-sm md:text-base lg:text-lg text-justify leading-relaxed">
             Still in the spirit of navigation, you’ve probably noticed the custom cursor.
             It was inspired by Zaid’s portfolio, which had a really smart way of using motion and feedback
             to guide users without extra UI elements.
@@ -1157,7 +1155,7 @@ export default function PortfolioScreen({ visitsTotal }) {
             where you can click, and how the interface reacts.
           </p>
 
-          <p className="mt-4 text-zinc-600 md:text-lg leading-relaxed">
+          <p className="mt-4 text-zinc-600 text-sm md:text-base lg:text-lg text-justify leading-relaxed">
             Here are some examples of the different cursor variations
             I implemented in this portfolio :
           </p>
@@ -1183,7 +1181,7 @@ export default function PortfolioScreen({ visitsTotal }) {
             </svg>
 
             <p className=" text-gray-400 text-base font-handwriting opacity-80 pr-1 -rotate-6 -mt-4">
-              Try to hover over these
+              Try to hover these sections
             </p>
           </div>
 
@@ -1267,7 +1265,7 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
 
       </section>
-      <p className="mt-16 text-zinc-600 md:text-lg leading-relaxed text-center md:text-left">
+      <p className="mt-16 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
         The architecture of this portfolio is not complicated. There’s no backend, everything runs on a frontend
         built with React, Vite, and TailwindCSS. The code lives on GitHub, where
         every commit triggers a build pipeline. From there, Cloudflare Pages
@@ -1361,14 +1359,12 @@ export default function PortfolioScreen({ visitsTotal }) {
           </div>
         </div>
       </section>
-      <p className="mt-24 text-zinc-600 md:text-lg leading-relaxed text-center md:text-left">
+      <p className="mt-12 md:mt-24 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
         There is no database in the architecture by design. However, I implemented a Cloudflare Worker to keep track of the number of visitors and display it directly on the site. Thanks to this Worker, I know that you are visitor number...
       </p>
 
       <section className="relative overflow-hidden">
-
-
-        <div className="relative mx-auto max-w-6xl px-6">
+        <div className="relative ">
           <div className="group relative flex flex-col items-center text-center py-8">
             <div
               className="
@@ -1382,7 +1378,7 @@ export default function PortfolioScreen({ visitsTotal }) {
                 className="
             absolute inset-0 translate-y-[2px] blur-[1.2px]
             text-zinc-400/40
-            font-ramidots text-[16vw] md:text-[10vw] leading-none
+            font-ramidots text-8xl lg:text-9xl leading-none
           "
                 style={{ WebkitTextStroke: "0 transparent" }}
               >
@@ -1391,7 +1387,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
               <span
                 className="
-            relative font-ramidots text-[16vw] md:text-[10vw] leading-none
+            relative font-ramidots text-8xl lg:text-9xl leading-none
             tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block 
             transition-transform duration-200
             motion-safe:group-hover:scale-[1.015]
@@ -1406,18 +1402,18 @@ export default function PortfolioScreen({ visitsTotal }) {
           </div>
         </div>
       </section>
-      <section className="relative mt-24">
+      <section className="relative mt-6">
         <div className=" gap-10 md:gap-12 items-start">
           <div className="space-y-4">
             <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
               Easter Eggs
             </p>
-            <h2 className="text-3xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block">
               Easter Eggs Quest
             </h2>
             <span className="block h-[3px] w-24 rounded-full bg-gradient-to-r from-blue-500 via-orange-400 to-red-500" />
 
-            <p className="text-zinc-600 md:text-lg leading-relaxed">
+            <p className="text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
               As a competitor, I’ve always loved challenges, which is why the
               Easter Egg quest was born in this website. I created it to challenge my family and
               friends (and you !) to find all the hidden eggs scattered throughout the site.
@@ -1429,16 +1425,22 @@ export default function PortfolioScreen({ visitsTotal }) {
         </div>
       </section>
       <EggProgress />
-      <section className="flex flex-col justify-center items-center mt-14  ">
-        <div className=" text-center">
-          <p className="mt-4 text-zinc-600 md:text-lg leading-relaxed">
-            If you enjoyed exploring this portfolio, consider giving it a star on github,
-            it helps others discover it and means a lot to me.
-            And if you’d like to collaborate, ask a question, or just chat about design & dev,
-            feel free to reach out anytime.
+      <section className="flex flex-col justify-center items-center mt-6 md:mt-14  ">
+        <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+          MOVING FORWARD
+        </p>
+        <div className="">
+          <p className="mt-4 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
+            This portfolio is a continuous work in progress, I plan to keep adding new pages, features, and creative
+            experiments as I grow as a developer. In the future, I also want to integrate backend functionalities to
+            make it more interactive, allowing visitors to engage directly with the site and share feedback or messages.
+            if you enjoyed exploring my portfolio, feel free to star the repository on GitHub by {" "}
+            <a href="https://github.com/AymaneHilmi/MyPortfolio" target="_blank" rel="noopener noreferrer" className="underline font-bold hover:bg-gradient-to-r hover:from-blue-500 hover:via-orange-400 hover:to-red-500 hover:bg-clip-text hover:text-transparent transition-colors duration-300" data-cursor-icon="arrow">
+              clicking here
+            </a>.
           </p>
 
-          <div className="mt-8 flex flex-row items-center justify-center gap-4">
+          {/* <div className="mt-8 flex flex-row items-center justify-center gap-4">
             <a
               href="https://github.com/AymaneHilmi/MyPortfolio"
               target="_blank"
@@ -1457,7 +1459,7 @@ export default function PortfolioScreen({ visitsTotal }) {
               Star on GitHub
             </a>
 
-          </div>
+          </div> */}
         </div>
       </section>
     </div >

@@ -10,7 +10,6 @@ import GraphiChart from "@/assets/CesiverooIpadChart.png";
 import WireFrames from "@/assets/CesiverooWireFrames.png";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { useEasterEgg } from "@/context/EasterEggContext";
-import InteractiveStepsSection from "@/components/ui/interactivesteps";
 import {
   MonitorSmartphone,
   ShieldCheck,
@@ -23,6 +22,9 @@ import {
   Users,
   Briefcase,
   FileText,
+  Target,
+  CircuitBoard,
+  CalendarDays
 } from "lucide-react";
 import { FaMoon } from "react-icons/fa";
 import {
@@ -118,9 +120,40 @@ export default function CesiverooScreen() {
       icon: Activity,
     },
   ];
+
+  const ProjectSteps = [
+    {
+      num: 1,
+      title: "Needs Reassessment",
+      desc: "Key objectives defined to meet expectations",
+      Icon: Target,
+      accent: "#20CFBD",
+    },
+    {
+      num: 2,
+      title: "Risk Analysis",
+      desc: "Challenges identified and mitigation plans outlined",
+      Icon: ShieldCheck,
+      accent: "from-emerald-500 via-teal-400 to-cyan-500",
+    },
+    {
+      num: 3,
+      title: "Architecture Diagram",
+      desc: "Visual overview of the technical solution",
+      Icon: CircuitBoard,
+      accent: "from-fuchsia-500 via-purple-400 to-indigo-500",
+    },
+    {
+      num: 4,
+      title: "Projected Timeline",
+      desc: "Schedule of major project milestones",
+      Icon: CalendarDays,
+      accent: "from-amber-500 via-orange-400 to-rose-500",
+    },
+  ];
   return (
     <div className="md:mx-auto max-w-5xl mx-6">
-      <section className="mx-auto py-12 md:py-16 mt-32 flex justify-center items-center">
+      <section className="mx-auto py-12 md:py-16 mt-16 md:mt-32 flex justify-center items-center">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* colonne de gauche — Texte */}
           <div className="space-y-6">
@@ -133,7 +166,7 @@ export default function CesiverooScreen() {
               Cesi<span className="text-[#20CFBD]">veroo</span> Project
             </h1>
 
-            <div className="prose prose-zinc max-w-none text-darkGray text-justify">
+            <div className="text-darkGray text-sm md:text-base lg:text-lg text-justify ">
               <p>
                 This project was part of an academic assignment during my time
                 in engineering school. The challenge was to create an Uber-like
@@ -147,7 +180,7 @@ export default function CesiverooScreen() {
                 project also includes handling ambiguous requirements and
                 working with limited prior experience, making it a practical
                 exercise in problem-solving and collaboration within our team of
-                3 developers. 3 very cool developers.
+                3 developers.
               </p>
             </div>
             <div className="mt-8">
@@ -194,11 +227,11 @@ export default function CesiverooScreen() {
 
       {/*  Project details */}
       <section
-        className="mx-auto py-16 sm:py-20"
+        className="mx-auto "
         aria-label="Cesiveroo project details"
       >
         <div className="text-center mb-10">
-          <p className="text-base uppercase tracking-widest text-lightGray">
+          <p className="text-xs uppercase tracking-widest text-lightGray">
             Project overview
           </p>
           <h2 className="mt-2 text-2xl sm:text-3xl font-sfbold tracking-tight text-darkGray">
@@ -229,9 +262,9 @@ export default function CesiverooScreen() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
           <div className="md:col-span-3">
             <h3 className="text-lg font-semibold text-gray-900">Objectives</h3>
-            <ul className="mt-3 space-y-2 text-sm text-gray-700">
+            <ul className="mt-3 space-y-2 text-sm md:text-base lg:text-lg   text-gray-700">
               <li className="flex gap-3">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD] " />
                 <span>
                   Design a smooth experience inspired by Deliveroo, adapted to an academic context.
                 </span>
@@ -267,7 +300,7 @@ export default function CesiverooScreen() {
               ].map((chip) => (
                 <span
                   key={chip}
-                  className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm"
+                  className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-sm md:text-base lg:text-lg text-justify text-gray-700 shadow-sm"
                 >
                   {chip}
                 </span>
@@ -278,6 +311,13 @@ export default function CesiverooScreen() {
             </p>
           </div>
         </div>
+
+        <p className="text-darkGray mt-12 text-sm md:text-base lg:text-lg text-justify">
+          In this page you will basically find an overview with all the mains steps we did during the project development.
+          As we had a deadline of 4 weeks, we tried to be as efficient as possible and focus on the most important aspects
+          of the project. We didn't had time to develope all the functionalities we wanted but we managed to deliver a MVP
+          that was functional and met the requirements.
+        </p>
 
         <section className="mx-auto max-w-6xl py-16">
           <h3 className="text-lg font-semibold text-gray-900 text-center">
@@ -330,7 +370,82 @@ export default function CesiverooScreen() {
           </div>
         </section>
 
-        <InteractiveStepsSection />
+        <section className="relative mt-6">
+          <div className="text-center">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+              Project Overview
+            </p>
+            <h2 className="mt-2 text-3xl md:text-4xl font-sfbold text-darkGray">
+              Four Key Steps
+            </h2>
+            <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-[#20CFBD]" />
+          </div>
+
+          {/* Mobile timeline */}
+          <div className="md:hidden relative mt-10 max-w-2xl mx-auto">
+            {/* Ligne verticale */}
+            <span className="absolute left-4 top-0 bottom-0 w-[2px] bg-zinc-200" />
+            <ul className="space-y-6">
+              {ProjectSteps.map(({ num, title, desc, Icon, accent }) => (
+                <li key={num} className="relative pl-12">
+                  {/* pastille numérotée */}
+                  <span className="absolute left-0 top-1 grid place-items-center h-8 w-8 rounded-full bg-white ring-1 ring-zinc-200 shadow-sm">
+                    <span className={`text-xs font-ramidots text-[#20CFBD] `}>
+                      {num}
+                    </span>
+                  </span>
+                  <div className="rounded-2xl border border-zinc-200 bg-white shadow-sm p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="shrink-0 grid place-items-center h-9 w-9 rounded-xl bg-zinc-50 ring-1 ring-zinc-200">
+                        <Icon className="h-5 w-5 text-zinc-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-zinc-900">{title}</h3>
+                        <p className="mt-1 text-sm text-zinc-600 leading-relaxed">
+                          {desc}
+                        </p>
+                      </div>
+                    </div>
+                    <span className={`mt-4 block h-[2px] w-16 rounded-full bg-[#20CFBD]`} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Desktop grid */}
+          <div className="hidden md:grid mt-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {ProjectSteps.map(({ num, title, desc, Icon, accent }) => (
+              <article
+                key={num}
+                className="relative rounded-2xl border border-zinc-200 bg-white shadow-sm p-5 flex flex-col"
+              >
+                {/* badge numéro */}
+                <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full text-[10px] text-white px-2 shadow-sm bg-[#20CFBD]">
+                  {num}
+                </span>
+
+                <div className="flex items-start gap-3">
+                  <div className="shrink-0 grid place-items-center h-10 w-10 rounded-xl bg-zinc-50 ring-1 ring-zinc-200">
+                    <Icon className="h-5 w-5 text-zinc-700" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-zinc-900 leading-tight">
+                      {title}
+                    </h3>
+                    <p className="mt-2 text-sm text-zinc-600 leading-relaxed">
+                      {desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-auto pt-5">
+                  <span className={`block h-[3px] w-20 rounded-full bg-[#20CFBD]`} />
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <div className="flex flex-col overflow-hidden">
           <ContainerScroll
@@ -362,7 +477,7 @@ export default function CesiverooScreen() {
 
         {/* Wireframes  */}
         <section
-          className="flex items-center py-16"
+          className="flex items-center "
           aria-label="Wireframes — Overview"
         >
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -377,10 +492,10 @@ export default function CesiverooScreen() {
                   Wireframes & User Flows
                 </h2>
               </header>
-              <p className="mt-4 text-base sm:text-lg leading-relaxed text-zinc-700 max-w-prose">
+              <p className="mt-4 text-sm md:text-base lg:text-lg text-justify  leading-relaxed text-zinc-700 max-w-prose">
                 Definition of key journeys, screen prioritization, and component structuring for a clear MVP that’s quick to iterate on. The wireframes served as a visual contract to align the team and de‑risk product decisions.
               </p>
-              <ul className="mt-6 space-y-2 text-sm text-zinc-700">
+              <ul className="mt-6 space-y-2 text-sm md:text-base lg:text-lg text-zinc-700">
                 <li className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
                   <span>Consistent zoning and visual hierarchy.</span>
@@ -428,7 +543,7 @@ export default function CesiverooScreen() {
                   </h2>
                 </header>
 
-                <p className="mt-3 text-base sm:text-lg leading-relaxed text-zinc-300 ">
+                <p className="mt-3 text-sm md:text-base lg:text-lg text-justify leading-relaxed text-zinc-300 ">
                   Service‑oriented architecture: a React frontend, an API gateway centralizing access, and decoupled Node/Express microservices. Polyglot storage depending on use.
                 </p>
               </div>
@@ -445,7 +560,7 @@ export default function CesiverooScreen() {
                       <div className="flex items-start gap-3">
                         <Icon className="h-10 w-10" color="#20CFBD" />
                         <div className="min-w-0">
-                          <h3 className="text-base font-semibold text-white leading-tight">
+                          <h3 className="text-sm md:text-base lg:text-lg text-justify  font-semibold text-white leading-tight">
                             {col.title}
                           </h3>
                           <p className="mt-1 text-sm text-zinc-300">
@@ -483,7 +598,7 @@ export default function CesiverooScreen() {
             </h2>
           </header>
           {/* Text */}
-          <p className="mt-4 text-lg leading-relaxed text-zinc-600">
+          <p className="mt-4 leading-relaxed text-zinc-600 text-sm md:text-base lg:text-lg text-justify ">
             This project was actually one of the first I worked on that resulted
             in something real and concrete. That's why I decided to put it on
             this portfolio. After this project, I started having interest in

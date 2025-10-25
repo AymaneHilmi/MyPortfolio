@@ -68,7 +68,7 @@ export default function LighthouseSection() {
     ];
 
     return (
-        <section className="relative mt-24 bg-white">
+        <section className="relative mt-12 md:mt-24 bg-white">
             <div className="mx-auto max-w-7xl px-6">
                 {/* gauges */}
                 <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">

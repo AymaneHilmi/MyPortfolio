@@ -119,19 +119,10 @@ export default function AboutScreen() {
     },
   ];
 
-  const [showSplash, setShowSplash] = useState(false);
-
-  const handleClickItaly = () => {
-    setShowSplash(true);
-    setTimeout(() => {
-      setShowSplash(false);
-    }, 5000); // 5 secondes
-  };
-
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-0 lg:px-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-0 lg:px-8 pt-24 md:pt-0">
       <section className="h-screen w-full flex items-center justify-center">
-        <FadeIn className=" flex flex-col items-center text-center space-y-6">
+        <FadeIn className="flex flex-col items-center text-center space-y-4">
           {/* Photo */}
           <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-gray-200 shadow-md">
             <img
@@ -157,7 +148,7 @@ export default function AboutScreen() {
           </div>
 
           {/* Description */}
-          <p className="text-sm md:text-lg text-darkGray text-justify md:text-center leading-relaxed ">
+          <p className="text-sm md:text-base lg:text-lg text-darkGray text-justify md:text-center leading-relaxed ">
             Aymane Hilmi is 22 and a software engineer based in Aix-en-Provence,
             France. As a polyglot, he speaks five languages: Italian, French,
             Moroccan Arabic (Darija), English, and Spanish. Born in{" "}
@@ -175,20 +166,20 @@ export default function AboutScreen() {
             building his own company with his wife and traveling to discover new
             cultures and perspectives.
           </p>
-          <div className=" h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full" />
+          <div className=" h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full hidden md:flex" />
         </FadeIn>
       </section>
 
-      <section id="journey" className="w-full flex px-6 h-screen">
+      <section id="journey" className="w-full flex">
 
         <FadeIn className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
           {/* Title & intro */}
           <div className="md:col-span-2" i={0}>
-            <h2 className="text-3xl md:text-7xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
               My Journey
             </h2>
             <div className="mt-3 h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full" />
-            <p className="mt-5 text-gray-600 leading-relaxed">
+            <p className="mt-5 text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
               A look at my recent experiences that had the biggest impact on me,
               both professionally and personally.
             </p>
@@ -204,13 +195,13 @@ export default function AboutScreen() {
                   Currently
                 </span>
                 <span className="text-sm text-gray-500">
-                  Aix-en-Provence, FR
+                  Kuala Lumpur, MY
                 </span>
               </div>
               <h3 className="mt-4 text-2xl md:text-xl font-semibold text-gray-900">
                 Building my own company
               </h3>
-              <p className="mt-2 text-gray-600">
+              <p className="mt-2 text-gray-600 text-sm md:text-base">
                 I decided to leave Saint-Gobain to focus on building my own
                 projects, collaborating with my wife to create meaningful and
                 innovative solutions.
@@ -260,7 +251,7 @@ export default function AboutScreen() {
                           2022 — 2025
                         </span>
                       </div>
-                      <p className="mt-2 text-gray-600">
+                      <p className="mt-2 text-gray-600 text-sm md:text-base text-justify">
                         Software and mobile application development to automate
                         the daily workflows of Saint-Gobain laboratories, making
                         processes faster, more reliable, and user-friendly.
@@ -335,7 +326,7 @@ export default function AboutScreen() {
                         <div className="my-6 h-px w-full bg-gray-100" />
 
                         {/* Texte */}
-                        <div className="space-y-4 text-gray-700 leading-relaxed">
+                        <div className="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base text-justify">
                           <p>
                             During my apprenticeship at Saint-Gobain Research, I
                             worked within the R&D teams to design and develop
@@ -361,7 +352,7 @@ export default function AboutScreen() {
                               <h5 className="text-base font-semibold text-gray-900">
                                 Workflow Automations
                               </h5>
-                              <p className="mt-2 text-sm text-gray-600">
+                              <p className="mt-2 text-sm text-gray-600 ">
                                 Developed internal solutions to streamline
                                 laboratory data entry and daily reporting
                                 processes
@@ -433,7 +424,7 @@ export default function AboutScreen() {
                           2021 — 2022
                         </span>
                       </div>
-                      <p className="mt-2 text-gray-600">
+                      <p className="mt-2 text-gray-600 text-sm md:text-base text-justify">
                         My first real IT experience was as an Automation
                         Engineer, where I used UiPath to automate business
                         processes and streamline workflows for various INETUM
@@ -584,7 +575,7 @@ export default function AboutScreen() {
                           2020 — 2021
                         </span>
                       </div>
-                      <p className="mt-2 text-gray-600">
+                      <p className="mt-2 text-gray-600 text-sm md:text-base text-justify">
                         I completed a Voluntary Civic Service as a science
                         mentor, supporting high school and middle school
                         students in scientific subjects. This experience also
@@ -745,15 +736,15 @@ export default function AboutScreen() {
         </FadeIn>
       </section>
 
-      <section id="philosophy" className=" w-full px-6 pb-44">
+      <section id="philosophy" className=" w-full mt-24">
         <div className="w-full max-w-6xl mx-auto">
           {/* Header */}
           <FadeIn className="" i={0}>
-            <h2 className="text-3xl md:text-7xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
               My Style & Philosophy
             </h2>
             <div className="mt-3 h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full" />
-            <p className="mt-5 text-gray-600 leading-relaxed">
+            <p className="mt-5 text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
               As an entrepreneur, my overarching goal is to invest in myself,
               especially in discipline so I can show up better every day. I want
               to simplify people’s daily lives with automated, practical
@@ -777,7 +768,7 @@ export default function AboutScreen() {
                   Invest in Myself
                 </h3>
               </div>
-              <p className="mt-3 text-gray-600">
+              <p className="mt-3 text-gray-600 text-sm md:text-base text-justify">
                 As a young entrepreneur, continuous learning and discipline are
                 my leverage. I invest time in skills, health, and mindset so I
                 can move faster and smarter.
@@ -797,7 +788,7 @@ export default function AboutScreen() {
                   Build to Solve Real Needs
                 </h3>
               </div>
-              <p className="mt-3 text-gray-600">
+              <p className="mt-3 text-gray-600 text-sm md:text-base text-justify">
                 I want to develop solutions that remove friction and make work
                 simpler. Clarity, speed, and utility—grounded in real user
                 needs.
@@ -847,7 +838,7 @@ export default function AboutScreen() {
                   Travel & Expand Perspective
                 </h3>
               </div>
-              <p className="mt-3 text-gray-600">
+              <p className="mt-3 text-gray-600 text-sm md:text-base text-justify">
                 I want to travel to discover new cultures and new ways of seeing
                 the world.
               </p>
@@ -857,20 +848,20 @@ export default function AboutScreen() {
       </section>
       <section
         id="passions"
-        className=" w-full flex flex-col items-center px-6 py-16 min-h-screen "
+        className=" w-full flex flex-col items-center mt-16 min-h-screen "
       >
         <FadeIn
           className="w-full max-w-4xl mx-auto flex flex-col items-center text-center"
           i={0}
         >
           {/* Titre */}
-          <h2 className="text-3xl md:text-7xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent px-1">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent px-1">
             Beyond Code: Things I Love
           </h2>
           <div className="mt-3 h-1 w-24 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 rounded-full" />
 
           {/* Texte principal */}
-          <p className="mt-6 text-gray-600 leading-relaxed max-w-2xl">
+          <p className="mt-6 text-gray-600 leading-relaxed max-w-2xl text-sm md:text-base lg:text-lg">
             I’m driven by curiosity and movement. Outside of engineering, I
             recharge by spending time with my wife, watching/reading mangas,
             riding bike or chasing fresh powder in the mountains with my
