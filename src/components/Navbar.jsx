@@ -198,62 +198,89 @@ export default function Navbar({ scrollToRoutes }) {
                 </a>
 
                 <div
-                    className={cn(`font-sfbold text-darkGray fixed top-0 left-0 w-full h-2/5 bg-baground/75 bg-opacity-10 
-            backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-transform 
-            duration-500 ${isOpen ? "translate-y-0" : "-translate-y-full"}`)}
+                    className={cn(
+                        `fixed inset-0 z-40 md:hidden transition-all duration-500 ease-out`,
+                        isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                    )}
                 >
-                    {links.map((link) => (
-                        <div key={link.name} className="w-full flex justify-center">
-                            {(() => {
-                                if (link.name === "Email") {
-                                    return (
-                                        <a
-                                            href={link.path}
-                                            className="text-xl py-2"
-                                            onClick={() => {
-                                                closeNavbar();
-                                            }}
-                                            rel="noreferrer"
-                                            data-cursor-icon="mail"
-                                        >
-                                            {link.name}
-                                        </a>
-                                    );
-                                }
+                    {/* Background overlay (click to close) */}
+                    <div
+                        className="absolute inset-0 bg-white/80 backdrop-blur-xl"
+                        onClick={closeNavbar}
+                    />
 
-                                if (link.external) {
-                                    return (
-                                        <a
-                                            href={link.path}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className={cn(
-                                                "text-xl py-2",
-                                                location.pathname === link.path && "font-semibold"
-                                            )}
-                                            data-cursor-icon="arrow"
-                                            onClick={() => closeNavbar()}
-                                        >
-                                            {link.name}
-                                        </a>
-                                    );
-                                }
+                    {/* Minimal, modern menu */}
+                    <nav className="relative z-10 h-full w-full flex flex-col items-center justify-center">
+                        <ul className="w-full max-w-sm px-8 space-y-3">
+                            {links.map((link) => (
+                                <li key={link.name}>
+                                    {(() => {
+                                        const baseClasses = cn(
+                                            "group flex items-center justify-between w-full rounded-xl border bg-white/40",
+                                            "border-zinc-200/70 hover:border-zinc-300 hover:bg-white/70",
+                                            "px-4 py-3 text-zinc-700 hover:text-zinc-900 transition",
+                                            "backdrop-blur-sm"
+                                        );
 
-                                return (
-                                    <Link
-                                        to={link.path}
-                                        className={cn(
-                                            "text-xl py-2",
-                                            location.pathname === link.path && "font-semibold"
-                                        )}
-                                        onClick={() => closeNavbar()}
-                                    >
-                                        {link.name}
-                                    </Link>
-                                );
-                            })()}
+                                        const activeClasses = (location.pathname === link.path && !link.external && link.name !== "Email")
+                                            ? "border-zinc-900/60 text-zinc-900"
+                                            : "";
+
+                                        const RightDot = () => (
+                                            <span className="ml-3 h-1.5 w-1.5 rounded-full bg-zinc-300 group-hover:bg-zinc-900 transition" />
+                                        );
+
+                                        if (link.name === "Email") {
+                                            return (
+                                                <a
+                                                    href={link.path}
+                                                    rel="noreferrer"
+                                                    data-cursor-icon="mail"
+                                                    className={cn(baseClasses)}
+                                                    onClick={closeNavbar}
+                                                >
+                                                    <span className="text-base">{link.name}</span>
+                                                    <RightDot />
+                                                </a>
+                                            );
+                                        }
+
+                                        if (link.external) {
+                                            return (
+                                                <a
+                                                    href={link.path}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    data-cursor-icon="arrow"
+                                                    className={cn(baseClasses)}
+                                                    onClick={closeNavbar}
+                                                >
+                                                    <span className="text-base">{link.name}</span>
+                                                    <RightDot />
+                                                </a>
+                                            );
+                                        }
+
+                                        return (
+                                            <Link
+                                                to={link.path}
+                                                className={cn(baseClasses, activeClasses)}
+                                                onClick={closeNavbar}
+                                            >
+                                                <span className="text-base">{link.name}</span>
+                                                <RightDot />
+                                            </Link>
+                                        );
+                                    })()}
+                                </li>
+                            ))}
+                        </ul>
+
+                        {/* Subtle footer note */}
+                        <div className="absolute bottom-6 text-[10px] tracking-[0.2em] text-zinc-400">
+                            MENU
                         </div>
-                    ))}
+                    </nav>
                 </div>
 
                 <label id="hamburger" className="z-50">
