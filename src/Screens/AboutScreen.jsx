@@ -43,32 +43,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/ToolTip";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
-};
-
-const FadeIn = ({ children, i = 0, className = "" }) => (
-  <motion.div
-    className={className}
-    variants={fadeInUp}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.2 }}
-    custom={i}
-  >
-    {children}
-  </motion.div>
-);
+import FadeIn from "@/components/FadeIn";
 
 export default function AboutScreen() {
   const navigate = useNavigate();

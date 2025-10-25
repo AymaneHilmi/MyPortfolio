@@ -32,6 +32,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/ToolTip";
+import FadeIn from "../components/FadeIn";
 
 const placeholders = [
   "Are we truly lost if the search is the way?",
@@ -276,44 +277,6 @@ export default function EasterEggsScreen() {
   // NEW: all eggs found flag
   const allFound = stats.total > 0 && stats.globalFound === stats.total;
 
-  const grouped = useMemo(() => {
-    const lanes = DIFFS.reduce((acc, lvl) => {
-      acc[lvl] = [];
-      return acc;
-    }, {});
-    EggList.forEach((egg) => {
-      const lvl = egg.level || "Easy";
-      if (!lanes[lvl]) lanes[lvl] = [];
-      lanes[lvl].push(egg);
-    });
-    // sort within each lane: found first, then alpha
-    const foundSet = new Set(foundEggs);
-    DIFFS.forEach((lvl) => {
-      lanes[lvl] = (lanes[lvl] || []).sort((a, b) => {
-        const fa = foundSet.has(a.id) ? 0 : 1;
-        const fb = foundSet.has(b.id) ? 0 : 1;
-        if (fa !== fb) return fa - fb;
-        const na = (a.name || a.id).toLowerCase();
-        const nb = (b.name || b.id).toLowerCase();
-        return na.localeCompare(nb);
-      });
-    });
-    return lanes;
-  }, [EggList, foundEggs]);
-
-  const nextEgg = useMemo(
-    () => EggList.find((e) => !foundEggs.includes(e.id)),
-    [EggList, foundEggs]
-  );
-
-  const recentFound = useMemo(() => {
-    return foundEggs
-      .slice(-3)
-      .reverse()
-      .map((id) => EggList.find((e) => e.id === id))
-      .filter(Boolean);
-  }, [foundEggs, EggList]);
-
   const totalEggsCount = stats.total || EggList.length || 0;
   const milestones = useMemo(() => {
     const base = [1, 2, 4, 6, totalEggsCount].filter(
@@ -337,7 +300,7 @@ export default function EasterEggsScreen() {
             }`}
           </style>
 
-          <div className="relative w-full rounded-3xl  shadow-[0_0_0_1px_rgba(134,239,172,0.6),0_10px_40px_-5px_rgba(16,185,129,0.35)] overflow-hidden p-10">
+          <FadeIn className="relative w-full rounded-3xl  shadow-[0_0_0_1px_rgba(134,239,172,0.6),0_10px_40px_-5px_rgba(16,185,129,0.35)] overflow-hidden p-10">
             {/* <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-emerald-400 via-green-500 to-lime-400" /> */}
             {/* Confetti background */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -454,9 +417,9 @@ export default function EasterEggsScreen() {
                 </div>
               </div>
             </div>
-          </div>
+          </FadeIn>
 
-          <section className="mt-32 border-t border-emerald-200/60 pt-12 pb-4">
+          <FadeIn className="mt-32 border-t border-emerald-200/60 pt-12 pb-4">
             <div className="max-w-3xl mx-auto text-center px-4">
               <h3 className="text-5xl font-ramidots bg-gradient-to-r from-emerald-600 via-green-500 to-lime-500 bg-clip-text text-transparent">
                 Want to experience the Quest again?
@@ -481,7 +444,7 @@ export default function EasterEggsScreen() {
                 </button>
               </div>
             </div>
-          </section>
+          </FadeIn>
         </>
       ) : (
         <>
@@ -489,7 +452,7 @@ export default function EasterEggsScreen() {
           {/* Header / stats / etc. */}
           <section className="grid md:grid-cols-3 items-stretch gap-5">
             <div className="md:col-span-2 space-y-5">
-              <div className="rounded-3xl border border-gray-200 bg-white p-6">
+              <FadeIn className="rounded-3xl border border-gray-200 bg-white p-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                   <div className="md:col-span-2">
                     <h1 className="text-4xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
@@ -504,10 +467,10 @@ export default function EasterEggsScreen() {
                     <CircularProgress value={stats.globalPct} />
                   </div>
                 </div>
-              </div>
+              </FadeIn>
 
               {/* Mission Description */}
-              <div className="rounded-3xl border border-gray-200 bg-white overflow-hidden">
+              <FadeIn i={1} className="rounded-3xl border border-gray-200 bg-white overflow-hidden">
                 <div className="p-6 grid md:grid-cols-2 gap-6 items-center">
                   {/* Left: narrative */}
                   <div>
@@ -526,15 +489,15 @@ export default function EasterEggsScreen() {
 
                   {/* Right: small info cards */}
                   <div className="grid gap-3">
-                    <div className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
+                    <FadeIn i={3} className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
                       <Keyboard className="h-4 w-4 text-gray-700 mt-0.5" />
                       <p className="text-xs text-gray-700">
                         Use your <span className="font-medium">keyboard</span>{" "}
                         and <span className="font-medium">mouse</span>. Both
                         matter.
                       </p>
-                    </div>
-                    <div className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
+                    </FadeIn>
+                    <FadeIn i={4} className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
                       <Globe2 className="h-4 w-4 text-gray-700 mt-0.5" />
                       <p className="text-xs text-gray-700">
                         All Easter Eggs are hidden{" "}
@@ -543,20 +506,20 @@ export default function EasterEggsScreen() {
                         </span>
                         , not outside it.
                       </p>
-                    </div>
-                    <div className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
+                    </FadeIn>
+                    <FadeIn i={5} className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
                       <MousePointer2 className="h-4 w-4 text-gray-700 mt-0.5" />
                       <p className="text-xs text-gray-700">
                         The <span className="font-medium">cursor</span> can
                         sometimes be your best ally.
                       </p>
-                    </div>
+                    </FadeIn>
                   </div>
                 </div>
-              </div>
+              </FadeIn>
 
               {/* Difficulties */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <FadeIn i={2} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {DIFFS.map((lvl) => (
                   <DifficultyCard
                     key={lvl}
@@ -565,17 +528,17 @@ export default function EasterEggsScreen() {
                     found={stats.byLevel[lvl]?.found || 0}
                   />
                 ))}
-              </div>
+              </FadeIn>
             </div>
 
             {/* Right column: tall card spanning header + difficulties */}
-            <aside className="self-stretch h-full flex flex-col rounded-3xl border border-gray-200 bg-white p-6">
+            <FadeIn i={2} className="self-stretch h-full flex flex-col rounded-3xl border border-gray-200 bg-white p-6">
               <h3 className="text-sm font-sfbold text-gray-900 mb-4">
                 Quest Tracker
               </h3>
 
               {/* Overall progress card */}
-              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+              <FadeIn i={3} className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-gray-700 font-medium">Overall</p>
                   <span className="text-xs text-gray-500">
@@ -592,10 +555,10 @@ export default function EasterEggsScreen() {
                 <p className="mt-2 text-[11px] text-gray-500">
                   {Math.round(stats.globalPct)}% complete
                 </p>
-              </div>
+              </FadeIn>
 
               {/* Milestones */}
-              <div className="mt-4 rounded-2xl border border-gray-200 bg-white p-4">
+              <FadeIn i={4} className="mt-4 rounded-2xl border border-gray-200 bg-white p-4">
                 <p className="text-sm text-gray-700 font-medium mb-2">
                   Milestones
                 </p>
@@ -619,40 +582,42 @@ export default function EasterEggsScreen() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </FadeIn>
 
-              <button
-                onClick={() => {
-                  resetEggs();
-                  resetMissions();
-                }}
-                className="group mt-4 w-full relative overflow-hidden rounded-xl bg-gradient-to-r from-red-500 via-orange-400 to-blue-500 px-6 py-4 
+              <FadeIn i={5} >
+                <button
+                  onClick={() => {
+                    resetEggs();
+                    resetMissions();
+                  }}
+                  className="group mt-4 w-full relative overflow-hidden rounded-xl bg-gradient-to-r from-red-500 via-orange-400 to-blue-500 px-6 py-4 
                                    text-white font-ramidots text-2xl tracking-wider shadow-lg hover:opacity-95 transition"
-              >
-                {/* Glow effect */}
-                <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition"></span>
+                >
+                  {/* Glow effect */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition"></span>
 
-                {/* Content */}
-                <span className="flex items-center justify-center gap-3 relative z-10">
-                  <RotateCcw className="h-5 w-5 group-hover:rotate-[-20deg] transition-transform" />
-                  Reset Progression
-                </span>
-              </button>
-            </aside>
+                  {/* Content */}
+                  <span className="flex items-center justify-center gap-3 relative z-10">
+                    <RotateCcw className="h-5 w-5 group-hover:rotate-[-20deg] transition-transform" />
+                    Reset Progression
+                  </span>
+                </button>
+              </FadeIn>
+            </FadeIn>
           </section>
 
           {/* Eggs & right sidebar */}
           <section>
-            <div
+            <FadeIn
               id="all-eggs"
               className="mb-4 flex items-center justify-between"
             >
               <h2 className="text-lg font-sfbold text-gray-900">
                 All Easter Eggs
               </h2>
-            </div>
+            </FadeIn>
 
-            <div className="grid lg:grid-cols-3 items-stretch gap-6">
+            <FadeIn className="grid lg:grid-cols-3 items-stretch gap-6">
               {/* List (spans 2 cols on large screens) */}
               <div className="lg:col-span-2 space-y-4">
                 {EggList.map((egg) => {
@@ -662,7 +627,7 @@ export default function EasterEggsScreen() {
                     : "bg-gray-50 border-gray-200";
 
                   return (
-                    <div
+                    <FadeIn i={5}
                       key={egg.id}
                       className={`relative flex flex-col gap-3 border p-4 rounded-xl overflow-hidden transition-all duration-300 ${cardClass}`}
                       data-cursor-icon={egg.cursor}
@@ -844,7 +809,7 @@ export default function EasterEggsScreen() {
                           onSubmit={onSubmit}
                         />
                       )}
-                    </div>
+                    </FadeIn>
                   );
                 })}
               </div>
@@ -852,7 +817,7 @@ export default function EasterEggsScreen() {
               {/* Right sidebar beside list */}
               <aside className="space-y-4 self-stretch h-full flex flex-col">
                 {/* Egg Scanner (troll) */}
-                <div className="rounded-2xl border border-gray-200 bg-white p-4">
+                <FadeIn i={5} className="rounded-2xl border border-gray-200 bg-white p-4">
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-sfbold text-gray-900 flex items-center gap-2">
                       <Scan className="h-4 w-4" /> Egg Scanner (Beta)
@@ -887,10 +852,10 @@ export default function EasterEggsScreen() {
                       ? "Activate"
                       : "Scan again"}
                   </button>
-                </div>
+                </FadeIn>
 
                 {/* Patch Notes (troll) */}
-                <div className="rounded-2xl border border-gray-200 bg-white p-4">
+                <FadeIn i={6} className="rounded-2xl border border-gray-200 bg-white p-4">
                   <p className="text-sm font-sfbold text-gray-900 mb-2 flex items-center gap-2">
                     <Bug className="h-4 w-4" /> Patch Notes v0.0.egg
                   </p>
@@ -954,9 +919,9 @@ export default function EasterEggsScreen() {
                       )}
                     </TooltipProvider>
                   </div>
-                </div>
+                </FadeIn>
 
-                <div className="rounded-2xl border border-gray-200 bg-white p-4 mt-4">
+                <FadeIn i={7} className="rounded-2xl border border-gray-200 bg-white p-4 mt-4">
                   <p className="text-sm font-sfbold text-gray-900 mb-2">
                     Need real help?
                   </p>
@@ -1004,9 +969,9 @@ export default function EasterEggsScreen() {
                       Email Me
                     </a>
                   </div>
-                </div>
+                </FadeIn>
               </aside>
-            </div>
+            </FadeIn>
           </section>
         </>
       )}

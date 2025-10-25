@@ -33,6 +33,9 @@ import AutoPlayVideo from "../components/ui/autoplayVideo";
 import LighthouseSection from "../components/ui/lightHousesection";
 
 import { useEasterEgg } from "@/context/EasterEggContext";
+import FadeIn from "../components/FadeIn";
+
+
 
 function EggProgress() {
   const { EggList, foundEggs } = useEasterEgg();
@@ -42,7 +45,7 @@ function EggProgress() {
 
   return (
     <section className="relative mt-6 md:mt-16">
-      <div className=" rounded-2xl border border-zinc-200 bg-white shadow-sm p-6">
+      <FadeIn className=" rounded-2xl border border-zinc-200 bg-white shadow-sm p-6">
         <div className="flex items-center gap-4">
           <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Easter Eggs Progress</p>
         </div>
@@ -64,7 +67,7 @@ function EggProgress() {
           </div>
           <p className="mt-2 text-xs text-zinc-500 text-center">{count} / {total} found</p>
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }
@@ -131,7 +134,7 @@ export default function PortfolioScreen({ visitsTotal }) {
   return (
     <div className="lg:mx-auto max-w-5xl px-6">
       <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
+        <FadeIn className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* Left column — Text */}
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-sm text-zinc-600">
@@ -185,11 +188,11 @@ export default function PortfolioScreen({ visitsTotal }) {
               />
             </figure>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       <section className="relative mt-6 overflow-hidden bg-white ">
-        <div>
+        <FadeIn>
           <div className="text-center">
             <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
               The Trigger
@@ -289,11 +292,11 @@ export default function PortfolioScreen({ visitsTotal }) {
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section >
 
       <section className="relative mt-10 md:mt-24 bg-white">
-        <div className="">
+        <FadeIn className="">
           <div className="text-center">
             {/* <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
               The Vision
@@ -344,10 +347,10 @@ export default function PortfolioScreen({ visitsTotal }) {
               ))}
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
-      <section>
+      <FadeIn>
         <div className="text-center mt-10">
           <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
             The Conception
@@ -387,10 +390,10 @@ export default function PortfolioScreen({ visitsTotal }) {
             </p>
           </figcaption>
         </figure>
-      </section>
+      </FadeIn>
 
       <section className="relative mt-16 md:mt-24">
-        <div className="mx-auto">
+        <FadeIn className="mx-auto">
           {/* Grid vidéos */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* Vidéo gauche */}
@@ -469,11 +472,11 @@ export default function PortfolioScreen({ visitsTotal }) {
               </figcaption>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       <section className="relative mt-6 bg-white">
-        <div className=" text-zinc-600 space-y-4 text-sm md:text-base lg:text-lg text-justify">
+        <FadeIn className=" text-zinc-600 space-y-4 text-sm md:text-base lg:text-lg text-justify">
           <p>
             Unlike many designers, I didn’t really start with Figma mockups or
             detailed wireframes. Instead, I jumped straight into the code. The
@@ -489,13 +492,13 @@ export default function PortfolioScreen({ visitsTotal }) {
             way.
             The conception of this portfolio happened in three main steps:
           </p>
-        </div>
+        </FadeIn>
       </section>
 
       <section className="relative">
 
         {/* Timeline */}
-        <div className="mt-16 relative">
+        <FadeIn className="mt-16 relative">
           {/* Desktop (horizontal) */}
           <div className="hidden md:flex justify-between items-start mx-auto">
             {architectureSteps.map((step, i) => (
@@ -536,11 +539,11 @@ export default function PortfolioScreen({ visitsTotal }) {
               </div>
             ))}
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       <section className="mt-10 md:mt-24">
-        <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-start">
+        <FadeIn className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-start">
           <div className="flex flex-col justify-center items-center text-center md:text-left h-full">
             <div className="flex flex-col justify-center items-center md:items-start h-full">
               <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
@@ -603,52 +606,53 @@ export default function PortfolioScreen({ visitsTotal }) {
 
             {/* Styles d’animation inline (pas besoin de modifier tailwind.config) */}
             <style>{`
-        /* Scroll vertical infini */
-        @keyframes navflow-scroll {
-          0%   { transform: translateY(0%); }
-          100% { transform: translateY(-30%); }
-        }
-        .scroll-track {
-          animation: navflow-scroll 5s linear infinite;
-        }
+                /* Scroll vertical infini */
+                @keyframes navflow-scroll {
+                  0%   { transform: translateY(0%); }
+                  100% { transform: translateY(-30%); }
+                }
+                .scroll-track {
+                  animation: navflow-scroll 5s linear infinite;
+                }
 
-        /* Apparition progressive de la sidebar,
-           puis reste visible jusqu'à la fin du cycle */
-        @keyframes sidebar-appear-key {
-          0%   { opacity: 0; transform: translateX(-14px); }
-          35%  { opacity: 0; transform: translateX(-14px); } /* landing d’abord */
-          45%  { opacity: 1; transform: translateX(0); }
-          100% { opacity: 1; transform: translateX(0); }     /* reste “fixe” */
-        }
-        .sidebar-appear {
-          opacity: 0;
-          animation: sidebar-appear-key 5s ease-in-out infinite;
-        }
+                /* Apparition progressive de la sidebar,
+                  puis reste visible jusqu'à la fin du cycle */
+                @keyframes sidebar-appear-key {
+                  0%   { opacity: 0; transform: translateX(-14px); }
+                  35%  { opacity: 0; transform: translateX(-14px); } /* landing d’abord */
+                  45%  { opacity: 1; transform: translateX(0); }
+                  100% { opacity: 1; transform: translateX(0); }     /* reste “fixe” */
+                }
+                .sidebar-appear {
+                  opacity: 0;
+                  animation: sidebar-appear-key 5s ease-in-out infinite;
+                }
 
-        /* Respecte les préférences utilisateur */
-        @media (prefers-reduced-motion: reduce) {
-          .scroll-track,
-          .sidebar-appear {
-            animation: none !important;
-          }
-        }
-      `}</style>
+                /* Respecte les préférences utilisateur */
+                @media (prefers-reduced-motion: reduce) {
+                  .scroll-track,
+                  .sidebar-appear {
+                    animation: none !important;
+                  }
+                }
+              `}
+            </style>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
-      <div className="mt-24 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
+      <FadeIn className="mt-24 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
         <p>
           When I started developing the sidebar, I chose to follow the same
           design as Ethan’s portfolio as I really loved it. For my version,
           I added a personal touch by placing my name in Arabic on the home
           button.
         </p>
-      </div>
+      </FadeIn>
 
       <section className="mt-16 md:mt-32 flex justify-center">
         {/* Two columns that stay side-by-side on mobile but scale down */}
-        <div className="grid grid-cols-[minmax(140px,200px)_1fr] sm:grid-cols-[minmax(180px,240px)_1fr] md:grid-cols-[minmax(200px,200px)_1fr] gap-6 md:gap-10 items-stretch">
+        <FadeIn className="grid grid-cols-[minmax(140px,200px)_1fr] sm:grid-cols-[minmax(180px,240px)_1fr] md:grid-cols-[minmax(200px,200px)_1fr] gap-6 md:gap-10 items-stretch">
           {/* SIDEBAR (mock) */}
           <div className=" border border-zinc-200 bg-zinc-50 shadow-[0_24px_40px_rgba(0,0,0,0.06)]  w-full">
             <div className="grid grid-rows-[0.22fr_1fr_1fr] h-full min-w-[140px]">
@@ -788,10 +792,10 @@ export default function PortfolioScreen({ visitsTotal }) {
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
-      <div className="mt-16 md:mt-32 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify ">
+      <FadeIn className="mt-16 md:mt-32 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify ">
         <p>
           After finishing the sidebar, I moved on to the landing page with the
           goal of creating a strong first impression through a clear and
@@ -807,9 +811,9 @@ export default function PortfolioScreen({ visitsTotal }) {
           , allowing me to bring 3D elements into the portfolio and make the
           landing page more visually dynamic.
         </p>
-      </div>
+      </FadeIn>
 
-      <section>
+      <FadeIn>
         <div className="text-center mt-12">
           <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
             3D Conception
@@ -880,9 +884,9 @@ export default function PortfolioScreen({ visitsTotal }) {
             </p>
           </figcaption>
         </figure>
-      </section>
+      </FadeIn>
 
-      <section>
+      <FadeIn>
         <div className="text-center mt-12">
           <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
             Preview
@@ -902,15 +906,15 @@ export default function PortfolioScreen({ visitsTotal }) {
             <p className="mt-3 text-zinc-600 md:text-lg leading-relaxed"></p>
           </figcaption>
         </figure>
-      </section>
+      </FadeIn>
 
-      <p className="text-zinc-600 leading-relaxed mx-auto text-sm md:text-base lg:text-lg text-justify">
+      <FadeIn className="text-zinc-600 leading-relaxed mx-auto text-sm md:text-base lg:text-lg text-justify">
         I also decided to add 3D scenes to some project pages to make them more engaging and interactive. For example, on the Cesiveroo project page I built a 3D model of the app’s main interface that users can interact with directly. I created another one for the Coming Soon pages, giving them a more dynamic and immersive feel. These additions not only highlight the design work but also make the overall portfolio experience more captivating.
-      </p>
+      </FadeIn>
 
 
       <section className="relative mt-10">
-        <div className="mx-auto">
+        <FadeIn className="mx-auto">
           {/* Grid vidéos */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* Vidéo gauche */}
@@ -978,27 +982,27 @@ export default function PortfolioScreen({ visitsTotal }) {
               </figcaption>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
-      <p className="text-zinc-600 leading-relaxed mt-10 md:mt-16 text-sm md:text-base lg:text-lg text-justify">
+      <FadeIn className="text-zinc-600 leading-relaxed mt-10 md:mt-16 text-sm md:text-base lg:text-lg text-justify">
 
         I really enjoyed experimenting with 3D, even though my skills in this area were very limited. Discovering this field was exciting and I had a lot of fun at the beginning, but over time I started to enjoy it less as I ran into major performance issues on my website.
-      </p>
+      </FadeIn>
 
       <LighthouseSection />
 
-      <p className="text-zinc-600 leading-relaxed mt-8 md:mt-16 text-sm md:text-base lg:text-lg text-justify">
+      <FadeIn className="text-zinc-600 leading-relaxed mt-8 md:mt-16 text-sm md:text-base lg:text-lg text-justify">
 
         This issue was a significant challenge because I wanted to maintain a smooth and fast user experience, which is crucial for a portfolio site. After several attempts to optimize the 3D models and scenes, I realized that the performance trade-offs were too high. The loading times were long, and the animations were not as smooth as I wanted them to be, especially on mobile devices.
-      </p>
-      <p className="text-zinc-600 leading-relaxed mt-4 text-sm md:text-base lg:text-lg text-justify">
+      </FadeIn>
+      <FadeIn className="text-zinc-600 leading-relaxed mt-4 text-sm md:text-base lg:text-lg text-justify">
         I also realized that I was losing the first idea of simplicity and clarity that I wanted to keep in my portfolio. So I decided to focus more on clean design and smooth interactions rather than adding too many 3D elements that could distract from the main content.
         Which is why I decided to remove the 3D elements and make a complete redesign of the portfolio, refocusing on simplicity and performance.
-      </p>
+      </FadeIn>
 
       <section className="relative mt-12 md:mt-24">
-        <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+        <FadeIn className=" grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
           {/* LEFT — Image */}
           <figure className="order-1">
 
@@ -1126,7 +1130,7 @@ export default function PortfolioScreen({ visitsTotal }) {
               </p>
             </div> */}
           </div>
-        </div>
+        </FadeIn>
       </section>
 
 
@@ -1134,7 +1138,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
 
 
-      <section className="relative mt-14">
+      <FadeIn className="relative mt-14">
         <div className="mx-auto text-justify ">
           {/* <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">Navigation Update</p> */}
 
@@ -1264,8 +1268,8 @@ export default function PortfolioScreen({ visitsTotal }) {
           </div>
         </div>
 
-      </section>
-      <p className="mt-16 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
+      </FadeIn>
+      <FadeIn className="mt-16 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
         The architecture of this portfolio is not complicated. There’s no backend, everything runs on a frontend
         built with React, Vite, and TailwindCSS. The code lives on GitHub, where
         every commit triggers a build pipeline. From there, Cloudflare Pages
@@ -1273,9 +1277,9 @@ export default function PortfolioScreen({ visitsTotal }) {
         <br></br>
         In short, it’s a streamlined pipeline: I write the code, push to GitHub,
         Cloudflare builds and deploys, and users benefit from it.
-      </p>
+      </FadeIn>
       <section className="relative w-full mt-14">
-        <div className="relative ">
+        <FadeIn className="relative ">
           {/* Grille responsive: cartes larges, mêmes hauteurs */}
           <div className="grid items-stretch gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
             {/* 1 — Frontend */}
@@ -1357,14 +1361,14 @@ export default function PortfolioScreen({ visitsTotal }) {
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
-      <p className="mt-12 md:mt-24 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
+      <FadeIn className="mt-12 md:mt-24 text-zinc-600 leading-relaxed text-sm md:text-base lg:text-lg text-justify">
         There is no database in the architecture by design. However, I implemented a Cloudflare Worker to keep track of the number of visitors and display it directly on the site. Thanks to this Worker, I know that you are visitor number...
-      </p>
+      </FadeIn>
 
       <section className="relative overflow-hidden">
-        <div className="relative ">
+        <FadeIn className="relative ">
           <div className="group relative flex flex-col items-center text-center py-8">
             <div
               className="
@@ -1400,10 +1404,10 @@ export default function PortfolioScreen({ visitsTotal }) {
 
 
           </div>
-        </div>
+        </FadeIn>
       </section>
       <section className="relative mt-6">
-        <div className=" gap-10 md:gap-12 items-start">
+        <FadeIn className=" gap-10 md:gap-12 items-start">
           <div className="space-y-4">
             <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
               Easter Eggs
@@ -1422,10 +1426,10 @@ export default function PortfolioScreen({ visitsTotal }) {
               The starting point of this hidden quest can be found right on the homepage.
             </p>
           </div>
-        </div>
+        </FadeIn>
       </section>
       <EggProgress />
-      <section className="flex flex-col justify-center items-center mt-6 md:mt-14  ">
+      <FadeIn className="flex flex-col justify-center items-center mt-6 md:mt-14  ">
         <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
           MOVING FORWARD
         </p>
@@ -1461,7 +1465,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
           </div> */}
         </div>
-      </section>
+      </FadeIn>
     </div >
   );
 }
@@ -1477,7 +1481,7 @@ function IconBadge({ children }) {
 
 function StackVisual({ variant }) {
   return (
-    <div className="absolute inset-0 bg-white group">
+    <FadeIn className="absolute inset-0 bg-white group">
       {/* stack container */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[78%] max-w-sm h-[78%]">
         {/* sheet 3 (back) */}
@@ -1566,7 +1570,7 @@ function StackVisual({ variant }) {
           )}
         </div>
       </div>
-    </div>
+    </FadeIn>
   );
 }
 

@@ -33,6 +33,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/ToolTip";
+import FadeIn from "../components/FadeIn";
 
 export default function CesiverooScreen() {
   const {
@@ -154,7 +155,7 @@ export default function CesiverooScreen() {
   return (
     <div className="md:mx-auto max-w-5xl mx-6">
       <section className="mx-auto py-12 md:py-16 mt-16 md:mt-32 flex justify-center items-center">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
+        <FadeIn className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* colonne de gauche — Texte */}
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-sm text-zinc-600">
@@ -222,7 +223,7 @@ export default function CesiverooScreen() {
               </div>
             </figure>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/*  Project details */}
@@ -230,16 +231,16 @@ export default function CesiverooScreen() {
         className="mx-auto "
         aria-label="Cesiveroo project details"
       >
-        <div className="text-center mb-10">
+        <FadeIn className="text-center mb-10">
           <p className="text-xs uppercase tracking-widest text-lightGray">
             Project overview
           </p>
           <h2 className="mt-2 text-2xl sm:text-3xl font-sfbold tracking-tight text-darkGray">
             Details & Objectives
           </h2>
-        </div>
+        </FadeIn>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
+        <FadeIn className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
           {stats.map((stat) => {
             const Icon = stat.icon;
             return (
@@ -257,9 +258,9 @@ export default function CesiverooScreen() {
               </div>
             );
           })}
-        </div>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
+        <FadeIn className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
           <div className="md:col-span-3">
             <h3 className="text-lg font-semibold text-gray-900">Objectives</h3>
             <ul className="mt-3 space-y-2 text-sm md:text-base lg:text-lg   text-gray-700">
@@ -310,16 +311,16 @@ export default function CesiverooScreen() {
               Focus: performance, accessibility, clean DX, simplified CI.
             </p>
           </div>
-        </div>
+        </FadeIn>
 
-        <p className="text-darkGray mt-12 text-sm md:text-base lg:text-lg text-justify">
+        <FadeIn className="text-darkGray mt-12 text-sm md:text-base lg:text-lg text-justify">
           In this page you will basically find an overview with all the mains steps we did during the project development.
           As we had a deadline of 4 weeks, we tried to be as efficient as possible and focus on the most important aspects
           of the project. We didn't had time to develope all the functionalities we wanted but we managed to deliver a MVP
           that was functional and met the requirements.
-        </p>
+        </FadeIn>
 
-        <section className="mx-auto max-w-6xl py-16">
+        <FadeIn className="mx-auto max-w-6xl py-16">
           <h3 className="text-lg font-semibold text-gray-900 text-center">
             5‑step process
           </h3>
@@ -368,9 +369,9 @@ export default function CesiverooScreen() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeIn>
 
-        <section className="relative mt-6">
+        <FadeIn className="relative mt-6">
           <div className="text-center">
             <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
               Project Overview
@@ -445,9 +446,9 @@ export default function CesiverooScreen() {
               </article>
             ))}
           </div>
-        </section>
+        </FadeIn>
 
-        <div className="flex flex-col overflow-hidden">
+        <FadeIn className="flex flex-col overflow-hidden">
           <ContainerScroll
             titleComponent={
               <>
@@ -473,14 +474,14 @@ export default function CesiverooScreen() {
               draggable={false}
             />
           </ContainerScroll>
-        </div>
+        </FadeIn>
 
         {/* Wireframes  */}
         <section
           className="flex items-center "
           aria-label="Wireframes — Overview"
         >
-          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <FadeIn className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* left column — Text */}
             <div className="order-1 lg:order-1 text-left">
               <header className="mb-6">
@@ -523,12 +524,12 @@ export default function CesiverooScreen() {
                 />
               </figure>
             </div>
-          </div>
+          </FadeIn>
         </section>
 
         {/* Architecture — Overview */}
         <section className="py-16" aria-label="Architecture — Overview">
-          <div className="relative overflow-hidden rounded-3xl bg-[#3a3a3a] ring-1 ring-zinc-700 shadow-sm">
+          <FadeIn className="relative overflow-hidden rounded-3xl bg-[#3a3a3a] ring-1 ring-zinc-700 shadow-sm">
             <div className="relative px-6 py-10 sm:px-12 sm:py-14">
               {/* Header */}
               <div className="">
@@ -583,10 +584,10 @@ export default function CesiverooScreen() {
                 })}
               </div>
             </div>
-          </div>
+          </FadeIn>
         </section>
 
-        <section className="pt-20 bg-white" aria-label="Conclusion">
+        <FadeIn className="pt-20 bg-white" aria-label="Conclusion">
           {/* Header */}
           <header className="mb-6">
             <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row items-center gap-2">
@@ -644,7 +645,7 @@ export default function CesiverooScreen() {
               View on GitHub
             </a>
           </div>
-        </section>
+        </FadeIn>
       </section>
     </div>
   );

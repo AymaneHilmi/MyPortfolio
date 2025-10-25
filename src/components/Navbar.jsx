@@ -14,7 +14,7 @@ import {
 
 import { useEasterEgg } from "@/context/EasterEggContext";
 
-export default function Navbar({ scrollToRoutes }) {
+export default function Navbar({ }) {
     const [isOpen, setIsOpen] = useState(false);
     const navbarRef = useRef(null);
     const checkboxRef = useRef(null);
