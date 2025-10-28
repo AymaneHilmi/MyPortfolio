@@ -7,7 +7,8 @@ import { cn } from "@/lib/utils";
 export function PlaceholdersAndVanishInput({
     placeholders,
     onChange,
-    onSubmit
+    onSubmit,
+    context,
 }) {
     const MAX_LEN = 12;
     const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
@@ -225,7 +226,7 @@ export function PlaceholdersAndVanishInput({
                 value={value}
                 type="text"
                 maxLength={MAX_LEN}
-                inputMode="numeric"
+                inputMode={context === "num" ? "numeric" : "text"}
                 pattern="[0-9]*"
                 className={cn(
                     "w-full relative text-sm sm:text-base z-50 border-none bg-transparent text-lightPrimary dark:text-darkPrimary h-full rounded-full focus:outline-none focus:ring-0 pl-6 pr-20",

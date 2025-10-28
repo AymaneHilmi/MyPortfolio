@@ -210,7 +210,7 @@ export default function Navbar({ }) {
                     )}
                     style={{ zIndex: 1 }}
                 ></div>
-                <a href="/" className="w-20 z-50">
+                <a href="/" className="w-20 h-14 flex justify-center items-center my-3 z-50 dark:bg-darkPrimary dark:rounded-2xl">
                     <img src={LogoMobile} className="w-max" alt="Logo" />
                 </a>
 

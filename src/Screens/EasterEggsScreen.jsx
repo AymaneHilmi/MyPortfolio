@@ -95,7 +95,7 @@ function CircularProgress({ value = 0, size = 120, stroke = 10 }) {
         cy={size / 2}
         r={r}
         strokeWidth={stroke}
-        className="fill-none stroke-gray-200 dark:stroke-white"
+        className="fill-none stroke-gray-200 dark:stroke-bgDark"
       />
       <circle
         cx={size / 2}
@@ -113,7 +113,8 @@ function CircularProgress({ value = 0, size = 120, stroke = 10 }) {
         y="50%"
         dominantBaseline="middle"
         textAnchor="middle"
-        className="font-ramidots dark:text-darkPrimary text-lightPrimary"
+        className="font-ramidots fill-current text-lightPrimary dark:text-darkPrimary"
+        fill="currentColor"
         style={{ fontSize: size * 0.4 }}
       >
         {p}%
@@ -788,6 +789,7 @@ export default function EasterEggsScreen() {
                                 ]}
                                 onChange={handleEgg1Change}
                                 onSubmit={onSubmitEgg1}
+                                context="text"
                               />
                             </div>
                           )}
@@ -807,6 +809,7 @@ export default function EasterEggsScreen() {
                           placeholders={placeholders}
                           onChange={handleChange}
                           onSubmit={onSubmit}
+                          context="num"
                         />
                       )}
                     </div>
