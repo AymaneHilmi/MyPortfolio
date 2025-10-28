@@ -38,6 +38,8 @@ module.exports = {
         AutomnBrush: ['AutomnBrush', 'sans-serif'],
         ramidots: ['ramidots', 'sans-serif'],
         handwriting: ['"Caveat"', "cursive"],
+        LoveloLineLight: ['"LoveloLineLight"', "sans-serif"],
+        LoveloLineBold: ['"LoveloLineBold"', "sans-serif"],
 
 
       },

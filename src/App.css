@@ -93,3 +93,17 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'LoveloLineLight';
+  src: url('./fonts/LoveloLineLight.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LoveloLineBold';
+  src: url('./fonts/LoveloLineBold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}

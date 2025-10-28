@@ -49,9 +49,9 @@ export default function HomeScreen({ visitsTotal }) {
       logo: sg,
       title: "Connected Labs",
       subtitle: "Cavaillon • 2025",
-      style: "font-sfbold text-2xl md:text-4xl",
+      style: "font-LoveloLineBold bg-gradient-to-tr from-sky-400 to-blue-600 bg-clip-text text-transparent text-2xl md:text-4xl",
       description:
-        "Une courte description du projet qui explique son but ou ce que tu y as réalisé.",
+        "Project developed with two Saint-Gobain research centers. A Power Platform app interconnecting & improving lab efficiency and data traceability.",
       image: LIMSmobility,
       link: "ConnectedLabs",
     },
@@ -324,7 +324,7 @@ export default function HomeScreen({ visitsTotal }) {
               {/* Partie gauche : logo + titre + sous-titre + description + bouton */}
               <div className="flex-1 md:max-w-md md:p-8 lg:p-12 flex flex-col gap-4">
                 {/* Logo arrondi */}
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden">
+                <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden">
                   <img
                     src={project.logo}
                     alt="Project Logo"

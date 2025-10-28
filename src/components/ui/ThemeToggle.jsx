@@ -83,9 +83,7 @@ export default function ThemeToggle() {
 
     return (
         <motion.div
-            layout
             className="flex items-center gap-1 rounded-xl border border-zinc-200 bg-white/60 p-1 text-sm shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70"
-            transition={{ layout: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }}
         >
             {options.map(({ key, label, icon }) => {
                 const isActive = theme === key;
@@ -102,12 +100,12 @@ export default function ThemeToggle() {
                         <AnimatePresence>
                             {isActive && (
                                 <motion.span
-                                    layoutId="activeThemeBg"
+
                                     className="absolute inset-0 rounded-lg bg-lightPrimary dark:bg-darkPrimary shadow-md"
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.50, ease: [0.4, 0, 0.2, 1] }}
+
                                 />
                             )}
                         </AnimatePresence>
