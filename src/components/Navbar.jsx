@@ -240,7 +240,7 @@ export default function Navbar({ }) {
                                         );
 
                                         const activeClasses = (location.pathname === link.path && !link.external && link.name !== "Email")
-                                            ? "border-zinc-900/60 text-zinc-900"
+                                            ? "border-ultralightGray dark:border-white bg-ultralightGray dark:bg-darkContainer text-lightPrimary dark:text-darkPrimary font-sfregular"
                                             : "";
 
                                         const RightDot = () => (

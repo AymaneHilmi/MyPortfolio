@@ -103,7 +103,7 @@ export default function ThemeToggle() {
                             {isActive && (
                                 <motion.span
                                     layoutId="activeThemeBg"
-                                    className="absolute inset-0 rounded-lg bg-zinc-900 dark:bg-zinc-100"
+                                    className="absolute inset-0 rounded-lg bg-lightPrimary dark:bg-darkPrimary shadow-md"
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
