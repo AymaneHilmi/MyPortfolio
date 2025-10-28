@@ -57,4 +57,29 @@ module.exports = {
       },
     },
   },
+  // Désactive l'affichage du curseur sur tout le site
+  plugins: [
+    addVariablesForColors,
+    addBaseCursorNone,
+  ],
+}
+
+function addVariablesForColors({
+  addBase,
+  theme
+}) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]));
+
+  addBase({
+    ":root": newVars,
+  });
+}
+
+function addBaseCursorNone({ addBase }) {
+  addBase({
+    '*': { cursor: 'none' },
+    'a, button': { cursor: 'none' }, // liens et boutons cliquables
+    'input, textarea': { cursor: 'text' },
+  });
 }

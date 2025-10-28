@@ -189,7 +189,9 @@ export default function Navbar({ }) {
                         </div>
                     ))}
                 </div>
-                <ThemeToggle />
+                <div className="hidden md:block">
+                    <ThemeToggle />
+                </div>
             </nav>
 
             {/* mobile navbar */}
