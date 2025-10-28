@@ -108,7 +108,7 @@ export default function Navbar({ }) {
                                                         rel="noreferrer"
                                                         data-cursor-icon="mail"
                                                         className={cn(
-                                                            "relative transition-colors duration-300 ease-out hover:text-black"
+                                                            "relative transition-colors duration-300 ease-out hover:text-black dark:hover:text-white"
                                                         )}
                                                     >
                                                         {link.name}
@@ -121,13 +121,13 @@ export default function Navbar({ }) {
                                                     </a>
                                                 </TooltipTrigger>
                                                 <TooltipContent>
-                                                    <div className="flex items-center px-4 py-2 rounded-full bg-bgLight dark:bg-bgDark border border-ultralightGray shadow-sm w-fit space-x-2">
-                                                        <span className="text-gray-600 font-sfregular">
+                                                    <div className="flex items-center px-4 py-2 rounded-full bg-bgLight dark:bg-darkContainer  border border-ultralightGray dark:border-darkBorder shadow-sm w-fit space-x-2">
+                                                        <span className="text-lightPrimary dark:text-darkPrimary font-sfregular">
                                                             {email}
                                                         </span>
                                                         <button
                                                             onClick={handleCopy}
-                                                            className="px-3 py-1 text-xs font-sfbold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
+                                                            className="px-3 py-1 text-xs font-sfbold text-lightPrimary dark:text-darkPrimary bg-ultralightGray dark:bg-bgDark rounded-full hover:bg-g transition-all"
                                                             data-cursor-icon="copy"
                                                         >
                                                             {copied ? "COPIED" : "COPY"}
@@ -147,8 +147,8 @@ export default function Navbar({ }) {
                                             target="_blank"
                                             rel="noreferrer"
                                             className={cn(
-                                                "relative transition-colors duration-300 ease-out hover:text-black",
-                                                location.pathname === link.path && "text-black"
+                                                "relative transition-colors duration-300 ease-out hover:text-black dark:hover:text-white",
+                                                location.pathname === link.path && "text-black dark:text-white"
                                             )}
                                             data-cursor-icon="arrow"
                                         >
@@ -170,8 +170,8 @@ export default function Navbar({ }) {
                                     <Link
                                         to={link.path}
                                         className={cn(
-                                            "relative transition-colors duration-300 ease-out hover:text-black",
-                                            location.pathname === link.path && "text-black"
+                                            "relative transition-colors duration-300 ease-out hover:text-black dark:hover:text-white",
+                                            location.pathname === link.path && "text-black dark:text-white"
                                         )}
                                     >
                                         {link.name}
@@ -189,6 +189,7 @@ export default function Navbar({ }) {
                         </div>
                     ))}
                 </div>
+                <ThemeToggle />
             </nav>
 
             {/* mobile navbar */}
