@@ -46,7 +46,7 @@ export const DraggableCardBody = ({ className, children, image }) => {
       style={{ willChange: "transform" }}
       className={cn(
 
-        "relative min-h-64 sm:min-h-72 md:min-h-80 lg:min-h-96 w-56 sm:w-64 md:w-72 lg:w-80 overflow-visible rounded-xl bg-gray-50 border border-gray-200 p-4 md:p-5 lg:p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col items-center justify-center text-center",
+        "relative min-h-64 sm:min-h-72 md:min-h-80 lg:min-h-96 w-56 sm:w-64 md:w-72 lg:w-80 overflow-visible rounded-xl bg-lightContainer dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder p-4 md:p-5 lg:p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col items-center justify-center text-center",
         className
       )}
     >

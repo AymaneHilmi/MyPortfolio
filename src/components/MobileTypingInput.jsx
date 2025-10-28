@@ -17,7 +17,7 @@ const MobileTypingInput = () => {
 
   return (
     <div className="mt-2 block sm:hidden">
-      <label className="block text-xs font-medium text-gray-500 mb-1">
+      <label className="block text-xs font-sfregular text-gray-500 mb-1">
         On mobile? Type here to discover something...
       </label>
       <input

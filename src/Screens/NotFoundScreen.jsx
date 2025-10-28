@@ -10,7 +10,7 @@ export default function NotFoundScreen() {
     const navigate = useNavigate();
     const containerRef = useRef(null);
     const [spot, setSpot] = useState({ x: 50, y: 50 });
-    
+
 
     // Déplace le spotlight (souris & touch)
     const handlePointer = (e) => {
@@ -23,7 +23,6 @@ export default function NotFoundScreen() {
         setSpot({ x, y });
     };
 
-    // Modifie ici si tu veux d’autres chiffres
     const digits = [
         { value: "29", left: "12%", top: "20%", floatDelay: 0 },
         { value: "13", left: "70%", top: "25%", floatDelay: 0.15 },
@@ -32,7 +31,7 @@ export default function NotFoundScreen() {
     ];
 
     return (
-        <section className="relative w-full h-screen overflow-hidden bg-white select-none">
+        <section className="relative w-full h-screen overflow-hidden  select-none">
             {/* Blobs doux */}
             <div className="absolute inset-0 -z-20 pointer-events-none">
                 <div className="absolute -top-24 -left-20 h-[36rem] w-[36rem] blur-3xl opacity-25 bg-gradient-to-br from-blue-500/35 to-transparent" />
@@ -41,14 +40,7 @@ export default function NotFoundScreen() {
             </div>
 
             {/* Bruit subtil */}
-            <div
-                aria-hidden
-                className="absolute inset-0 -z-10 opacity-[0.06] pointer-events-none"
-                style={{
-                    backgroundImage:
-                        "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' opacity='0.5' width='80' height='80' viewBox='0 0 80 80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-                }}
-            />
+
 
             <div
                 ref={containerRef}
@@ -90,7 +82,7 @@ export default function NotFoundScreen() {
                                 visible: { opacity: 1, y: 0, scale: 1 },
                             }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="text-[48px] md:text-9xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block"
+                            className="text-[48px] md:text-9xl font-ramidots tracking-tight bg-brandgradient bg-clip-text text-transparent w-fit inline-block"
                         >
                             404
                         </motion.h1> */}
@@ -114,7 +106,7 @@ export default function NotFoundScreen() {
                                 visible: { opacity: 1, y: 0 },
                             }}
                             transition={{ duration: 0.7, ease: "easeOut" }}
-                            className="mt-2 text-gray-600 font-sfbold text-2xl md:text-xl"
+                            className="mt-2 text-lightPrimary dark:text-darkPrimary font-sfbold text-2xl md:text-xl"
                         >
                             404 - Not Found
                         </motion.p>
@@ -126,7 +118,7 @@ export default function NotFoundScreen() {
                                 visible: { opacity: 1, y: 0 },
                             }}
                             transition={{ duration: 0.7, ease: "easeOut" }}
-                            className="mt-2 text-gray-600 text-base md:text-lg"
+                            className="mt-2 text-lightPrimary dark:text-darkPrimary  text-base md:text-lg"
                         >
                             You look for something ? There is probably nothing here...
                         </motion.p>
@@ -140,7 +132,7 @@ export default function NotFoundScreen() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => navigate("/")}
-                            className="mt-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-3 text-sm md:text-base font-medium text-gray-800 shadow-sm hover:shadow-md hover:bg-gray-50 transition-all"
+                            className="mt-6 inline-flex items-center gap-2 rounded-full border border-ultralightGray dark:border-darkBorder px-6 py-3 text-sm md:text-base font-sfregular text-lightPrimary dark:text-darkPrimary shadow-sm hover:shadow-md hover:bg-lightContainer dark:bg-darkContainer transition-all"
                         >
                             <Home className="w-4 h-4" />
                             Back to Home
@@ -166,7 +158,7 @@ function FloatingDigit({ value, left, top, floatDelay = 0 }) {
             }}
         >
             <span
-                className="block leading-none text-[72px] md:text-[120px] font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent"
+                className="block leading-none text-[72px] md:text-[120px] font-ramidots bg-brandgradient bg-clip-text text-transparent"
                 style={{
                     filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.05))",
                 }}

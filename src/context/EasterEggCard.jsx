@@ -59,9 +59,9 @@ export default function EasterEggsCard({ }) {
       whileInView={{ opacity: 1, y: 0, rotate: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.55, ease: "easeOut" }}
-      className="relative z-10 shrink-0 w-full lg:w-[340px] rounded-3xl bg-white border border-gray-200 shadow-sm p-5 lg:p-6"
+      className="relative z-10 shrink-0 w-full lg:w-[340px] rounded-3xl  bg-white dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder  shadow-sm p-5 lg:p-6"
     >
-      <span className="absolute -top-3 -left-3 h-7 w-7 rounded-full bg-gray-900 text-white text-xs font-sfbold grid place-items-center">
+      <span className="absolute -top-3 -left-3 h-7 w-7 rounded-full bg-black text-white text-xs font-sfbold grid place-items-center">
         2
       </span>
 
@@ -89,12 +89,12 @@ export default function EasterEggsCard({ }) {
                   whileHover={
                     unlocked
                       ? {
-                          y: -2,
-                          scaleX: 1.012,
-                          scaleY: 0.992,
-                          rotateX: -1.25,
-                          rotateY: 1.25,
-                        }
+                        y: -2,
+                        scaleX: 1.012,
+                        scaleY: 0.992,
+                        rotateX: -1.25,
+                        rotateY: 1.25,
+                      }
                       : {}
                   }
                   transition={{
@@ -106,25 +106,25 @@ export default function EasterEggsCard({ }) {
                   className={[
                     "group flex items-center justify-between rounded-2xl border px-3 py-2.5",
                     completed
-                      ? "bg-green-50 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
-                      : "bg-gray-50 border-gray-200",
+                      ? "bg-green-50 dark:bg-green-900 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
+                      : "bg-lightContainer dark:bg-[#262626] border-ultralightGray",
                   ].join(" ")}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="h-7 w-7 flex items-center justify-center text-darkGray">
+                    <div className="h-7 w-7 flex items-center justify-center text-lightPrimary dark:text-darkPrimary">
                       {m.icon}
                     </div>
                     <div>
-                      <p className="text-sm font-sfbold text-darkGray">
+                      <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">
                         {m.label}
                       </p>
-                      <p className="text-[11px] font-sfregular text-lightGray">
+                      <p className="text-[11px] font-sfregular text-lightSecondary">
                         step {i + 1}
                       </p>
                     </div>
                   </div>
 
-                  <div className="h-7 w-7 grid place-items-center rounded-full border border-gray-300 text-darkGray">
+                  <div className="h-7 w-7 grid place-items-center rounded-full border border-gray-300 text-lightPrimary dark:text-darkPrimary">
                     {rightBadge}
                   </div>
                 </motion.div>
@@ -143,12 +143,12 @@ export default function EasterEggsCard({ }) {
                     whileHover={
                       unlocked
                         ? {
-                            y: -2,
-                            scaleX: 1.012,
-                            scaleY: 0.992,
-                            rotateX: -1.25,
-                            rotateY: 1.25,
-                          }
+                          y: -2,
+                          scaleX: 1.012,
+                          scaleY: 0.992,
+                          rotateX: -1.25,
+                          rotateY: 1.25,
+                        }
                         : {}
                     }
                     transition={{
@@ -160,25 +160,25 @@ export default function EasterEggsCard({ }) {
                     className={[
                       "group flex items-center justify-between rounded-2xl border px-3 py-2.5",
                       completed
-                        ? "bg-green-50 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
-                        : "bg-gray-50 border-gray-200",
+                        ? "bg-green-50 dark:bg-green-900 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
+                        : "bg-lightContainer dark:bg-[#262626] border-ultralightGray dark:border-darkBorder",
                     ].join(" ")}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="h-7 w-7 flex items-center justify-center  text-darkGray">
+                      <div className="h-7 w-7 flex items-center justify-center  text-lightPrimary dark:text-darkPrimary">
                         {m.icon}
                       </div>
                       <div>
-                        <p className="text-sm font-sfbold text-darkGray">
+                        <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">
                           {m.label}
                         </p>
-                        <p className="text-[11px] font-sfregular text-lightGray">
+                        <p className="text-[11px] font-sfregular text-lightSecondary">
                           step {i + 1}
                         </p>
                       </div>
                     </div>
 
-                    <div className="h-7 w-7 grid place-items-center rounded-full border border-gray-300 text-darkGray">
+                    <div className="h-7 w-7 grid place-items-center rounded-full border border-gray-300 text-lightPrimary dark:text-darkPrimary">
                       {rightBadge}
                     </div>
                   </motion.div>
@@ -189,12 +189,12 @@ export default function EasterEggsCard({ }) {
                   <Dialog.Overlay className="fixed inset-0 z-50 bg-black/40 data-[state=open]:animate-fadeIn" />
                   <Dialog.Content
                     className="fixed z-50 left-1/2 top-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2
-                              rounded-2xl bg-white p-6 shadow-lg outline-none data-[state=open]:animate-fadeIn"
+                              rounded-2xl bg-white dark:bg-bgDark p-6 shadow-lg outline-none data-[state=open]:animate-fadeIn"
                   >
-                    <Dialog.Title className="text-4xl font-ramidots bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent inline-block w-fit mb-2">
+                    <Dialog.Title className="text-4xl font-ramidots bg-brandgradient bg-clip-text text-transparent inline-block w-fit mb-2">
                       Easter Eggs Quest
                     </Dialog.Title>
-                    <Dialog.Description className="mt-2 text-sm text-lightGray">
+                    <Dialog.Description className="mt-2 text-sm text-lightSecondary">
                       Are you sure you want to start the Easter Egg Quest ?
                       <br></br>(don't even try to click on cancel or you will be
                       surprised).
@@ -209,7 +209,7 @@ export default function EasterEggsCard({ }) {
                             completeMission("eggChamber");
                             addEasterEggLink();
                           }}
-                          className="absolute top-0 right-0 h-10 w-40 flex items-center justify-center rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-800"
+                          className="absolute top-0 right-0 h-10 w-40 flex items-center justify-center rounded-lg bg-darkContainer text-white text-sm font-sfregular hover:bg-gray-800"
                         >
                           Yes, let's go !
                         </button>
@@ -220,16 +220,16 @@ export default function EasterEggsCard({ }) {
                       <button
                         onMouseEnter={() => setCancelOnRight((v) => !v)}
                         onClick={() => setCancelOnRight((v) => !v)}
-                        className="absolute top-0 h-10 px-4 flex items-center justify-center rounded-lg border text-sm font-medium text-darkGray bg-white hover:bg-gray-100 transition-[left,right] duration-300"
+                        className="absolute top-0 h-10 px-4 flex items-center justify-center rounded-lg border text-sm font-sfregular text-lightPrimary dark:text-darkPrimary  hover:bg-gray-100 dark:hover:bg-black transition-[left,right] duration-300"
                         style={
                           cancelOnRight
                             ? // se place juste à gauche du bouton droit avec un gap
-                              {
-                                right: `${CONFIRM_W_PX + GAP_PX}px`,
-                                left: "auto",
-                              }
+                            {
+                              right: `${CONFIRM_W_PX + GAP_PX}px`,
+                              left: "auto",
+                            }
                             : // collé à gauche
-                              { left: 0, right: "auto" }
+                            { left: 0, right: "auto" }
                         }
                       >
                         Cancel
@@ -249,33 +249,33 @@ export default function EasterEggsCard({ }) {
               whileHover={
                 unlocked && i !== 0
                   ? {
-                      y: -2,
-                      scaleX: 1.012,
-                      scaleY: 0.992,
-                      rotateX: -1.25,
-                      rotateY: 1.25,
-                    }
+                    y: -2,
+                    scaleX: 1.012,
+                    scaleY: 0.992,
+                    rotateX: -1.25,
+                    rotateY: 1.25,
+                  }
                   : {}
               }
               className={[
                 "group flex items-center justify-between rounded-2xl border px-3 py-2.5",
                 completed
-                  ? "bg-green-50 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
-                  : "bg-gray-50 border-gray-200",
+                  ? "bg-green-50 dark:bg-green-900 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
+                  : "bg-lightContainer dark:bg-[#262626] border-ultralightGray dark:border-darkBorder",
               ].join(" ")}
             >
               <div className="flex items-center gap-3">
                 <div
                   className={[
-                    "h-7 w-7 flex items-center justify-center text-darkGray",
+                    "h-7 w-7 flex items-center justify-center text-lightPrimary dark:text-darkPrimary",
                     unlocked ? "" : "opacity-70",
                   ].join(" ")}
                 >
                   {m.icon}
                 </div>
                 <div>
-                  <p className="text-sm font-sfbold text-darkGray">{m.label}</p>
-                  <p className="text-[11px] font-sfregular text-lightGray">
+                  <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">{m.label}</p>
+                  <p className="text-[11px] font-sfregular text-lightSecondary">
                     step {i + 1}
                   </p>
                 </div>
@@ -283,7 +283,7 @@ export default function EasterEggsCard({ }) {
 
               <div
                 className={[
-                  "h-7 w-7 grid place-items-center rounded-full border border-gray-300 text-darkGray",
+                  "h-7 w-7 grid place-items-center rounded-full border border-gray-300 text-lightPrimary dark:text-darkPrimary",
                   unlocked ? "" : "opacity-80",
                 ].join(" ")}
               >
@@ -294,7 +294,7 @@ export default function EasterEggsCard({ }) {
         })}
       </div>
 
-      <p className="mt-4 text-sm font-sfregular text-lightGray">
+      <p className="mt-4 text-sm font-sfregular text-lightSecondary">
         A playful (and slightly complicated) easter-eggs quest.
       </p>
     </motion.div>

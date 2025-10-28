@@ -75,7 +75,7 @@ export default function AutoPlayVideo({
             </video>
             <button
                 onClick={restartVideo}
-                className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition bg-white/80 text-zinc-800 text-xs px-2 py-1 rounded-md shadow hover:bg-white"
+                className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition bg-white/80 dark:bg-bgDark text-zinc-800 dark:text-white text-xs px-2 py-1 rounded-md shadow hover:"
                 type="button"
                 data-cursor-icon="restart"
             >

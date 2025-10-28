@@ -47,12 +47,12 @@ function Gauge({ label, score }) {
                 </svg>
 
                 {/* score number */}
-                <div className={`absolute inset-0 grid place-items-center text-sm font-semibold ${color.replace("stroke-", "text-")}`}>
+                <div className={`absolute inset-0 grid place-items-center text-sm font-sfbold ${color.replace("stroke-", "text-")}`}>
                     {s}
                 </div>
             </div>
 
-            <p className="mt-2 text-sm text-zinc-700 text-center">{label}</p>
+            <p className="mt-2 text-sm text-lightPrimary dark:text-darkPrimary text-center">{label}</p>
         </div>
     );
 }
@@ -68,7 +68,7 @@ export default function LighthouseSection() {
     ];
 
     return (
-        <section className="relative mt-12 md:mt-24 bg-white">
+        <section className="relative mt-12 md:mt-24 ">
             <div className="mx-auto max-w-7xl px-6">
                 {/* gauges */}
                 <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">

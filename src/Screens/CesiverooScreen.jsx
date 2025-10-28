@@ -158,16 +158,16 @@ export default function CesiverooScreen() {
         <FadeIn className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* colonne de gauche — Texte */}
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-sm text-zinc-600">
+            <div className="inline-flex items-center gap-2 rounded-full border border-ultralightGray px-3 py-1 text-sm text-lightPrimary dark:text-darkPrimary font-sfregular dark:border-darkBorder dark:bg-darkContainer ">
               <span className="h-2 w-2 rounded-full bg-emerald-500" />
               Process Highlights
             </div>
 
-            <h1 className="text-4xl font-sfbold tracking-tight text-darkGray md:text-5xl">
+            <h1 className="text-4xl font-sfbold tracking-tight text-lightPrimary dark:text-darkPrimary md:text-5xl">
               Cesi<span className="text-[#20CFBD]">veroo</span> Project
             </h1>
 
-            <div className="text-darkGray text-sm md:text-base lg:text-lg text-justify ">
+            <div className="text-lightPrimary dark:text-darkPrimary text-sm md:text-base lg:text-lg text-justify ">
               <p>
                 This project was part of an academic assignment during my time
                 in engineering school. The challenge was to create an Uber-like
@@ -189,7 +189,7 @@ export default function CesiverooScreen() {
                 href="https://github.com/AymaneHilmi/Cesiveroo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-darkGray px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-[#1ab3a5] transition"
+                className="inline-flex items-center gap-2 rounded-xl bg-lightPrimary px-5 py-3 text-sm font-sfbold text-white shadow-md hover:shadow-lg hover:bg-[#1ab3a5] transition"
                 data-cursor-icon="arrow"
               >
                 <Github size={18} />
@@ -232,10 +232,10 @@ export default function CesiverooScreen() {
         aria-label="Cesiveroo project details"
       >
         <FadeIn className="text-center mb-10">
-          <p className="text-xs uppercase tracking-widest text-lightGray">
+          <p className="text-xs uppercase tracking-widest text-lightSecondary">
             Project overview
           </p>
-          <h2 className="mt-2 text-2xl sm:text-3xl font-sfbold tracking-tight text-darkGray">
+          <h2 className="mt-2 text-2xl sm:text-3xl font-sfbold tracking-tight text-lightPrimary dark:text-darkPrimary">
             Details & Objectives
           </h2>
         </FadeIn>
@@ -246,7 +246,7 @@ export default function CesiverooScreen() {
             return (
               <div
                 key={stat.label}
-                className="rounded-xl ring-1 ring-zinc-700 bg-[#3a3a3a] p-5 text-center shadow-sm hover:shadow-md transition"
+                className="rounded-xl ring-1 ring-darkBorder bg-darkContainer p-5 text-center shadow-sm hover:shadow-md transition"
               >
                 <div className="flex justify-center mb-2">
                   <Icon className="h-5 w-5 text-[#20CFBD]" strokeWidth={2} />
@@ -262,8 +262,8 @@ export default function CesiverooScreen() {
 
         <FadeIn className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
           <div className="md:col-span-3">
-            <h3 className="text-lg font-semibold text-gray-900">Objectives</h3>
-            <ul className="mt-3 space-y-2 text-sm md:text-base lg:text-lg   text-gray-700">
+            <h3 className="text-lg font-sfbold text-lightPrimary dark:text-darkPrimary">Objectives</h3>
+            <ul className="mt-3 space-y-2 text-sm md:text-base lg:text-lg text-lightPrimary dark:text-darkPrimary">
               <li className="flex gap-3">
                 <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD] " />
                 <span>
@@ -286,7 +286,7 @@ export default function CesiverooScreen() {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-sfbold text-lightPrimary dark:text-darkPrimary">
               Stack & tools
             </h3>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -301,19 +301,16 @@ export default function CesiverooScreen() {
               ].map((chip) => (
                 <span
                   key={chip}
-                  className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-sm md:text-base lg:text-lg text-justify text-gray-700 shadow-sm"
+                  className="inline-flex items-center rounded-full border border-ultralightGray dark:border-darkBorder dark:bg-darkContainer px-3 py-1 text-sm md:text-base lg:text-lg text-justify text-lightPrimary dark:text-darkPrimary shadow-sm"
                 >
                   {chip}
                 </span>
               ))}
             </div>
-            <p className="mt-4 text-xs text-gray-500">
-              Focus: performance, accessibility, clean DX, simplified CI.
-            </p>
           </div>
         </FadeIn>
 
-        <FadeIn className="text-darkGray mt-12 text-sm md:text-base lg:text-lg text-justify">
+        <FadeIn className="text-lightPrimary dark:text-darkPrimary mt-12 text-sm md:text-base lg:text-lg text-justify">
           In this page you will basically find an overview with all the mains steps we did during the project development.
           As we had a deadline of 4 weeks, we tried to be as efficient as possible and focus on the most important aspects
           of the project. We didn't had time to develope all the functionalities we wanted but we managed to deliver a MVP
@@ -321,7 +318,7 @@ export default function CesiverooScreen() {
         </FadeIn>
 
         <FadeIn className="mx-auto max-w-6xl py-16">
-          <h3 className="text-lg font-semibold text-gray-900 text-center">
+          <h3 className="text-lg font-sfbold text-lightPrimary dark:text-darkPrimary text-center">
             5‑step process
           </h3>
 
@@ -355,17 +352,17 @@ export default function CesiverooScreen() {
             ].map((step, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center text-center p-6 rounded-2xl   transition"
+                className="flex flex-col items-center text-center p-6 rounded-2xl  transition"
               >
                 <img
                   src={step.img}
                   alt={`Step ${idx + 1}`}
                   className="w-28 h-28 object-contain"
                 />
-                <p className="mt-4 text-base font-medium text-gray-900">
+                <p className="mt-4 text-base font-sfregular text-lightPrimary dark:text-darkPrimary">
                   {step.title}
                 </p>
-                <p className="text-sm text-gray-600 mt-1">{step.desc}</p>
+                <p className="text-sm text-lightSecondary dark:text-darkSecondary mt-1">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -373,10 +370,10 @@ export default function CesiverooScreen() {
 
         <FadeIn className="relative mt-6">
           <div className="text-center">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-ultralightGray0">
               Project Overview
             </p>
-            <h2 className="mt-2 text-3xl md:text-4xl font-sfbold text-darkGray">
+            <h2 className="mt-2 text-3xl md:text-4xl font-sfbold text-lightPrimary dark:text-darkPrimary">
               Four Key Steps
             </h2>
             <span className="mt-4 block h-[3px] w-24 mx-auto rounded-full bg-[#20CFBD]" />
@@ -385,24 +382,24 @@ export default function CesiverooScreen() {
           {/* Mobile timeline */}
           <div className="md:hidden relative mt-10 max-w-2xl mx-auto">
             {/* Ligne verticale */}
-            <span className="absolute left-4 top-0 bottom-0 w-[2px] bg-zinc-200" />
+            <span className="absolute left-4 top-0 bottom-0 w-[2px] bg-ultralightGray dark:bg-darkBorder" />
             <ul className="space-y-6">
               {ProjectSteps.map(({ num, title, desc, Icon, accent }) => (
                 <li key={num} className="relative pl-12">
                   {/* pastille numérotée */}
-                  <span className="absolute left-0 top-1 grid place-items-center h-8 w-8 rounded-full bg-white ring-1 ring-zinc-200 shadow-sm">
-                    <span className={`text-xs font-ramidots text-[#20CFBD] `}>
+                  <span className="absolute left-0 top-1 grid place-items-center h-8 w-8 rounded-full bg-bgLight dark:bg-darkContainer ring-1 ring-ultralightGray dark:ring-darkBorder shadow-sm">
+                    <span className={`text-sm font-sfregular text-[#20CFBD] `}>
                       {num}
                     </span>
                   </span>
-                  <div className="rounded-2xl border border-zinc-200 bg-white shadow-sm p-4">
+                  <div className="rounded-2xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer shadow-sm p-4">
                     <div className="flex items-start gap-3">
-                      <div className="shrink-0 grid place-items-center h-9 w-9 rounded-xl bg-zinc-50 ring-1 ring-zinc-200">
-                        <Icon className="h-5 w-5 text-zinc-600" />
+                      <div className="shrink-0 grid place-items-center h-9 w-9 rounded-xl bg-utralightGray dark:bg-bgDark ring-1 ring-ultralightGray dark:ring-darkBorder">
+                        <Icon className="h-5 w-5 text-lightPrimary dark:text-darkPrimary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-zinc-900">{title}</h3>
-                        <p className="mt-1 text-sm text-zinc-600 leading-relaxed">
+                        <h3 className="font-sfbold text-lightPrimary dark:text-darkPrimary">{title}</h3>
+                        <p className="mt-1 text-sm text-lightSecondary dark:text-darkSecondary leading-relaxed">
                           {desc}
                         </p>
                       </div>
@@ -419,7 +416,7 @@ export default function CesiverooScreen() {
             {ProjectSteps.map(({ num, title, desc, Icon, accent }) => (
               <article
                 key={num}
-                className="relative rounded-2xl border border-zinc-200 bg-white shadow-sm p-5 flex flex-col"
+                className="relative rounded-2xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer shadow-sm p-5 flex flex-col"
               >
                 {/* badge numéro */}
                 <span className="absolute right-3 top-3 inline-flex h-6 min-w-6 items-center justify-center rounded-full text-[10px] text-white px-2 shadow-sm bg-[#20CFBD]">
@@ -427,14 +424,14 @@ export default function CesiverooScreen() {
                 </span>
 
                 <div className="flex items-start gap-3">
-                  <div className="shrink-0 grid place-items-center h-10 w-10 rounded-xl bg-zinc-50 ring-1 ring-zinc-200">
-                    <Icon className="h-5 w-5 text-zinc-700" />
+                  <div className="shrink-0 grid place-items-center h-10 w-10 rounded-xl bg-ultralightGray dark:bg-bgDark ring-1 ring-ultralightGray dark:ring-darkBorder">
+                    <Icon className="h-5 w-5 text-lightPrimary dark:text-darkPrimary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-zinc-900 leading-tight">
+                    <h3 className="text-lg font-sfbold text-lightPrimary dark:text-darkPrimary leading-tight">
                       {title}
                     </h3>
-                    <p className="mt-2 text-sm text-zinc-600 leading-relaxed">
+                    <p className="mt-2 text-sm text-lightSecondary dark:text-darkSecondary leading-relaxed">
                       {desc}
                     </p>
                   </div>
@@ -453,7 +450,7 @@ export default function CesiverooScreen() {
             titleComponent={
               <>
                 <div>
-                  <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row gap-2 items-center justify-center mt-20 md:mt-0">
+                  <p className="text-base uppercase tracking-widest text-sfregular text-lightSecondary dark:text-darkPrimary flex flex-row gap-2 items-center justify-center mt-20 md:mt-0">
                     <img src={Step2} className="h-10 w-10" />
                     Design
                   </p>
@@ -485,7 +482,7 @@ export default function CesiverooScreen() {
             {/* left column — Text */}
             <div className="order-1 lg:order-1 text-left">
               <header className="mb-6">
-                <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row items-center gap-2">
+                <p className="text-base uppercase tracking-widest text-sfregular text-lightSecondary dark:text-darkPrimary flex flex-row items-center gap-2">
                   <img src={Step2} className="h-10 w-10" />
                   Design
                 </p>
@@ -493,10 +490,10 @@ export default function CesiverooScreen() {
                   Wireframes & User Flows
                 </h2>
               </header>
-              <p className="mt-4 text-sm md:text-base lg:text-lg text-justify  leading-relaxed text-zinc-700 max-w-prose">
+              <p className="mt-4 text-sm md:text-base lg:text-lg text-justify  leading-relaxed text-lightPrimary dark:text-darkPrimary max-w-prose">
                 Definition of key journeys, screen prioritization, and component structuring for a clear MVP that’s quick to iterate on. The wireframes served as a visual contract to align the team and de‑risk product decisions.
               </p>
-              <ul className="mt-6 space-y-2 text-sm md:text-base lg:text-lg text-zinc-700">
+              <ul className="mt-6 space-y-2 text-sm md:text-base lg:text-lg text-lightPrimary dark:text-darkPrimary">
                 <li className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
                   <span>Consistent zoning and visual hierarchy.</span>
@@ -529,7 +526,7 @@ export default function CesiverooScreen() {
 
         {/* Architecture — Overview */}
         <section className="py-16" aria-label="Architecture — Overview">
-          <FadeIn className="relative overflow-hidden rounded-3xl bg-[#3a3a3a] ring-1 ring-zinc-700 shadow-sm">
+          <FadeIn className="relative overflow-hidden rounded-3xl bg-[#3a3a3a] ring-1 ring-lightPrimary shadow-sm">
             <div className="relative px-6 py-10 sm:px-12 sm:py-14">
               {/* Header */}
               <div className="">
@@ -544,7 +541,7 @@ export default function CesiverooScreen() {
                   </h2>
                 </header>
 
-                <p className="mt-3 text-sm md:text-base lg:text-lg text-justify leading-relaxed text-zinc-300 ">
+                <p className="mt-3 text-sm md:text-base lg:text-lg text-justify leading-relaxed text-ultralightGray ">
                   Service‑oriented architecture: a React frontend, an API gateway centralizing access, and decoupled Node/Express microservices. Polyglot storage depending on use.
                 </p>
               </div>
@@ -556,15 +553,15 @@ export default function CesiverooScreen() {
                   return (
                     <div
                       key={col.title}
-                      className="rounded-2xl border border-zinc-700 bg-zinc-800/70 p-5 md:p-6"
+                      className="rounded-2xl border border-lightPrimary bg-zinc-800/70 p-5 md:p-6"
                     >
                       <div className="flex items-start gap-3">
                         <Icon className="h-10 w-10" color="#20CFBD" />
                         <div className="min-w-0">
-                          <h3 className="text-sm md:text-base lg:text-lg text-justify  font-semibold text-white leading-tight">
+                          <h3 className="text-sm md:text-base lg:text-lg text-justify  font-sfbold text-white leading-tight">
                             {col.title}
                           </h3>
-                          <p className="mt-1 text-sm text-zinc-300">
+                          <p className="mt-1 text-sm text-ultralightGray">
                             {col.desc}
                           </p>
                         </div>
@@ -573,7 +570,7 @@ export default function CesiverooScreen() {
                         {col.items.map((chip) => (
                           <span
                             key={chip}
-                            className="inline-flex items-center rounded-full border border-zinc-600 bg-zinc-700 px-2.5 py-1 text-[11px] text-zinc-200"
+                            className="inline-flex items-center rounded-full border border-zinc-600 bg-lightPrimary px-2.5 py-1 text-[11px] text-ultralightGray"
                           >
                             {chip}
                           </span>
@@ -587,10 +584,10 @@ export default function CesiverooScreen() {
           </FadeIn>
         </section>
 
-        <FadeIn className="pt-20 bg-white" aria-label="Conclusion">
+        <FadeIn className="pt-20 " aria-label="Conclusion">
           {/* Header */}
           <header className="mb-6">
-            <p className="text-base uppercase tracking-widest text-sfregular text-gray-500 flex flex-row items-center gap-2">
+            <p className="text-base uppercase tracking-widest text-sfregular text-lightPrimary dark:text-darkPrimary flex flex-row items-center gap-2">
               <img src={Step5} className="h-10 w-10" />
               Documentation
             </p>
@@ -599,7 +596,7 @@ export default function CesiverooScreen() {
             </h2>
           </header>
           {/* Text */}
-          <p className="mt-4 leading-relaxed text-zinc-600 text-sm md:text-base lg:text-lg text-justify ">
+          <p className="mt-4 leading-relaxed text-lightPrimary dark:text-darkPrimary text-sm md:text-base lg:text-lg text-justify ">
             This project was actually one of the first I worked on that resulted
             in something real and concrete. That's why I decided to put it on
             this portfolio. After this project, I started having interest in
@@ -612,13 +609,13 @@ export default function CesiverooScreen() {
                     <span>. </span>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <div className="flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm w-fit space-x-2">
-                      <span className="text-gray-600 font-medium">
+                    <div className="flex items-center px-4 py-2 rounded-full bg-bgLight dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder shadow-sm w-fit space-x-2">
+                      <span className="text-lightPrimary dark:text-darkPrimary font-sfregular">
                         Hidden Tip #1
                       </span>
                       <button
                         onClick={() => completeMission("tip#1")}
-                        className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 "
+                        className="px-3 py-1 text-xs font-sfbold text-lightPrimary dark:text-darkPrimary bg-ultralightGray dark:bg-bgDark rounded-full hover:bg-gray-200 "
                       >
                         Discover Tip
                       </button>
@@ -629,7 +626,7 @@ export default function CesiverooScreen() {
             ) : (
               <span>. </span>
             )}
-            I'll invite you to check the documentation on github
+            I'll invite you to check the documentation on github.
           </p>
 
           {/* CTA */}
@@ -638,7 +635,7 @@ export default function CesiverooScreen() {
               href="https://github.com/AymaneHilmi/Cesiveroo" // remplace par ton lien GitHub
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-darkGray px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:bg-[#1ab3a5] transition"
+              className="inline-flex items-center gap-2 rounded-xl bg-lightPrimary px-5 py-3 text-sm font-sfbold text-white shadow-md hover:shadow-lg hover:bg-[#1ab3a5] transition"
               data-cursor-icon="arrow"
             >
               <Github size={18} />

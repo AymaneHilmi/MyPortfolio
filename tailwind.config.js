@@ -6,17 +6,29 @@ const {
 } = require("tailwindcss/lib/util/flattenColorPalette");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: ["./index.html", "./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
-
       colors: {
-        'background': '#ffffff',
-        darkGray: '#3b3d41',
-        lightGray: '#a9a5ac',
+        bgLight: '#ffffff',
+        lightPrimary: '#3b3d41',
+        lightSecondary: '#a9a5ac',
+        lightContainer: '#f9fafb',
+
+
+        bgDark: '#171717',
+        darkPrimary: '#d4d4d4',
+        darkSecondary: '#a1a1a1',
+        darkContainer: '#3a3a3a',
+        darkBorder: "#404040",
+
+
+        // ultralightGray: '#000000',
+        ultralightGray: '#e4e4e7',
       },
       backgroundImage: {
-        "brand-gradient": "linear-gradient(to right, #3B82F6, #fb923c, #ef4444)",
+        brandgradient: "linear-gradient(to right, #3B82F6, #fb923c, #ef4444)",
       },
       fontFamily: {
         sfbold: ['SFBOLD', 'sans-serif'],
@@ -45,28 +57,4 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    addVariablesForColors,
-    addBaseCursorNone,
-  ],
-}
-
-function addVariablesForColors({
-  addBase,
-  theme
-}) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]));
-
-  addBase({
-    ":root": newVars,
-  });
-}
-
-function addBaseCursorNone({ addBase }) {
-  addBase({
-    '*': { cursor: 'none' },
-    'a, button': { cursor: 'none' }, // liens et boutons aussi
-    'input, textarea': { cursor: 'text' },
-  });
 }

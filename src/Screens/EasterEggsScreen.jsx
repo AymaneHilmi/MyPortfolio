@@ -46,29 +46,29 @@ const diffMeta = {
   Easy: {
     icon: Star,
     bar: "bg-emerald-500",
-    chip: "text-emerald-700 bg-emerald-50 border-emerald-200",
+    chip: "text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900 border-emerald-200 dark:border-emerald-700",
   },
   Medium: {
     icon: Flame,
     bar: "bg-amber-500",
-    chip: "text-amber-700 bg-amber-50 border-amber-200",
+    chip: "text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-900 border-amber-200 dark:border-amber-700",
   },
   Hard: {
     icon: Skull,
     bar: "bg-rose-500",
-    chip: "text-rose-700 bg-rose-50 border-rose-200",
+    chip: "text-rose-700 dark:text-rose-300 bg-rose-50 dark:bg-rose-900 border-rose-200 dark:border-rose-700",
   },
   Ultimate: {
     icon: Crown,
     bar: "bg-indigo-500",
-    chip: "text-indigo-700 bg-indigo-50 border-indigo-200",
+    chip: "text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900 border-indigo-200 dark:border-indigo-700",
   },
 };
 const getMeta = (lvl) =>
   diffMeta[lvl] || {
     icon: HelpCircle,
-    bar: "bg-gray-900",
-    chip: "text-gray-700 bg-gray-50 border-gray-200",
+    bar: "bg-lightPrimary",
+    chip: "text-lightPrimary dark:text-darkPrimary bg-lightContainer dark:bg-darkContainer border-ultralightGray",
   };
 
 function pct(n) {
@@ -95,7 +95,7 @@ function CircularProgress({ value = 0, size = 120, stroke = 10 }) {
         cy={size / 2}
         r={r}
         strokeWidth={stroke}
-        className="fill-none stroke-gray-200"
+        className="fill-none stroke-gray-200 dark:stroke-white"
       />
       <circle
         cx={size / 2}
@@ -113,7 +113,7 @@ function CircularProgress({ value = 0, size = 120, stroke = 10 }) {
         y="50%"
         dominantBaseline="middle"
         textAnchor="middle"
-        className="font-ramidots"
+        className="font-ramidots dark:text-darkPrimary text-lightPrimary"
         style={{ fontSize: size * 0.4 }}
       >
         {p}%
@@ -127,19 +127,19 @@ function ProgressBar({
   value = 0,
   label,
   ariaLabel,
-  barClass = "bg-gray-900",
+  barClass = "bg-lightPrimary",
 }) {
   const p = pct(value);
   return (
     <div className="w-full">
       {label ? (
-        <div className="mb-1 flex items-center justify-between text-xs text-gray-600">
-          <span className="font-medium">{label}</span>
+        <div className="mb-1 flex items-center justify-between text-xs text-lightPrimary dark:text-darkPrimary">
+          <span className="font-sfregular">{label}</span>
           <span aria-hidden>{p}%</span>
         </div>
       ) : null}
       <div
-        className="h-2.5 w-full rounded-full bg-gray-200"
+        className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-bgDark"
         aria-label={ariaLabel}
         role="progressbar"
         aria-valuemin={0}
@@ -158,14 +158,14 @@ function ProgressBar({
 // ---------- Difficulty card ----------
 function DifficultyCard({ level, total = 0, found = 0 }) {
   const Icon = diffMeta[level]?.icon || HelpCircle;
-  const bar = diffMeta[level]?.bar || "bg-gray-900";
+  const bar = diffMeta[level]?.bar || "bg-lightPrimary";
   const chip =
-    diffMeta[level]?.chip || "text-gray-700 bg-gray-50 border-gray-200";
+    diffMeta[level]?.chip || "text-lightPrimary dark:text-darkPrimary bg-lightContainer dark:bg-darkContainer border-ultralightGray";
   const p = total > 0 ? (found / total) * 100 : 0;
   const done = total > 0 && found === total;
   return (
     <div
-      className={`rounded-2xl border ${done ? "border-green-300 bg-green-50" : "border-gray-200 bg-white"
+      className={`rounded-2xl border ${done ? "border-green-300 bg-green-900" : "border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer"
         } p-4 transition-colors`}
     >
       <div className="mb-3 flex items-center justify-between">
@@ -176,7 +176,7 @@ function DifficultyCard({ level, total = 0, found = 0 }) {
             <Icon className="h-3.5 w-3.5" /> {level}
           </span>
         </div>
-        <span className="text-xs text-gray-500">
+        <span className="text-xs text-lightPrimary dark:text-darkPrimary">
           {found}/{total}
         </span>
       </div>
@@ -334,7 +334,7 @@ export default function EasterEggsScreen() {
                   <h2 className="text-4xl md:text-5xl font-ramidots bg-gradient-to-r from-emerald-600 via-green-500 to-lime-500 bg-clip-text text-transparent">
                     All Easter Eggs Found
                   </h2>
-                  <p className="text-sm text-gray-600 mt-2 flex items-center gap-1">
+                  <p className="text-sm text-lightPrimary dark:text-darkPrimary mt-2 flex items-center gap-1">
                     <Sparkles className="h-4 w-4 text-emerald-500" />
                     100% completion achieved. Title earned: Egg Lord.
                   </p>
@@ -342,43 +342,43 @@ export default function EasterEggsScreen() {
               </div>
 
               <div className="grid sm:grid-cols-3 gap-5 w-full max-w-3xl mb-10">
-                <div className="rounded-xl border border-emerald-200 bg-white p-5">
-                  <p className="text-xs font-medium text-emerald-600 uppercase tracking-wide">
+                <div className="rounded-xl border border-emerald-200  p-5">
+                  <p className="text-xs font-sfregular text-emerald-600 uppercase tracking-wide">
                     Total Eggs
                   </p>
-                  <p className="mt-2 text-3xl font-semibold text-gray-800">
+                  <p className="mt-2 text-3xl font-sfbold text-lightPrimary dark:text-darkPrimary">
                     {stats.total}
                   </p>
                 </div>
-                <div className="rounded-xl border border-emerald-200 bg-white p-5">
-                  <p className="text-xs font-medium text-emerald-600 uppercase tracking-wide">
+                <div className="rounded-xl border border-emerald-200  p-5">
+                  <p className="text-xs font-sfregular text-emerald-600 uppercase tracking-wide">
                     Completion
                   </p>
-                  <p className="mt-2 text-3xl font-semibold text-gray-800">
+                  <p className="mt-2 text-3xl font-sfbold text-lightPrimary dark:text-darkPrimary">
                     100%
                   </p>
                 </div>
-                <div className="rounded-xl border border-emerald-200 bg-white p-5">
-                  <p className="text-xs font-medium text-emerald-600 uppercase tracking-wide">
+                <div className="rounded-xl border border-emerald-200  p-5">
+                  <p className="text-xs font-sfregular text-emerald-600 uppercase tracking-wide">
                     Rank
                   </p>
-                  <p className="mt-2 text-3xl font-ramidots text-gray-800 flex items-center justify-center gap-2">
+                  <p className="mt-2 text-3xl font-ramidots text-lightPrimary dark:text-darkPrimary flex items-center justify-center gap-2">
                     <Trophy className="h-7 w-7 text-amber-500" /> EGG LORD
                   </p>
                 </div>
               </div>
 
               <div className="w-full max-w-3xl space-y-4">
-                <div className="relative rounded-2xl border border-emerald-200/70 bg-white/80 backdrop-blur-sm p-6 shadow-inner">
+                <div className="relative rounded-2xl border border-emerald-200/70 /80 backdrop-blur-sm p-6 shadow-inner">
                   <div className="absolute inset-0 pointer-events-none rounded-2xl [background:radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.15),transparent_60%)]"></div>
-                  <h3 className="text-sm font-semibold tracking-wide text-emerald-600 flex items-center gap-2">
+                  <h3 className="text-sm font-sfbold tracking-wide text-emerald-600 flex items-center gap-2">
                     <Sparkles className="h-4 w-4" />
                     Thank you for going all the way!
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600 text-left">
+                  <p className="mt-3 text-sm leading-relaxed text-lightPrimary dark:text-darkPrimary text-left">
                     If this EasterEgg Quest made you smile or surprised you, you
                     can support me by leaving a{" "}
-                    <span className="font-semibold text-amber-500" data-cursor-icon="star">
+                    <span className="font-sfbold text-amber-500" data-cursor-icon="star">
                       ⭐ star
                     </span>{" "}
                     on the GitHub repo of my portfolio. And if you’re curious,
@@ -386,7 +386,7 @@ export default function EasterEggsScreen() {
                     github, you might find more that catch your interest.
                   </p>
 
-                  <p className="mt-2 text-xs text-gray-500 text-left">
+                  <p className="mt-2 text-xs text-lightPrimary dark:text-darkPrimary text-left">
                     (And yes… more secrets may come in a future update.)
                   </p>
                   <div className="mt-5 flex flex-col sm:flex-row gap-3">
@@ -394,11 +394,11 @@ export default function EasterEggsScreen() {
                       href="https://github.com/AymaneHilmi/MyPortfolio"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 hover:border-emerald-300 hover:bg-emerald-50 transition relative overflow-hidden"
+                      className="group inline-flex items-center justify-center gap-2 rounded-lg border border-ultralightGray dark:border-darkBorder  px-5 py-3 text-sm font-sfregular text-lightPrimary dark:text-darkPrimary hover:border-emerald-300 hover:bg-emerald-50 transition relative overflow-hidden"
                       data-cursor-icon="arrow"
                     >
                       <span className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-emerald-100/40 to-transparent transition"></span>
-                      <Github className="h-4 w-4 text-gray-700 group-hover:text-emerald-600" />
+                      <Github className="h-4 w-4 text-lightPrimary dark:text-darkPrimary group-hover:text-emerald-600" />
                       Star the Portfolio
                       <span className="text-amber-500 group-hover:scale-110 transition">
                         ⭐
@@ -408,7 +408,7 @@ export default function EasterEggsScreen() {
                       href="https://github.com/aymanehilmi?tab=repositories"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 text-sm font-medium transition shadow"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 text-sm font-sfregular transition shadow"
                       data-cursor-icon="arrow"
                     >
                       Explore other projects
@@ -419,12 +419,12 @@ export default function EasterEggsScreen() {
             </div>
           </FadeIn>
 
-          <FadeIn className="mt-32 border-t border-emerald-200/60 pt-12 pb-4">
+          <FadeIn className="mt-32  pt-12 pb-4">
             <div className="max-w-3xl mx-auto text-center px-4">
               <h3 className="text-5xl font-ramidots bg-gradient-to-r from-emerald-600 via-green-500 to-lime-500 bg-clip-text text-transparent">
                 Want to experience the Quest again?
               </h3>
-              <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+              <p className="mt-4 text-sm text-lightPrimary dark:text-darkPrimary leading-relaxed">
                 If you enjoyed uncovering every clue and solving the hidden
                 trail, you can restart the entire Easter Egg Quest and relive
                 the journey from scratch. Your current progress will be wiped
@@ -437,7 +437,7 @@ export default function EasterEggsScreen() {
                     resetMissions();
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium px-8 py-4 shadow-md transition"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-sfregular px-8 py-4 shadow-md transition"
                 >
                   <RotateCcw className="h-4 w-4" />
                   Reset & Play Again
@@ -450,15 +450,15 @@ export default function EasterEggsScreen() {
         <>
           {/* Original dashboard content (hidden when allFound) */}
           {/* Header / stats / etc. */}
-          <section className="grid md:grid-cols-3 items-stretch gap-5">
+          <section className="grid md:grid-cols-3 items-stretch gap-5 mt-6">
             <div className="md:col-span-2 space-y-5">
-              <FadeIn className="rounded-3xl border border-gray-200 bg-white p-6">
+              <FadeIn className="rounded-3xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer p-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                   <div className="md:col-span-2">
-                    <h1 className="text-4xl md:text-6xl font-ramidots tracking-tight bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 bg-clip-text text-transparent w-fit inline-block">
+                    <h1 className="text-4xl md:text-6xl font-ramidots tracking-tight bg-brandgradient bg-clip-text text-transparent w-fit inline-block">
                       Easter Eggs Dashboard
                     </h1>
-                    <p className="mt-1 text-sm text-gray-600">
+                    <p className="mt-1 text-sm text-lightPrimary dark:text-darkPrimary">
                       Track your discoveries and progress towards the ultimate
                       quest.
                     </p>
@@ -470,14 +470,14 @@ export default function EasterEggsScreen() {
               </FadeIn>
 
               {/* Mission Description */}
-              <FadeIn i={1} className="rounded-3xl border border-gray-200 bg-white overflow-hidden">
+              <FadeIn i={1} className="rounded-3xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer overflow-hidden">
                 <div className="p-6 grid md:grid-cols-2 gap-6 items-center">
                   {/* Left: narrative */}
                   <div>
-                    <h2 className="text-xl font-sfbold text-gray-900 mb-3">
+                    <h2 className="text-xl font-sfbold text-lightPrimary dark:text-darkPrimary mb-3">
                       The Story Behind
                     </h2>
-                    <p className="text-sm text-gray-700 leading-relaxed mb-4">
+                    <p className="text-sm text-lightPrimary dark:text-darkPrimary leading-relaxed mb-4">
                       As a big competitor I like challenges that's why I decided
                       to develop this entire Easter Eggs system. Each egg is
                       around me, my personality, my cultures (for some exception
@@ -489,28 +489,28 @@ export default function EasterEggsScreen() {
 
                   {/* Right: small info cards */}
                   <div className="grid gap-3">
-                    <FadeIn i={3} className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
-                      <Keyboard className="h-4 w-4 text-gray-700 mt-0.5" />
-                      <p className="text-xs text-gray-700">
-                        Use your <span className="font-medium">keyboard</span>{" "}
-                        and <span className="font-medium">mouse</span>. Both
+                    <FadeIn i={3} className="rounded-xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-bgDark p-3 flex items-start gap-2">
+                      <Keyboard className="h-4 w-4 text-lightPrimary dark:text-darkPrimary mt-0.5" />
+                      <p className="text-xs text-lightPrimary dark:text-darkPrimary">
+                        Use your <span className="font-sfregular">keyboard</span>{" "}
+                        and <span className="font-sfregular">mouse</span>. Both
                         matter.
                       </p>
                     </FadeIn>
-                    <FadeIn i={4} className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
-                      <Globe2 className="h-4 w-4 text-gray-700 mt-0.5" />
-                      <p className="text-xs text-gray-700">
+                    <FadeIn i={4} className="rounded-xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-bgDark p-3 flex items-start gap-2">
+                      <Globe2 className="h-4 w-4 text-lightPrimary dark:text-darkPrimary mt-0.5" />
+                      <p className="text-xs text-lightPrimary dark:text-darkPrimary">
                         All Easter Eggs are hidden{" "}
-                        <span className="font-medium">
+                        <span className="font-sfregular">
                           inside this portfolio
                         </span>
                         , not outside it.
                       </p>
                     </FadeIn>
-                    <FadeIn i={5} className="rounded-xl border border-gray-200 bg-white p-3 flex items-start gap-2">
-                      <MousePointer2 className="h-4 w-4 text-gray-700 mt-0.5" />
-                      <p className="text-xs text-gray-700">
-                        The <span className="font-medium">cursor</span> can
+                    <FadeIn i={5} className="rounded-xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-bgDark p-3 flex items-start gap-2">
+                      <MousePointer2 className="h-4 w-4 text-lightPrimary dark:text-darkPrimary mt-0.5" />
+                      <p className="text-xs text-lightPrimary dark:text-darkPrimary">
+                        The <span className="font-sfregular">cursor</span> can
                         sometimes be your best ally.
                       </p>
                     </FadeIn>
@@ -532,16 +532,16 @@ export default function EasterEggsScreen() {
             </div>
 
             {/* Right column: tall card spanning header + difficulties */}
-            <FadeIn i={2} className="self-stretch h-full flex flex-col rounded-3xl border border-gray-200 bg-white p-6">
-              <h3 className="text-sm font-sfbold text-gray-900 mb-4">
+            <FadeIn i={2} className="self-stretch h-full flex flex-col rounded-3xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer p-6">
+              <h3 className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary mb-4">
                 Quest Tracker
               </h3>
 
               {/* Overall progress card */}
-              <FadeIn i={3} className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+              <FadeIn i={3} className="rounded-2xl border border-ultralightGray dark:border-darkBorder bg-lightContainer dark:bg-bgDark p-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-gray-700 font-medium">Overall</p>
-                  <span className="text-xs text-gray-500">
+                  <p className="text-sm text-lightPrimary dark:text-darkPrimary font-sfregular">Overall</p>
+                  <span className="text-xs text-lightPrimary dark:text-darkPrimary">
                     {stats.globalFound}/{stats.total}
                   </span>
                 </div>
@@ -549,17 +549,17 @@ export default function EasterEggsScreen() {
                   <ProgressBar
                     value={stats.globalPct}
                     ariaLabel="Overall Easter eggs progress"
-                    barClass="bg-gradient-to-r from-blue-500 via-orange-400 to-red-500"
+                    barClass="bg-brandgradient"
                   />
                 </div>
-                <p className="mt-2 text-[11px] text-gray-500">
+                <p className="mt-2 text-[11px] text-lightPrimary dark:text-darkPrimary font-sfregular">
                   {Math.round(stats.globalPct)}% complete
                 </p>
               </FadeIn>
 
               {/* Milestones */}
-              <FadeIn i={4} className="mt-4 rounded-2xl border border-gray-200 bg-white p-4">
-                <p className="text-sm text-gray-700 font-medium mb-2">
+              <FadeIn i={4} className="mt-4 rounded-2xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-bgDark p-4">
+                <p className="text-sm text-lightPrimary dark:text-darkPrimary font-sfregular mb-2">
                   Milestones
                 </p>
                 <ul className="space-y-2">
@@ -568,13 +568,13 @@ export default function EasterEggsScreen() {
                       key={m.n}
                       className="flex items-center justify-between text-sm"
                     >
-                      <span className="text-gray-700">
+                      <span className="text-lightPrimary dark:text-darkPrimary">
                         {m.n === totalEggsCount ? "Egg Lord" : `${m.n} eggs`}
                       </span>
                       <span
                         className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] ${m.reached
-                          ? "text-emerald-700 bg-emerald-50 border-emerald-200"
-                          : "text-gray-600 bg-gray-50 border-gray-200"
+                          ? "text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900 border-emerald-200 dark:border-emerald-700"
+                          : "text-lightPrimary dark:text-darkPrimary bg-lightContainer dark:bg-darkContainer border-ultralightGray dark:border-darkBorder"
                           }`}
                       >
                         {m.reached ? "Reached" : "Locked"}
@@ -612,38 +612,38 @@ export default function EasterEggsScreen() {
               id="all-eggs"
               className="mb-4 flex items-center justify-between"
             >
-              <h2 className="text-lg font-sfbold text-gray-900">
+              <h2 className="text-lg font-sfbold text-lightPrimary dark:text-darkPrimary">
                 All Easter Eggs
               </h2>
             </FadeIn>
 
-            <FadeIn className="grid lg:grid-cols-3 items-stretch gap-6">
+            <div className="grid lg:grid-cols-3 items-stretch gap-6">
               {/* List (spans 2 cols on large screens) */}
               <div className="lg:col-span-2 space-y-4">
                 {EggList.map((egg) => {
                   const isFound = foundEggs.includes(egg.id);
                   const cardClass = isFound
-                    ? "bg-green-50 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
-                    : "bg-gray-50 border-gray-200";
+                    ? "bg-green-50 dark:bg-green-900 border-green-300 dark:border-green-700 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
+                    : "bg-lightContainer dark:bg-darkContainer border-ultralightGray dark:border-darkBorder";
 
                   return (
-                    <FadeIn i={5}
+                    <div i={5}
                       key={egg.id}
                       className={`relative flex flex-col gap-3 border p-4 rounded-xl overflow-hidden transition-all duration-300 ${cardClass}`}
                       data-cursor-icon={egg.cursor}
                     >
-                      <span className="absolute left-2 top-2 text-6xl sm:text-7xl md:text-8xl font-extrabold text-gray-300 select-none pointer-events-none opacity-30">
+                      <span className="absolute left-2 top-2 text-6xl sm:text-7xl md:text-8xl font-extrabold text-lightPrimary dark:text-darkPrimary select-none pointer-events-none opacity-30">
                         {egg.id}
                       </span>
 
                       <div className="flex items-start justify-between relative z-10">
                         <div>
                           <div className="flex items-center gap-2">
-                            <p className="font-semibold text-gray-700">
+                            <p className="font-sfbold text-lightPrimary dark:text-darkPrimary">
                               {egg.name}
                             </p>
                             <span
-                              className={`text-xs px-2 py-0.5 rounded-full font-medium ${getMeta(egg.level).chip
+                              className={`text-xs px-2 py-0.5 rounded-full font-sfregular ${getMeta(egg.level).chip
                                 }`}
                             >
                               {egg.level}
@@ -655,30 +655,30 @@ export default function EasterEggsScreen() {
                             <TooltipProvider>
                               <Tooltip>
                                 <TooltipTrigger asChild>
-                                  <p className="text-sm text-gray-500">
+                                  <p className="text-sm text-lightPrimary dark:text-darkPrimary">
                                     {egg.tip}
                                   </p>
                                 </TooltipTrigger>
-                                <TooltipContent className="w-96 p-4 bg-white shadow-lg">
+                                <TooltipContent className="w-96 p-4 bg-bgLight dark:bg-bgDark shadow-lg">
                                   <div className="space-y-2">
-                                    <p className="text-xs font-semibold tracking-wide text-gray-600 uppercase">
+                                    <p className="text-xs font-sfbold tracking-wide text-lightPrimary dark:text-darkPrimary uppercase">
                                       Tooltip Quest
                                     </p>
                                     <div className="relative pl-6">
                                       {/* vertical line */}
-                                      <span className="absolute left-2 top-2 bottom-2 w-px bg-gray-200" />
+                                      <span className="absolute left-2 top-2 bottom-2 w-px bg-ultralightGray dark:bg-darkBorder" />
 
                                       {/* Step 1 */}
                                       <div className="relative pb-4">
                                         <div className="flex items-start justify-between">
                                           <div>
-                                            <p className="text-sm font-medium text-gray-800">
+                                            <p className="text-sm font-sfregular text-lightPrimary dark:text-darkPrimary">
                                               Tooltip 1 — Cesiveroo Page
                                             </p>
-                                            <p className="text-xs text-gray-500">
+                                            <p className="text-xs text-lightPrimary dark:text-darkPrimary">
                                               Page:{" "}
                                               <a
-                                                className="font-medium underline"
+                                                className="font-sfregular underline"
                                                 href="/Cesiveroo"
                                               >
                                                 [Cesiveroo]
@@ -686,10 +686,10 @@ export default function EasterEggsScreen() {
                                             </p>
                                           </div>
                                           <span
-                                            className={`ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium
+                                            className={`ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-sfregular
                                         ${completedMissions.includes("tip#1")
-                                                ? "bg-green-100 text-green-700 border border-green-300"
-                                                : "bg-gray-100 text-gray-600 border border-gray-200"
+                                                ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-700"
+                                                : "bg-ultralightGray dark:bg-darkBorder text-lightPrimary dark:text-darkPrimary border border-ultralightGray dark:border-darkBorder"
                                               }`}
                                           >
                                             {completedMissions.includes("tip#1")
@@ -708,13 +708,13 @@ export default function EasterEggsScreen() {
                                             }`}
                                         >
                                           <div>
-                                            <p className="text-sm font-medium text-gray-800">
+                                            <p className="text-sm font-sfregular text-lightPrimary dark:text-darkPrimary">
                                               Tooltip 2 - About
                                             </p>
-                                            <p className="text-xs text-gray-500">
+                                            <p className="text-xs text-lightPrimary dark:text-darkPrimary">
                                               Page:{" "}
                                               <a
-                                                className="font-medium underline"
+                                                className="font-sfregular underline"
                                                 href="/About"
                                               >
                                                 [About]
@@ -722,10 +722,10 @@ export default function EasterEggsScreen() {
                                             </p>
                                           </div>
                                           <span
-                                            className={`ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium
+                                            className={`ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-sfregular
                                         ${completedMissions.includes("tip#2")
-                                                ? "bg-green-100 text-green-700 border border-green-300"
-                                                : "bg-gray-100 text-gray-600 border border-gray-200"
+                                                ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-700"
+                                                : "bg-ultralightGray dark:bg-darkBorder text-lightPrimary dark:text-darkPrimary border border-ultralightGray dark:border-darkBorder"
                                               }`}
                                           >
                                             {completedMissions.includes("tip#2")
@@ -744,13 +744,13 @@ export default function EasterEggsScreen() {
                                             }`}
                                         >
                                           <div>
-                                            <p className="text-sm font-medium text-gray-800">
+                                            <p className="text-sm font-sfregular text-lightPrimary dark:text-darkPrimary">
                                               Tooltip 3 - FinalEgg
                                             </p>
-                                            <p className="text-xs text-gray-500">
+                                            <p className="text-xs text-lightPrimary dark:text-darkPrimary">
                                               Page:{" "}
                                               <a
-                                                className="font-medium underline"
+                                                className="font-sfregular underline"
                                                 href="/easter-eggs"
                                               >
                                                 [????]
@@ -758,10 +758,10 @@ export default function EasterEggsScreen() {
                                             </p>
                                           </div>
                                           <span
-                                            className={`ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium
+                                            className={`ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-sfregular
                                         ${completedMissions.includes("tip#3")
-                                                ? "bg-green-100 text-green-700 border border-green-300"
-                                                : "bg-gray-100 text-gray-600 border border-gray-200"
+                                                ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-700"
+                                                : "bg-ultralightGray dark:bg-darkBorder text-lightPrimary dark:text-darkPrimary border border-ultralightGray dark:border-darkBorder"
                                               }`}
                                           >
                                             {completedMissions.includes("tip#3")
@@ -776,7 +776,7 @@ export default function EasterEggsScreen() {
                               </Tooltip>
                             </TooltipProvider>
                           ) : (
-                            <p className="text-sm text-gray-500 italic">
+                            <p className="text-sm text-lightPrimary dark:text-darkPrimary italic">
                               {egg.tip}
                             </p>
                           )}
@@ -794,7 +794,7 @@ export default function EasterEggsScreen() {
                         </div>
                         <div className="ml-4 mt-1">
                           {isFound ? (
-                            <CheckCircle2 className="text-green-500 w-5 h-5" />
+                            <CheckCircle2 className="text-green-500 dark:text-green-300 w-5 h-5" />
                           ) : (
                             <Lock className="text-gray-400 w-5 h-5" />
                           )}
@@ -809,7 +809,7 @@ export default function EasterEggsScreen() {
                           onSubmit={onSubmit}
                         />
                       )}
-                    </FadeIn>
+                    </div>
                   );
                 })}
               </div>
@@ -817,25 +817,25 @@ export default function EasterEggsScreen() {
               {/* Right sidebar beside list */}
               <aside className="space-y-4 self-stretch h-full flex flex-col">
                 {/* Egg Scanner (troll) */}
-                <FadeIn i={5} className="rounded-2xl border border-gray-200 bg-white p-4">
+                <FadeIn i={5} className="rounded-2xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer p-4">
                   <div className="flex items-center justify-between">
-                    <p className="text-sm font-sfbold text-gray-900 flex items-center gap-2">
+                    <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary flex items-center gap-2">
                       <Scan className="h-4 w-4" /> Egg Scanner (Beta)
                     </p>
-                    <span className="text-[10px] rounded-full border px-2 py-0.5 text-gray-600 bg-gray-50">
+                    <span className="text-[10px] rounded-full border border-ultralightGray dark:border-darkBorder px-2 py-0.5 text-lightPrimary dark:text-darkPrimary bg-lightContainer dark:bg-bgDark">
                       radar offline
                     </span>
                   </div>
                   <div className="mt-3">
-                    <div className="h-2.5 w-full rounded-full bg-gray-200 overflow-hidden">
-                      <div className="h-full w-2/5 bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 animate-pulse"></div>
+                    <div className="h-2.5 w-full rounded-full bg-ultralightGray dark:bg-bgDark overflow-hidden">
+                      <div className="h-full w-2/5 bg-brandgradient animate-pulse"></div>
                     </div>
-                    <p className="mt-2 text-xs text-gray-600">
+                    <p className="mt-2 text-xs text-lightPrimary dark:text-darkPrimary">
                       Scanning… 39% (approx).
                     </p>
                   </div>
                   <button
-                    className="mt-3 w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 transition"
+                    className="mt-3 w-full rounded-lg bg-bgLight dark:bg-bgDark border border-ultralightGray dark:border-darkBorder dark:text-darkPrimary  px-3 py-1.5 text-xs font-sfregular text-lightPrimary hover:bg-gray-100 dark:hover:bg-bgDark/70 transition"
                     onClick={() => {
                       if (
                         completedMissions.includes("tip#2") &&
@@ -855,11 +855,11 @@ export default function EasterEggsScreen() {
                 </FadeIn>
 
                 {/* Patch Notes (troll) */}
-                <FadeIn i={6} className="rounded-2xl border border-gray-200 bg-white p-4">
-                  <p className="text-sm font-sfbold text-gray-900 mb-2 flex items-center gap-2">
+                <FadeIn i={6} className="rounded-2xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer p-4">
+                  <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary mb-2 flex items-center gap-2">
                     <Bug className="h-4 w-4" /> Patch Notes v0.0.egg
                   </p>
-                  <ul className="list-disc pl-5 space-y-1 text-xs text-gray-700">
+                  <ul className="list-disc pl-5 space-y-1 text-xs text-lightPrimary dark:text-darkPrimary">
                     <li>The pineapple knows when you’re online.</li>
                     <li>Never trust a left shoe after midnight.</li>
                     <AnimatePresence mode="wait">
@@ -870,7 +870,7 @@ export default function EasterEggsScreen() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -6 }}
                           transition={{ duration: 0.25 }}
-                          className="text-xs font-semibold text-rose-600"
+                          className="text-xs font-sfbold text-red-600 dark:text-red-400"
                         >
                           Did you really thought it was that? Cute.
                         </motion.li>
@@ -881,7 +881,7 @@ export default function EasterEggsScreen() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -6 }}
                           transition={{ duration: 0.25 }}
-                          className="text-xs text-gray-700"
+                          className="text-xs text-lightPrimary dark:text-darkPrimary"
                         >
                           The Easter eggs like the 12123490 number.
                         </motion.li>
@@ -890,23 +890,23 @@ export default function EasterEggsScreen() {
                     <li>Two clicks forward, one sneeze back.</li>
                     <li className="text-gray-400">* probably not trustworthy .</li>
                   </ul>
-                  <div className="mt-3 text-[10px] text-gray-500 flex items-center gap-1">
+                  <div className="mt-3 text-[10px] text-lightPrimary dark:text-darkPrimary flex items-center gap-1">
                     <Bot className="h-3.5 w-3.5" /> Release managed by
                     <TooltipProvider>
                       {completedMissions.includes("tip#3.0") &&
                         !completedMissions.includes("tip#3") ? (
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <span className=" text-gray-500">Aymane</span>
+                            <span className=" text-lightPrimary dark:text-darkPrimary">Aymane</span>
                           </TooltipTrigger>
                           <TooltipContent>
-                            <div className="flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm w-fit space-x-2">
-                              <span className="text-gray-600 text-sm font-medium">
+                            <div className="flex items-center px-4 py-2 rounded-full bg-bgLight dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder shadow-sm w-fit space-x-2">
+                              <span className="text-lightPrimary dark:text-darkPrimary text-xs font-sfregular">
                                 Hidden Tip #3
                               </span>
                               <button
                                 onClick={() => completeMission("tip#3")}
-                                className="px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
+                                className="px-3 py-1 text-xs font-sfbold text-lightPrimary dark:text-darkPrimary bg-ultralightGray dark:bg-bgDark rounded-full hover:bg-gray-200 transition-all"
                                 data-cursor-icon="discover"
                               >
                                 Discover Tip
@@ -915,17 +915,17 @@ export default function EasterEggsScreen() {
                           </TooltipContent>
                         </Tooltip>
                       ) : (
-                        <span className="text-gray-500">Aymane</span>
+                        <span className="text-lightPrimary dark:text-darkPrimary">Aymane</span>
                       )}
                     </TooltipProvider>
                   </div>
                 </FadeIn>
 
-                <FadeIn i={7} className="rounded-2xl border border-gray-200 bg-white p-4 mt-4">
-                  <p className="text-sm font-sfbold text-gray-900 mb-2">
+                <FadeIn i={7} className="rounded-2xl border border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer p-4 mt-4">
+                  <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary mb-2">
                     Need real help?
                   </p>
-                  <p className="text-xs text-gray-600 mb-3">
+                  <p className="text-xs text-lightPrimary dark:text-darkPrimary mb-3">
                     If you’re really stuck and can’t find the eggs, you can
                     reach out to me directly i will may help you... or not :
                   </p>
@@ -934,7 +934,7 @@ export default function EasterEggsScreen() {
                       href="https://www.linkedin.com/in/aymanehilmi/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-ultralightGray dark:border-darkBorder px-3 py-2 text-sm font-sfregular text-lightPrimary dark:text-darkPrimary hover:bg-gray-100 dark:hover:bg-bgDark/70 bg-bgLight dark:bg-bgDark transition"
                       data-cursor-icon="arrow"
                     >
                       <svg
@@ -950,11 +950,12 @@ export default function EasterEggsScreen() {
                     <a
                       href="mailto:contact@aymanehilmi.com"
                       data-cursor-icon="mail"
-                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-ultralightGray dark:border-darkBorder px-3 py-2 text-sm font-sfregular text-lightPrimary dark:text-darkPrimary hover:bg-gray-100 dark:hover:bg-bgDark/70 bg-bgLight dark:bg-bgDark transition"
+
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 text-gray-600"
+                        className="h-4 w-4 text-lightPrimary dark:text-darkPrimary"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -971,7 +972,7 @@ export default function EasterEggsScreen() {
                   </div>
                 </FadeIn>
               </aside>
-            </FadeIn>
+            </div>
           </section>
         </>
       )}

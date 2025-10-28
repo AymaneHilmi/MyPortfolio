@@ -186,8 +186,8 @@ export function PlaceholdersAndVanishInput({
     return (
         <form
             className={cn(
-                "w-full relative bg-white -800 h-12 rounded-xl overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
-                value && "bg-gray-50"
+                "w-full relative  -800 h-12 rounded-xl overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
+                value && "bg-lightContainer dark:bg-bgDark"
             )}
             onSubmit={handleSubmit}>
             <canvas
@@ -228,7 +228,7 @@ export function PlaceholdersAndVanishInput({
                 inputMode="numeric"
                 pattern="[0-9]*"
                 className={cn(
-                    "w-full relative text-sm sm:text-base z-50 border-none  bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-6 pr-20",
+                    "w-full relative text-sm sm:text-base z-50 border-none bg-transparent text-lightPrimary dark:text-darkPrimary h-full rounded-full focus:outline-none focus:ring-0 pl-6 pr-20",
                     animating && "text-transparent "
                 )} />
             <button
@@ -237,8 +237,8 @@ export function PlaceholdersAndVanishInput({
                 className={cn(
                     "absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full transition duration-200 flex items-center justify-center",
                     value
-                        ? "bg-gradient-to-r from-blue-500 via-orange-400 to-red-500 shadow-sm"
-                        : "bg-gray-100"
+                        ? "bg-brandgradient shadow-sm"
+                        : "bg-ultralightGray dark:bg-bgDark"
                 )}
             >
                 <motion.svg

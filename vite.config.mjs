@@ -11,6 +11,6 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
-    hmr: { overlay: true }, // <- s'assurer que ce n’est pas désactivé
+    hmr: { overlay: true },
   },
 })

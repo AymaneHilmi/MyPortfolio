@@ -11,10 +11,10 @@ export default function JourneyScreen() {
             title: "2024",
             content: (
                 <div>
-                    <p className={cn("font-sfbold text-darkGray  text-xl md:text-3xl font-normal")}>
+                    <p className={cn("font-sfbold text-lightPrimary dark:text-darkPrimary  text-xl md:text-3xl font-normal")}>
                         International Mobility at Saint-Gobain Research Germany
                     </p>
-                    <p  className={cn("font-sfregular text-lightGray  text-sm md:text-base font-normal mb-4")}>
+                    <p className={cn("font-sfregular text-lightSecondary  text-sm md:text-base font-normal mb-4")}>
                         Herzogenrath – Germany
                     </p>
                     <div className={cn("grid grid-cols-2 gap-4")}>
@@ -41,10 +41,10 @@ export default function JourneyScreen() {
             title: "2023",
             content: (
                 <div>
-                    <p className={cn("font-sfbold text-darkGray  text-xl md:text-3xl font-normal")}>
+                    <p className={cn("font-sfbold text-lightPrimary dark:text-darkPrimary  text-xl md:text-3xl font-normal")}>
                         Started Editing services
                     </p>
-                    <p className={cn("font-sfregular text-lightGray  text-sm md:text-base font-normal mb-4")}>
+                    <p className={cn("font-sfregular text-lightSecondary  text-sm md:text-base font-normal mb-4")}>
                         Montpellier, France
                     </p>
                     <img
@@ -61,10 +61,10 @@ export default function JourneyScreen() {
             title: "2022",
             content: (
                 <div>
-                    <p className={cn("font-sfbold text-darkGray  text-xl md:text-3xl font-normal")}>
+                    <p className={cn("font-sfbold text-lightPrimary dark:text-darkPrimary  text-xl md:text-3xl font-normal")}>
                         Started Engineering program in Work-Study at Saint-Gobain Research Provence
                     </p>
-                    <p className={cn("font-sfregular text-lightGray text-sm md:text-base font-normal mb-2")}>
+                    <p className={cn("font-sfregular text-lightSecondary text-sm md:text-base font-normal mb-2")}>
                         Cavaillon, Provence-Alpes-Côte d'Azur, France
                     </p>
                     <img
@@ -82,10 +82,10 @@ export default function JourneyScreen() {
             title: "Early 2022",
             content: (
                 <div>
-                    <p className={cn("font-sfbold text-darkGray  text-xl md:text-3xl font-normal")}>
+                    <p className={cn("font-sfbold text-lightPrimary dark:text-darkPrimary  text-xl md:text-3xl font-normal")}>
                         Internship at Inetum as a Software Engineer (RPA Automations)
                     </p>
-                    <p className={cn("font-sfregular text-lightGray  text-sm md:text-base font-normal mb-2")}>
+                    <p className={cn("font-sfregular text-lightSecondary  text-sm md:text-base font-normal mb-2")}>
                         Montpellier, France
                     </p>
                     <img
@@ -102,13 +102,13 @@ export default function JourneyScreen() {
             title: "2021",
             content: (
                 <div>
-                    <p  className={cn("font-sfbold text-darkGray  text-xl md:text-3xl font-normal")}>
+                    <p className={cn("font-sfbold text-lightPrimary dark:text-darkPrimary  text-xl md:text-3xl font-normal")}>
                         Civic Volonteer Program at "AVEC" association
                     </p>
-                    <p className={cn("font-sfregular text-lightGray  text-base md:text-lg font-normal mb-2")}>
+                    <p className={cn("font-sfregular text-lightSecondary  text-base md:text-lg font-normal mb-2")}>
                         Montpellier, France
                     </p>
-                    <p  className={cn("font-sfregular text-darkGray  text-base md:text-lg font-normal mb-4")}>
+                    <p className={cn("font-sfregular text-lightPrimary dark:text-darkPrimary  text-base md:text-lg font-normal mb-4")}>
                         I completed a Voluntary Civic Service where I helped high school and middle school students with various scientific subjects.
                         Having earned a Scientific Baccalaureate, I was confident in this field. This service allowed me to support my studies financially.
                     </p>
@@ -128,10 +128,10 @@ export default function JourneyScreen() {
             title: "Early 2021",
             content: (
                 <div>
-                    <p  className={cn("font-sfbold text-darkGray  text-xl md:text-3xl font-normal")}>
+                    <p className={cn("font-sfbold text-lightPrimary dark:text-darkPrimary  text-xl md:text-3xl font-normal")}>
                         Intensive Two-year Study Course in Computer Science
                     </p>
-                    <p className={cn("font-sfregular text-lightGray text-base md:text-lg font-normal mb-6")}>
+                    <p className={cn("font-sfregular text-lightSecondary text-base md:text-lg font-normal mb-6")}>
                         Cesi école d'ingénieurs, Mauguio, France
                     </p>
                     <img
@@ -149,10 +149,10 @@ export default function JourneyScreen() {
             title: "2020",
             content: (
                 <div>
-                    <p  className={cn("font-sfbold text-darkGray  text-xl md:text-3xl font-normal")}>
+                    <p className={cn("font-sfbold text-lightPrimary dark:text-darkPrimary  text-xl md:text-3xl font-normal")}>
                         Scientific High School Diploma - Mathematics specialization
                     </p>
-                    <p className={cn("font-sfregular text-lightGray text-base md:text-lg font-normal mb-6")}>
+                    <p className={cn("font-sfregular text-lightSecondary text-base md:text-lg font-normal mb-6")}>
                         Lycéé Jules Guesde, Montpellier, France
                     </p>
                     <div className={cn("grid grid-cols-2 gap-4")}>
@@ -183,11 +183,11 @@ export default function JourneyScreen() {
                 <div className={cn("font-sfultralight border-t border-gray-300 my-6 w-11/12 flex flex-row  justify-between md:justify-end ")}>
                     <div className={cn('flex flex-row gap-4 md:hidden')}>
 
-                        <a href="https://www.linkedin.com/in/aymanehilmi/" className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>Linkedin ↗</a>
-                        <a href="https://github.com/AymaneHilmi" className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>GitHub ↗</a>
+                        <a href="https://www.linkedin.com/in/aymanehilmi/" className={cn("text-base font-sfbold mt-6")} style={{ color: '#a3a8af' }}>Linkedin ↗</a>
+                        <a href="https://github.com/AymaneHilmi" className={cn("text-base font-sfbold mt-6")} style={{ color: '#a3a8af' }}>GitHub ↗</a>
                     </div>
 
-                    <h1 className={cn("text-base font-bold mt-6")} style={{ color: '#a3a8af' }}>by Aymane HILMI</h1>
+                    <h1 className={cn("text-base font-sfbold mt-6")} style={{ color: '#a3a8af' }}>by Aymane HILMI</h1>
 
                 </div>
             </div>

@@ -16,11 +16,33 @@
   <title>Aymane's Portfolio</title>
 </head>
 
-<body class="bg-background" style="overflow-x: hidden;">
+<body class="bg-bgLight dark:bg-bgDark" style="overflow-x: hidden;">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
   <script defer data-website-id="dfid_CbS7E1tyzzsdJ8LCJsbv8" data-domain="aymanehilmi.com" data-allow-localhost="true"
     src="https://datafa.st/js/script.js">
+
+      // Gestion des thèmes
+      (function () {
+        const key = 'theme';
+        const saved = localStorage.getItem(key);
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Si aucun thème sauvegardé, on suit l'OS
+        const theme = saved || 'system';
+        const isDark = theme === 'dark' || (theme === 'system' && systemPrefersDark);
+
+        // Applique la classe dark si besoin
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+
+        // Applique aussi le color-scheme pour scrollbar, forms, etc.
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+      })();
+
     </script>
 
 </body>

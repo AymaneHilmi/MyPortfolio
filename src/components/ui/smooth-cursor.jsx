@@ -438,7 +438,7 @@ export function SmoothCursor({
           style={ICON_BOX}
         >
           {" "}
-          <span className="text-white text-sm font-bold select-none">
+          <span className="text-white text-sm font-sfbold select-none">
             404
           </span>{" "}
         </motion.div>

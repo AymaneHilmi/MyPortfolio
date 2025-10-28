@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import React, { useEffect, useState, useRef } from 'react';
 import AboutScreen from './Screens/AboutScreen';
 import PortfolioScreen from "./Screens/PortfolioScreen";
-import SaintGobainScreen from "./Screens/SaintGobainScreen";
 import CvScreen from "./Screens/JourneyScreen";
 import Confetti from "react-confetti";
 import CesiverooScreen from "./Screens/CesiverooScreen";
@@ -18,6 +17,7 @@ import { SmoothCursor } from "./components/ui/smooth-cursor";
 import EasterEggsScreen from "./Screens/EasterEggsScreen";
 import NotFoundScreen from "./Screens/NotFoundScreen";
 import ScrollToTop from "./components/ScrollToTop";
+import ConnectedLabsScreen from './Screens/ConnectedLabsScreen';
 
 function App() {
   console.log(
@@ -50,39 +50,19 @@ function App() {
     location.state && location.state.backgroundLocation ? location.state : null;
 
   return (
-    <div className="flex flex-col bg-background cursor-none w-full">
+    <div className="flex flex-col bg-bgLight dark:bg-bgDark cursor-none w-full">
       <SmoothCursor />
       <Navbar />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/About" className="h-screen" element={<AboutScreen />} />
-        <Route
-          path="/SaintGobain"
-          className="h-screen"
-          element={<SaintGobainScreen />}
-        />
-        <Route
-          path="/Journey"
-          className="h-screen"
-          element={<JourneyScreen />}
-        />
+        <Route path="/Journey" className="h-screen" element={<JourneyScreen />} />
         {/* <Route path="/Blog" className="h-screen" element={<BlogScreen />} /> */}
-        <Route
-          path="/Cesiveroo"
-          className="h-screen"
-          element={<CesiverooScreen />}
-        />
-        <Route
-          path="/easter-eggs"
-          className="h-screen"
-          element={<EasterEggsScreen />}
-        />
-        <Route
-          path="/portfolio"
-          className="h-screen"
-          element={<PortfolioScreen visitsTotal={visitsTotal} />}
-        />
+        <Route path="/Cesiveroo" className="h-screen" element={<CesiverooScreen />} />
+        <Route path="/easter-eggs" className="h-screen" element={<EasterEggsScreen />} />
+        <Route path="/portfolio" className="h-screen" element={<PortfolioScreen visitsTotal={visitsTotal} />} />
+        <Route path="/ConnectedLabs" className="h-screen" element={<ConnectedLabsScreen />} />
         <Route path="*" element={<NotFoundScreen />} />
       </Routes>
       <Footer />
