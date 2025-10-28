@@ -164,11 +164,12 @@ export default function AboutScreen() {
               className="mt-8 w-full text-left rounded-2xl bg-bgLight dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder p-6 shadow-sm hover:shadow-md transition-shadow focus:outline-none"
             >
               <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center rounded-full bg-bgLight dark:bg-bgDark px-3 py-1 text-xs text-lightPrimary dark:text-darkPrimary font-sfregular">
+                <span className="inline-flex items-center rounded-full bg-ultralightGray dark:bg-bgDark px-3 py-1 text-xs text-lightPrimary dark:text-darkPrimary font-sfregular">
                   Currently
                 </span>
                 <span className="text-sm text-lightPrimary dark:text-darkPrimary font-sfregular">
-                  Kuala Lumpur, MY
+                  Aix-en-Provence, FR
+                  {/* Kuala Lumpur, MY   */}
                 </span>
               </div>
               <h3 className="mt-4 text-2xl md:text-xl text-lightPrimary dark:text-darkPrimary font-sfbold">
