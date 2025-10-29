@@ -764,7 +764,7 @@ export default function AboutScreen() {
               </div>
               <p className="mt-3 text-lightPrimary dark:text-darkPrimary font-sfregular text-sm md:text-base text-justify">
                 I want to develop solutions that remove friction and make work
-                simpler. Clarity, speed, and utility—grounded in real user
+                simpler. Clarity, speed, and utility grounded in real user
                 needs.
               </p>
             </FadeIn>

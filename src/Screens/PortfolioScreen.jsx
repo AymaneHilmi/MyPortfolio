@@ -664,7 +664,7 @@ export default function PortfolioScreen({ visitsTotal }) {
                 {/* voile subtil */}
                 <span className="pointer-events-none absolute inset-0 rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-zinc-100/70 to-transparent dark:from-darkContainer/70  dark:to-transparent" />
 
-                <a className="bg-ultralightGray dark:bg-darkContainer h-16 sm:h-18 w-28 sm:w-32 flex items-center justify-center rounded-xl ring-1 ring-inset ring-ultralightGray dark:ring-darkBorder transition-all duration-300 group-hover:ring-lightGray font-sfregular group-hover:shadow-sm">
+                <a className="bg-ultralightGray dark:bg-white h-16 sm:h-18 w-28 sm:w-26 flex items-center justify-center rounded-xl ring-1 ring-inset ring-ultralightGray dark:ring-darkBorder transition-all duration-300 group-hover:ring-lightGray font-sfregular group-hover:shadow-sm">
                   <img
                     src={LogoMobile}
                     alt="Aymane Logo"

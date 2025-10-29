@@ -618,7 +618,7 @@ export default function EasterEggsScreen() {
               </h2>
             </FadeIn>
 
-            <div className="grid lg:grid-cols-3 items-stretch gap-6">
+            <FadeIn className="grid lg:grid-cols-3 items-stretch gap-6">
               {/* List (spans 2 cols on large screens) */}
               <div className="lg:col-span-2 space-y-4">
                 {EggList.map((egg) => {
@@ -975,7 +975,7 @@ export default function EasterEggsScreen() {
                   </div>
                 </FadeIn>
               </aside>
-            </div>
+            </FadeIn>
           </section>
         </>
       )}

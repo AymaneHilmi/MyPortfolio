@@ -7,52 +7,52 @@ import { NumberTicker } from "../components/ui/NumberTicker";
 
 export default function ConnectedLabsScreen() {
     return (
-        <div className="lg:mx-auto max-w-5xl px-6">
+        <div className="lg:mx-auto max-w-5xl px-6 text-center">
+            <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex flex-col justify-center items-center">
+                {/* Left column — Text */}
+                <div className="space-y-6">
 
-            <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
-                <FadeIn className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
-                    {/* Left column — Text */}
-                    <div className="space-y-6">
-                        {/* <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-sm text-zinc-600">
-                            <span className="h-2 w-2 rounded-full bg-brandgradient" />
-                            Process Highlights
-                        </div> */}
-
-                        <div className="flex flex-row gap-4 items-center">
-                            {/* <img src={logo} alt="Portfolio logo" className="h-20 w-20" /> */}
-                            <span className=" font-ramidots tracking-tight text-5xl md:text-6xl lg:text-7xl bg-gradient-to-tr from-sky-400 to-blue-600 bg-clip-text text-transparent w-fit pr-4">
-                                Connected Labs
-                            </span>
-                        </div>
-
-                        <div className="prose prose-zinc max-w-none text-lightPrimary dark:text-darkPrimary text-justify text-sm md:text-base lg:text-lg">
-                            <p>
-                                {/* This portfolio is a personal project where I share my journey,
+                    <div className="prose prose-zinc max-w-none text-lightPrimary dark:text-darkPrimary text-justify text-sm md:text-base lg:text-lg">
+                        <p>
+                            {/* This portfolio is a personal project where I share my journey,
                                 projects, resume, and passion for technology. It’s built to be
                                 interactive and engaging, showcasing the work I’m proud of and
                                 reflecting my personal approach to development. */}
-                            </p>
-                            <p>
-                                {/* In addition to showcase my projects and experience, this
+                        </p>
+                        <p>
+                            {/* In addition to showcase my projects and experience, this
                                 portfolio will also include (soon) a blog where I regularly
                                 share my work, ideas, and lessons learned throughout my journey.
                                 For the curious ones, I’ve also integrated an entire hidden
                                 easter eggs quest inside the website... */}
-                            </p>
-                        </div>
+                        </p>
                     </div>
-                    <div className="relative">
-                        <figure className="relative mx-auto w-full max-w-[640px] overflow-hidden rounded-2xl ">
-                            <img
-                                src={LIMSmobility}
-                                alt="Cesiveroo illustration with shopping bags and spheres"
-                                className="block h-auto w-full object-contain "
-                                loading="eager"
-                                decoding="async"
-                            />
-                        </figure>
-                    </div>
-                </FadeIn>
+                </div>
+
+
+                <div className="relative">
+                    <figure className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-2xl ">
+                        <img
+                            src={LIMSmobility}
+                            alt="Cesiveroo illustration with shopping bags and spheres"
+                            className="block h-auto w-full object-contain "
+                            loading="eager"
+                            decoding="async"
+                        />
+                    </figure>
+                </div>
+
+                {/* <div className="flex flex-row gap-4 items-center">
+                    <span className=" font-ramidots tracking-tight text-5xl md:text-6xl lg:text-7xl bg-gradient-to-tr from-sky-400 to-blue-600 bg-clip-text text-transparent w-fit pr-4">
+                        Connected Labs
+                    </span>
+
+                </div> */}
+                {/* <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-sm text-zinc-600">
+                    <span className="h-2 w-2 rounded-full bg-brandgradient" />
+                    Process Highlights
+                </div> */}
+
             </section>
             Coming Soon...
         </div>

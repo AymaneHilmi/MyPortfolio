@@ -49,7 +49,7 @@ export default function HomeScreen({ visitsTotal }) {
       logo: sg,
       title: "Connected Labs",
       subtitle: "Cavaillon • 2025",
-      style: "font-LoveloLineBold bg-gradient-to-tr from-sky-400 to-blue-600 bg-clip-text text-transparent text-2xl md:text-4xl",
+      style: "font-sfbold bg-gradient-to-tr from-sky-400 to-blue-600 bg-clip-text text-transparent text-2xl md:text-4xl",
       description:
         "Project developed with two Saint-Gobain research centers. A Power Platform app interconnecting & improving lab efficiency and data traceability.",
       image: LIMSmobility,
@@ -147,7 +147,7 @@ export default function HomeScreen({ visitsTotal }) {
 
       {/* Content Section */}
       <section className="flex flex-col items-center px-4 sm:px-6 pb-6 gap-6">
-        <section className="w-full mx-auto  px-6 md:px-10 py-16 md:py-24">
+        <section className="w-full mx-auto py-16 md:py-24">
           {/* Titre + sous-titre */}
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-4xl md:text-8xl font-ramidots tracking-tight bg-brandgradient bg-clip-text text-transparent w-fit inline-block px-1">

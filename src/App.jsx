@@ -18,6 +18,7 @@ import EasterEggsScreen from "./Screens/EasterEggsScreen";
 import NotFoundScreen from "./Screens/NotFoundScreen";
 import ScrollToTop from "./components/ScrollToTop";
 import ConnectedLabsScreen from './Screens/ConnectedLabsScreen';
+import ReadsScreen from './Screens/ReadsScreen';
 
 function App() {
   console.log(
@@ -63,6 +64,7 @@ function App() {
         <Route path="/easter-eggs" className="h-screen" element={<EasterEggsScreen />} />
         <Route path="/portfolio" className="h-screen" element={<PortfolioScreen visitsTotal={visitsTotal} />} />
         <Route path="/ConnectedLabs" className="h-screen" element={<ConnectedLabsScreen />} />
+        <Route path="/Reads" className="h-screen" element={<ReadsScreen />} />
         <Route path="*" element={<NotFoundScreen />} />
       </Routes>
       <Footer />

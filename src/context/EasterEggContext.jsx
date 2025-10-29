@@ -227,6 +227,7 @@ export const EasterEggProvider = ({ children }) => {
   const [links, setLinks] = useState([
     { name: "Home", path: "/" },
     { name: "About", path: "/About" },
+    { name: "Reads", path: "/Reads" },
     { name: "Email", path: `mailto:contact@aymanehilmi.com` },
     {
       name: "LinkedIn",
@@ -245,7 +246,7 @@ export const EasterEggProvider = ({ children }) => {
       if (prev.some((l) => l.name === "Easter Eggs")) return prev;
       const newLink = { name: "Easter Eggs", path: "/easter-eggs" };
       const updated = [...prev];
-      updated.splice(2, 0, newLink);
+      updated.splice(3, 0, newLink);
       return updated;
     });
   };
@@ -255,7 +256,7 @@ export const EasterEggProvider = ({ children }) => {
       setLinks((prev) => {
         if (prev.some((l) => l.name === "Easter Eggs")) return prev;
         const updated = [...prev];
-        updated.splice(2, 0, { name: "Easter Eggs", path: "/easter-eggs" });
+        updated.splice(3, 0, { name: "Easter Eggs", path: "/easter-eggs" });
         return updated;
       });
     }
