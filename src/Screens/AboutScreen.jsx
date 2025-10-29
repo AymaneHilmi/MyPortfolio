@@ -926,7 +926,7 @@ export default function AboutScreen() {
 /* ——— Petit composant Badge réutilisable ——— */
 function Badge({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-white dark:bg-darkContainer bg-bgLight dark:bg-bgDark px-3 py-1 text-xs text-lightPrimary dark:text-darkPrimary font-sfregular">
+    <span className="inline-flex items-center rounded-full bg-ultralightGray dark:bg-bgDark px-3 py-1 text-xs text-lightPrimary dark:text-darkPrimary font-sfregular">
       {children}
     </span>
   );
