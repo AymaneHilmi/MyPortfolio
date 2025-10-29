@@ -94,7 +94,7 @@ export default function AboutScreen() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-0 lg:px-8 pt-24 md:pt-0">
+    <div className="max-w-6xl mx-auto px-4 sm:px-0 lg:px-8">
       <section className="h-screen w-full flex items-center justify-center">
         <FadeIn className="flex flex-col items-center text-center space-y-4">
           {/* Photo */}
@@ -260,7 +260,7 @@ export default function AboutScreen() {
                         <div className="grid grid-cols-1 md:grid-cols-[112px,1fr] gap-5 md:gap-7">
                           {/* Logo */}
                           <div className="flex items-start md:items-center">
-                            <div className="size-28 shrink-0 overflow-hidden ">
+                            <div className="size-28 shrink-0 overflow-hidden dark:bg-bgLight dark:rounded-xl ">
                               <img
                                 src={SaintGobain}
                                 alt="Saint-Gobain Research logo"
@@ -432,7 +432,7 @@ export default function AboutScreen() {
                         <div className="grid grid-cols-1 md:grid-cols-[112px,1fr] gap-5 md:gap-7">
                           {/* Logo */}
                           <div className="flex items-start md:items-center">
-                            <div className="size-32 shrink-0 overflow-hidden ">
+                            <div className="size-32 shrink-0 overflow-hidden dark:bg-bgLight dark:rounded-xl">
                               <img
                                 src="https://www.inetum.com/upload/public/styles/opengraph/public/media/image/2021-04/logo%20inetum_0.PNG?itok=DAgdxwUw"
                                 alt="INETUM logo"
@@ -583,7 +583,7 @@ export default function AboutScreen() {
                         <div className="grid grid-cols-1 md:grid-cols-[112px,1fr] gap-5 md:gap-7">
                           {/* Logo */}
                           <div className="flex items-start md:items-center">
-                            <div className="size-28 shrink-0 overflow-hidden ">
+                            <div className="size-28 shrink-0 overflow-hidden dark:bg-bgLight dark:rounded-xl">
                               <img
                                 src="https://upload.wikimedia.org/wikipedia/fr/thumb/2/2f/Logo_Service_civique.svg/langfr-2880px-Logo_Service_civique.svg.png"
                                 alt="Service Civique logo"
