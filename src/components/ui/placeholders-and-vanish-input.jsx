@@ -187,8 +187,8 @@ export function PlaceholdersAndVanishInput({
     return (
         <form
             className={cn(
-                "w-full relative  -800 h-12 rounded-xl overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
-                value && "bg-lightContainer dark:bg-bgDark"
+                "w-full relative bg-bgLight dark:bg-bgDark h-12 rounded-xl overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
+                value
             )}
             onSubmit={handleSubmit}>
             <canvas
@@ -239,7 +239,7 @@ export function PlaceholdersAndVanishInput({
                     "absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full transition duration-200 flex items-center justify-center",
                     value
                         ? "bg-brandgradient shadow-sm"
-                        : "bg-ultralightGray dark:bg-bgDark"
+                        : "bg-ultralightGray dark:bg-darkContainer"
                 )}
             >
                 <motion.svg
