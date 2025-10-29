@@ -166,7 +166,7 @@ function DifficultyCard({ level, total = 0, found = 0 }) {
   const done = total > 0 && found === total;
   return (
     <div
-      className={`rounded-2xl border ${done ? "border-green-300 bg-green-900" : "border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer"
+      className={`rounded-2xl border ${done ? "border-green-300 bg-green-50 dark:bg-green-900" : "border-ultralightGray dark:border-darkBorder bg-bgLight dark:bg-darkContainer"
         } p-4 transition-colors`}
     >
       <div className="mb-3 flex items-center justify-between">
