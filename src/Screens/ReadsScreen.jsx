@@ -10,6 +10,13 @@ const books = [
         cover: "https://m.media-amazon.com/images/I/51AHZGhzZEL._SL500_.jpg",
         category: "Finance",
     },
+    {
+        id: 2,
+        title: "Atomic Habits",
+        author: "James Clear",
+        cover: "https://m.media-amazon.com/images/I/81F90H7hnML._AC_UF1000,1000_QL80_.jpg",
+        category: "Self-help",
+    },
 
 ];
 
@@ -17,7 +24,7 @@ function BookCell({ title, author, cover, category }) {
     return (
         <article className="flex flex-col items-center text-center gap-3 sm:gap-4 py-8 px-4  bg-transparent">
             {/* Cover (centered, small) */}
-            <div className="h-40 w-28 sm:h-44 sm:w-32 md:h-48 md:w-36 bg-ultralightGray dark:bg-darkContainer overflow-hidden">
+            <div className="h-40 w-28 sm:h-44 sm:w-32 md:h-48 md:w-36 bg-ultralightGray dark:bg-darkContainer overflow-hidden shadow-lg">
                 {cover ? (
                     <img
                         src={cover}

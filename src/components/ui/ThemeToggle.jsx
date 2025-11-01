@@ -112,15 +112,6 @@ export default function ThemeToggle() {
 
                         <span className="relative z-10 flex items-center gap-1">
                             {icon}
-                            <motion.span
-                                className="hidden sm:inline"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.25 }}
-                            >
-                                {label}
-                            </motion.span>
                         </span>
                     </motion.button>
                 );
