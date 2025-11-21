@@ -85,9 +85,9 @@ export default function Navbar({ }) {
 
     const { links } = useEasterEgg();
     return (
-        <div className="fixed top-0 left-0 w-full z-40">
+        <div className="fixed top-0 left-0 w-full z-40 ">
             {/* Desktop navbar */}
-            <nav className="md:flex items-center justify-around px-6 py-10 hidden /60 backdrop-blur-md">
+            <nav className="md:flex items-center justify-between px-12 py-10 hidden /60 backdrop-blur-md max-w-7xl mx-auto ">
                 <div
                     className="flex items-center gap-6 text-darkGray font-sfregular"
                 >

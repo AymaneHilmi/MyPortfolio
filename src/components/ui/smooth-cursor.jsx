@@ -542,7 +542,7 @@ export function SmoothCursor({
       animate={{ scale: 1 }}
       transition={{ type: "spring", stiffness: 480, damping: 30 }}
     >
-      {/* 👉 Pas d'AnimatePresence lors du retour au DOT pour éviter toute icône “bloquée” */}
+      {/* Pas d'AnimatePresence lors du retour au DOT pour éviter toute icône bloquée */}
       {isInteractive ? (
         <AnimatePresence initial={false} mode="wait">
           {renderIcon(cursorIcon)}

@@ -150,7 +150,7 @@ export const EasterEggProvider = ({ children }) => {
 
       const newEggs = [...prev, eggId];
 
-      // ✅ Vérifie si tous les eggs ont été trouvés
+      // Vérifie si tous les eggs ont été trouvés
       const allEggsFound = EggList.every((e) => newEggs.includes(e.id));
       if (allEggsFound && !completedMissions.includes("eggLord")) {
         completeMission("eggLord");
@@ -187,7 +187,7 @@ export const EasterEggProvider = ({ children }) => {
       const next = [...prev, missionId];
 
       // 1) Toast uniquement si ce n'est PAS un tip
-      if (!isTip) {
+      if (!isTip && missionId !== "eggLord") {
         const label =
           eggMission.find((m) => m.id === missionId)?.message ?? missionId;
         showInfoToast(label);

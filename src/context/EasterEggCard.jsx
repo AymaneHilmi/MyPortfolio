@@ -59,7 +59,7 @@ export default function EasterEggsCard({ }) {
       whileInView={{ opacity: 1, y: 0, rotate: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.55, ease: "easeOut" }}
-      className="relative z-10 shrink-0 w-full lg:w-[340px] rounded-3xl  bg-white dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder  shadow-sm p-5 lg:p-6"
+      className="relative z-10 shrink-0 w-full md:w-[280px] lg:w-[340px] rounded-3xl  bg-white dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder  shadow-sm p-5 lg:p-6"
     >
       <span className="absolute -top-3 -left-3 h-7 w-7 rounded-full bg-black text-white text-xs font-sfbold grid place-items-center">
         2
@@ -115,7 +115,7 @@ export default function EasterEggsCard({ }) {
                       {m.icon}
                     </div>
                     <div>
-                      <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">
+                      <p className=" text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">
                         {m.label}
                       </p>
                       <p className="text-[11px] font-sfregular text-lightSecondary">

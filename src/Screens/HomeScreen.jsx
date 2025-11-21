@@ -81,10 +81,10 @@ export default function HomeScreen({ visitsTotal }) {
     },
   ];
   return (
-    <div className="max-w-6xl mx-auto px-6">
-      <div className="relative flex flex-col items-center justify-center min-h-screen">
+    <div className="max-w-6xl px-6 mx-auto w-full">
+      <div className="relative flex flex-col items-center justify-center min-h-screen ">
         {/* Landing Page */}
-        <section className="text-left pb-32 pt-32">
+        <section className="text-left py-32 ">
           {" "}
           {/* pt-32 et pb-32 pour la position du texte au centre avec le chevron */}
           {/* Titre principal */}
@@ -146,7 +146,7 @@ export default function HomeScreen({ visitsTotal }) {
       </div>
 
       {/* Content Section */}
-      <section className="flex flex-col items-center px-4 sm:px-6 pb-6 gap-6">
+      <section className="flex flex-col items-center gap-4 md:gap-6">
         <section className="w-full mx-auto py-16 md:py-24">
           {/* Titre + sous-titre */}
           <div className="text-center mb-12 md:mb-16">
@@ -160,7 +160,7 @@ export default function HomeScreen({ visitsTotal }) {
           </div>
 
           {/* 3 cartes inclinées */}
-          <div className="relative flex flex-col lg:flex-row items-stretch lg:items-end justify-center gap-6 lg:gap-8">
+          <div className="relative flex flex-col md:flex-row items-stretch md:items-end justify-center gap-6 lg:gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20, rotate: -3 }}
               whileInView={{ opacity: 1, y: 0, rotate: -3 }}
@@ -189,7 +189,7 @@ export default function HomeScreen({ visitsTotal }) {
               whileInView={{ opacity: 1, y: 0, rotate: -3 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative shrink-0 w-full lg:w-[320px] rounded-3xl bg-white dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder shadow-sm p-5 md:p-6"
+              className="relative shrink-0 w-full md:w-[280px] lg:w-[320px] rounded-3xl bg-white dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder shadow-sm p-5 md:p-6"
             >
               <span className="absolute -top-3 -left-3 h-7 w-7 rounded-full bg-black text-white text-xs font-sfbold grid place-items-center">
                 1
@@ -218,7 +218,7 @@ export default function HomeScreen({ visitsTotal }) {
               whileInView={{ opacity: 1, y: 0, rotate: 3 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative shrink-0 w-full lg:w-[320px] rounded-3xl bg-white dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder shadow-sm p-5 lg:p-6"
+              className="relative shrink-0 w-full md:w-[280px] lg:w-[320px] rounded-3xl bg-white dark:bg-darkContainer border border-ultralightGray dark:border-darkBorder shadow-sm p-5 lg:p-6"
             >
               <span className="absolute -top-3 -left-3 h-7 w-7 rounded-full bg-black text-white text-xs font-sfbold grid place-items-center">
                 3
@@ -247,54 +247,6 @@ export default function HomeScreen({ visitsTotal }) {
             </motion.div>
           </div>
         </section>
-
-        {/* <Dialog.Root>
-          <Dialog.Trigger asChild>
-            <motion.a
-            //   animate={controls}
-              className="rounded-2xl  border border-ultralightGray dark:border-darkBorder shadow-sm p-5"
-              data-cursor-icon="egg"
-              onClick={() => setEggAnimationEnabled(false)}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-sfregular text-gray-500">
-                  EASTER EGGS FOUND
-                </span>
-                <div className="h-6 w-6 rounded-full border border-gray-300  flex items-center justify-center text-[12px]">
-                  🥚
-                </div>
-              </div>
-
-              <div className="mt-3 text-3xl font-sfbold text-gray-900">
-                {eggsFounded} / {eggsTotal}
-              </div>
-
-              <PillMeter
-                className="mt-4"
-                total={eggsTotal}
-                filled={eggsFounded}
-              />
-            </motion.a>
-          </Dialog.Trigger>
-
-          <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40" />
-            <Dialog.Content
-              className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                      border border-ultralightGray dark:border-darkBorder rounded-2xl shadow-xl 
-                     w-[95%] max-w-2xl h-[75vh] overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden p-8"
-            >
-              <div className="relative">
-                <Dialog.Close asChild>
-                  <button className="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-                    <X className="w-5 h-5" />
-                  </button>
-                </Dialog.Close>
-                <EasterEggsList />
-              </div>
-            </Dialog.Content>
-          </Dialog.Portal>
-        </Dialog.Root> */}
 
         <motion.h2
           variants={fadeInUp}
