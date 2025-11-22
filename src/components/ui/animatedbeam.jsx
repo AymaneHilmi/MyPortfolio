@@ -4,9 +4,11 @@ import { useEffect, useId, useState, forwardRef, useRef } from "react"
 import { motion } from "framer-motion"
 import LIMS from "@/assets/LIMS.png";
 import SaintGobain from "@/assets/Saint-Gobain.png";
+import SaintGobainWhite from "@/assets/Saint-GobainWhite.png";
 import { cn } from "@/lib/utils"
 
 // AnimatedBeam (JSX version): draws an animated curved beam between fromRef and toRef within containerRef.
+
 export const AnimatedBeam = ({
     className,
     containerRef,
@@ -26,6 +28,11 @@ export const AnimatedBeam = ({
     endXOffset = 0,
     endYOffset = 0,
 }) => {
+
+
+
+
+
     const id = useId()
     const [pathD, setPathD] = useState("")
     const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 })
@@ -44,6 +51,7 @@ export const AnimatedBeam = ({
             y1: ["0%", "0%"],
             y2: ["0%", "0%"],
         }
+    // --- Dark mode detection (Tailwind uses the `dark` class on <html>) ---
 
     useEffect(() => {
         const updatePath = () => {
@@ -99,7 +107,6 @@ export const AnimatedBeam = ({
         endXOffset,
         endYOffset,
     ])
-
     return (
         <svg
             fill="none"
@@ -172,7 +179,7 @@ const Circle = forwardRef(({ className, children }, ref) => {
         <div
             ref={ref}
             className={cn(
-                "z-10 flex size-14 items-center justify-center rounded-full border-2 dark:border-[gray] bg-bgLight dark:bg-darkContainer p-2 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)] dark:shadow-[0_0_20px_-12px_rgba(255,255,255,0.8)]",
+                "z-10 flex size-14 items-center justify-center rounded-full border-2 dark:border-[gray] bg-bgLight dark:bg-darkContainer p-2 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)] dark:shadow-[0_0_20px_-12px_rgba(255,255,255,0.8)] hover:shadow-[0_0_30px_-8px_rgba(0,0,0,0.9)] dark:hover:shadow-[0_0_30px_-8px_rgba(255,255,255,0.9)]  hover:scale-110 transition-transform duration-300",
                 className
             )}
         >
@@ -223,7 +230,7 @@ export function AnimatedBeamMultipleOutputDemo({ className }) {
 
                 </div>
                 <div className="flex flex-col justify-center items-center">
-                    <Circle ref={div5Ref}>
+                    <Circle ref={div5Ref} >
                         <Icons2.database />
                     </Circle>
 
@@ -300,6 +307,7 @@ export function AnimatedBeamDemo() {
     const div6Ref = useRef(null);
     const div7Ref = useRef(null);
 
+
     return (
         <div
             className="relative flex w-full items-center justify-center overflow-hidden p-10"
@@ -335,7 +343,7 @@ export function AnimatedBeamDemo() {
                         <p className="text-xs">Sample Manager</p>
                     </div>
                     <div className="flex flex-col justify-center items-end gap-2">
-                        <Circle ref={div6Ref}>
+                        <Circle ref={div6Ref} >
                             <Icons.saintgobain />
                         </Circle>
                         <p className="text-xs">SGR Brasil</p>
@@ -428,10 +436,20 @@ const Icons = {
         </svg>
     ),
     saintgobain: () => (
-        <img
-            src={SaintGobain}
-            alt="Saint Gobain Icon"
-            className="w-20 h-20 object-contain"
-        />
+        <div className="relative w-20 h-20">
+            {/* Light mode logo */}
+            <img
+                src={SaintGobain}
+                alt="Saint Gobain Icon"
+                className="absolute inset-0 w-full h-full object-contain dark:hidden"
+            />
+
+            {/* Dark mode logo */}
+            <img
+                src={SaintGobainWhite}
+                alt="Saint Gobain Icon White"
+                className="absolute inset-0 w-full h-full object-contain hidden dark:block"
+            />
+        </div>
     ),
 }

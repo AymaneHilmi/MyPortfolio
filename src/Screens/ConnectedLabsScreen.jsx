@@ -127,23 +127,90 @@ export default function ConnectedLabsScreen() {
                 <br />
                 <p>
                     Thanks to this system as we can see on the diagram below, all Saint-Gobain laboratories data is centralized and
-                    accessible in real-time from any R&D center around the world:
+                    accessible in real-time from any R&D center around the world.
                 </p>
             </FadeIn>
             <AnimatedBeamDemo />
-            <FadeIn className="mt-4">
+            <FadeIn className="my-4 mb-8">
                 <p>
-                    From this environmet my project took place with two main objectives, Integrating a new entity into the Saint-Gobain
+                    From this environment my project took place with two main objectives, Integrating a new entity into the Saint-Gobain
                     LIMS (Sample Manager) and Enhancing system accessibility and usability through mobile solutions.
-                    The idea of this approach was to first start with the integration of the system for a new entity and then to improve his accessibility .
+
                 </p>
                 <br />
-                <p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8 mb-12">
+                    <div className="rounded-3xl border border-ultralightGray dark:border-darkBorder bg-lightBG dark:bg-darkContainer p-5 md:p-6 shadow-sm">
+                        <div className="flex items-start gap-3">
+                            <div className="shrink-0 h-10 w-10 rounded-2xl bg-gradient-to-tr from-sky-400/20 to-blue-600/20 grid place-items-center">
+                                {/* tiny icon */}
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="stroke-sky-600 dark:stroke-sky-300" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <rect x="3" y="3" width="18" height="14" rx="2" />
+                                    <path d="M7 21h10" />
+                                    <path d="M12 17v4" />
+                                </svg>
+                            </div>
 
+                            <div className="space-y-1">
+                                <h3 className="text-lg md:text-xl font-sfbold text-lightPrimary dark:text-darkPrimary">
+                                    Part 1 — LIMS Integration
+                                </h3>
+                                <p className="text-sm md:text-base font-sfregular text-lightPrimary dark:text-darkPrimary leading-relaxed">
+                                    Integrate a new entity into Saint-Gobain’s LIMS (Sample Manager), ensuring alignment with the global Connected Labs standards.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="rounded-3xl border border-ultralightGray dark:border-darkBorder bg-lightBG dark:bg-darkContainer p-5 md:p-6 shadow-sm">
+                        <div className="flex items-start gap-3">
+                            <div className="shrink-0 h-10 w-10 rounded-2xl bg-gradient-to-tr from-sky-400/20 to-blue-600/20 grid place-items-center">
+                                {/* tiny icon */}
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="stroke-blue-700 dark:stroke-blue-300" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <rect x="7" y="2" width="10" height="20" rx="2" />
+                                    <path d="M11 18h2" />
+                                </svg>
+                            </div>
+
+                            <div className="space-y-1">
+                                <h3 className="text-lg md:text-xl font-sfbold text-lightPrimary dark:text-darkPrimary">
+                                    Part 2 — Mobile Accessibility
+                                </h3>
+                                <p className="text-sm md:text-base font-sfregular text-lightPrimary dark:text-darkPrimary leading-relaxed">
+                                    Improve system usability and accessibility through mobile solutions, built on top of the new integrated setup.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p >
+                    The idea of this approach was to first start with the integration of the system for a new entity and then to improve his accessibility .
+                </p>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
+                    project management
+                </p>
+                <p>
+                    In terms of project management, the work followed a structured waterfall approach between the clients and my team as they always worked with this method. Clearly defined phases was planned: requirements analysis, specification, development, testing, and deployment.
+                    Each step was validated before moving to the next.
+
+                    Additionnaly, I introduced several management tools to keep the project clear, predictable, and measurable:
+                    <ul className="list-disc list-inside my-4">
+                        <li>Gantt charts to visualize the project timeline and key milestones.</li>
+                        <li>Risk management plans to identify potential challenges and mitigation strategies.</li>
+                        <li>Regular progress reports to track achievements against planned objectives.</li>
+                    </ul>
+                    During all the phases of the project I maintained close communication with the Saint-Gobain cybersecurity service and IT teams to ensure compliance with Saint-Gobain's security policies and standards with the development I'm leading. As LIMS systems handle sensitive laboratory data, it was crucial to address any security concerns from the outset.
                 </p>
             </FadeIn>
-
-            The rest of the page is coming soon...
+            <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
+                the rest of the content is coming soon...
+            </p>
+            {/* <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
+                Part 1 - LIMS Integration
+            </p>
+            <p>
+                In terms of project management, the work followed a structured waterfall approach between the clients and my team as they always worked with this method. Clearly defined phases was planned: requirements analysis, specification, development, testing, and deployment.
+                Each step was validated before moving to the next.
+            </p > */}
         </div>
     );
 };
