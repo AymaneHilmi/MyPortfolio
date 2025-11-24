@@ -28,21 +28,23 @@
         const saved = localStorage.getItem(key);
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Si aucun thème sauvegardé, on suit l'OS
-        const theme = saved || 'system';
-        const isDark = theme === 'dark' || (theme === 'system' && systemPrefersDark);
+        // Thème par défaut light si aucun thème n'est sauvegardé
+        const theme = saved || 'light';
 
-        // Applique la classe dark si besoin
+        const isDark =
+          theme === 'dark' ||
+          (theme === 'system' && systemPrefersDark);
+
+        // Applique la classe dark selon la logique
         if (isDark) {
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');
         }
 
-        // Applique aussi le color-scheme pour scrollbar, forms, etc.
+        // Color scheme global (scrollbar, forms, etc.)
         document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
       })();
-
     </script>
 
 </body>
