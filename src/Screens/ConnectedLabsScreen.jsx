@@ -202,9 +202,7 @@ export default function ConnectedLabsScreen() {
                     During all the phases of the project I maintained close communication with the Saint-Gobain cybersecurity service and IT teams to ensure compliance with Saint-Gobain's security policies and standards with the development I'm leading. As LIMS systems handle sensitive laboratory data, it was crucial to address any security concerns from the outset.
                 </p>
             </FadeIn>
-            {/* <p className="text-[10px] text-left uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
-                the rest of the content is coming soon...
-            </p> */}
+
             <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
                 Part 1 - LIMS Integration
             </p>
@@ -531,6 +529,10 @@ export default function ConnectedLabsScreen() {
                 </motion.div>
                 <img src={SharepointAcrhitecture} alt="Saint-Gobain Connected Labs Sharepoint Architecture" className="mx-auto" />
             </div>
+
+            <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-4 mb-4">
+                the rest of the content is coming soon...
+            </p>
 
 
 
