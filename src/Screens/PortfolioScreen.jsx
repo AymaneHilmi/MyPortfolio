@@ -1380,17 +1380,6 @@ export default function PortfolioScreen({ visitsTotal }) {
             >
               <span
                 className="
-            absolute inset-0 translate-y-[2px] blur-[1.2px]
-            text-darkyGray/30 dark:text-white/30
-            font-ramidots text-8xl lg:text-9xl leading-none
-          "
-                style={{ WebkitTextStroke: "0 transparent" }}
-              >
-                <NumberTicker value={visitsTotal} />
-              </span>
-
-              <span
-                className="
             relative font-ramidots text-8xl lg:text-9xl leading-none
             tracking-tight bg-brandgradient bg-clip-text text-transparent inline-block 
             transition-transform duration-200
