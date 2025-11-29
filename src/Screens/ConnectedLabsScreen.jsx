@@ -7,6 +7,7 @@ import SaintGobainMap from "../components/ui/SaintGobainMap";
 import { AnimatedBeamDemo } from "../components/ui/animatedbeam";
 import { motion } from "framer-motion";
 import SharepointAcrhitecture from "@/assets/ConnectedlabSharepointArchitecture.png";
+import { ArcherContainer, ArcherElement } from "react-archer";
 
 
 export default function ConnectedLabsScreen() {
@@ -110,7 +111,7 @@ export default function ConnectedLabsScreen() {
                     Today, to continuously improve the performance of its materials and solutions, Saint-Gobain relies on 8 R&D centers located across the world.
                     Each center is specialized in a specific domain and contributes its own expertise to the Group’s global innovation strategy.
                     This project took place across two of these centers:{" "}
-                    <text className="text-transparent bg-clip-text bg-gradient-to-tr from-sky-400 to-blue-600 font-bold">Saint-Gobain Research Provence </text> (located in France, Cavaillon) and <text className="text-transparent bg-clip-text bg-gradient-to-tr from-sky-400 to-blue-600 font-bold">Saint-Gobain Research Germany</text> (located in Herzogenrath, Germany).
+                    <text className="text-transparent bg-clip-text bg-gradient-to-tr from-sky-400 to-blue-600 font-sfbold">Saint-Gobain Research Provence </text> (located in France, Cavaillon) and <text className="text-transparent bg-clip-text bg-gradient-to-tr from-sky-400 to-blue-600 font-sfbold">Saint-Gobain Research Germany</text> (located in Herzogenrath, Germany).
                 </p>
             </FadeIn>
             <section className=" flex justify-center items-center">
@@ -497,28 +498,39 @@ export default function ConnectedLabsScreen() {
                 The next step was to translate these insights into a concrete solution within the defined constraints. By leveraging existing
                 LIMS features and custom modules, I was able to design a tailored workflow that addressed the specific needs of GPI laboratories.
                 <br /><br />
-                Basically all the GPI's needs was technically feasible within the defined constraints a part from one point : The sharepoint archivement.
-                technically it was not a problem to implement this functionnality, but from a security point of view it wasn't as easy as it seemed.
+                Basically all the GPI's needs was technically doable within the defined constraints a part from one point : the sharepoint archivement.
+                technically it was not a problem to implement this functionnality, but from a cybersecurity point of view it wasn't as easy as it seemed.
                 <br />
                 After several discussions with Saint-Gobain's cybersecurity and IT teams, I got informed that integrating SharePoint with the LIMS system
-                would introduce potential vulnerabilities as it would require to link to different protected systems.
-                Therefore, to comply with Saint-Gobain's stringent security policies, I had to find an alternative solution that would maintain data security.
+                would require a main azure service Account with broad access permissions to handle data transfers between the two systems.
+                Therefore, to implement this new architecture, it was necessary to open a <a className="underline"> Project Security
+                    Assessment Tool ticket (PSAT) </a> to the cybersecurity office for validation and approval.
+                This process involved a thorough review of the proposed integration plan, including security assessments and compliance checks,
+                to ensure that all data exchanges between SharePoint and the LIMS adhered to Saint-Gobain's stringent security policies.
+                <br />
+                <br />
+                Given the very short timeline of the project and the complexity of obtaining the necessary approvals,
+                it was decided to postpone the SharePoint integration to a later improvement phase during the general
+                deployment. Due to the response time from the IT department, the mobilization of the necessary teams,
+                and the configuration requirements for the service account, meeting the initial deadline would have
+                been impossible.
                 <br /><br />
             </p>
-            <div>
 
+            <div className="relative w-full flex justify-center my-4">
+                {/* Right-side annotation */}
                 <motion.div
                     initial={{ opacity: 0, y: 20, rotate: -3 }}
                     whileInView={{ opacity: 1, y: 0, rotate: -3 }}
                     viewport={{ once: true, margin: "-80px" }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="absolute flex-col items-center z-50 hidden md:flex">
-
-                    <p className=" text-gray-400 text-base text-center  font-handwriting opacity-80 pr-1 mb-4">
+                    className="absolute -left-32 top-0 hidden lg:flex flex-col items-end z-50"
+                >
+                    <p className="text-gray-400 text-base text-center font-handwriting opacity-80 pr-1 mb-4 ">
                         1rst protected environment
                     </p>
                     <svg
-                        className="w-10 h-6 text-gray-400 opacity-70 -rotate-90"
+                        className="w-10 h-6 text-gray-400 opacity-70 rotate-[-140deg]"
                         viewBox="0 0 220 50"
                         fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg"
@@ -527,18 +539,570 @@ export default function ConnectedLabsScreen() {
                         <path d="M21.489 29.4305C36.9333 31.3498 51.3198 33.0559 65.7063 34.9753C66.7641 35.1885 67.6104 36.4681 69.9376 38.3875C63.1675 39.2406 57.8783 40.3069 52.5892 40.5201C38.6259 40.9467 24.8741 40.9467 10.9107 40.9467C9.21821 40.9467 7.5257 41.1599 5.83317 40.7334C0.332466 39.6671 -1.57164 36.0416 1.39028 31.1365C2.87124 28.7906 4.56377 26.658 6.46786 24.7386C13.6611 17.4876 21.0659 10.4499 28.4707 3.41224C29.7401 2.13265 31.6442 1.49285 34.183 0C34.6061 10.8765 23.8162 13.8622 21.489 22.3927C23.3931 21.9662 25.0856 21.7529 26.5666 21.3264C83.6894 5.54486 140.601 7.25099 197.3 22.606C203.224 24.0988 208.936 26.4447 214.649 28.5773C217.61 29.6437 220.149 31.9896 218.457 35.6151C216.976 39.2406 214.014 39.2406 210.629 37.7477C172.759 20.6866 132.561 18.7672 91.9404 19.407C70.7838 19.6203 50.0504 21.9662 29.5285 26.8713C26.9897 27.5111 24.4509 28.3641 21.489 29.4305Z" />
                     </svg>
                 </motion.div>
-                <img src={SharepointAcrhitecture} alt="Saint-Gobain Connected Labs Sharepoint Architecture" className="mx-auto" />
+
+                {/* Architecture image */}
+                <img
+                    src={SharepointAcrhitecture}
+                    alt="Saint-Gobain Connected Labs Sharepoint Architecture"
+                    className="mx-auto w-full max-w-4xl"
+                />
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20, rotate: -3 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: -3 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="absolute -left-32 bottom-0 hidden lg:flex flex-col items-end z-50"
+                >
+                    <svg
+                        className="w-10 h-6 text-gray-400 opacity-70 scale-x-[-1] rotate-[-30deg]"
+                        viewBox="0 0 220 50"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <path d="M21.489 29.4305C36.9333 31.3498 51.3198 33.0559 65.7063 34.9753C66.7641 35.1885 67.6104 36.4681 69.9376 38.3875C63.1675 39.2406 57.8783 40.3069 52.5892 40.5201C38.6259 40.9467 24.8741 40.9467 10.9107 40.9467C9.21821 40.9467 7.5257 41.1599 5.83317 40.7334C0.332466 39.6671 -1.57164 36.0416 1.39028 31.1365C2.87124 28.7906 4.56377 26.658 6.46786 24.7386C13.6611 17.4876 21.0659 10.4499 28.4707 3.41224C29.7401 2.13265 31.6442 1.49285 34.183 0C34.6061 10.8765 23.8162 13.8622 21.489 22.3927C23.3931 21.9662 25.0856 21.7529 26.5666 21.3264C83.6894 5.54486 140.601 7.25099 197.3 22.606C203.224 24.0988 208.936 26.4447 214.649 28.5773C217.61 29.6437 220.149 31.9896 218.457 35.6151C216.976 39.2406 214.014 39.2406 210.629 37.7477C172.759 20.6866 132.561 18.7672 91.9404 19.407C70.7838 19.6203 50.0504 21.9662 29.5285 26.8713C26.9897 27.5111 24.4509 28.3641 21.489 29.4305Z" />
+                    </svg>
+                    <p className="text-gray-400 text-base text-center font-handwriting opacity-80 pr-1 mt-4 ">
+                        2nd protected environment
+                    </p>
+                </motion.div>
             </div>
 
-            <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-4 mb-4">
-                the rest of the content is coming soon...
+            <p className="text-justify mt-12">
+                As respresented above, we agreed with GPI on an alternative solution that would be just as effective.
+                This approach consists of archiving the reports directly on their local server.
+
+                Since the existing architecture already connects Sample Manager to the eight research
+                centers worldwide (via an existing PSAT), the only requirement was to open the necessary ports on the server side and GPI side.
+            </p>
+
+            <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
+                Technical implementation
+            </p>
+
+            <div className="mt-4 rounded-2xl border border-amber-300/60 dark:border-amber-400/60 bg-amber-50/70 dark:bg-amber-500/5 px-4 py-3 md:px-5 md:py-4 flex gap-3 items-start">
+                {/* Warning / confidentiality icon */}
+                <div className="mt-0.5">
+                    <svg
+                        className="w-5 h-5 text-amber-500 dark:text-amber-400"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                </div>
+
+                <p className="text-justify text-sm md:text-base text-lightPrimary dark:text-darkPrimary font-sfregular">
+                    Due to confidentiality reasons with Saint-Gobain, I cannot share all the technical details of the implementation. However, I can
+                    provide an overview of the key components and steps involved in the integration process.
+                </p>
+            </div>
+
+            <p className="text-justify mt-6">
+                Having now a clear understanding of the requirements and constraints, I proceeded to design the new workflow within Sample Manager.
+                This involved configuring the system to handle analysis requests, track progress, and manage reporting in line with GPI's needs.
+                By leveraging existing custom modules and native LIMS features, I was able to create a streamlined process that improved efficiency
+                and traceability while adhering to the project's strict guidelines.
             </p>
 
 
 
+            <section className="mt-6">
+                <div className="rounded-2xl border border-ultralightGray dark:border-darkBorder bg-lightBG dark:bg-darkContainer px-4 py-4 md:px-5 md:py-4">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mb-4">
+                        Static data configuration
+                    </p>
+
+                    <ol className="mt-3 space-y-2 text-sm md:text-[15px] text-lightPrimary dark:text-darkPrimary font-sfregular">
+                        <li className="flex flex-col gap-1">
+                            {/* Ligne principale */}
+                            <div className="flex gap-2 items-start md:items-center">
+                                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 
+        flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+                                    <span className="text-[11px] mt-[2px] font-sfbold">01</span>
+                                </div>
+
+                                <span className="text-lightPrimary dark:text-darkPrimary">
+                                    Implementation of <span className="font-sfbold">Groups </span>
+                                    to manage data confidentiality within GPI.
+                                </span>
+                            </div>
+
+                            {/* Mini description */}
+                            <p className="md:ml-8 text-xs md:text-sm text-lightSecondary dark:text-darkSecondary">
+                                Users only see data that belongs to the group they are assigned to.
+                                For example, a user assigned to the <span className="font-sfmedium italic">GPI</span> group only has access
+                                to analyses, samples, and jobs linked to the same GPI Group, nothing else.
+                            </p>
 
 
+                            {/* Group rectangles */}
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-4 md:ml-8">
+                                {/* GPI Group (visible) */}
+                                <div className="rounded-xl border border-sky-400/70 dark:border-sky-300/70 bg-sky-500/5 dark:bg-sky-900/30 p-3">
+                                    <p className="text-xs md:text-sm font-sfmedium text-lightPrimary dark:text-darkPrimary mb-2">
+                                        GPI Group <span className="text-[10px] md:text-xs text-sky-400 font-normal">(visible)</span>
+                                    </p>
+                                    <div className="flex flex-wrap gap-1.5 text-[10px] md:text-xs items-end">
+                                        <span className="px-2 py-0.5 rounded-lg bg-gradient-to-tr from-sky-400/20 to-blue-600/20 dark:bg-darkContainer">
+                                            GPI Samples
+                                        </span>
+                                        <span className="px-2 py-0.5 rounded-lg bg-gradient-to-tr from-sky-400/20 to-blue-600/20 dark:bg-darkContainer">
+                                            GPI Jobs
+                                        </span>
+                                        <span className="px-2 py-0.5 rounded-lg bg-gradient-to-tr from-sky-400/20 to-blue-600/20 dark:bg-darkContainer">
+                                            GPI Results
+                                        </span>
+                                        <span className="flex items-end text-lightSecondary">
+                                            etc.
+                                        </span>
+
+                                    </div>
+                                </div>
+
+                                {/* Other group 1 (not visible) */}
+                                <div className="rounded-xl border border-ultralightGray dark:border-darkBorder border-dashed p-3 opacity-60">
+                                    <p className="text-xs md:text-sm font-sfmedium text-lightPrimary dark:text-darkPrimary mb-2">
+                                        Other SG Group <span className="text-[10px] md:text-xs text-lightSecondary dark:text-darkSecondary font-normal">(not visible)</span>
+                                    </p>
+                                    <div className="flex flex-wrap gap-1.5 text-[10px] md:text-xs">
+                                        <span className="px-2 py-0.5 rounded-full bg-lightBG/70 dark:bg-darkContainer/70">
+                                            Other Samples
+                                        </span>
+                                        <span className="px-2 py-0.5 rounded-full bg-lightBG/70 dark:bg-darkContainer/70">
+                                            Other Jobs
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Other group 2 (not visible) */}
+                                <div className="rounded-xl border border-ultralightGray dark:border-darkBorder border-dashed p-3 opacity-60">
+                                    <p className="text-xs md:text-sm font-sfmedium text-lightPrimary dark:text-darkPrimary mb-2">
+                                        External Group <span className="text-[10px] md:text-xs text-lightSecondary dark:text-darkSecondary font-normal">(not visible)</span>
+                                    </p>
+                                    <div className="flex flex-wrap gap-1.5 text-[10px] md:text-xs">
+                                        <span className="px-2 py-0.5 rounded-full bg-lightBG/70 dark:bg-darkContainer/70">
+                                            External Samples
+                                        </span>
+                                        <span className="px-2 py-0.5 rounded-full bg-lightBG/70 dark:bg-darkContainer/70">
+                                            External Jobs
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </li>
+
+                        <li className="flex flex-col gap-2">
+                            {/* Ligne principale */}
+                            <div className="flex gap-2 items-start md:items-center">
+                                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+                                    <span className="text-[11px] mt-[2px] font-sfbold">02</span>
+                                </div>
+
+                                <span className="text-lightPrimary dark:text-darkPrimary">
+                                    Definition of data templates for <span className="font-sfbold italic">Sample </span>
+                                    and <span className="font-sfbold italic">Job </span> entities.
+                                </span>
+                            </div>
+
+                            {/* Mini description */}
+                            <p className="md:ml-8 text-xs md:text-sm text-lightSecondary dark:text-darkSecondary">
+                                Templates define the structure of laboratory data inside the LIMS.
+                                Each <span className="italic font-sfmedium">Job</span> and <span className="italic font-sfmedium">Sample</span> follows a predefined schema
+                                (fields & relationships) as shown below. Each Job can be linked to multiple Samples, but each Sample is linked to only one Job. same logic
+                                applies for Samples and Tests.
+                            </p>
+
+                            <div className="my-6 w-full md:pl-8">
+                                {/* Desktop layout */}
+                                <div className="hidden md:flex items-center justify-between gap-4 w-full">
+                                    {/* JOB */}
+                                    <div className="px-4 py-2 rounded-xl bg-gradient-to-tr from-sky-400 to-blue-600 text-white font-sfbold text-sm whitespace-nowrap text-center">
+                                        JOB
+                                    </div>
+
+                                    {/* Line + cardinalities */}
+                                    <div className="flex flex-1 items-center">
+                                        <span className="text-xs text-lightPrimary dark:text-darkPrimary mr-2">1</span>
+                                        <div className="flex-1 h-[2px] bg-gradient-to-r from-sky-400 to-blue-600" />
+                                        <span className="text-xs text-lightPrimary dark:text-darkPrimary ml-2">n</span>
+                                    </div>
+
+                                    {/* SAMPLE */}
+                                    <div className="px-4 py-2 rounded-xl bg-gradient-to-tr from-sky-400 to-blue-600 text-white font-sfbold text-sm whitespace-nowrap text-center">
+                                        SAMPLE
+                                    </div>
+
+                                    {/* Line + cardinalities */}
+                                    <div className="flex flex-1 items-center">
+                                        <span className="text-xs text-lightPrimary dark:text-darkPrimary mr-2">1</span>
+                                        <div className="flex-1 h-[2px] bg-gradient-to-r from-blue-600 to-sky-400" />
+                                        <span className="text-xs text-lightPrimary dark:text-darkPrimary ml-2">n</span>
+                                    </div>
+
+                                    {/* TEST */}
+                                    <div className="px-4 py-2 rounded-xl bg-gradient-to-tr from-sky-400 to-blue-600 text-white font-sfbold text-sm whitespace-nowrap text-center">
+                                        TEST
+                                    </div>
+                                </div>
+
+                                {/* Mobile layout */}
+                                <div className="flex flex-col md:hidden items-center gap-3 w-full">
+                                    {/* JOB */}
+                                    <div className="w-full text-center px-4 py-2 rounded-xl bg-gradient-to-tr from-sky-400 to-blue-600 text-white font-sfbold text-sm">
+                                        JOB (Request)
+                                    </div>
+
+                                    <div className="flex flex-col items-center gap-1 w-full">
+                                        <span className="text-[10px] text-lightPrimary dark:text-darkPrimary">1 → n</span>
+                                        <div className="w-12 h-[2px] bg-gradient-to-r from-sky-400 to-blue-600" />
+                                    </div>
+
+                                    {/* SAMPLE */}
+                                    <div className="w-full text-center px-4 py-2 rounded-xl bg-gradient-to-tr from-sky-400 to-blue-600 text-white font-sfbold text-sm">
+                                        SAMPLE
+                                    </div>
+
+                                    <div className="flex flex-col items-center gap-1 w-full">
+                                        <span className="text-[10px] text-lightPrimary dark:text-darkPrimary">1 → n</span>
+                                        <div className="w-12 h-[2px] bg-gradient-to-r from-sky-400 to-blue-600" />
+                                    </div>
+
+                                    {/* TEST */}
+                                    <div className="w-full text-center px-4 py-2 rounded-xl bg-gradient-to-tr from-sky-400 to-blue-600 text-white font-sfbold text-sm">
+                                        TEST (Analysis)
+                                    </div>
+                                </div>
+                            </div>
+                            <p className="md:ml-8 text-xs md:text-sm text-lightSecondary dark:text-darkSecondary">
+                                So basically this part was about creating differents static templates for the jobs and samples entities.
+                                Each template includes a form with specific fields and relationships to ensure that all necessary information is captured accurately.
+                                This structured approach allows for better data management and retrieval within the LIMS. The fields was chosen with GPI stakeholders
+                                to make sure they align with their operational needs and reporting requirements.
+                            </p>
+
+                            <p className="md:ml-8 text-xs md:text-sm text-lightSecondary dark:text-darkSecondary">
+                                The next step is to set up workflows that will create instances of these static templates with a unique ID. These are called Job Login and
+                                Sample Login in SM. basically when a user creates a new Job Login, they will fill out a form based on the predefined Job template.
+                                Similarly, when they create a Sample Login, it will be based on the Sample template. Thanks to this architecture from one Job ID
+                                we can retrieve all the linked samples and analysis results.
+                            </p>
+
+                            <div className="my-4 w-full md:pl-8">
+
+                                {/* Desktop layout */}
+                                <div className="hidden md:flex items-center justify-between gap-4 w-full">
+                                    {/* Job template */}
+                                    <div className="px-4 py-3 rounded-xl bg-lightContainer dark:bg-[#262626] border border-ultralightGray dark:border-darkBorder min-w-[180px]">
+                                        <p className="text-xs font-sfmedium text-lightSecondary dark:text-darkSecondary uppercase tracking-wide mb-1">
+                                            Static configuration
+                                        </p>
+                                        <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">
+                                            Job/Sample template
+                                        </p>
+                                        <p className="mt-1 text-xs text-lightSecondary dark:text-darkSecondary">
+                                            Fields, structure and rules defined once.
+                                        </p>
+                                    </div>
+
+                                    {/* Job login action */}
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div className="flex items-center gap-2">
+                                            <svg
+                                                className="w-5 h-5 text-sky-500"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M5 12h14" />
+                                                <path d="M13 5l7 7-7 7" />
+                                            </svg>
+                                            <div className="px-3 py-1.5 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 text-white text-xs font-sfmedium whitespace-nowrap" >
+                                                Job login
+                                            </div>
+                                            <svg
+                                                className="w-5 h-5 text-sky-500"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M5 12h14" />
+                                                <path d="M13 5l7 7-7 7" />
+                                            </svg>
+                                        </div>
+
+                                        <span className="text-[11px] text-lightSecondary dark:text-darkSecondary text-center max-w-[140px]">
+                                            Creates a new job instance based on the template.
+                                        </span>
+                                    </div>
+
+                                    {/* Job instance */}
+                                    <div className="px-4 py-3 rounded-xl bg-lightContainer dark:bg-[#262626] border border-ultralightGray dark:border-darkBorder min-w-[150px] ">
+                                        <p className="text-xs font-sfmedium text-lightSecondary dark:text-darkSecondary uppercase tracking-wide mb-1">
+                                            Job instance
+                                        </p>
+                                        <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">
+                                            #JOB-0001
+                                        </p>
+                                        <p className="mt-1 text-xs text-lightSecondary dark:text-darkSecondary">
+                                            One unique job created for a specific request.
+                                        </p>
+                                    </div>
+
+                                    {/* Sample login action */}
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div className="flex items-center gap-2">
+                                            <svg
+                                                className="w-5 h-5 text-sky-500"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M5 12h14" />
+                                                <path d="M13 5l7 7-7 7" />
+                                            </svg>
+
+                                            <div className="px-3 py-1.5 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 text-white text-xs font-sfmedium whitespace-nowrap ">
+                                                Sample login
+                                            </div>
+                                            <svg
+                                                className="w-5 h-5 text-sky-500"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M5 12h14" />
+                                                <path d="M13 5l7 7-7 7" />
+                                            </svg>
+                                        </div>
+                                        <span className="text-[11px] text-lightSecondary dark:text-darkSecondary text-center max-w-[140px]">
+                                            Creates samples linked to that job.
+                                        </span>
+                                    </div>
+
+                                    {/* Sample instances */}
+                                    <div className="px-4 py-3 rounded-xl bg-lightContainer dark:bg-[#262626] border border-ultralightGray dark:border-darkBorder min-w-[210px]">
+                                        <p className="text-xs font-sfmedium text-lightSecondary dark:text-darkSecondary uppercase tracking-wide mb-1">
+                                            Sample instances
+                                        </p>
+                                        <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary whitespace-nowrap">
+                                            #SMP-0001, #SMP-0002,...
+                                        </p>
+                                        <p className="mt-1 text-xs text-lightSecondary dark:text-darkSecondary">
+                                            One job instance can generate multiple samples.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Mobile layout */}
+                                <div className="flex flex-col md:hidden items-stretch gap-4 w-full mt-2">
+                                    {/* Job template */}
+                                    <div className="w-full px-4 py-3 rounded-xl bg-lightContainer dark:bg-[#262626] border border-ultralightGray dark:border-darkBorder">
+                                        <p className="text-[11px] font-sfmedium text-lightSecondary dark:text-darkSecondary uppercase tracking-wide mb-1">
+                                            Static configuration
+                                        </p>
+                                        <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">
+                                            Job template
+                                        </p>
+                                        <p className="mt-1 text-xs text-lightSecondary dark:text-darkSecondary">
+                                            Fields, structure and rules defined once.
+                                        </p>
+                                    </div>
+
+                                    {/* Vertical arrow + Job login */}
+                                    <div className="flex flex-col items-center gap-1">
+                                        <svg
+                                            className="w-4 h-4 text-sky-500"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M12 5v14" />
+                                            <path d="M5 13l7 7 7-7" />
+                                        </svg>
+                                        <div className="px-3 py-1 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 text-white text-[11px] font-sfmedium">
+                                            Job login
+                                        </div>
+                                        <span className="text-[11px] text-lightSecondary dark:text-darkSecondary text-center">
+                                            Creates a new job instance based on the template.
+                                        </span>
+                                        <svg
+                                            className="w-4 h-4 text-sky-500"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M12 5v14" />
+                                            <path d="M5 13l7 7 7-7" />
+                                        </svg>
+                                    </div>
+
+                                    {/* Job instance */}
+                                    <div className="w-full px-4 py-3 rounded-xl bg-lightContainer dark:bg-[#262626] border border-ultralightGray dark:border-darkBorder">
+                                        <p className="text-[11px] font-sfmedium text-lightSecondary dark:text-darkSecondary uppercase tracking-wide mb-1">
+                                            Job instance
+                                        </p>
+                                        <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">
+                                            Job #JOB-000123
+                                        </p>
+                                        <p className="mt-1 text-xs text-lightSecondary dark:text-darkSecondary">
+                                            A unique job created from the template.
+                                        </p>
+                                    </div>
+
+                                    {/* Vertical arrow + Sample login */}
+                                    <div className="flex flex-col items-center gap-1">
+                                        <svg
+                                            className="w-4 h-4 text-sky-500"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M12 5v14" />
+                                            <path d="M5 13l7 7 7-7" />
+                                        </svg>
+                                        <div className="px-3 py-1 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 text-white text-[11px] font-sfmedium">
+                                            Sample login
+                                        </div>
+                                        <span className="text-[11px] text-lightSecondary dark:text-darkSecondary text-center max-w-[140px]">
+                                            Creates samples linked to that job.
+                                        </span>
+                                        <svg
+                                            className="w-4 h-4 text-sky-500"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M12 5v14" />
+                                            <path d="M5 13l7 7 7-7" />
+                                        </svg>
+                                    </div>
+
+                                    {/* Sample instances */}
+                                    <div className="w-full px-4 py-3 rounded-xl bg-lightContainer dark:bg-[#262626] border border-ultralightGray dark:border-darkBorder">
+                                        <p className="text-[11px] font-sfmedium text-lightSecondary dark:text-darkSecondary uppercase tracking-wide mb-1">
+                                            Sample instances
+                                        </p>
+                                        <p className="text-sm font-sfbold text-lightPrimary dark:text-darkPrimary">
+                                            Sample #SMP-0001, #SMP-0002, …
+                                        </p>
+                                        <p className="mt-1 text-xs text-lightSecondary dark:text-darkSecondary">
+                                            Linked to the same job instance.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </li>
+
+
+
+                        <li className="flex flex-col gap-2">
+                            {/* Ligne principale */}
+                            <div className="flex gap-2 items-start md:items-center">
+                                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+                                    <span className="text-[11px] mt-[2px] font-sfbold">03</span>
+                                </div>
+                                <span>
+                                    Creation of  the <span className="font-sfbold italic">analysis (versioned analysis)</span> and their associated tests.
+                                </span>
+                            </div>
+
+                            {/* Mini description */}
+                            <p className="md:ml-8 text-xs md:text-sm text-lightSecondary dark:text-darkSecondary text-justify">
+                                Using the same logic as for <span className="italic font-sfmedium">Job</span> and <span className="italic font-sfmedium">Sample</span>,
+                                each <span className="italic font-sfmedium">Sample</span> can be linked to several tests.
+                                The static template that defines how an analysis should be performed is called a
+                                <span className="italic font-sfmedium"> versioned analysis</span>, and each individual test result is a dynamic instance of that
+                                <span className="italic font-sfmedium"> versioned analysis</span>. The only difference here is that versionned analysis contains
+                                results filled by the lab instead of just data fields filled by the requester.
+                            </p>
+
+
+                        </li>
+                        <li className="flex flex-col gap-2">
+                            {/* Ligne principale */}
+                            <div className="flex gap-2 items-start md:items-center">
+                                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 
+            flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+                                    <span className="text-[11px] mt-[2px] font-sfbold">04</span>
+                                </div>
+
+                                <span className="text-lightPrimary dark:text-darkPrimary">
+                                    Integration of external data into <span className="font-sfbold">Project info</span> and
+                                    <span className="font-sfbold"> Customers</span> tables.
+                                </span>
+                            </div>
+
+                            {/* Mini description */}
+                            <p className="md:ml-8 text-xs md:text-sm text-lightSecondary dark:text-darkSecondary text-justify">
+                                This step consisted of importing project-related information (from
+                                <span className="font-sfmedium"> Planisware</span>) as well as customer data directly
+                                into Sample Manager’s database. Even though it may appear straightforward, the operation had to be performed manually:
+                                each record in Sample Manager is structured and follows internal relationships,
+                                meaning each record had to be created with respect to the other existing records.
+                            </p>
+                        </li>
+
+                        <li className="flex flex-col gap-2">
+                            {/* Ligne principale */}
+                            <div className="flex gap-2 items-start md:items-center">
+                                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 
+            flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+                                    <span className="text-[11px] mt-[2px] font-sfbold">06</span>
+                                </div>
+
+                                <span className="text-lightPrimary dark:text-darkPrimary">
+                                    Creation of user accounts for all GPI engineers and technicians.
+                                </span>
+                            </div>
+
+                            {/* Mini description */}
+                            <p className="md:ml-8 text-xs md:text-sm text-lightSecondary dark:text-darkSecondary">
+                                Each user account had to be configured with the appropriate access rules. Every profile needed to be associated
+                                with the <span className="font-sfmedium"> GPI Group</span> to ensure visibility on GPI-related data.
+
+                                Additionally, users had to be differentiated based on their responsibilities:
+                                <span className="font-sfmedium"> laboratory technicians</span> (who perform analyses)
+                                versus <span className="font-sfmedium"> requesters / engineers</span> (who create and track analysis requests).
+                            </p>
+                        </li>
+
+                    </ol>
+                </div>
+            </section>
+
+
+
+
+
+
+
+            <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-4 mb-4">
+                the rest of the content is coming soon...
+            </p>
         </div>
     );
 };
+
 
