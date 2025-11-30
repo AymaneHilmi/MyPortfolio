@@ -8,6 +8,7 @@ import { AnimatedBeamDemo } from "../components/ui/animatedbeam";
 import { motion } from "framer-motion";
 import SharepointAcrhitecture from "@/assets/ConnectedlabSharepointArchitecture.png";
 import { ArcherContainer, ArcherElement } from "react-archer";
+import userExample from "@/assets/fiche utilisateur.png";
 
 
 export default function ConnectedLabsScreen() {
@@ -613,7 +614,7 @@ export default function ConnectedLabsScreen() {
             </p>
 
 
-
+            {/* ///////////////////////////////////////////////////////////////////////// */}
             <section className="mt-6">
                 <div className="rounded-2xl border border-ultralightGray dark:border-darkBorder bg-lightBG dark:bg-darkContainer px-4 py-4 md:px-5 md:py-4">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mb-4">
@@ -621,6 +622,8 @@ export default function ConnectedLabsScreen() {
                     </p>
 
                     <ol className="mt-3 space-y-2 text-sm md:text-[15px] text-lightPrimary dark:text-darkPrimary font-sfregular">
+                        {/* ///////////////////////////////////   1     ////////////////////////////////////// */}
+
                         <li className="flex flex-col gap-1">
                             {/* Ligne principale */}
                             <div className="flex gap-2 items-start md:items-center">
@@ -701,6 +704,9 @@ export default function ConnectedLabsScreen() {
 
 
                         </li>
+
+                        {/* ///////////////////////////////////   2     ////////////////////////////////////// */}
+
 
                         <li className="flex flex-col gap-2">
                             {/* Ligne principale */}
@@ -1010,12 +1016,10 @@ export default function ConnectedLabsScreen() {
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </li>
 
 
+                        {/* ///////////////////////////////////   3    ////////////////////////////////////// */}
 
                         <li className="flex flex-col gap-2">
                             {/* Ligne principale */}
@@ -1040,6 +1044,9 @@ export default function ConnectedLabsScreen() {
 
 
                         </li>
+
+                        {/* ///////////////////////////////////   4     ////////////////////////////////////// */}
+
                         <li className="flex flex-col gap-2">
                             {/* Ligne principale */}
                             <div className="flex gap-2 items-start md:items-center">
@@ -1062,7 +1069,11 @@ export default function ConnectedLabsScreen() {
                                 each record in Sample Manager is structured and follows internal relationships,
                                 meaning each record had to be created with respect to the other existing records.
                             </p>
+
                         </li>
+
+                        {/* ///////////////////////////////////   5     ////////////////////////////////////// */}
+
 
                         <li className="flex flex-col gap-2">
                             {/* Ligne principale */}
@@ -1085,12 +1096,165 @@ export default function ConnectedLabsScreen() {
                                 Additionally, users had to be differentiated based on their responsibilities:
                                 <span className="font-sfmedium"> laboratory technicians</span> (who perform analyses)
                                 versus <span className="font-sfmedium"> requesters / engineers</span> (who create and track analysis requests).
+                                <br />
+                                In the example below, you can see an example of a Sample Manager profile (in this example my profile), there are
+                                8 pages to configure for each user. Groups page, role pages training page SG page etc.
                             </p>
-                        </li>
 
+                            <img src={userExample} alt="Job and Sample templates" className=" md:ml-8 mt-2 rounded-xl border border-gray-300" />
+                        </li>
                     </ol>
                 </div>
+            </section >
+
+            <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
+                Dynamic Data Configuration
+            </p>
+
+            {/* Ligne principale */}
+            <div className="flex gap-2 items-start md:items-center text-sm md:text-[15px] text-lightPrimary dark:text-darkPrimary font-sfbold mb-4">
+                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 
+            flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+                    <span className="text-[11px] mt-[2px] font-sfbold">07</span>
+                </div>
+
+                <span className="text-lightPrimary dark:text-darkPrimary">
+                    Workflows Lifecycle & Extended Lifecycle
+                </span>
+            </div>
+
+            <p className=" text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                The next step was to implement what Sample Manager calls an Extended LifeCycle, specifically designed for GPI and applied to both Job and Sample entities.
+                As its name suggests, a LifeCycle is essentially a workflow that enforces predefined rules throughout the entire life of an entity, for example, a Job
+                follows a sequence of states such as creation, validation, execution, and completion.
+                <br />
+
+                Sample Manager provides a standard LifeCycle out of the box for both job and sample, containing all native, built-in rules of the software.
+                On top of this, the Extended LifeCycle, again, as its name implies, acts as an extension of the standard one, allowing us to add custom rules tailored
+                to each laboratory’s operational needs. This is what makes the system highly flexible across all Saint-Gobain R&D centers.
+            </p>
+            <section className="my-6">
+                {/* Schema */}
+                <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 md:gap-6 w-full">
+
+                    {/* User layer */}
+                    <div className="flex-1 rounded-2xl border border-ultralightGray dark:border-darkBorder bg-lightBG dark:bg-darkContainer overflow-hidden shadow-sm">
+                        {/* Header */}
+                        <div className="px-4 py-2 bg-gradient-to-r from-sky-400 to-blue-600 text-white text-xs md:text-[11px] font-sfmedium uppercase tracking-wide">
+                            User layer
+                        </div>
+                        {/* Body */}
+                        <div className="px-4 py-3 md:px-5 md:py-4 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary font-sfregular">
+                            Action performed in the Sample Manager interface
+                            (for example: creating or accepting an analysis request).
+                        </div>
+                    </div>
+
+                    <div className="flex items-center justify-center rotate-90 md:rotate-0">
+                        <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 grid place-items-center shadow-md">
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                className="stroke-white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M5 12h14" />
+                                <path d="M13 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    {/* Logic layer */}
+                    <div className="flex-1 rounded-2xl border border-ultralightGray dark:border-darkBorder bg-lightBG dark:bg-darkContainer overflow-hidden shadow-sm">
+                        {/* Header */}
+                        <div className="px-4 py-2 bg-gradient-to-r from-blue-600 to-sky-400 text-white text-xs md:text-[11px] font-sfmedium uppercase tracking-wide">
+                            Logic layer (LifeCycle)
+                        </div>
+                        {/* Body */}
+                        <div className="px-4 py-3 md:px-5 md:py-4 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary font-sfregular">
+                            The LifeCycle and its triggers interpret the user action and apply
+                            predefined rules (status changes, validations, workflow transitions, etc.).
+                        </div>
+                    </div>
+
+                    <div className="flex items-center justify-center rotate-90 md:rotate-0">
+                        <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 grid place-items-center shadow-md">
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                className="stroke-white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M5 12h14" />
+                                <path d="M13 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+
+
+
+                    {/* Server / data layer */}
+                    <div className="flex-1 rounded-2xl border border-ultralightGray dark:border-darkBorder bg-lightBG dark:bg-darkContainer overflow-hidden shadow-sm">
+                        {/* Header */}
+                        <div className="px-4 py-2 bg-gradient-to-r from-sky-500 to-blue-700 text-white text-xs md:text-[11px] font-sfmedium uppercase tracking-wide">
+                            Server / data layer
+                        </div>
+                        {/* Body */}
+                        <div className="px-4 py-3 md:px-5 md:py-4 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary font-sfregular">
+                            Automatic actions are executed on the database (for example: updating the
+                            Job status to "Accepted" or sending an email with the new request details
+                            ).
+                        </div>
+                    </div>
+                </div>
             </section>
+            <p className="md:mb-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                For instance, the automatic email notification triggered when a new analysis request is created was implemented through this mechanism.
+                A custom rule was added to the Extended LifeCycle so that, upon Job creation, the system automatically sends an email containing all request details
+                to the laboratory.
+            </p>
+
+            {/* Ligne principale */}
+            <div className="flex gap-2 items-start md:items-center text-sm md:text-[15px] text-lightPrimary dark:text-darkPrimary font-sfbold mb-4">
+                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 
+            flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+                    <span className="text-[11px] mt-[2px] font-sfbold">08</span>
+                </div>
+
+                <span className="text-lightPrimary dark:text-darkPrimary">
+                    Modules and interfaces
+                </span>
+            </div>
+            <p className="md:mb-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                The next phase focused on integrating the modules and user interfaces, essential components that allow users to access data and interact with the system.
+                Three main modules were required: one for engineers, one for laboratory technicians, and another for local administrators.
+                <br />
+                <br />
+
+                For the engineer module, after several discussions with Eduardo, we chose a simple and intuitive interface. The primary need was quick access to create analysis requests and an easy way to consult laboratory data.
+                This interface was structured into three main sections:
+
+                <ul>
+                    <li className="list-disc list-inside mt-2">
+                        <span className="font-sfbold">DAT Creation</span>: Allows users to create new analysis requests, with two actions: start a new DAT or add a sample to an existing one.
+                    </li>
+                    <li className="list-disc list-inside mt-2">
+                        <span className="font-sfbold">DAT Management</span>: Provides visibility over ongoing or previously created requests, enabling engineers to track the status and progress of their DATs.
+                    </li>
+                    <li className="list-disc list-inside mt-2">
+                        <span className="font-sfbold">Results</span>: Gives access to completed requests, allowing users to view their own finished DATs as well as all finalized requests within GPI.
+                    </li>
+                </ul>
+            </p>
+
 
 
 
@@ -1101,7 +1265,7 @@ export default function ConnectedLabsScreen() {
             <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-4 mb-4">
                 the rest of the content is coming soon...
             </p>
-        </div>
+        </div >
     );
 };
 
