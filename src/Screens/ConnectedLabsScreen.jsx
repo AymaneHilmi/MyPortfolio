@@ -1223,7 +1223,7 @@ export default function ConnectedLabsScreen() {
             </p>
 
             {/* Ligne principale */}
-            <div className="flex gap-2 items-start md:items-center text-sm md:text-[15px] text-lightPrimary dark:text-darkPrimary font-sfbold mb-4">
+            <div className="flex gap-2 items-start md:items-center text-sm md:text-[15px] text-lightPrimary dark:text-darkPrimary font-sfbold mt-6 mb-2">
                 <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 
             flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
                     <span className="text-[11px] mt-[2px] font-sfbold">08</span>
