@@ -8,7 +8,7 @@ import { AnimatedBeamDemo } from "../components/ui/animatedbeam";
 import { motion } from "framer-motion";
 import SharepointAcrhitecture from "@/assets/ConnectedlabSharepointArchitecture.png";
 import { ArcherContainer, ArcherElement } from "react-archer";
-import userExample from "@/assets/fiche utilisateur.png";
+import userExample from "@/assets/userExample.png";
 
 
 export default function ConnectedLabsScreen() {
