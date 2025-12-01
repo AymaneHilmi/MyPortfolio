@@ -9,7 +9,9 @@ import { motion } from "framer-motion";
 import SharepointAcrhitecture from "@/assets/ConnectedlabSharepointArchitecture.png";
 import { ArcherContainer, ArcherElement } from "react-archer";
 import userExample from "@/assets/userExample.png";
-
+import RequesterInterface from "@/assets/RequesterInterface.png";
+import TechnicianInterface from "@/assets/TechnicianInterface.png";
+import AdminInterface from "@/assets/AdminInterface.png";
 
 export default function ConnectedLabsScreen() {
 
@@ -138,6 +140,9 @@ export default function ConnectedLabsScreen() {
                 </p>
             </FadeIn>
             <AnimatedBeamDemo />
+
+            {/* Ajouter ll'explication du process SM avec diagram */}
+
             <FadeIn className="my-4 mb-8">
                 <p className="text-justify">
                     From this environment my project took place with two main objectives, Integrating a new entity into the Saint-Gobain
@@ -1101,7 +1106,12 @@ export default function ConnectedLabsScreen() {
                                 8 pages to configure for each user. Groups page, role pages training page SG page etc.
                             </p>
 
-                            <img src={userExample} alt="Job and Sample templates" className=" md:ml-8 mt-2 rounded-xl border border-gray-300" />
+                            <div className="md:ml-8">
+                                <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8">
+                                    User Account Example
+                                </p>
+                                <img src={userExample} alt="Job and Sample templates" className="mt-2 rounded-xl border border-gray-300" />
+                            </div>
                         </li>
                     </ol>
                 </div>
@@ -1124,7 +1134,7 @@ export default function ConnectedLabsScreen() {
             </div>
 
             <p className=" text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
-                The next step was to implement what Sample Manager calls an Extended LifeCycle, specifically designed for GPI and applied to both Job and Sample entities.
+                The next step was to implement what Sample Manager calls a LifeCycle, specifically designed for GPI and applied to both Job and Sample entities.
                 As its name suggests, a LifeCycle is essentially a workflow that enforces predefined rules throughout the entire life of an entity, for example, a Job
                 follows a sequence of states such as creation, validation, execution, and completion.
                 <br />
@@ -1176,7 +1186,7 @@ export default function ConnectedLabsScreen() {
                         </div>
                         {/* Body */}
                         <div className="px-4 py-3 md:px-5 md:py-4 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary font-sfregular">
-                            The LifeCycle and its triggers interpret the user action and apply
+                            The Workflow LifeCycle and its triggers apply
                             predefined rules (status changes, validations, workflow transitions, etc.).
                         </div>
                     </div>
@@ -1217,7 +1227,7 @@ export default function ConnectedLabsScreen() {
                 </div>
             </section>
             <p className="md:mb-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
-                For instance, the automatic email notification triggered when a new analysis request is created was implemented through this mechanism.
+                For example, the automatic email notification triggered when a new analysis request is created was implemented through this mechanism.
                 A custom rule was added to the Extended LifeCycle so that, upon Job creation, the system automatically sends an email containing all request details
                 to the laboratory.
             </p>
@@ -1239,7 +1249,7 @@ export default function ConnectedLabsScreen() {
                 <br />
                 <br />
 
-                For the engineer module, after several discussions with Eduardo, we chose a simple and intuitive interface. The primary need was quick access to create analysis requests and an easy way to consult laboratory data.
+                For the engineer module, after several discussions with GPI, we chose a simple and intuitive interface. The primary need was quick access to create analysis requests and an easy way to consult laboratory data.
                 This interface was structured into three main sections:
 
                 <ul>
@@ -1254,6 +1264,73 @@ export default function ConnectedLabsScreen() {
                     </li>
                 </ul>
             </p>
+
+            <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-2">
+                Requester / Engineer Interface
+            </p>
+            <img src={RequesterInterface} alt="Job and Sample templates" className="mt-2 rounded-xl border border-gray-300" />
+
+            <p className="my-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                Technically, to build an interface like this in Sample Manager, a small internal architecture must be created.
+                The first step is to set up what is called a <span className="font-sfbold">cabinet</span> in Sample Manager,
+                a main folder that acts as the entry point for the module. This cabinet can then be linked to a user interface,
+                referred to as a Form in SM. Once the cabinet is opened, the associated interface is displayed automatically.
+                <br />
+                <br />
+                Each button or action in the interface is then linked to specific functionalities in Sample Manager, such as opening a new form to create a DAT or displaying a list of ongoing or completed DATs.
+                These functionalities are implemented using Sample Manager’s workflow engine, which allows the creation of custom actions and their association with interface elements.
+                In practice, it works as a low-code tool where custom scripts and logic can be built by dragging and dropping components.
+            </p>
+
+
+            <p className="my-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                Regarding the laboratory module, the main requirement was to provide a view of all samples, grouped by their status.
+                To achieve this, a cabinet was created, similar to the one used for the engineers but this time without an associated interface.
+                It contains five subfolders, each representing one request status: created, rejected, in progress, completed, and authorized.
+            </p>
+
+            <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-2">
+                Laboratory Interface
+            </p>
+
+            <img src={TechnicianInterface} alt="Job and Sample templates" className="mt-2 rounded-xl border border-gray-300" />
+
+            <p className="my-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                Each subfolder contains a list view displaying all samples corresponding to that status. To make this possible,
+                an entire confiuration of custom filters named <span className="font-sfbold">Criteria</span> are implemented in Sample Manager is required to automatically
+                sort data into the appropriate folders based on their current status.
+            </p>
+
+            <p className="my-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                Finally, for the local administrator module, the goal was to provide access to all configuration settings of the Sample Manager instance.
+                Similar to the laboratory module, a cabinet was created without an associated interface, containing multiple subfolders for different configuration areas.
+                The idea is to centralize all administrative tasks in one location, allowing the local admin to easily manage user accounts, access rights, data, and other system settings.
+            </p>
+
+            <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-2">
+                Admin Interface
+            </p>
+
+            <img src={AdminInterface} alt="Job and Sample templates" className="mt-2 rounded-xl border border-gray-300" />
+
+            {/* <div className="flex gap-2 items-start md:items-center text-sm md:text-[15px] text-lightPrimary dark:text-darkPrimary font-sfbold mt-6 mb-2">
+                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 
+            flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+                    <span className="text-[11px] mt-[2px] font-sfbold">09</span>
+                </div>
+
+                <span className="text-lightPrimary dark:text-darkPrimary">
+                    SM Process : DAT Création
+                </span>
+            </div> */}
+
+
+
+
+
+
+
+
 
 
 
