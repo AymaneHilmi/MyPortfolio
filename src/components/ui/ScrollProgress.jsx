@@ -39,7 +39,7 @@ export default function ScrollProgress({ barClassName }) {
     }, []);
 
     return (
-        <div className="fixed inset-x-0 top-0 z-[120] h-1 backdrop-blur-md pointer-events-none">
+        <div className="fixed inset-x-0 top-0 z-[120] h-1 bg-bgLight dark:bg-bgDark pointer-events-none">
             <div className="h-full w-full bg-transparent">
                 <div
                     ref={barRef}
