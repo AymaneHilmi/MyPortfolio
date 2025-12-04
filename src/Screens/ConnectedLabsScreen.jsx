@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useMemo } from "react";
-import FadeIn from "../components/FadeIn";
+import React, { useEffect, useState, useMemo, useRef } from "react";
+import FadeIn from "@/components/FadeIn";
 import LIMSmobility from "@/assets/LIMSmobility.png";
-import { Github, } from "lucide-react";
-import { NumberTicker } from "../components/ui/NumberTicker";
-import SaintGobainMap from "../components/ui/SaintGobainMap";
-import { AnimatedBeamDemo } from "../components/ui/animatedbeam";
+import { MousePointerClick, ArrowDown } from "lucide-react";
+import { NumberTicker } from "@/components/ui/NumberTicker";
+import SaintGobainMap from "@/components/ui/SaintGobainMap";
+import { AnimatedBeamDemo } from "@/components/ui/animatedbeam";
 import { motion } from "framer-motion";
 import SharepointAcrhitecture from "@/assets/ConnectedlabSharepointArchitecture.png";
 import { ArcherContainer, ArcherElement } from "react-archer";
@@ -12,13 +12,61 @@ import userExample from "@/assets/userExample.png";
 import RequesterInterface from "@/assets/RequesterInterface.png";
 import TechnicianInterface from "@/assets/TechnicianInterface.png";
 import AdminInterface from "@/assets/AdminInterface.png";
+import { File, Folder, Tree } from "@/components/ui/file-tree"
+import ScrollProgress from "../components/ui/ScrollProgress";
 
 export default function ConnectedLabsScreen() {
+    // Sticky Back button state and refs
+    const [showBackButton, setShowBackButton] = useState(false);
+    const lastScrollPositionRef = useRef(null);
+    const backButtonTimeoutRef = useRef(null);
+
+    useEffect(() => {
+        return () => {
+            if (backButtonTimeoutRef.current) {
+                clearTimeout(backButtonTimeoutRef.current);
+            }
+        };
+    }, []);
 
 
     return (
         <div className="lg:mx-auto max-w-5xl px-6">
+            <ScrollProgress />
             <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
+                {/* Sticky Back button */}
+                {showBackButton && (
+                    <button
+                        type="button"
+                        onClick={() => {
+                            if (lastScrollPositionRef.current !== null) {
+                                window.scrollTo({
+                                    top: lastScrollPositionRef.current,
+                                    behavior: "smooth",
+                                });
+                            }
+                            setShowBackButton(false);
+                        }}
+                        className="
+      fixed 
+      bottom-10 right-10
+      xl:bottom-12 xl:right-12
+      2xl:bottom-16 2xl:right-16
+      z-[999]
+      flex items-center gap-2
+      px-4 py-2 rounded-full
+      bg-lightBG dark:bg-darkContainer
+      border border-ultralightGray dark:border-darkBorder
+      shadow-lg backdrop-blur-sm
+      text-lightPrimary dark:text-darkPrimary text-xs md:text-sm font-sfmedium
+      hover:-translate-y-1 hover:shadow-xl
+      transition-all duration-200 cursor-pointer
+    "
+                    >
+                        <ArrowDown className="w-4 h-4" />
+                        <span>Back</span>
+                    </button>
+                )}
                 <FadeIn className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
                     {/* Left column — Text */}
                     <div className="space-y-6">
@@ -58,7 +106,7 @@ export default function ConnectedLabsScreen() {
                         </figure>
                     </div>
                 </FadeIn>
-            </section>
+            </section >
             <section className="mx-auto py-8 md:py-12 flex justify-center items-center">
                 <div className="max-w-5xl mx-auto text-center space-y-4">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular">
@@ -141,7 +189,131 @@ export default function ConnectedLabsScreen() {
             </FadeIn>
             <AnimatedBeamDemo />
 
-            {/* Ajouter ll'explication du process SM avec diagram */}
+            <p id="sm-process-diagram" className="my-8  text-lightPrimary dark:text-darkPrimary text-justify">
+                Sample Manager is a progiciel, in other words a packaged software solution built to address a broad set of
+                business needs through configurable features, rather than custom development. Unlike a bespoke application, a progiciel
+                offers a robust and standardized core while remaining flexible enough to adapt to different laboratory processes.
+
+                Within this framework, Sample Manager provides end-to-end management of analysis requests:
+                from the moment a request is created, through sample reception, preparation, analysis execution, result entry, review, and finally closure (as shown below).
+                Each step is tracked, controlled, and automated through built-in workflows, ensuring full traceability and consistent execution across the laboratory.
+            </p>
+
+            <section className="my-10 md:my-14">
+                <div className="w-full flex flex-col items-center">
+
+                    {/* Steps */}
+                    <div className="grid grid-cols-3 md:grid-cols-6 gap-8 md:gap-6 w-full">
+
+                        {/* STEP 1 */}
+                        <div className="flex flex-col items-center text-center gap-3">
+                            <div className="h-16 w-16 rounded-full bg-orange-400 grid place-items-center shadow-sm">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16l6-4 6 4V4a2 2 0 0 0-2-2z" />
+                                </svg>
+                            </div>
+                            <p className="font-sfbold text-sm md:text-base text-lightPrimary dark:text-darkPrimary">
+                                1 - Request Creation
+                            </p>
+                            <p className="text-xs text-lightSecondary dark:text-darkSecondary">
+                                The requester submits a new analysis request.
+                            </p>
+                        </div>
+
+                        {/* STEP 2 */}
+                        <div className="flex flex-col items-center text-center gap-3">
+                            <div className="h-16 w-16 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 grid place-items-center shadow-sm">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                                    <path d="M20 6L9 17l-5-5" />
+                                </svg>
+                            </div>
+                            <p className="font-sfbold text-sm md:text-base text-lightPrimary dark:text-darkPrimary">
+                                2 - Reception & Labeling
+                            </p>
+                            <p className="text-xs text-lightSecondary dark:text-darkSecondary">
+                                The lab receives the request and labels the sample.
+                            </p>
+                        </div>
+
+                        {/* STEP 3 */}
+                        <div className="flex flex-col items-center text-center gap-3">
+                            <div className="h-16 w-16 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 grid place-items-center shadow-sm">
+                                <svg width="26" height="26" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
+                                    <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
+                                    <path d="M14 2v6h6" />
+                                </svg>
+                            </div>
+                            <p className="font-sfbold text-sm md:text-base text-lightPrimary dark:text-darkPrimary">
+                                3 - Pre-Analysis
+                            </p>
+                            <p className="text-xs text-lightSecondary dark:text-darkSecondary">
+                                The technician performs sample preparation if needed.
+                            </p>
+                        </div>
+
+                        {/* STEP 4 */}
+                        <div className="flex flex-col items-center text-center gap-3">
+                            <div className="h-16 w-16 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 grid place-items-center shadow-sm">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                                    <path d="M9 2v6l-2 2v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8l-2-2V2" />
+                                </svg>
+                            </div>
+                            <p className="font-sfbold text-sm md:text-base text-lightPrimary dark:text-darkPrimary">
+                                4 - Analysis
+                            </p>
+                            <p className="text-xs text-lightSecondary dark:text-darkSecondary">
+                                The experiment is planned and executed.
+                            </p>
+                        </div>
+
+                        {/* STEP 5 */}
+                        <div className="flex flex-col items-center text-center gap-3">
+                            <div className="h-16 w-16 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600 grid place-items-center shadow-sm">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                                    <path d="M20 6L9 17l-5-5" />
+                                </svg>
+                            </div>
+                            <p className="font-sfbold text-sm md:text-base text-lightPrimary dark:text-darkPrimary">
+                                5 - Results Entry
+                            </p>
+                            <p className="text-xs text-lightSecondary dark:text-darkSecondary">
+                                Results are recorded in the LIMS database.
+                            </p>
+                        </div>
+
+                        {/* STEP 6 */}
+                        <div className="flex flex-col items-center text-center gap-3">
+                            <div className="h-16 w-16 rounded-full bg-orange-400 grid place-items-center shadow-sm">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                                    <path d="M9 11l3 3L22 4" />
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                                </svg>
+                            </div>
+                            <p className="font-sfbold text-sm md:text-base text-lightPrimary dark:text-darkPrimary">
+                                6 - Delivery
+                            </p>
+                            <p className="text-xs text-lightSecondary dark:text-darkSecondary">
+                                Results are delivered back to the requester.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* LEGEND */}
+                    <div className="flex flex-row items-center gap-6 mt-5">
+                        <div className="flex items-center gap-2">
+                            <div className="h-4 w-4 rounded-full bg-orange-400"></div>
+                            <span className="text-xs text-lightPrimary dark:text-darkPrimary font-sfregular">Requester / engineer</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="h-4 w-4 rounded-full bg-gradient-to-tr from-sky-400 to-blue-600"></div>
+                            <span className="text-xs text-lightPrimary dark:text-darkPrimary font-sfregular">Laboratory Technician</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
 
             <FadeIn className="my-4 mb-8">
                 <p className="text-justify">
@@ -1282,7 +1454,6 @@ export default function ConnectedLabsScreen() {
                 In practice, it works as a low-code tool where custom scripts and logic can be built by dragging and dropping components.
             </p>
 
-
             <p className="my-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
                 Regarding the laboratory module, the main requirement was to provide a view of all samples, grouped by their status.
                 To achieve this, a cabinet was created, similar to the one used for the engineers but this time without an associated interface.
@@ -1313,29 +1484,109 @@ export default function ConnectedLabsScreen() {
 
             <img src={AdminInterface} alt="Job and Sample templates" className="mt-2 rounded-xl border border-gray-300" />
 
-            {/* <div className="flex gap-2 items-start md:items-center text-sm md:text-[15px] text-lightPrimary dark:text-darkPrimary font-sfbold mt-6 mb-2">
-                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 
-            flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+            <p className="my-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                By structuring the modules in this way, each user type has access to the specific tools and information they need, here is an overview of the cabinet structure for each module.
+            </p>
+
+
+            <div className="flex flex-col md:flex-row w-full gap-8">
+                <div className="bg-background relative flex h-[340px] md:w-1/2 flex-row items-center justify-center overflow-hidden rounded-lg border">
+                    {/* Interactive indicator */}
+                    <div className="absolute top-2 right-2 z-50 flex items-center gap-1 text-[10px] font-sfmedium text-lightPrimary dark:text-darkPrimary">
+                        <MousePointerClick className="w-4 h-4" />
+                        <span>Interactive</span>
+                    </div>
+
+                    <Tree
+                        className="bg-background overflow-hidden rounded-md p-2"
+                        initialSelectedId="1"
+                        initialExpandedItems={["1", "2", "3", "4"]}
+                    >
+                        <Folder element="Sample Manager" value="1">
+                            <Folder value="2" element="GPI - Requesters Cabinets">
+                                <File >
+                                    <p>Requester interface</p>
+                                </File>
+                            </Folder>
+                            <Folder value="3" element="GPI -Laboratory Cabinets">
+                                <File >
+                                    <p>GPI - Received DATs </p>
+                                </File>
+                                <File >
+                                    <p>GPI - Rejected DATs </p>
+                                </File>
+                                <File >
+                                    <p>GPI - In Progress DATs</p>
+                                </File>
+                                <File >
+                                    <p>GPI - Completed DATs</p>
+                                </File>
+                                <File >
+                                    <p>GPI - Authorized DATs</p>
+                                </File>
+                            </Folder>
+                            <Folder value="4" element="GPI - Admin Cabinets">
+                                <File >
+                                    <p>GPI - Operators</p>
+                                </File>
+                                <File >
+                                    <p>GPI - Planisware Projects</p>
+                                </File>
+                                <File >
+                                    <p>GPI - Customers</p>
+                                </File>
+                            </Folder>
+                        </Folder>
+                    </Tree>
+
+                </div>
+                <p className=" md:w-1/2 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                    Each cabinet is linked to a specific Group and Role, which controls who can access it and what actions are available.
+                    Laboratory technicians are associated with the Laboratory Group, meaning they can only open and interact with the lab-specific cabinets.
+                    Similarly, engineers (requesters) only see the engineering cabinets, and administrators access the administration cabinets.
+                </p>
+
+            </div>
+
+            <div className="flex gap-2 items-start md:items-center text-sm md:text-[15px] text-lightPrimary dark:text-darkPrimary font-sfbold mt-6 mb-2">
+                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
                     <span className="text-[11px] mt-[2px] font-sfbold">09</span>
                 </div>
 
                 <span className="text-lightPrimary dark:text-darkPrimary">
                     SM Process : DAT Création
                 </span>
-            </div> */}
+            </div>
 
+            <p className="my-8 text-xs md:text-sm text-lightPrimary dark:text-darkPrimary text-justify">
+                If we get a stepback and look the <a
+                    className="underline"
+                    href="#sm-process-diagram"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        // Save current scroll position
+                        lastScrollPositionRef.current = window.scrollY;
 
+                        // Scroll to the diagram smoothly
+                        const el = document.getElementById("sm-process-diagram");
+                        if (el) {
+                            el.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }
 
-
-
-
-
-
-
-
-
-
-
+                        // Show back button for 10 seconds
+                        setShowBackButton(true);
+                        if (backButtonTimeoutRef.current) {
+                            clearTimeout(backButtonTimeoutRef.current);
+                        }
+                        backButtonTimeoutRef.current = setTimeout(() => {
+                            setShowBackButton(false);
+                        }, 10000);
+                    }}>
+                    previous diagram
+                </a> of the sample manager process we can see 6 main steps. As asked by GPI each step was implemented one
+                by one because of the specifities of their lab processes. This was clearly the phase that required the most
+                time and effort throughout this part of the project.
+            </p>
 
 
 

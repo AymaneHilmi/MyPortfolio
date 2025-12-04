@@ -34,6 +34,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/ToolTip";
 import FadeIn from "../components/FadeIn";
+import ScrollProgress from "../components/ui/ScrollProgress";
 
 export default function CesiverooScreen() {
   const {
@@ -154,6 +155,7 @@ export default function CesiverooScreen() {
   ];
   return (
     <div className="md:mx-auto max-w-5xl mx-6">
+      <ScrollProgress barClassName="bg-[#20CFBD]" />
       <section className="mx-auto py-12 md:py-16 mt-16 md:mt-32 flex justify-center items-center">
         <FadeIn className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* colonne de gauche — Texte */}

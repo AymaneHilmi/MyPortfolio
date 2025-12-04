@@ -34,6 +34,7 @@ import LighthouseSection from "../components/ui/lightHousesection";
 
 import { useEasterEgg } from "@/context/EasterEggContext";
 import FadeIn from "../components/FadeIn";
+import ScrollProgress from "../components/ui/ScrollProgress";
 
 
 
@@ -133,6 +134,7 @@ export default function PortfolioScreen({ visitsTotal }) {
 
   return (
     <div className="lg:mx-auto max-w-5xl px-6">
+      <ScrollProgress barClassName="bg-brandgradient" />
       <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
         <FadeIn className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
           {/* Left column — Text */}
