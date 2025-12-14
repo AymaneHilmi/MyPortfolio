@@ -65,7 +65,7 @@ export default function ConnectedLabsScreen() {
 
 
     return (
-        <div className="lg:mx-auto max-w-5xl px-6 text-xs md:text-sm lg:text-base font-sfregular overflow-hidden">
+        <div className="lg:mx-auto max-w-5xl px-6 text-sm md:text-sm lg:text-base font-sfregular overflow-hidden">
             <ScrollProgress />
             <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
                 {/* Sticky Back button */}
@@ -2327,21 +2327,19 @@ export default function ConnectedLabsScreen() {
             </p>
 
             <div className="flex flex-col md:flex-row mt-4">
-                <div className=" md:w-[350px] md:ml-8 ">
+                <div className=" md:w-[450px] md:ml-8 flex flex-col items-center justify-center md:py-0 py-6 ">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mb-2 text-center">
                         Landing Page
                     </p>
-                    <PhoneCarousel>
 
-                        <IPhoneMockup
-                            screenWidth={200}
-                            screenType={"legacy"}
-                            hideStatusBar
-                            frameColor={"#E0E0E0"}
-                        >
-                            <img src={HomeInterface} alt="Landing Page Mockup" className="w-full" />
-                        </IPhoneMockup>
-                    </PhoneCarousel>
+                    <IPhoneMockup
+                        screenWidth={200}
+                        screenType={"legacy"}
+                        hideStatusBar
+                        frameColor={"#E0E0E0"}
+                    >
+                        <img src={HomeInterface} alt="Landing Page Mockup" className="w-full" />
+                    </IPhoneMockup>
 
                 </div>
 
