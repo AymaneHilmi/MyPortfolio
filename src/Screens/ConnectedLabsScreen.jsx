@@ -65,7 +65,7 @@ export default function ConnectedLabsScreen() {
 
 
     return (
-        <div className="lg:mx-auto max-w-5xl px-6 text-xs md:text-sm lg:text-base font-sfregular">
+        <div className="lg:mx-auto max-w-5xl px-6 text-xs md:text-sm lg:text-base font-sfregular overflow-hidden">
             <ScrollProgress />
             <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
                 {/* Sticky Back button */}
@@ -2373,13 +2373,13 @@ export default function ConnectedLabsScreen() {
                 <p className="md:ml-8 font-sfbold">Photo(s) Attachment Interfaces</p>
                 <p className="md:ml-8 mt-2 text-justify">
                     If the user selects the “Add picture” option, they are redirected to the main interface.
-                    This screen displays a gallery listing all samples available within the research center (corresponding to the first interface shown in the diagram below).
+                    This screen displays a gallery listing all samples available within the research center (corresponding to the first interface below).
 
                     From this interface, two primary actions are available:
 
 
                     If the user selects the “Add picture” option, they are redirected to the main interface.
-                    This screen displays a gallery listing all samples available within the research center (corresponding to the first interface shown in the diagram below).
+                    This screen displays a gallery listing all samples available within the research center (corresponding to the first interface below).
 
                     <ul className="mt-4 list-disc pl-5 space-y-2">
                         <li>
@@ -2479,7 +2479,7 @@ export default function ConnectedLabsScreen() {
                 <p className="md:ml-8 font-sfbold">Offer Creation Interface</p>
                 <p className="md:ml-8 mt-2 text-justify">
                     From the home screen, the user can also choose to create an offer by clicking the “Create an Offer” button. They are
-                    then redirected to the dedicated offer creation page, which corresponds to the first screen shown in the diagram below.
+                    then redirected to the dedicated offer creation page, which corresponds to the first screen shown below.
 
                     This interface provides a form that the user must complete. The form includes text fields, dropdown lists connected to
                     Sample Manager data, and a date selection field located at the end of the form.
@@ -2601,7 +2601,7 @@ export default function ConnectedLabsScreen() {
                     This button gives access to the same image upload process implemented for SGRG.
 
                     At the same time, a secondary button identified by a red arrow is displayed. This button corresponds to the authorization
-                    action (shown in the second interface of the diagram below) and allows the user to formally authorize the request once the
+                    action (shown in the second interface below) and allows the user to formally authorize the request once the
                     required steps have been completed.
                 </p>
             </div>
@@ -2730,15 +2730,9 @@ export default function ConnectedLabsScreen() {
                 </p>
             </div>
 
-            <div className="flex gap-2 items-start md:items-center md:text-[15px] font-sfbold mt-6 mb-2">
-                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
-                    <span className="text-[11px] mt-[2px] font-sfbold">08</span>
-                </div>
-
-                <span className="">
-                    Testing, Integration, and Compliance
-                </span>
-            </div>
+            <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
+                Test, Integration & Deployment
+            </p>
 
             <div className="my-6">
                 <p className="md:ml-8 mt-2 text-justify">
@@ -2755,7 +2749,7 @@ export default function ConnectedLabsScreen() {
 
             <div className="flex gap-2 items-start md:items-center md:text-[15px] font-sfbold mt-6 mb-2">
                 <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
-                    <span className="text-[11px] mt-[2px] font-sfbold">09</span>
+                    <span className="text-[11px] mt-[2px] font-sfbold">08</span>
                 </div>
 
                 <span className="">
@@ -2814,6 +2808,41 @@ export default function ConnectedLabsScreen() {
                     without any manual configuration or technical intervention during onboarding.
                 </p>
             </div>
+
+            <div className="flex gap-2 items-start md:items-center md:text-[15px] font-sfbold mt-6 mb-2">
+                <div className="h-6 w-6 rounded-lg bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white text-xs font-sfbold flex-shrink-0">
+                    <span className="text-[11px] mt-[2px] font-sfbold">09</span>
+                </div>
+
+                <span className="">
+                    Deployment
+                </span>
+            </div>
+
+            <p className="text-justify md:ml-8">
+                Once all developments were completed, several meetings were organized with end users to present the overall functionality of the application, the supported use cases, and the different user journeys available depending on their roles. These sessions also provided an opportunity to answer initial questions and collect immediate feedback on usability and first impressions.
+
+                The application was designed to complement the existing LIMS rather than fully replace it. It is currently used alongside Sample Manager: simple and frequent actions such as taking photos, attaching files, or validating requests are handled directly through the mobile application. More complex tasks requiring detailed processing or extensive data entry are still performed using the traditional Sample Manager desktop interface.
+                <br /><br />
+
+                Thanks to this complementary approach, and through monitoring tools available in Power Apps and Power Automate, it was possible to observe that several users have already integrated the application into their daily work routines. Its gradual adoption has clearly demonstrated its value in streamlining the use of Sample Manager, particularly for routine and time-sensitive field operations. The application helps save valuable time while improving data quality and team responsiveness.
+
+                As a result, the deployment was successfully carried out on the two targeted sites: Saint-Gobain Research Provence (SGRP) and Saint-Gobain Research Germany (SGRG).
+            </p>
+
+            <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
+                Conclusion
+            </p>
+
+            <p className="text-justify ">
+                Following the concrete benefits already observed in the field, the next steps of the project naturally emerged. Encouraged by the initial positive results, the outlook is now focused on extending the application’s usage to additional laboratories, as well as deploying it across other international sites within the group.
+
+                In parallel, a local web portal has recently been developed at SGRP to provide browser-based access to certain LIMS functionalities. In the longer term, the objective would be to connect this web portal with the mobile application, offering a dual entry point through both mobile and web interfaces. This approach would further simplify access to Sample Manager functionalities, broaden usage to a wider range of user profiles, and strengthen continuity between existing tools.
+
+                Future developments also include expanding the functional scope of the application. Currently, the available actions are centered on clearly identified needs such as photo attachment, offer creation, and request acceptance or validation. In the future, additional features could be integrated, such as voice input for analysis comments, result consultation, or even request creation directly from the mobile application.
+
+                The overall ambition is to establish this solution as a fully-fledged complementary tool to the LIMS—designed for mobile usage and capable of addressing the full range of operational needs encountered in the field.
+            </p>
 
 
 
