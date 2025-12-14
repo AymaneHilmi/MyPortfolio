@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import LIMS from "@/assets/LIMS.png";
 import SaintGobain from "@/assets/Saint-Gobain.png";
 import SaintGobainWhite from "@/assets/Saint-GobainWhite.png";
+import { FilePlus } from "lucide-react";
 import { cn } from "@/lib/utils"
 
 // AnimatedBeam (JSX version): draws an animated curved beam between fromRef and toRef within containerRef.
@@ -179,7 +180,7 @@ const Circle = forwardRef(({ className, children }, ref) => {
         <div
             ref={ref}
             className={cn(
-                "z-10 flex size-14 items-center justify-center rounded-full border-2 dark:border-[gray] bg-bgLight dark:bg-darkContainer p-2 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)] dark:shadow-[0_0_20px_-12px_rgba(255,255,255,0.8)] hover:shadow-[0_0_30px_-8px_rgba(0,0,0,0.9)] dark:hover:shadow-[0_0_30px_-8px_rgba(255,255,255,0.9)]  hover:scale-110 transition-transform duration-300",
+                "z-10 flex size-14 items-center justify-center rounded-full border-2 dark:border-[gray] bg-bgLight dark:bg-darkContainer p-2 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)] dark:shadow-[0_0_20px_-12px_rgba(255,255,255,0.8)] hover:scale-110 transition-transform duration-300",
                 className
             )}
         >
@@ -190,111 +191,114 @@ const Circle = forwardRef(({ className, children }, ref) => {
 
 Circle.displayName = "Circle"
 
-export function AnimatedBeamMultipleOutputDemo({ className }) {
+export function AnimatedBeamMultipleOutputDemo({
+    className, }) {
     const containerRef = useRef(null);
     const div1Ref = useRef(null);
     const div2Ref = useRef(null);
     const div3Ref = useRef(null);
     const div4Ref = useRef(null);
     const div5Ref = useRef(null);
-
+    const div6Ref = useRef(null);
+    const div7Ref = useRef(null);
     return (
         <div
             className={cn(
-                "relative flex h-[500px] w-full items-center justify-center overflow-hidden p-10",
+                "relative flex items-center justify-center overflow-hidden md:p-10",
                 className
             )}
             ref={containerRef}
         >
-            <div className="flex size-full max-w-lg flex-row items-stretch justify-between gap-10">
+            <div className="flex size-full flex-row items-stretch justify-between gap-10">
+                <div className="flex flex-col justify-center items-center ">
+                    <Circle ref={div7Ref}>
+                        <Icons.requestCreate />
+                    </Circle>
+                    <p className="text-xs whitespace-nowrap">Request Creation</p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center ">
+                    <Circle ref={div6Ref} className="p-3">
+                        <Icons.lims />
+                    </Circle>
+                    <p className="text-xs  whitespace-nowrap">Automatic email</p>
+                </div>
+                {/* <div className="hidden md:flex flex-col justify-center items-center ">
+                    <Circle ref={div6Ref} className="p-3">
+                        <Icons.mail />
+                    </Circle>
+                    <p className="text-xs whitespace-nowrap">Automatic email</p>
+                </div> */}
                 <div className="flex flex-col justify-center items-center gap-2">
-                    <Circle ref={div1Ref} className="">
-                        <Icons2.saintgobain />
-                    </Circle>
-                    <p className="text-xs flex justify-center">SGR Provence</p>
-                    <Circle ref={div2Ref}>
-                        <Icons2.saintgobain />
-                    </Circle>
-                    <p className="text-xs flex justify-center">SGR Germany</p>
+                    <div className="flex flex-col justify-center items-start gap-2">
+                        <Circle ref={div1Ref}>
+                            <Icons.user />
+                        </Circle>
+                    </div>
+                    <div className="flex flex-col justify-center items-start gap-2">
+                        <Circle ref={div2Ref}>
+                            <Icons.user />
+                        </Circle>
+                    </div>
+                    <div className="flex flex-col justify-center items-start gap-2">
+                        <Circle ref={div3Ref}>
+                            <Icons.user />
+                        </Circle>
+                    </div>
+                    <div className="flex flex-col justify-center items-start gap-2">
+                        <Circle ref={div4Ref}>
+                            <Icons.user />
+                        </Circle>
+                    </div>
+                    <div className="flex flex-col justify-center items-start gap-2">
+                        <Circle ref={div5Ref}>
+                            <Icons.user />
+                        </Circle>
+                    </div>
+                    <p className="text-xs">Lab Technicians...</p>
 
-                    <Circle ref={div3Ref}>
-                        <Icons2.saintgobain />
-                    </Circle>
-                    <p className="text-xs flex justify-center items-center">Other centers..</p>
                 </div>
-                <div className="flex flex-col justify-center items-center">
-                    <Circle ref={div4Ref} className="size-20 p-3">
-                        <Icons2.lims />
-                    </Circle>
-                    <p className="text-xs flex justify-center ">Sample Manager</p>
 
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                    <Circle ref={div5Ref} >
-                        <Icons2.database />
-                    </Circle>
-
-                    <p className="text-xs flex justify-center">LIMS Database</p>
-                </div>
             </div>
-
+            {/* AnimatedBeams */}
             <AnimatedBeam
                 containerRef={containerRef}
                 fromRef={div1Ref}
-                toRef={div4Ref}
+                toRef={div6Ref}
+                duration={3}
             />
             <AnimatedBeam
                 containerRef={containerRef}
                 fromRef={div2Ref}
-                toRef={div4Ref}
+                toRef={div6Ref}
+                duration={3}
             />
             <AnimatedBeam
                 containerRef={containerRef}
                 fromRef={div3Ref}
-                toRef={div4Ref}
+                toRef={div6Ref}
+                duration={3}
             />
-
             <AnimatedBeam
                 containerRef={containerRef}
                 fromRef={div4Ref}
-                toRef={div5Ref}
+                toRef={div6Ref}
+                duration={3}
+            />
+            <AnimatedBeam
+                containerRef={containerRef}
+                fromRef={div5Ref}
+                toRef={div6Ref}
+                duration={3}
+            />
+            <AnimatedBeam
+                containerRef={containerRef}
+                fromRef={div6Ref}
+                toRef={div7Ref}
+                duration={3}
             />
         </div>
     )
-}
-
-const Icons2 = {
-    lims: () => (
-        <img
-            src={LIMS}
-            alt="LIMS Icon"
-            className="w-12 h-12 object-contain rounded"
-        />
-    ),
-    saintgobain: () => (
-        <img
-            src={SaintGobain}
-            alt="Saint Gobain Icon"
-            className="w-20 h-20 object-contain"
-        />
-    ),
-    database: () => (
-        <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#000000"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            xmlns="http:www.w3.org/2000/svg"
-        >
-            <ellipse cx="12" cy="5" rx="9" ry="3" />
-            <path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5" />
-            <path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6" />
-        </svg>
-    ),
 }
 
 export function AnimatedBeamDemo() {
@@ -411,6 +415,37 @@ export function AnimatedBeamDemo() {
     )
 }
 const Icons = {
+    mail: () => (
+        <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#000000"
+            strokeWidth="2"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="M3 7l9 6 9-6" />
+        </svg>
+    ),
+    user: () => (
+        <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#000000"
+            strokeWidth="2"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+        </svg>
+    ),
+    requestCreate: () => (
+        <FilePlus className="w-6 h-6 text-current" />
+    ),
     lims: () => (
         <img
             src={LIMS}

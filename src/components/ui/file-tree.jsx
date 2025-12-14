@@ -10,6 +10,7 @@ import React, {
 } from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { FileIcon, FolderIcon, FolderOpenIcon } from "lucide-react"
+import { FlaskConical, Briefcase, Layers, TestTube } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -56,6 +57,7 @@ const Tree = forwardRef(
             indicator = true,
             openIcon,
             closeIcon,
+            mode = "default",
             dir,
             ...props
         },
@@ -131,6 +133,7 @@ const Tree = forwardRef(
                     openIcon,
                     closeIcon,
                     direction,
+                    mode,
                 }}
             >
                 <div className={cn("size-full", className)}>
@@ -187,6 +190,8 @@ const Folder = forwardRef(
             value,
             isSelectable = true,
             isSelect,
+            kind,
+            textStyle = "normal",
             children,
             ...props
         },
@@ -200,7 +205,22 @@ const Folder = forwardRef(
             setExpandedItems,
             openIcon,
             closeIcon,
+            mode,
         } = useTree()
+
+        const labIcons = {
+            laboratory: FlaskConical,
+            job: Briefcase,
+            sample: Layers,
+            test: TestTube,
+        }
+
+        const LabIcon = mode === "laboratory" && kind ? labIcons[kind] : null
+
+        const iconClassName = cn(
+            "size-4",
+            textStyle === "strikethrough" && "text-red-600 dark:text-red-400"
+        )
 
         return (
             <AccordionPrimitive.Item
@@ -221,10 +241,21 @@ const Folder = forwardRef(
                     disabled={!isSelectable}
                     onClick={() => handleExpand(value)}
                 >
-                    {expandedItems?.includes(value)
-                        ? openIcon ?? <FolderOpenIcon className="size-4" />
-                        : closeIcon ?? <FolderIcon className="size-4" />}
-                    <span>{element}</span>
+                    {LabIcon ? (
+                        <LabIcon className={iconClassName} />
+                    ) : expandedItems?.includes(value) ? (
+                        openIcon ?? <FolderOpenIcon className={iconClassName} />
+                    ) : (
+                        closeIcon ?? <FolderIcon className={iconClassName} />
+                    )}
+                    <span
+                        className={cn(
+                            textStyle === "strikethrough" &&
+                            "line-through text-red-600 dark:text-red-400"
+                        )}
+                    >
+                        {element}
+                    </span>
                 </AccordionPrimitive.Trigger>
                 <AccordionPrimitive.Content className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative h-full overflow-hidden text-sm">
                     {element && indicator && <TreeIndicator aria-hidden="true" />}
