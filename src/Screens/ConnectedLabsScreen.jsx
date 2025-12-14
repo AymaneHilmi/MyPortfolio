@@ -2353,11 +2353,18 @@ export default function ConnectedLabsScreen() {
 
                     <p className="mb-2 font-sfbold">Landing Page</p>
                     The first interface developed as part of this project was designed for Saint-Gobain Research Germany (SGRG).
-                    As this site served as the testing ground for the initial Proof of Concept, it already benefited from a well-defined functional scope and clearly identified requirements.
+                    As this site served as the testing ground for the initial Proof of Concept, it already benefited from a well-defined
+                    functional scope and clearly identified requirements.
                     <br /><br />
-                    The application’s home screen, also referred to as the landing page, was designed with a clear focus on simplicity and efficiency. It provides a clean and intuitive interface that allows users to quickly access the two main actions of the tool: adding a photo to an existing request or creating a commercial offer directly from their smartphone.
-
-                    The choice of colors and the visual hierarchy of the elements were carefully designed to enhance readability while delivering a smooth and pleasant user experience. The welcome message reinforces the application’s context of use, highlighting that it was specifically developed for the MAC laboratory at SGRG. The overall objective was to offer a clear, straightforward, and immediately operational entry point for engineers working on the move or directly in the field.
+                    The application’s home screen, also referred to as the landing page, was designed with a clear focus on simplicity and
+                    efficiency. It provides a clean and intuitive interface that allows users to quickly access the two main actions of the
+                    tool: adding a photo to an existing request or creating a commercial offer directly from their smartphone.
+                    <br /><br />
+                    The choice of colors and the visual hierarchy of the elements were carefully designed to enhance readability while
+                    delivering a smooth and pleasant user experience. The welcome message reinforces the application’s context of use,
+                    highlighting that it was specifically developed for the MAC laboratory at SGRG. The overall objective was to offer
+                    a clear, straightforward, and immediately operational entry point for engineers working on the move or directly in
+                    the field.
                 </p>
             </div>
 
@@ -2538,7 +2545,7 @@ export default function ConnectedLabsScreen() {
                 For consistency purposes, the interfaces developed for SGRP largely reuse the same design principles as those implemented for SGRG, with only minor adjustments.
 
                 Unlike SGRG, SGRP does not include a landing page, as there is no commercial offer creation process to integrate. Users are therefore redirected directly to the main interface.
-
+                <br /><br />
                 This design choice aims to simplify the user journey by removing an unnecessary step. While saving a single click may seem insignificant, it has a real impact on comfort and efficiency when the application is used multiple times a day.
 
                 Additionally, since the available workflows are limited, mainly photo attachment and a small number of specific actions, there was no need to introduce additional interface complexity. This approach helps keep the application lightweight, intuitive, and efficient for everyday laboratory use.
@@ -2549,7 +2556,7 @@ export default function ConnectedLabsScreen() {
                 <p className="md:ml-8 mt-2 text-justify">
                     The main interface is largely similar to the one developed for SGRG, offering the same core actions: scanning a sample QR code or searching for a sample using its unique identifier.
                     The key difference lies in the data displayed, which is here directly linked to SGRP’s local databases.
-
+                    <br /><br />
                     Once a sample is selected, the user is taken to the detail page (corresponding to the second interface in the diagram). The available actions on this page depend on the current status of the request.
                     For requests with a “received” status, a primary action button allows the user to accept the request. When this button is clicked, a confirmation dialog is displayed to validate the decision. After confirmation, the request is accepted and the user is automatically redirected back to the main interface.
                 </p>
