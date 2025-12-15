@@ -40,6 +40,7 @@ import MessageInteraction3 from "@/assets/MessageInteraction3.png";
 import AuthorizationInterface1 from "@/assets/AuthorizationInterface1.png";
 import AuthorizationInterface2 from "@/assets/AuthorizationInterface2.png";
 import AuthorizationInterface3 from "@/assets/AuthorizationInterface3.png";
+
 import WriteEnabledConnection from "@/assets/WriteEnabledConnection.png";
 import FinalArchitecture from "@/assets/FinalArchitecture.png";
 import AdminInterface from "@/assets/AdminInterface.png";
@@ -48,6 +49,7 @@ import ScrollProgress from "../components/ui/ScrollProgress";
 import { AnimatedBeamMultipleOutputDemo } from "../components/ui/animatedbeam";
 import Iphone from "../components/ui/iphone";
 import { IPhoneMockup } from "react-device-mockup";
+import Masonry from "../components/ui/mansory";
 
 export default function ConnectedLabsScreen() {
     // Sticky Back button state and refs
@@ -65,7 +67,7 @@ export default function ConnectedLabsScreen() {
 
 
     return (
-        <div className="lg:mx-auto max-w-5xl px-6 text-sm md:text-sm lg:text-base font-sfregular overflow-hidden">
+        <div className="lg:mx-auto max-w-5xl px-6 text-sm md:text-sm lg:text-base font-sfregular overflow-hidden md:overflow-visible">
             <ScrollProgress />
             <section className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
                 {/* Sticky Back button */}
@@ -216,7 +218,7 @@ export default function ConnectedLabsScreen() {
                 business needs through configurable features, rather than custom development. Unlike a bespoke application, a progiciel
                 offers a robust and standardized core while remaining flexible enough to adapt to different laboratory processes.
 
-                Within this framework, Sample Manager provides end-to-end management of analysis requests:
+                Within this, Sample Manager provides end-to-end management of analysis requests:
                 from the moment a request is created, through sample reception, preparation, analysis execution, result entry, review, and finally closure (as shown below).
                 Each step is tracked, controlled, and automated through built-in workflows, ensuring full traceability and consistent execution across the laboratory.
             </p>
@@ -2733,7 +2735,7 @@ export default function ConnectedLabsScreen() {
             </p>
 
             <div className="my-6">
-                <p className="md:ml-8 mt-2 text-justify">
+                <p className=" mt-2 text-justify">
                     Throughout the testing phase, the primary objective was to ensure the overall reliability of the application, both in terms of connectivity
                     between Power Apps and Sample Manager and the correct implementation of the user interfaces.
 
@@ -2834,21 +2836,40 @@ export default function ConnectedLabsScreen() {
 
             <p className="text-justify ">
                 Following the concrete benefits already observed in the field, the next steps of the project naturally emerged. Encouraged by the initial positive results, the outlook is now focused on extending the application’s usage to additional laboratories, as well as deploying it across other international sites within the group.
-
+                <br />
                 In parallel, a local web portal has recently been developed at SGRP to provide browser-based access to certain LIMS functionalities. In the longer term, the objective would be to connect this web portal with the mobile application, offering a dual entry point through both mobile and web interfaces. This approach would further simplify access to Sample Manager functionalities, broaden usage to a wider range of user profiles, and strengthen continuity between existing tools.
-
+                <br />
                 Future developments also include expanding the functional scope of the application. Currently, the available actions are centered on clearly identified needs such as photo attachment, offer creation, and request acceptance or validation. In the future, additional features could be integrated, such as voice input for analysis comments, result consultation, or even request creation directly from the mobile application.
 
-                The overall ambition is to establish this solution as a fully-fledged complementary tool to the LIMS—designed for mobile usage and capable of addressing the full range of operational needs encountered in the field.
+                The overall ambition is to establish this solution as a fully-fledged complementary tool to the LIMS, designed for mobile usage and capable of addressing the full range of operational needs encountered in the field.
+                <br /><br />
+                Today, both proposed solutions (part 1 & part 2 of the project) have been successfully deployed and are fully operational in production. They are now used on a daily basis by Saint-Gobain R&D teams, supporting their workflows and improving efficiency in real laboratory conditions.
+            </p>
+            {/* Separator */}
+            <div className="my-10">
+                <div className="h-px w-full bg-ultralightGray dark:bg-darkBorder" />
+            </div>
+
+
+
+
+
+
+            <p className="text-[10px] uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-8 mb-4">
+                Acknowledgements
             </p>
 
 
-
-
-
-            <p className="text-[10px] text-center uppercase tracking-[0.25em] text-lightPrimary dark:text-darkPrimary font-sfregular mt-4 mb-4">
-                the rest of the content is coming soon...
+            <p className="text-justify">
+                I would like to sincerely thank Saint-Gobain Research Provence for giving me the opportunity to take part in this valuable experience.
+                Also, I would like to express my special gratitude to <strong>Céline Wiss</strong>, <strong>Jérôme Maho</strong>, <strong>Florian Pellan</strong> and <strong>Stéphanie Cambon</strong> for their support, guidance, and availability throughout this entire experience.
             </p>
+
+
+            <Masonry />
+
+
+
         </div >
     );
 };
