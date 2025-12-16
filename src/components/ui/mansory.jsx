@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import AymaneLab from "@/assets/AymaneLab.jpeg";
 import AymanePhilipp from "@/assets/AymanePhilipp.jpeg";
-import MacLab from "@/assets/MacLab.jpeg";
+import MacLab from "@/assets/Maclab.jpeg";
 import MacGift from "@/assets/MacGift.jpeg";
 import AymaneFlo from "@/assets/AymaneFlo.jpeg";
 import LimsTeam from "@/assets/LimsTeam.jpg";
