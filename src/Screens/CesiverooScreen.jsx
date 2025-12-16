@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/ToolTip";
 import FadeIn from "../components/FadeIn";
 import ScrollProgress from "../components/ui/ScrollProgress";
+import { IPadMockup } from "react-device-mockup";
 
 export default function CesiverooScreen() {
   const {
@@ -154,7 +155,7 @@ export default function CesiverooScreen() {
     },
   ];
   return (
-    <div className="md:mx-auto max-w-5xl mx-6">
+    <div className="md:mx-auto max-w-5xl px-6">
       <ScrollProgress barClassName="bg-[#20CFBD]" />
       <section className="mx-auto py-12 md:py-16 mt-16 md:mt-32 flex justify-center items-center">
         <FadeIn className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 items-center">
@@ -169,7 +170,7 @@ export default function CesiverooScreen() {
               Cesi<span className="text-[#20CFBD]">veroo</span> Project
             </h1>
 
-            <div className="text-lightPrimary dark:text-darkPrimary text-sm md:text-base lg:text-lg text-justify ">
+            <div className="text-lightPrimary dark:text-darkPrimary text-sm lg:text-base text-justify ">
               <p>
                 This project was part of an academic assignment during my time
                 in engineering school. The challenge was to create an Uber-like
@@ -265,7 +266,7 @@ export default function CesiverooScreen() {
         <FadeIn className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
           <div className="md:col-span-3">
             <h3 className="text-lg font-sfbold text-lightPrimary dark:text-darkPrimary">Objectives</h3>
-            <ul className="mt-3 space-y-2 text-sm md:text-base lg:text-lg text-lightPrimary dark:text-darkPrimary">
+            <ul className="mt-3 space-y-2 text-sm lg:text-base text-lightPrimary dark:text-darkPrimary">
               <li className="flex gap-3">
                 <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#20CFBD] " />
                 <span>
@@ -303,7 +304,7 @@ export default function CesiverooScreen() {
               ].map((chip) => (
                 <span
                   key={chip}
-                  className="inline-flex items-center rounded-full border border-ultralightGray dark:border-darkBorder dark:bg-darkContainer px-3 py-1 text-sm md:text-base lg:text-lg text-justify text-lightPrimary dark:text-darkPrimary shadow-sm"
+                  className="inline-flex items-center rounded-full border border-ultralightGray dark:border-darkBorder dark:bg-darkContainer px-3 py-1 text-xs lg:text-sm text-justify text-lightPrimary dark:text-darkPrimary shadow-sm"
                 >
                   {chip}
                 </span>
@@ -312,7 +313,7 @@ export default function CesiverooScreen() {
           </div>
         </FadeIn>
 
-        <FadeIn className="text-lightPrimary dark:text-darkPrimary mt-12 text-sm md:text-base lg:text-lg text-justify">
+        <FadeIn className="text-lightPrimary dark:text-darkPrimary mt-12 text-sm lg:text-base text-justify">
           In this page you will basically find an overview with all the mains steps we did during the project development.
           As we had a deadline of 4 weeks, we tried to be as efficient as possible and focus on the most important aspects
           of the project. We didn't had time to develope all the functionalities we wanted but we managed to deliver a MVP
@@ -447,32 +448,35 @@ export default function CesiverooScreen() {
           </div>
         </FadeIn>
 
-        <FadeIn className="flex flex-col overflow-hidden">
-          <ContainerScroll
-            titleComponent={
-              <>
-                <div>
-                  <p className="text-base uppercase tracking-widest text-sfregular text-lightSecondary dark:text-darkPrimary flex flex-row gap-2 items-center justify-center mt-20 md:mt-0">
-                    <img src={Step2} className="h-10 w-10" />
-                    Design
-                  </p>
-                  <br />
-                  <span className="text-4xl md:text-7xl  font-sfbold leading-none">
-                    Graphic Chart
-                  </span>
-                </div>
-              </>
-            }
-          >
+
+        <FadeIn className="w-full flex flex-col justify-center items-center py-24">
+
+          <div>
+            <p className="text-base uppercase tracking-widest text-sfregular text-lightSecondary dark:text-darkPrimary flex flex-row gap-2 items-center justify-center mt-20 md:mt-0">
+              <img src={Step2} className="h-10 w-10" />
+              Design
+            </p>
+            <br />
+            <span className="text-4xl md:text-7xl  font-sfbold leading-none">
+              Graphic Chart
+            </span>
+          </div>
+
+          <IPadMockup
+            screenWidth={800}
+            screenHeight={70}
+            isLandscape
+            hideStatusBar
+            transparentNavBar >
             <img
               src={GraphiChart}
               alt="hero"
               height={1848}
               width={1350}
-              className="mx-auto rounded-2xl object-cover h-full object-left-top"
+              className="mx-auto rounded-2xl object-contain object-left-top"
               draggable={false}
             />
-          </ContainerScroll>
+          </IPadMockup>
         </FadeIn>
 
         {/* Wireframes  */}
@@ -492,10 +496,10 @@ export default function CesiverooScreen() {
                   Wireframes & User Flows
                 </h2>
               </header>
-              <p className="mt-4 text-sm md:text-base lg:text-lg text-justify  leading-relaxed text-lightPrimary dark:text-darkPrimary max-w-prose">
+              <p className="mt-4 text-sm lg:text-base text-justify  leading-relaxed text-lightPrimary dark:text-darkPrimary max-w-prose">
                 Definition of key journeys, screen prioritization, and component structuring for a clear MVP that’s quick to iterate on. The wireframes served as a visual contract to align the team and de‑risk product decisions.
               </p>
-              <ul className="mt-6 space-y-2 text-sm md:text-base lg:text-lg text-lightPrimary dark:text-darkPrimary">
+              <ul className="mt-6 space-y-2 text-sm lg:text-base text-lightPrimary dark:text-darkPrimary">
                 <li className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#20CFBD]" />
                   <span>Consistent zoning and visual hierarchy.</span>
@@ -543,7 +547,7 @@ export default function CesiverooScreen() {
                   </h2>
                 </header>
 
-                <p className="mt-3 text-sm md:text-base lg:text-lg text-justify leading-relaxed text-ultralightGray ">
+                <p className="mt-3 text-sm lg:text-base text-justify leading-relaxed text-ultralightGray ">
                   Service‑oriented architecture: a React frontend, an API gateway centralizing access, and decoupled Node/Express microservices. Polyglot storage depending on use.
                 </p>
               </div>
@@ -560,7 +564,7 @@ export default function CesiverooScreen() {
                       <div className="flex items-start gap-3">
                         <Icon className="h-10 w-10" color="#20CFBD" />
                         <div className="min-w-0">
-                          <h3 className="text-sm md:text-base lg:text-lg text-justify  font-sfbold text-white leading-tight">
+                          <h3 className="text-sm lg:text-base text-justify  font-sfbold text-white leading-tight">
                             {col.title}
                           </h3>
                           <p className="mt-1 text-sm text-ultralightGray">
@@ -598,7 +602,7 @@ export default function CesiverooScreen() {
             </h2>
           </header>
           {/* Text */}
-          <p className="mt-4 leading-relaxed text-lightPrimary dark:text-darkPrimary text-sm md:text-base lg:text-lg text-justify ">
+          <p className="mt-4 leading-relaxed text-lightPrimary dark:text-darkPrimary text-sm lg:text-base text-justify ">
             This project was actually one of the first I worked on that resulted
             in something real and concrete. That's why I decided to put it on
             this portfolio. After this project, I started having interest in

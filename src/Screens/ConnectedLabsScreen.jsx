@@ -67,7 +67,7 @@ export default function ConnectedLabsScreen() {
 
 
     return (
-        <div className="lg:mx-auto max-w-5xl px-6 text-sm md:text-sm lg:text-base font-sfregular overflow-hidden md:overflow-visible">
+        <div className="lg:mx-auto max-w-5xl px-6 text-sm lg:text-base font-sfregular overflow-hidden md:overflow-visible">
             <ScrollProgress />
             <FadeIn className="mx-auto py-12 md:py-16 md:mt-32 mt-12 flex justify-center items-center">
                 {/* Sticky Back button */}
