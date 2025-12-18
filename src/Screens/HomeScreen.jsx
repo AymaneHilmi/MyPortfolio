@@ -54,6 +54,7 @@ export default function HomeScreen({ visitsTotal }) {
         "Project developed with two Saint-Gobain research centers. A Power Platform app interconnecting & improving lab efficiency and data traceability.",
       image: LIMSmobility,
       link: "ConnectedLabs",
+      locked: true,
     },
     {
       logo: logo,
@@ -296,6 +297,9 @@ export default function HomeScreen({ visitsTotal }) {
                     <span style={{ color: project.color }}>
                       {project.highlight}
                     </span>
+                    {project.locked && (
+                      <Lock className="inline-block w-4 h-4 ml-2 text-lightSecondary dark:text-darkSecondary align-middle" aria-label="Locked project" />
+                    )}
                   </h3>
                   <p className="text-xs sm:text-sm font-sfregular text-lightSecondary mt-1">
                     {project.subtitle}
@@ -326,4 +330,3 @@ export default function HomeScreen({ visitsTotal }) {
     </div >
   );
 }
-
