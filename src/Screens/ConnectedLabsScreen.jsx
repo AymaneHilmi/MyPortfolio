@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import ConnectedLabContent from "@/components/ConnectedLabContent";
+import FadeIn from "../components/FadeIn";
 
 export default function ConnectedLabsScreen() {
     const [isAuthorized, setIsAuthorized] = useState(false);
@@ -23,7 +24,8 @@ export default function ConnectedLabsScreen() {
     if (!isAuthorized) {
         return (
             <div className="h-screen flex items-center justify-center bg-lightBG dark:bg-darkBG px-6">
-                <div className="w-full max-w-md space-y-3">
+                <FadeIn className="w-full max-w-md space-y-3">
+
                     <PlaceholdersAndVanishInput
                         placeholders={["Password"]}
                         type="password"
@@ -42,7 +44,7 @@ export default function ConnectedLabsScreen() {
                     >
                         {passwordError || "placeholder"}
                     </p>
-                </div>
+                </FadeIn>
             </div>
         );
     }
