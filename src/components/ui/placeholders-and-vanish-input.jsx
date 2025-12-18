@@ -9,14 +9,20 @@ export function PlaceholdersAndVanishInput({
     onChange,
     onSubmit,
     context,
+    type = "text",
+    maxLength = 32,
 }) {
-    const MAX_LEN = 12;
+    const placeholderList = Array.isArray(placeholders)
+        ? placeholders
+        : [placeholders || ""];
+    const numericOnly = context === "num";
     const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
     const intervalRef = useRef(null);
     const startAnimation = () => {
+        if (!placeholderList.length) return;
         intervalRef.current = setInterval(() => {
-            setCurrentPlaceholder((prev) => (prev + 1) % placeholders.length);
+            setCurrentPlaceholder((prev) => (prev + 1) % placeholderList.length);
         }, 10000);
     };
     const handleVisibilityChange = () => {
@@ -29,16 +35,20 @@ export function PlaceholdersAndVanishInput({
     };
 
     useEffect(() => {
-        startAnimation();
-        document.addEventListener("visibilitychange", handleVisibilityChange);
+        if (placeholderList.length) {
+            startAnimation();
+            document.addEventListener("visibilitychange", handleVisibilityChange);
+        }
 
         return () => {
             if (intervalRef.current) {
                 clearInterval(intervalRef.current);
             }
-            document.removeEventListener("visibilitychange", handleVisibilityChange);
+            if (placeholderList.length) {
+                document.removeEventListener("visibilitychange", handleVisibilityChange);
+            }
         };
-    }, [placeholders]);
+    }, [placeholderList]);
 
     const canvasRef = useRef(null);
     const newDataRef = useRef([]);
@@ -60,7 +70,8 @@ export function PlaceholdersAndVanishInput({
 
         const fontSize = parseFloat(computedStyles.getPropertyValue("font-size"));
         ctx.font = `${fontSize * 2}px ${computedStyles.fontFamily}`;
-        ctx.fillStyle = "darkGray"; // Tailwind gray-700
+        // Use the current input text color so the vanish effect matches light/dark themes
+        ctx.fillStyle = computedStyles.getPropertyValue("color") || "darkgray";
         ctx.fillText(value, 16, 40);
 
         const imageData = ctx.getImageData(0, 0, 800, 800);
@@ -153,18 +164,20 @@ export function PlaceholdersAndVanishInput({
             vanishAndSubmit();
             return;
         }
-        // Allow navigation and control keys
-        if (
-            [
-                "Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"
-            ].includes(e.key)
-        ) {
-            return;
-        }
-        // Allow only digits, and limit length
-        const isDigit = /^[0-9]$/.test(e.key);
-        if (!isDigit || value.length >= MAX_LEN) {
-            e.preventDefault();
+        if (numericOnly) {
+            // Allow navigation and control keys
+            if (
+                [
+                    "Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"
+                ].includes(e.key)
+            ) {
+                return;
+            }
+            // Allow only digits, and limit length
+            const isDigit = /^[0-9]$/.test(e.key);
+            if (!isDigit || value.length >= maxLength) {
+                e.preventDefault();
+            }
         }
     };
 
@@ -187,7 +200,7 @@ export function PlaceholdersAndVanishInput({
     return (
         <form
             className={cn(
-                "w-full relative bg-bgLight dark:bg-bgDark h-12 rounded-xl overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
+                "w-full relative bg-bgLight dark:bg-darkContainer h-12 rounded-xl overflow-hidden border border-ultralightGray dark:border-darkBorder shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
                 value
             )}
             onSubmit={handleSubmit}>
@@ -200,7 +213,10 @@ export function PlaceholdersAndVanishInput({
             <input
                 onChange={(e) => {
                     if (!animating) {
-                        const cleaned = e.target.value.replace(/\D/g, "").slice(0, MAX_LEN);
+                        const rawValue = e.target.value;
+                        const cleaned = numericOnly
+                            ? rawValue.replace(/\D/g, "").slice(0, maxLength)
+                            : rawValue.slice(0, maxLength);
                         setValue(cleaned);
                         // Create a synthetic event with cleaned value for onChange
                         if (onChange) {
@@ -213,7 +229,9 @@ export function PlaceholdersAndVanishInput({
                     e.preventDefault();
                     if (!animating) {
                         const pasted = (e.clipboardData || window.clipboardData).getData("text");
-                        const cleaned = pasted.replace(/\D/g, "").slice(0, MAX_LEN);
+                        const cleaned = numericOnly
+                            ? pasted.replace(/\D/g, "").slice(0, maxLength)
+                            : pasted.slice(0, maxLength);
                         setValue(cleaned);
                         if (onChange) {
                             const syntheticEvent = { ...e, target: { ...e.target, value: cleaned } };
@@ -224,10 +242,10 @@ export function PlaceholdersAndVanishInput({
                 onKeyDown={handleKeyDown}
                 ref={inputRef}
                 value={value}
-                type="text"
-                maxLength={MAX_LEN}
-                inputMode={context === "num" ? "numeric" : "text"}
-                pattern="[0-9]*"
+                type={type}
+                maxLength={maxLength}
+                inputMode={numericOnly ? "numeric" : undefined}
+                pattern={numericOnly ? "[0-9]*" : undefined}
                 className={cn(
                     "w-full relative text-sm sm:text-base z-50 border-none bg-transparent text-lightPrimary dark:text-darkPrimary h-full rounded-full focus:outline-none focus:ring-0 pl-6 pr-20",
                     animating && "text-transparent "
@@ -238,7 +256,7 @@ export function PlaceholdersAndVanishInput({
                 className={cn(
                     "absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full transition duration-200 flex items-center justify-center",
                     value
-                        ? "bg-brandgradient shadow-sm"
+                        ? "bg-black shadow-sm"
                         : "bg-ultralightGray dark:bg-darkContainer"
                 )}
             >
@@ -287,8 +305,8 @@ export function PlaceholdersAndVanishInput({
                                 duration: 0.3,
                                 ease: "linear",
                             }}
-                            className="text-sm sm:text-base font-normal text-neutral-500 pl-6 text-left w-[calc(100%-2rem)] truncate">
-                            {placeholders[currentPlaceholder]}
+                            className="text-sm sm:text-base font-normal text-lightSecondary dark:text-darkSecondary pl-6 text-left w-[calc(100%-2rem)] truncate">
+                            {placeholderList[currentPlaceholder] || "Password"}
                         </motion.p>
                     )}
                 </AnimatePresence>
