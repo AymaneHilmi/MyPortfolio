@@ -1,17 +1,50 @@
-# Aymane's Portfolio
-Welcome to my personal digital city! This portfolio is a space where I share my journey, projects, resume, and passion for technology. It’s built to be interactive and engaging, showcasing the work I’m proud of and reflecting my personal approach to development.
+# Aymane Hilmi · Drone 🚁
 
-You can access it at [aymanehilmi.com](https://aymanehilmi.com)
+Site vitrine pour une activité de **prestataire vidéo drone** : prises de vue
+aériennes, FPV cinématique, photo et clips. Pensé **mobile-first** pour la
+promotion sur les réseaux sociaux (Instagram, TikTok), avec une scène **3D
+interactive** qui réagit au scroll et au mouvement (parallaxe).
 
-## Technical Stack
-This portfolio is developed using a combination of the following technologies:
-- React JS.
-- Spline (for interactive 3D elements).
-- TailwindCSS .
+> Branche `drone` — refonte complète et indépendante du portfolio principal
+> (qui reste sur `main`).
 
-Additionally, several other libraries have been used to enhance the functionality and user experience, though I’m keeping it simple here.
+## Stack
+- **React 18 + Vite** + **TailwindCSS** (design system sombre cinématique)
+- **Three.js** via **@react-three/fiber** + **@react-three/drei** — drone 3D
+  procédural (aucun asset externe), hélices animées, éclairage cinématique
+- **Lenis** — smooth scroll, qui pilote la trajectoire du drone
+- **Framer Motion** — apparitions au scroll, parallaxe, lightbox
 
+## Structure
+```
+src/
+├─ components/
+│  ├─ three/        # DroneScene (Canvas) + DroneModel (drone procédural)
+│  ├─ sections/     # Hero, Services, Showreel, Equipment, Contact
+│  ├─ ui/           # Reveal (apparition au scroll)
+│  └─ Navbar.jsx
+├─ hooks/           # useSmoothScroll (Lenis), usePointer, useMediaQuery
+├─ lib/             # scrollStore (pont scroll ↔ 3D sans re-render), utils
+└─ data/content.js  # ⭐ tout le contenu éditable (textes, services, matériel, showreel)
+```
 
-## Website Still in Construction
+## Personnaliser
+- **Textes / services / matériel** : `src/data/content.js`
+- **Vidéos du showreel** : dépose tes fichiers dans `public/videos/` puis
+  renseigne leur `src` dans `content.js` (voir `public/videos/README.md`)
+- **Couleurs** : `tailwind.config.js` (accent cyan par défaut)
+- **Remplacer le drone procédural** par un vrai modèle `.glb` : voir
+  `src/components/three/DroneModel.jsx`
 
-I still work on this repos. I will continue adding new features, Easter eggs, interactive elements and at the end i will also optimize the perfs (yes actually it's shit) and make a cleaner code.
+## Démarrer
+```bash
+npm install --legacy-peer-deps   # peer deps de drei
+npm run dev                      # http://localhost:5173
+npm run build                    # build de production
+```
+
+## Performances mobile
+- Scène 3D chargée en **lazy-load** (le contenu s'affiche en premier)
+- `dpr` plafonné, hélices simplifiées et drone réduit sur mobile
+- Respect de `prefers-reduced-motion` (animation 3D figée)
+- Fallback propre si WebGL est indisponible

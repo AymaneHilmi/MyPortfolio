@@ -1,317 +1,138 @@
-import { Link, useLocation } from 'react-router-dom';
-import "./components.css";
-import LogoMobile from '@/assets/LogoMobile.png';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import { cn } from "@/lib/utils";
-import React, { useEffect, useState, useRef } from 'react';
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "./ui/ToolTip"
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { scrollToTarget } from "../hooks/useSmoothScroll";
+import { SITE } from "../data/content";
 
-import { useEasterEgg } from "@/context/EasterEggContext";
-import ThemeToggle from "@/components/ui/ThemeToggle";
+const LINKS = [
+  { label: "Services", href: "#services" },
+  { label: "Showreel", href: "#showreel" },
+  { label: "Matériel", href: "#materiel" },
+  { label: "Contact", href: "#contact" },
+];
 
-export default function Navbar({ }) {
-    const [isOpen, setIsOpen] = useState(false);
-    const navbarRef = useRef(null);
-    const checkboxRef = useRef(null);
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const [copied, setCopied] = useState(false);
-    const email = "contact@aymanehilmi.com";
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    const handleCopy = () => {
-        navigator.clipboard.writeText(email);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-    };
+  const go = (href) => (e) => {
+    e.preventDefault();
+    setOpen(false);
+    scrollToTarget(href);
+  };
 
-    // if the user clicks outside call the closeNavbar function
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-                closeNavbar();
-            }
-        };
+  return (
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        scrolled ? "py-3" : "py-5"
+      }`}
+    >
+      <div
+        className={`mx-auto max-w-6xl px-5 sm:px-8 flex items-center justify-between rounded-2xl transition-all duration-500 ${
+          scrolled ? "glass border border-line/60 py-3 shadow-glowSoft" : "py-1"
+        }`}
+        style={scrolled ? { marginLeft: 16, marginRight: 16 } : {}}
+      >
+        {/* Logo */}
+        <a
+          href="#top"
+          onClick={go("#top")}
+          className="flex items-center gap-2 group"
+        >
+          <span className="grid place-items-center w-8 h-8 rounded-full border border-accent/50 text-accent shadow-glow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <circle cx="6" cy="6" r="2.4" />
+              <circle cx="18" cy="6" r="2.4" />
+              <circle cx="6" cy="18" r="2.4" />
+              <circle cx="18" cy="18" r="2.4" />
+              <rect x="9.5" y="9.5" width="5" height="5" rx="1.2" />
+              <path d="M8 8l1.6 1.6M16 8l-1.6 1.6M8 16l1.6-1.6M16 16l-1.6-1.6" />
+            </svg>
+          </span>
+          <span className="font-display text-ghost text-sm tracking-tight">
+            {SITE.name}
+            <span className="text-accent"> · {SITE.tagline}</span>
+          </span>
+        </a>
 
-        // Add event listener when the navbar is open
-        if (isOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
-
-        // Remove event listener when the navbar is closed
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [isOpen]);
-
-    // CloseNavbar function
-    const closeNavbar = () => {
-        setIsOpen(false);
-        if (checkboxRef.current) {
-            checkboxRef.current.checked = false;
-        }
-    };
-
-    const toggleNavbar = () => {
-        setIsOpen(!isOpen);
-    };
-
-    // Lock scroll when mobile menu is open
-    useEffect(() => {
-        const html = document.documentElement;
-        const body = document.body;
-        if (isOpen) {
-            html.classList.add('overflow-hidden', 'touch-none', 'overscroll-none');
-            body.classList.add('overflow-hidden');
-        } else {
-            html.classList.remove('overflow-hidden', 'touch-none', 'overscroll-none');
-            body.classList.remove('overflow-hidden');
-        }
-        return () => {
-            html.classList.remove('overflow-hidden', 'touch-none', 'overscroll-none');
-            body.classList.remove('overflow-hidden');
-        };
-    }, [isOpen]);
-
-    const location = useLocation();
-
-    // links dynamiques
-
-    const { links } = useEasterEgg();
-    return (
-        <div className="fixed top-0 left-0 w-full z-40 ">
-            {/* Desktop navbar */}
-            <nav className="md:flex items-center justify-between px-12 py-6 hidden backdrop-blur-md max-w-7xl mx-auto ">
-                <div
-                    className="flex items-center gap-6 text-darkGray font-sfregular"
-                >
-                    {links.map((link) => (
-                        <div
-                            key={link.name}
-                            className="inline-flex h-8 items-center"
-                        >
-                            {(() => {
-                                if (link.name === "Email") {
-                                    return (
-                                        <TooltipProvider delayDuration={0}>
-                                            <Tooltip>
-                                                <TooltipTrigger asChild>
-                                                    <a
-                                                        href={link.path}
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        data-cursor-icon="mail"
-                                                        className={cn(
-                                                            "relative transition-colors duration-300 ease-out hover:text-black dark:hover:text-white"
-                                                        )}
-                                                    >
-                                                        {link.name}
-                                                        <span
-                                                            className={cn(
-                                                                "absolute -bottom-1 left-0 h-[2px] bg-brandgradient rounded-full transition-all duration-300 ease-out origin-left",
-                                                                "w-0 scale-x-0 group-hover:w-full group-hover:scale-x-100"
-                                                            )}
-                                                        />
-                                                    </a>
-                                                </TooltipTrigger>
-                                                <TooltipContent>
-                                                    <div className="flex items-center px-4 py-2 rounded-full bg-bgLight dark:bg-darkContainer  border border-ultralightGray dark:border-darkBorder shadow-sm w-fit space-x-2">
-                                                        <span className="text-lightPrimary dark:text-darkPrimary font-sfregular">
-                                                            {email}
-                                                        </span>
-                                                        <button
-                                                            onClick={handleCopy}
-                                                            className="px-3 py-1 text-xs font-sfbold text-lightPrimary dark:text-darkPrimary bg-ultralightGray dark:bg-bgDark rounded-full hover:bg-g transition-all"
-                                                            data-cursor-icon="copy"
-                                                        >
-                                                            {copied ? "COPIED" : "COPY"}
-                                                        </button>
-                                                    </div>
-                                                </TooltipContent>
-                                            </Tooltip>
-                                        </TooltipProvider>
-                                    );
-                                }
-
-                                // Liens externes standards
-                                if (link.external) {
-                                    return (
-                                        <a
-                                            href={link.path}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className={cn(
-                                                "relative transition-colors duration-300 ease-out hover:text-black dark:hover:text-white",
-                                                location.pathname === link.path && "text-black dark:text-white"
-                                            )}
-                                            data-cursor-icon="arrow"
-                                        >
-                                            {link.name}
-                                            <span
-                                                className={cn(
-                                                    "absolute -bottom-1 left-0 h-[2px] bg-brandgradient rounded-full transition-all duration-300 ease-out origin-left",
-                                                    location.pathname === link.path
-                                                        ? "w-full scale-x-100"
-                                                        : "w-0 scale-x-0"
-                                                )}
-                                            />
-                                        </a>
-                                    );
-                                }
-
-                                // Liens internes
-                                return (
-                                    <Link
-                                        to={link.path}
-                                        className={cn(
-                                            "relative transition-colors duration-300 ease-out hover:text-black dark:hover:text-white",
-                                            location.pathname === link.path && "text-black dark:text-white"
-                                        )}
-                                    >
-                                        {link.name}
-                                        <span
-                                            className={cn(
-                                                "absolute -bottom-1 left-0 h-[2px] bg-brandgradient rounded-full transition-all duration-300 ease-out origin-left",
-                                                location.pathname === link.path
-                                                    ? "w-full scale-x-100"
-                                                    : "w-0 scale-x-0"
-                                            )}
-                                        />
-                                    </Link>
-                                );
-                            })()}
-                        </div>
-                    ))}
-                </div>
-                <div className="hidden md:block">
-                    <ThemeToggle />
-                </div>
-            </nav>
-
-            {/* mobile navbar */}
-            <div
-                ref={navbarRef}
-                className={cn(
-                    "fixed -top-1 h-20 w-full z-50 flex md:hidden flex-row justify-between items-center px-6"
-                )}
+        {/* Desktop links */}
+        <nav className="hidden md:flex items-center gap-1">
+          {LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={go(l.href)}
+              className="px-4 py-2 text-sm text-muted hover:text-ghost transition-colors font-medium"
             >
-                <div
-                    className={cn(
-                        `absolute inset-0 transition-all duration-500 ${!isOpen
-                            ? "bg-bgLight dark:bg-bgDark/75 blur-sm backdrop-blur-sm opacity-100"
-                            : "opacity-0 pointer-events-none"
-                        }`
-                    )}
-                    style={{ zIndex: 1 }}
-                ></div>
-                <a href="/" className="w-20 h-14 flex justify-center items-center my-3 z-50 dark:bg-darkPrimary dark:rounded-2xl">
-                    <img src={LogoMobile} className="w-max" alt="Logo" />
-                </a>
+              {l.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={go("#contact")}
+            className="ml-2 px-4 py-2 text-sm font-medium text-ink bg-accent-gradient rounded-full hover:shadow-glow transition-shadow"
+          >
+            Devis
+          </a>
+        </nav>
 
-                <div
-                    className={cn(
-                        `fixed inset-0 z-40 md:hidden transition-opacity duration-500 ease-in-out`,
-                        isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-                    )}
-                >
-                    {/* Background overlay (click to close) */}
-                    <div
-                        className="absolute inset-0 bg-bgLight dark:bg-bgDark"
-                        onClick={closeNavbar}
-                    />
+        {/* Burger mobile */}
+        <button
+          aria-label="Menu"
+          onClick={() => setOpen((v) => !v)}
+          className="md:hidden grid place-items-center w-10 h-10 rounded-full border border-line text-ghost"
+        >
+          <div className="relative w-5 h-3">
+            <span
+              className={`absolute left-0 top-0 w-5 h-0.5 bg-current transition-transform duration-300 ${
+                open ? "translate-y-[6px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 bottom-0 w-5 h-0.5 bg-current transition-transform duration-300 ${
+                open ? "-translate-y-[6px] -rotate-45" : ""
+              }`}
+            />
+          </div>
+        </button>
+      </div>
 
-                    {/* Minimal, modern menu */}
-                    <nav className="relative z-10 h-full w-full flex flex-col items-center justify-center">
-                        <ul className="w-full max-w-sm px-8 space-y-3">
-                            {links.map((link) => (
-                                <li key={link.name}>
-                                    {(() => {
-                                        const baseClasses = cn(
-                                            "group flex items-center justify-between w-full rounded-xl border /40",
-                                            "border-zinc-200/70 hover:border-zinc-300 hover:/70",
-                                            "px-4 py-3 text-lightPrimary dark:text-darkPrimary hover:text-zinc-900 transition",
-                                            "backdrop-blur-sm"
-                                        );
-
-                                        const activeClasses = (location.pathname === link.path && !link.external && link.name !== "Email")
-                                            ? "border-ultralightGray dark:border-white bg-ultralightGray dark:bg-darkContainer text-lightPrimary dark:text-darkPrimary font-sfregular"
-                                            : "";
-
-                                        const RightDot = () => (
-                                            <span className="ml-3 h-1.5 w-1.5 rounded-full bg-zinc-300 group-hover:bg-zinc-900 transition" />
-                                        );
-
-                                        if (link.name === "Email") {
-                                            return (
-                                                <a
-                                                    href={link.path}
-                                                    rel="noreferrer"
-                                                    data-cursor-icon="mail"
-                                                    className={cn(baseClasses)}
-                                                    onClick={closeNavbar}
-                                                >
-                                                    <span className="text-base">{link.name}</span>
-                                                    <RightDot />
-                                                </a>
-                                            );
-                                        }
-
-                                        if (link.external) {
-                                            return (
-                                                <a
-                                                    href={link.path}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    data-cursor-icon="arrow"
-                                                    className={cn(baseClasses)}
-                                                    onClick={closeNavbar}
-                                                >
-                                                    <span className="text-base">{link.name}</span>
-                                                    <RightDot />
-                                                </a>
-                                            );
-                                        }
-
-                                        return (
-                                            <Link
-                                                to={link.path}
-                                                className={cn(baseClasses, activeClasses)}
-                                                onClick={closeNavbar}
-                                            >
-                                                <span className="text-base">{link.name}</span>
-                                                <RightDot />
-                                            </Link>
-                                        );
-                                    })()}
-                                </li>
-                            ))}
-                        </ul>
-
-                        {/* Subtle footer note */}
-                        <div className="absolute bottom-6 text-[10px] tracking-[0.2em] text-lightPrimary dark:text-darkPrimary flex flex-col items-center gap-2">
-                            Theme
-                            <ThemeToggle />
-                        </div>
-                    </nav>
-                </div>
-
-                <label id="hamburger" className="z-50">
-                    <input ref={checkboxRef} type="checkbox" onChange={toggleNavbar} />
-                    <svg viewBox="0 0 32 32">
-                        <path
-                            className="line line-top-bottom stroke-[#3b3d41] dark:stroke-[#cbd0d4]"
-                            d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-                        ></path>
-                        <path className="line stroke-lightPrimary dark:stroke-darkPrimary" d="M7 16 27 16"></path>
-                    </svg>
-                </label>
-            </div>
-        </div>
-    );
+      {/* Menu mobile */}
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden mx-4 mt-2 glass border border-line/60 rounded-2xl p-2"
+          >
+            {LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={go(l.href)}
+                className="block px-4 py-3 text-ghost/90 hover:text-accent transition-colors text-lg font-medium"
+              >
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={go("#contact")}
+              className="block mt-1 px-4 py-3 text-center text-ink bg-accent-gradient rounded-xl font-medium"
+            >
+              Demander un devis
+            </a>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
+  );
 }

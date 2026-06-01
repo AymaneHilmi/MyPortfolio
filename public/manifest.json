@@ -1,6 +1,6 @@
 {
-  "short_name": "Aymane's Portfolio",
-  "name": "Portfolio of Aymane HILMI",
+  "short_name": "Aymane Drone",
+  "name": "Aymane Hilmi · Drone — Vidéo & photo aérienne",
   "icons": [
     {
       "src": "Aymane.png",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#07080a",
+  "background_color": "#07080a"
 }

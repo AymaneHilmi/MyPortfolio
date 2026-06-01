@@ -1,52 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr" class="dark">
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080a" />
+
+  <title>Aymane Hilmi · Drone — Vidéo & photo aérienne</title>
   <meta name="description"
-    content="Welcome to Aymane's Portfolio! Passionate about computer science and online business, I aim to leave a personal mark in this world..." />
+    content="Prestataire vidéo drone : prises de vue aériennes, FPV cinématique, photo et clips. Des images vues d'en haut pour vos projets, marques et événements." />
+  <meta name="keywords" content="drone, vidéo drone, FPV, photo aérienne, prise de vue drone, clip, DJI Mavic, DJI RS3" />
+
+  <!-- Open Graph / réseaux sociaux -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aymane Hilmi · Drone — Vidéo & photo aérienne" />
+  <meta property="og:description"
+    content="Prises de vue aériennes, FPV cinématique, photo et clips. Vos images vues d'en haut." />
+  <meta property="og:image" content="/Aymane.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="icon" href="/Aymane.png" type="image/png" />
   <link rel="apple-touch-icon" href="/Aymane.png" />
-  <link rel="icon" href="/Aymane.png" sizes="192x192" type="image/png" />
-  <link rel="icon" href="/Aymane.png" sizes="512x512" type="image/png" />
   <link rel="manifest" href="/manifest.json" />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
-  <title>Aymane's Portfolio</title>
 </head>
 
-<body class="bg-bgLight dark:bg-bgDark" style="overflow-x: hidden;">
+<body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
-  <script defer data-website-id="dfid_CbS7E1tyzzsdJ8LCJsbv8" data-domain="aymanehilmi.com" data-allow-localhost="true"
-    src="https://datafa.st/js/script.js">
-
-      // Gestion des thèmes
-      (function () {
-        const key = 'theme';
-        const saved = localStorage.getItem(key);
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        // Thème par défaut light si aucun thème n'est sauvegardé
-        const theme = saved || 'light';
-
-        const isDark =
-          theme === 'dark' ||
-          (theme === 'system' && systemPrefersDark);
-
-        // Applique la classe dark selon la logique
-        if (isDark) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-
-        // Color scheme global (scrollbar, forms, etc.)
-        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
-      })();
-    </script>
-
+  <!-- Analytics -->
+  <script defer data-website-id="dfid_CbS7E1tyzzsdJ8LCJsbv8" data-domain="aymanehilmi.com"
+    data-allow-localhost="true" src="https://datafa.st/js/script.js"></script>
 </body>
 
 </html>
