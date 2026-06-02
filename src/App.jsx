@@ -19,7 +19,7 @@ export default function App() {
   return (
     <>
       {/* Couche 3D fixe en arrière-plan de tout le site */}
-      <Suspense fallback={<div className="fixed inset-0 -z-10 bg-ink" />}>
+      <Suspense fallback={<div className="fixed inset-0 -z-10 bg-paper" />}>
         <DroneScene />
       </Suspense>
 
@@ -29,9 +29,9 @@ export default function App() {
         {/* Hero transparent : le drone est pleinement visible */}
         <Hero />
 
-        {/* Contenu : fond sombre semi-transparent → le drone reste perçu en
-            profondeur derrière les sections (parallaxe ambiante au scroll). */}
-        <div className="relative bg-ink/85">
+        {/* Contenu : fond clair légèrement translucide → le drone reste perçu
+            en profondeur derrière les sections (parallaxe ambiante au scroll). */}
+        <div className="relative bg-paper/85">
           <Services />
           <Showreel />
           <Equipment />

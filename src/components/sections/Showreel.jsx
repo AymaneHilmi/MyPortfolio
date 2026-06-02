@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "../ui/Reveal";
+import { MetaTag, ViewfinderCorners } from "../ui/Camera";
 import { SHOWREEL } from "../../data/content";
 
 function PlayIcon({ className = "" }) {
   return (
-    <svg className={className} width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
       <path d="M8 5v14l11-7z" />
     </svg>
   );
@@ -15,7 +16,7 @@ function Tile({ item, onOpen }) {
   return (
     <button
       onClick={() => item.src && onOpen(item)}
-      className={`group relative w-full aspect-[4/5] sm:aspect-square rounded-2xl overflow-hidden border border-line bg-surface2 text-left ${
+      className={`group relative w-full aspect-[4/5] sm:aspect-square rounded-2xl overflow-hidden border border-hair bg-paper2 text-left ${
         item.src ? "cursor-pointer" : "cursor-default"
       }`}
     >
@@ -27,7 +28,7 @@ function Tile({ item, onOpen }) {
           playsInline
           preload="none"
           poster={item.poster}
-          className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           onMouseEnter={(e) => e.currentTarget.play()}
           onMouseLeave={(e) => {
             e.currentTarget.pause();
@@ -35,26 +36,26 @@ function Tile({ item, onOpen }) {
           }}
         />
       ) : (
-        <div className="absolute inset-0 grain bg-gradient-to-br from-surface2 to-ink" />
+        <div className="absolute inset-0 bg-paper2" />
       )}
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent" />
+      {/* Encadrement viseur au survol */}
+      <ViewfinderCorners
+        className="opacity-0 group-hover:opacity-100 transition-opacity text-ink"
+        size={16}
+        gap={10}
+      />
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="grid place-items-center w-12 h-12 rounded-full border border-ghost/30 text-ghost/90 backdrop-blur-sm group-hover:border-accent group-hover:text-accent group-hover:scale-110 transition-all">
-          <PlayIcon />
+        <span className="grid place-items-center w-12 h-12 rounded-full bg-paper/80 backdrop-blur-sm border border-hair text-ink group-hover:bg-ink group-hover:text-paper group-hover:scale-110 transition-all">
+          <PlayIcon className="translate-x-[1px]" />
         </span>
       </div>
 
       <div className="absolute bottom-0 inset-x-0 p-4">
-        <p className="text-[11px] uppercase tracking-widest text-accent/90">
-          {item.category}
-        </p>
-        <p className="mt-1 font-medium text-ghost">{item.title}</p>
-        {!item.src && (
-          <p className="mt-0.5 text-xs text-faint">Bientôt en ligne</p>
-        )}
+        <MetaTag className="text-ink/60">{item.category}</MetaTag>
+        <p className="mt-1 font-medium text-ink">{item.title}</p>
+        {!item.src && <p className="mt-0.5 text-xs text-faint">Bientôt en ligne</p>}
       </div>
     </button>
   );
@@ -69,14 +70,12 @@ export default function Showreel() {
         <Reveal>
           <div className="flex items-end justify-between gap-6 flex-wrap">
             <div>
-              <p className="text-accent text-sm uppercase tracking-ultra font-medium">
-                Showreel
-              </p>
-              <h2 className="mt-4 font-display text-4xl sm:text-6xl text-ghost tracking-tightest leading-[1.02]">
+              <MetaTag>02 — SHOWREEL</MetaTag>
+              <h2 className="mt-4 font-display text-4xl sm:text-6xl text-ink tracking-tightest leading-[1.02]">
                 Mes images.
               </h2>
             </div>
-            <p className="max-w-sm text-muted font-body leading-relaxed">
+            <p className="max-w-sm text-ink2 font-body leading-relaxed">
               Une sélection de plans aériens et FPV. Survolez pour prévisualiser,
               cliquez pour voir en grand.
             </p>
@@ -100,7 +99,7 @@ export default function Showreel() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActive(null)}
-            className="fixed inset-0 z-[60] grid place-items-center bg-ink/90 backdrop-blur-md p-4"
+            className="fixed inset-0 z-[60] grid place-items-center bg-ink/85 backdrop-blur-md p-4"
           >
             <motion.div
               initial={{ scale: 0.94, opacity: 0 }}
@@ -108,7 +107,7 @@ export default function Showreel() {
               exit={{ scale: 0.94, opacity: 0 }}
               transition={{ type: "spring", damping: 26, stiffness: 260 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden border border-line shadow-glow"
+              className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-soft"
             >
               <video
                 src={active.src}
@@ -121,7 +120,7 @@ export default function Showreel() {
             <button
               onClick={() => setActive(null)}
               aria-label="Fermer"
-              className="absolute top-5 right-5 grid place-items-center w-11 h-11 rounded-full border border-line text-ghost hover:text-accent hover:border-accent transition-colors"
+              className="absolute top-5 right-5 grid place-items-center w-11 h-11 rounded-full border border-paper/30 text-paper hover:bg-paper hover:text-ink transition-colors"
             >
               ✕
             </button>

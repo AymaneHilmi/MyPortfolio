@@ -1,4 +1,5 @@
 import Reveal from "../ui/Reveal";
+import { MetaTag } from "../ui/Camera";
 import { SITE } from "../../data/content";
 
 function Social({ href, label, children }) {
@@ -7,7 +8,7 @@ function Social({ href, label, children }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="grid place-items-center w-12 h-12 rounded-full border border-line text-muted hover:text-accent hover:border-accent/60 transition-colors"
+      className="grid place-items-center w-12 h-12 rounded-full border border-hair text-ink2 hover:bg-ink hover:text-paper hover:border-ink transition-colors"
       aria-label={label}
     >
       {children}
@@ -20,15 +21,15 @@ export default function Contact() {
     <section id="contact" className="relative pt-24 sm:pt-32 px-5 sm:px-8">
       <div className="mx-auto max-w-5xl text-center">
         <Reveal>
-          <p className="text-accent text-sm uppercase tracking-ultra font-medium">
-            Contact
-          </p>
-          <h2 className="mt-5 font-display text-5xl sm:text-7xl md:text-8xl text-ghost tracking-tightest leading-[0.95]">
+          <div className="flex justify-center">
+            <MetaTag>04 — CONTACT</MetaTag>
+          </div>
+          <h2 className="mt-5 font-display text-5xl sm:text-7xl md:text-8xl text-ink tracking-tightest leading-[0.95]">
             Un projet ?
             <br />
-            <span className="text-gradient">Filmons-le.</span>
+            Filmons-le.
           </h2>
-          <p className="mt-6 mx-auto max-w-lg text-muted font-body leading-relaxed">
+          <p className="mt-6 mx-auto max-w-lg text-ink2 font-body leading-relaxed">
             Dites-moi votre idée, votre lieu et votre date. Je vous réponds
             rapidement avec un devis adapté.
           </p>
@@ -36,7 +37,7 @@ export default function Contact() {
           <div className="mt-10 flex flex-col items-center gap-6">
             <a
               href={`mailto:${SITE.contact.email}`}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-accent-gradient text-ink font-medium hover:shadow-glow transition-shadow text-lg"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-ink text-paper font-medium hover:bg-ink2 transition-colors text-lg"
             >
               {SITE.contact.email}
             </a>
@@ -60,12 +61,12 @@ export default function Contact() {
       </div>
 
       {/* Pied de page */}
-      <footer className="mt-24 border-t border-line/60">
-        <div className="mx-auto max-w-6xl py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-faint">
+      <footer className="mt-24 border-t border-hair">
+        <div className="mx-auto max-w-6xl py-8 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs text-mute">
           <p>
             © {new Date().getFullYear()} {SITE.name} — {SITE.role}
           </p>
-          <p className="text-faint">Prises de vue aériennes · FPV · Cinéma</p>
+          <p>PRISES DE VUE AÉRIENNES · FPV · CINÉMA</p>
         </div>
       </footer>
     </section>

@@ -1,48 +1,40 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class",
   content: ["./index.html", "./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        // Fond cinématique sombre
-        ink: "#07080a",
-        surface: "#0d0f13",
-        surface2: "#13161c",
-        line: "#1e222b",
-        // Accent cyan électrique
-        accent: "#22d3ee",
-        accentDeep: "#06b6d4",
-        accentGlow: "#67e8f9",
-        // Texte
-        ghost: "#f5f6f8",
-        muted: "#9aa1ad",
-        faint: "#5b626d",
+        // Surfaces claires (papier)
+        paper: "#ffffff",
+        paper2: "#f7f7f8",
+        paper3: "#f0f1f2",
+        hair: "#e6e7e9", // filets / bordures
+        // Encre (texte)
+        ink: "#16171a", // presque noir — titres, CTA
+        ink2: "#3b3d41", // gris foncé — corps de texte
+        mute: "#8a8d93", // gris secondaire
+        faint: "#b6b9bf", // gris très clair / placeholders
+        // Voyant caméra (à utiliser avec parcimonie)
+        rec: "#e5484d",
       },
       fontFamily: {
         display: ["SFBOLD", "system-ui", "sans-serif"],
         medium: ["SFMEDIUM", "system-ui", "sans-serif"],
         body: ["SFREGULAR", "system-ui", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
       },
       letterSpacing: {
         tightest: "-0.045em",
-        ultra: "0.35em",
-      },
-      backgroundImage: {
-        "accent-gradient": "linear-gradient(135deg, #67e8f9 0%, #22d3ee 45%, #06b6d4 100%)",
-        "fade-bottom": "linear-gradient(to bottom, transparent, #07080a)",
-        "fade-top": "linear-gradient(to top, transparent, #07080a)",
-        "radial-glow": "radial-gradient(60% 50% at 50% 40%, rgba(34,211,238,0.18) 0%, transparent 70%)",
+        ultra: "0.3em",
       },
       boxShadow: {
-        glow: "0 0 40px -10px rgba(34,211,238,0.45)",
-        glowSoft: "0 0 80px -20px rgba(34,211,238,0.35)",
+        card: "0 1px 2px rgba(22,23,26,0.04), 0 8px 30px -12px rgba(22,23,26,0.12)",
+        soft: "0 10px 40px -16px rgba(22,23,26,0.22)",
       },
       animation: {
         "fade-in": "fadeIn 1s ease forwards",
         "float-slow": "floatSlow 6s ease-in-out infinite",
-        "spin-slow": "spin 14s linear infinite",
-        "pulse-soft": "pulseSoft 3.5s ease-in-out infinite",
+        "rec-blink": "recBlink 1.6s steps(1) infinite",
         "scroll-hint": "scrollHint 1.8s ease-in-out infinite",
       },
       keyframes: {
@@ -52,11 +44,11 @@ module.exports = {
         },
         floatSlow: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-12px)" },
+          "50%": { transform: "translateY(-10px)" },
         },
-        pulseSoft: {
-          "0%, 100%": { opacity: 0.4 },
-          "50%": { opacity: 1 },
+        recBlink: {
+          "0%, 49%": { opacity: 1 },
+          "50%, 100%": { opacity: 0.15 },
         },
         scrollHint: {
           "0%": { transform: "translateY(0)", opacity: 0 },

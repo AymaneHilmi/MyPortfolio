@@ -9,6 +9,11 @@ export const SITE = {
     title: ["Vos images", "vues d'en haut."],
     subtitle:
       "Vidéo, photo, clips et FPV cinématique. Je capture vos lieux, vos événements et vos projets sous un angle inédit.",
+    meta: {
+      format: "4K · 48MP · D-LOG",
+      gps: "43.6109° N · 3.8772° E",
+      exif: "F/2.8 · 1/2000 · ISO 100",
+    },
   },
   contact: {
     email: "aymanehilmi1@gmail.com",

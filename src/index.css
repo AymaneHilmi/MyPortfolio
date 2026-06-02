@@ -28,25 +28,21 @@
 }
 
 /* ----------------------------------------------------------------
-   Base
+   Base — thème clair
 ----------------------------------------------------------------- */
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   * {
     -webkit-tap-highlight-color: transparent;
   }
 
-  html {
-    scroll-behavior: auto; /* géré par Lenis */
-  }
-
   body {
     margin: 0;
-    background-color: #07080a;
-    color: #f5f6f8;
+    background-color: #ffffff;
+    color: #3b3d41;
     font-family: "SFREGULAR", -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -55,8 +51,8 @@
   }
 
   ::selection {
-    background: rgba(34, 211, 238, 0.25);
-    color: #f5f6f8;
+    background: #16171a;
+    color: #ffffff;
   }
 }
 
@@ -78,7 +74,7 @@ html.lenis body {
 }
 
 /* ----------------------------------------------------------------
-   Scrollbar
+   Scrollbar discrète
 ----------------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 0px;
@@ -86,28 +82,21 @@ html.lenis body {
 }
 
 /* ----------------------------------------------------------------
-   Utilities
+   Utilities — identité caméra
 ----------------------------------------------------------------- */
 @layer utilities {
-  .text-gradient {
-    background: linear-gradient(135deg, #67e8f9 0%, #22d3ee 45%, #06b6d4 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
+  /* Verre clair pour la navbar */
   .glass {
-    background: rgba(13, 15, 19, 0.55);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
   }
 
-  .grain {
-    background-image: radial-gradient(
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    );
-    background-size: 3px 3px;
+  /* Grille type blueprint / quadrillage de viseur très discret */
+  .grid-lines {
+    background-image: linear-gradient(to right, #16171a 1px, transparent 1px),
+      linear-gradient(to bottom, #16171a 1px, transparent 1px);
+    background-size: 64px 64px;
   }
 }
 

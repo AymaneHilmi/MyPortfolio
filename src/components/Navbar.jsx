@@ -34,18 +34,13 @@ export default function Navbar() {
       }`}
     >
       <div
-        className={`mx-auto max-w-6xl px-5 sm:px-8 flex items-center justify-between rounded-2xl transition-all duration-500 ${
-          scrolled ? "glass border border-line/60 py-3 shadow-glowSoft" : "py-1"
+        className={`mx-auto max-w-6xl px-5 sm:px-6 flex items-center justify-between rounded-full transition-all duration-500 ${
+          scrolled ? "glass border border-hair py-2.5 shadow-card mx-4" : "py-1"
         }`}
-        style={scrolled ? { marginLeft: 16, marginRight: 16 } : {}}
       >
         {/* Logo */}
-        <a
-          href="#top"
-          onClick={go("#top")}
-          className="flex items-center gap-2 group"
-        >
-          <span className="grid place-items-center w-8 h-8 rounded-full border border-accent/50 text-accent shadow-glow">
+        <a href="#top" onClick={go("#top")} className="flex items-center gap-2.5 group">
+          <span className="grid place-items-center w-8 h-8 rounded-full border border-ink/20 text-ink">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <circle cx="6" cy="6" r="2.4" />
               <circle cx="18" cy="6" r="2.4" />
@@ -55,9 +50,9 @@ export default function Navbar() {
               <path d="M8 8l1.6 1.6M16 8l-1.6 1.6M8 16l1.6-1.6M16 16l-1.6-1.6" />
             </svg>
           </span>
-          <span className="font-display text-ghost text-sm tracking-tight">
+          <span className="font-display text-ink text-sm tracking-tight">
             {SITE.name}
-            <span className="text-accent"> · {SITE.tagline}</span>
+            <span className="text-mute font-body"> · {SITE.tagline}</span>
           </span>
         </a>
 
@@ -68,7 +63,7 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               onClick={go(l.href)}
-              className="px-4 py-2 text-sm text-muted hover:text-ghost transition-colors font-medium"
+              className="px-4 py-2 text-sm text-ink2 hover:text-ink transition-colors font-medium"
             >
               {l.label}
             </a>
@@ -76,7 +71,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={go("#contact")}
-            className="ml-2 px-4 py-2 text-sm font-medium text-ink bg-accent-gradient rounded-full hover:shadow-glow transition-shadow"
+            className="ml-2 px-5 py-2 text-sm font-medium text-paper bg-ink rounded-full hover:bg-ink2 transition-colors"
           >
             Devis
           </a>
@@ -86,7 +81,7 @@ export default function Navbar() {
         <button
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden grid place-items-center w-10 h-10 rounded-full border border-line text-ghost"
+          className="md:hidden grid place-items-center w-10 h-10 rounded-full border border-hair text-ink bg-paper/70"
         >
           <div className="relative w-5 h-3">
             <span
@@ -111,14 +106,14 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden mx-4 mt-2 glass border border-line/60 rounded-2xl p-2"
+            className="md:hidden mx-4 mt-2 glass border border-hair rounded-3xl p-2 shadow-card"
           >
             {LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={go(l.href)}
-                className="block px-4 py-3 text-ghost/90 hover:text-accent transition-colors text-lg font-medium"
+                className="block px-4 py-3 text-ink hover:text-ink2 transition-colors text-lg font-medium"
               >
                 {l.label}
               </a>
@@ -126,7 +121,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={go("#contact")}
-              className="block mt-1 px-4 py-3 text-center text-ink bg-accent-gradient rounded-xl font-medium"
+              className="block mt-1 px-4 py-3 text-center text-paper bg-ink rounded-2xl font-medium"
             >
               Demander un devis
             </a>

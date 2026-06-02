@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { ContactShadows } from "@react-three/drei";
 import { MathUtils } from "three";
 import DroneModel from "./DroneModel";
 import { scrollState, pointerState } from "../../lib/scrollStore";
@@ -30,9 +31,8 @@ function Rig({ mobile, animate }) {
     const t = clock.current;
     const p = scrollState.progress;
 
-    // Trajectoire : le drone slalome doucement au fil du scroll
     const ampX = mobile ? 0.7 : 1.7;
-    const baseY = mobile ? 1.05 : 0.8; // le drone lévite au-dessus du titre
+    const baseY = mobile ? 1.0 : 0.75; // le drone lévite au-dessus du titre
     const targetX = Math.sin(p * Math.PI * 2.2) * ampX + pointerState.x * 0.6;
     const targetY =
       baseY +
@@ -41,7 +41,6 @@ function Rig({ mobile, animate }) {
       pointerState.y * 0.4;
     const targetZ = -p * 1.6;
 
-    // Inclinaisons (banking) liées à la trajectoire + parallaxe pointeur
     const yaw = t * 0.18 + p * Math.PI * 0.9 + pointerState.x * 0.4;
     const roll = -Math.cos(p * Math.PI * 2.2) * 0.35 - pointerState.x * 0.2;
     const pitch =
@@ -49,7 +48,7 @@ function Rig({ mobile, animate }) {
       MathUtils.clamp(scrollState.velocity * 0.015, -0.4, 0.4) +
       pointerState.y * 0.15;
 
-    const k = animate ? 3 : 60; // amorti
+    const k = animate ? 3 : 60;
     group.current.position.x = MathUtils.damp(group.current.position.x, targetX, k, d);
     group.current.position.y = MathUtils.damp(group.current.position.y, targetY, k, d);
     group.current.position.z = MathUtils.damp(group.current.position.z, targetZ, k, d);
@@ -68,10 +67,10 @@ function Rig({ mobile, animate }) {
 function Lights() {
   return (
     <>
-      <hemisphereLight args={["#2a3550", "#04060a", 1.1]} />
-      <directionalLight position={[5, 8, 6]} intensity={2.6} color="#eaf6ff" />
-      <pointLight position={[-4, -1, 3]} intensity={22} color="#22d3ee" distance={14} />
-      <pointLight position={[3, 2, 4]} intensity={9} color="#cfeaff" distance={16} />
+      <ambientLight intensity={1.05} />
+      <hemisphereLight args={["#ffffff", "#d7dade", 0.8]} />
+      <directionalLight position={[5, 9, 6]} intensity={2.4} color="#ffffff" />
+      <directionalLight position={[-5, 3, 4]} intensity={0.7} color="#eef1f5" />
     </>
   );
 }
@@ -85,20 +84,14 @@ export default function DroneScene() {
     setSupported(webglSupported());
   }, []);
 
-  // Fallback élégant si WebGL indisponible
   if (!supported) {
-    return (
-      <div className="fixed inset-0 -z-10 bg-ink">
-        <div className="absolute inset-0 bg-radial-glow" />
-      </div>
-    );
+    return <div className="fixed inset-0 -z-10 bg-paper" />;
   }
 
   const animate = !reduced;
 
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none">
-      <div className="absolute inset-0 bg-radial-glow" />
+    <div className="fixed inset-0 -z-10 pointer-events-none bg-paper">
       <Canvas
         dpr={mobile ? [1, 1.5] : [1, 2]}
         camera={{ position: [0, 0.4, 5.2], fov: mobile ? 44 : 34 }}
@@ -109,6 +102,16 @@ export default function DroneScene() {
         <Suspense fallback={null}>
           <Lights />
           <Rig mobile={mobile} animate={animate} />
+          {/* Ombre douce portée → effet photo produit sur fond blanc */}
+          <ContactShadows
+            position={[0, mobile ? -1.4 : -1.5, 0]}
+            opacity={0.32}
+            scale={mobile ? 7 : 9}
+            blur={2.6}
+            far={5}
+            resolution={mobile ? 256 : 512}
+            color="#16171a"
+          />
         </Suspense>
       </Canvas>
     </div>
