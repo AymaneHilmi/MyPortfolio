@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from "react";
 import { toast } from "react-hot-toast";
 import { Search, Puzzle, Crown } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -6,6 +13,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 
 const EasterEggContext = createContext();
+
+/* Id de la mission "Easter Egg Lord".
+   DOIT correspondre exactement à l'id défini dans `eggMission` ci-dessous,
+   sinon la mission ne sera jamais reconnue comme complétée. */
+const EGG_LORD_ID = "Achievement : EggLord";
+
+/* Liste des tips de la quête des tooltips (egg #5) */
+const TIP_MISSIONS = ["tip#1", "tip#2", "tip#3.0", "tip#3"];
 
 /* ===== Missions (indépendantes des eggs) ===== */
 const eggMission = [
@@ -120,6 +135,13 @@ export const EasterEggProvider = ({ children }) => {
 
   const [confettiActive, setConfettiActive] = useState(false);
 
+  /* Refs de "diffing".
+     Elles gardent la dernière valeur déjà traitée pour ne déclencher les
+     effets de bord (toasts, confetti, missions...) QUE sur les nouveautés,
+     et jamais au rechargement de page (réhydratation depuis localStorage). */
+  const seenEggsRef = useRef(foundEggs);
+  const seenMissionsRef = useRef(completedMissions);
+
   /* Persist */
   useEffect(() => {
     localStorage.setItem("foundEggs", JSON.stringify(foundEggs));
@@ -132,36 +154,19 @@ export const EasterEggProvider = ({ children }) => {
     );
   }, [completedMissions]);
 
-  /* ====== API Eggs ====== */
-  const incrementEggs = (eggId) => {
-    setFoundEggs((prev) => {
-      if (prev.includes(eggId)) {
-        toast(`Easter Egg ${eggId} already found!`, { duration: 10000 });
-        return prev;
-      }
-      // Si c'est le tout premier egg, compléter les mission 'eggStep' avant d'afficher le toast
-      if (prev.length === 0 && !completedMissions.includes("eggStep")) {
-        completeMission("eggStep");
-      }
-
-      const egg = EggList.find((e) => e.id === eggId);
-      const message = egg?.message || `Easter Egg ${eggId} found!`;
-      showEggToast(egg);
-
-      const newEggs = [...prev, eggId];
-
-      // Vérifie si tous les eggs ont été trouvés
-      const allEggsFound = EggList.every((e) => newEggs.includes(e.id));
-      if (allEggsFound && !completedMissions.includes("eggLord")) {
-        completeMission("eggLord");
-        navigate("/easter-eggs");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-
-      }
-
-      return newEggs;
-    });
-  };
+  /* ====== API Eggs ======
+     L'updater de state reste PUR : il se contente d'ajouter l'egg.
+     TOUS les effets de bord (toasts, confetti, missions, navigation) sont
+     gérés dans le useEffect qui observe `foundEggs` (source de vérité unique).
+     => plus de setState imbriqué ni de side-effect dans un updater
+        (cause des déclenchements partiels / doublés en StrictMode). */
+  const incrementEggs = useCallback((eggId) => {
+    if (seenEggsRef.current.includes(eggId)) {
+      toast(`Easter Egg ${eggId} already found!`, { duration: 10000 });
+      return;
+    }
+    setFoundEggs((prev) => (prev.includes(eggId) ? prev : [...prev, eggId]));
+  }, []);
 
   const resetEggs = () => {
     localStorage.removeItem("foundEggs");
@@ -173,43 +178,16 @@ export const EasterEggProvider = ({ children }) => {
   const isMissionCompleted = (missionId) =>
     completedMissions.includes(missionId);
 
-  const completeMission = (missionIdRaw) => {
+  /* L'updater reste PUR : on ajoute la mission, point.
+     Les toasts et le déclenchement de l'egg #5 (quête des tooltips) sont
+     gérés dans le useEffect qui observe `completedMissions`. */
+  const completeMission = useCallback((missionIdRaw) => {
     if (!missionIdRaw) return;
-
-    // normalisation douce (ex: " tip#1 " -> "tip#1")
-    const missionId = String(missionIdRaw).trim();
-    const isTip = missionId.toLowerCase().startsWith("tip#");
-
-    setCompletedMissions((prev) => {
-      // déjà présent → rien à faire
-      if (prev.includes(missionId)) return prev;
-
-      const next = [...prev, missionId];
-
-      // 1) Toast uniquement si ce n'est PAS un tip
-      if (!isTip && missionId !== "eggLord") {
-        const label =
-          eggMission.find((m) => m.id === missionId)?.message ?? missionId;
-        showInfoToast(label);
-      }
-
-      // 2) Si les 3 tips sont complétés ET que l’egg #3 n’est pas trouvé → on le déclenche
-      const hasAllTips = ["tip#1", "tip#2", "tip#3.0", "tip#3"].every((t) =>
-        next.includes(t)
-      );
-
-      const tip3Done = (completedMissions || []).some(
-        (id) => String(id).trim().toLowerCase() === "tip#3"
-      );
-
-      if (hasAllTips && !tip3Done) {
-        // Si ta fonction s'appelle autrement (ex: incrementsegg), adapte ici.
-        incrementEggs("#5");
-      }
-
-      return next;
-    });
-  };
+    const missionId = String(missionIdRaw).trim(); // normalisation: " tip#1 " -> "tip#1"
+    setCompletedMissions((prev) =>
+      prev.includes(missionId) ? prev : [...prev, missionId]
+    );
+  }, []);
 
   const uncompleteMission = (missionId) => {
     setCompletedMissions((prev) => prev.filter((id) => id !== missionId));
@@ -262,29 +240,92 @@ export const EasterEggProvider = ({ children }) => {
     }
   }, [completedMissions]);
 
-  /* ===== Egg #1 : Confettis ===== */
+  /* ===== Effets de bord des EGGS (source de vérité : foundEggs) =====
+     Se déclenche uniquement sur les eggs réellement NOUVEAUX, jamais au
+     rechargement de page. Garantit que "eggStep" (premier egg trouvé) et
+     "Egg Lord" (tous trouvés) sont TOUJOURS synchronisés avec foundEggs. */
+  useEffect(() => {
+    const prev = seenEggsRef.current;
+    seenEggsRef.current = foundEggs;
+
+    const newlyFound = foundEggs.filter((id) => !prev.includes(id));
+    if (newlyFound.length === 0) return; // réhydratation / pas de nouveauté
+
+    // Toast (+ confetti pour #1) pour chaque egg nouvellement trouvé
+    newlyFound.forEach((id) => {
+      const egg = EggList.find((e) => e.id === id);
+      if (egg) showEggToast(egg);
+      if (id === "#1") {
+        setConfettiActive(true);
+        setTimeout(() => setConfettiActive(false), 5000);
+      }
+    });
+
+    // Premier egg résolu → mission "eggStep" (idempotent)
+    completeMission("eggStep");
+
+    // Tous les eggs trouvés → mission "Egg Lord" + redirection
+    const allFound = EggList.every((e) => foundEggs.includes(e.id));
+    if (allFound) {
+      completeMission(EGG_LORD_ID);
+      navigate("/easter-eggs");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [foundEggs, completeMission, navigate]);
+
+  /* ===== Effets de bord des MISSIONS (source de vérité : completedMissions) ===== */
+  useEffect(() => {
+    const prev = seenMissionsRef.current;
+    seenMissionsRef.current = completedMissions;
+
+    const newly = completedMissions.filter((id) => !prev.includes(id));
+
+    // Toast d'info pour chaque mission nouvellement complétée.
+    // (les tips sont silencieux ; l'achievement final a sa propre célébration)
+    newly.forEach((missionId) => {
+      const isTip = missionId.toLowerCase().startsWith("tip#");
+      if (!isTip && missionId !== EGG_LORD_ID) {
+        const label =
+          eggMission.find((m) => m.id === missionId)?.message ?? missionId;
+        showInfoToast(label);
+      }
+    });
+
+    // Quête des tooltips complète → déclenche l'egg #5 (une seule fois)
+    const allTips = TIP_MISSIONS.every((t) => completedMissions.includes(t));
+    if (allTips && !foundEggs.includes("#5")) {
+      incrementEggs("#5");
+    }
+  }, [completedMissions, foundEggs, incrementEggs]);
+
+  /* ===== Egg #1 : écoute clavier de la séquence "aymane" ===== */
   useEffect(() => {
     let typedText = "";
     const correctText = "aymane";
 
     const handleKeydown = (event) => {
-      typedText += event.key.toLowerCase();
+      // ignore les touches non-caractère (Shift, Enter, flèches, Ctrl...)
+      if (!event.key || event.key.length !== 1) return;
+
+      const key = event.key.toLowerCase();
+      typedText += key;
 
       if (typedText === correctText) {
         incrementEggs("#1");
-        setConfettiActive(true);
-        setTimeout(() => setConfettiActive(false), 5000);
         typedText = "";
+        return;
       }
 
+      // si la séquence ne correspond plus, on repart proprement :
+      // on garde la dernière frappe seulement si elle peut amorcer "aymane"
       if (!correctText.startsWith(typedText)) {
-        typedText = event.key.toLowerCase();
+        typedText = correctText.startsWith(key) ? key : "";
       }
     };
 
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
-  }, []);
+  }, [incrementEggs]);
 
   return (
     <EasterEggContext.Provider

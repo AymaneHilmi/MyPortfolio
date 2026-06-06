@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useEasterEgg } from '@/context/EasterEggContext';
 
 const MobileTypingInput = () => {
-  const { incrementEggs, setConfettiActive } = useEasterEgg();
+  const { incrementEggs } = useEasterEgg();
   const [typed, setTyped] = useState("");
   const correct = "aymane";
 
   useEffect(() => {
     if (typed.toLowerCase() === correct) {
+      // Confettis + toast gérés centralement par le contexte (effet sur foundEggs)
       incrementEggs("#1");
-      setConfettiActive(true);
-      setTimeout(() => setConfettiActive(false), 5000);
       setTyped(""); // reset input
     }
   }, [typed]);
